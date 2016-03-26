@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/xiaowei_root_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" />
+<!-- From: file:/Users/Joey/Documents/群呼/DuduExpress/app/src/main/res/layout/activity_fragment_base_view.xml -->

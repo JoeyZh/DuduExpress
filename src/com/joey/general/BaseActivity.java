@@ -36,7 +36,7 @@ import android.widget.TextView;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONException;
 import com.alibaba.fastjson.JSONObject;
-import com.joey.duduexpress.R;
+import com.joey.expresscall.R;
 import com.joey.general.utils.MobileUtil;
 import com.joey.general.utils.MyLog;
 import com.joey.general.utils.ToastUtil;

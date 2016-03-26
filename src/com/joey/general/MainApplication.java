@@ -6,7 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 
 
-import com.joey.duduexpress.storage.JVDbHelper;
+import com.joey.expresscall.storage.JVDbHelper;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 
