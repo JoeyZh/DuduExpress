@@ -625,5 +625,6 @@
     <string name="title_activity_ecdefault">ECDefaultActivity</string>
     <string name="title_activity_main2">Main2Activity</string>
     <string name="title_activity_main_activity2">MainActivity2Activity</string>
+    <string name="title_activity_tab_fragment">TabFragmentActivity</string>
 
 </resources>

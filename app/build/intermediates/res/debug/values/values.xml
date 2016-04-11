@@ -406,6 +406,8 @@
     <dimen name="share_device_margin_top">15dp</dimen>
     <dimen name="share_device_padding">10dp</dimen>
     <dimen name="square_btn_height">40dp</dimen>
+    <dimen name="tab_bar_item">35dp</dimen>
+    <dimen name="tab_layout_height">55dp</dimen>
     <dimen name="text_exmin_size">9sp</dimen>
     <dimen name="text_large_size">44sp</dimen>
     <dimen name="text_max_size">20sp</dimen>
@@ -919,6 +921,8 @@
     <string name="title_activity_ecdefault">ECDefaultActivity</string>
     <string name="title_activity_jvalbum_photos_display_layout">JVAlbumPhotosDisplayLayoutActivity</string>
     <string name="title_activity_main2">Main2Activity</string>
+    <string name="title_activity_main_activity2">MainActivity2Activity</string>
+    <string name="title_activity_tab_fragment">TabFragmentActivity</string>
     <string name="update">更新</string>
     <string name="update_info">升级内容</string>
     <string name="use_qr_share">用二维码邀请家人</string>

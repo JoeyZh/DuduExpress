@@ -1,5 +1,8 @@
 package com.joey.expresscall.account;
 
+import com.alibaba.fastjson.JSONObject;
+import com.joey.expresscall.protocol.ResponseListener;
+
 public class AccountManager {
     
     static AccountManager accountManager;
@@ -8,7 +11,7 @@ public class AccountManager {
        
     }
 
-    public AccountManager getInstance(){
+    public static AccountManager getInstance(){
         if(accountManager != null)
             return accountManager;
         synchronized(AccountManager.class){
@@ -18,19 +21,27 @@ public class AccountManager {
         }
         
     }
-    public void login(String username,String password){
+    public void login(String username,String password,ResponseListener<T> responseListener){
         
     }
     
-    public void regist(String username,String password,String veryCode){
+    public void register(String username,String password,String veryCode,ResponseListener<T> responseListener){
+        
+    }
+
+    public void validateCode(final String username,final ResponseListener<T> listener){
+
+    }
+
+    public void logOut(ResponseListener<T> responseListener){
         
     }
     
-    public void logOut(){
+    public void forgetPassword(String username,String resetPass,String veryCode,ResponseListener<T> responseListener){
         
     }
-    
-    public void forgetPassword(String username,String resetPass,String veryCode){
-        
+
+    public void isAccountExist(String username,ResponseListener<T> responseListener){
+
     }
 }
