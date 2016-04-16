@@ -2,9 +2,8 @@ package com.joey.expresscall.protocol;
 
 import android.content.res.Resources;
 
-import com.jovision.xiaowei.MainApplication;
-import com.jovision.xiaowei.R;
-import com.xiaowei.comm.Account;
+import com.joey.general.MainApplication;
+import com.joey.expresscall.R;
 
 public class RequestError {
 
@@ -82,45 +81,6 @@ public class RequestError {
     private String getMsgFromCode(int errCode) {
         String msg = "";
         switch (errCode) {
-            case Account.BIZ_ACC_STATUS_OK:
-                msg = mResources.getString(R.string.error_status_ok);
-                break;
-            case Account.BIZ_ACC_STATUS_BUSY:
-                msg = mResources.getString(R.string.error_status_busy);
-                break;
-            case Account.BIZ_ACC_STATUS_CONNECT:
-                msg = mResources.getString(R.string.error_status_connect);
-                break;
-            case Account.BIZ_ACC_STATUS_MSG:
-                msg = mResources.getString(R.string.error_status_msg);
-                break;
-            case Account.BIZ_ACC_STATUS_RID:
-                msg = mResources.getString(R.string.error_status_rid);
-                break;
-            case Account.BIZ_ACC_STATUS_SID:
-                msg = mResources.getString(R.string.error_status_sid);
-                break;
-            case Account.BIZ_ACC_STATUS_IP:
-                msg = mResources.getString(R.string.error_status_ip);
-                break;
-            case Account.BIZ_ACC_STATUS_AUTH:
-                msg = mResources.getString(R.string.error_status_auth);
-                break;
-            case Account.BIZ_ACC_STATUS_AUTH_USR:
-                msg = mResources.getString(R.string.error_status_auth_usr);
-                break;
-            case Account.BIZ_ACC_STATUS_AUTH_PWD:
-                msg = mResources.getString(R.string.error_status_auth_pwd);
-                break;
-            case Account.BIZ_ACC_STATUS_VERSION:
-                msg = mResources.getString(R.string.error_status_version);
-                break;
-            case Account.BIZ_ACC_STATUS_REDIRECT:
-                msg = mResources.getString(R.string.error_status_redirect);
-                break;
-            case Account.BIZ_ACC_STATUS_SYSERR:
-                msg = mResources.getString(R.string.error_status_syserr);
-                break;
             // --------------------自定义错误码信息-------------------------
             case ERROR_CODE_NOT_LOGIN:
                 msg = mResources.getString(R.string.error_customize_not_login);

@@ -4,7 +4,6 @@ import android.text.TextUtils;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.joey.general.MainApplication;
 import com.joey.general.utils.DateUtil;
 import com.joey.general.utils.MyLog;
 import com.joey.general.utils.MySharedPreference;

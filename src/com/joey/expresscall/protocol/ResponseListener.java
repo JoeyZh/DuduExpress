@@ -1,7 +1,5 @@
 package com.joey.expresscall.protocol;
 
-import com.jovision.xiaowei.bean.RequestError;
-
 /**
  * 调用Jar中的方法的结果处理
  *

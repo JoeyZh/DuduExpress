@@ -1,10 +1,6 @@
 
 package com.joey.expresscall.usercenter;
 
-import android.os.Bundle;
-import android.app.Activity;
-import android.view.Menu;
-
 import com.joey.general.BaseActivity;
 
 public class UserCenterActivity extends BaseActivity {

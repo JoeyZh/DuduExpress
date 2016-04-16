@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<com.joey.general.views.TopBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/topbar"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content" />
-<!-- From: file:/Users/Joey/Documents/群呼/DuduExpress/app/src/main/res/layout/common_titlebar_view.xml -->

@@ -2,13 +2,10 @@ package com.joey.general;
 
 import android.app.Application;
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 
 
 import com.joey.expresscall.storage.JVDbHelper;
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 
 
 import java.util.HashMap;

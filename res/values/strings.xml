@@ -2,7 +2,7 @@
 <resources>
 
     <!-- 通用 -->
-    <string name="app_name">小维E家</string>
+    <string name="app_name">速易呼</string>
     <string name="waiting">加载中...</string>
     <string name="load_more">加载更多...</string>
     <string name="exiting">退出中...</string>
@@ -622,5 +622,9 @@
     <string name="web_error_502">版本过高</string>
     <string name="auto_login_account_exception">账号登录异常，点击重新登录</string>
     <string name="error_customize_account_exception">账号登录异常，请重新登录</string>
+    <string name="title_activity_ecdefault">ECDefaultActivity</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="title_activity_main_activity2">MainActivity2Activity</string>
+    <string name="title_activity_tab_fragment">TabFragmentActivity</string>
 
 </resources>
