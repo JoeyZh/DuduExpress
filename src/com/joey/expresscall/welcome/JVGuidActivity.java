@@ -1,27 +1,18 @@
-package com.jovision.xiaowei.welcome;
+package com.joey.expresscall.welcome;
+
+import com.joey.expresscall.R;
+import com.joey.expresscall.login.JVLoginActivity;
+import com.joey.general.BaseActivity;
+import com.joey.general.utils.MySharedPreference;
+import com.joey.general.utils.MySharedPreferencesConsts;
 
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 
-import com.jovision.AppConsts;
-import com.jovision.view.GuideContoler;
-import com.jovision.xiaowei.BaseActivity;
-import com.jovision.xiaowei.R;
-import com.jovision.xiaowei.login.JVLoginActivity;
-import com.jovision.xiaowei.utils.MySharedPreference;
 
 public class JVGuidActivity extends BaseActivity {
 
-    @Override
-    public void onHandler(int what, int arg1, int arg2, Object obj) {
-
-    }
-
-    @Override
-    public void onNotify(int what, int arg1, int arg2, Object obj) {
-
-    }
 
     @Override
     protected void initSettings() {
@@ -50,7 +41,7 @@ public class JVGuidActivity extends BaseActivity {
         view.findViewById(R.id.bt_login).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                MySharedPreference.putBoolean(AppConsts.FIRST_OPEN_APP, false);
+                MySharedPreference.getInstance().putBoolean(MySharedPreferencesConsts.FIRST_OPEN_APP, false);
                 Intent startIntent = new Intent(JVGuidActivity.this, JVLoginActivity.class);
                 JVGuidActivity.this.startActivity(startIntent);
                 JVGuidActivity.this.finish();

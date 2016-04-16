@@ -1,183 +1,164 @@
 package com.joey.general.utils;
 
+import java.io.ByteArrayOutputStream;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 
 public class MySharedPreference {
-    private static Context mContext = null;
-    private static SharedPreferences sharedPreferences = null;
-    private static Editor editor = null;// 获取编辑器
+	private static MySharedPreference instance;
+	private Context mContext;
+	private SharedPreferences preferences;
+	private Editor editor;
+	private final String name = "express_call";
 
-    /**
-     * 初始化
-     *
-     * @param con
-     */
-    public static void init(Context con) {
-        try {
-            if (mContext == null) {
-                mContext = con;
-                sharedPreferences = mContext.getSharedPreferences("JVCONFIG",
-                        Context.MODE_PRIVATE);
-                editor = sharedPreferences.edit();
-            }
+	private MySharedPreference() {
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+	}
 
-    }
+	private MySharedPreference(Context context) {
+		init(context);
+	}
 
-    public static Context getContext() {
-        return mContext;
-    }
+	public void init(Context context) {
+		mContext = context;
+		preferences = context.getSharedPreferences(name,
+				mContext.MODE_WORLD_READABLE);
+		editor = preferences.edit();
+	}
 
-    /**
-     * 保存String
-     *
-     * @param key
-     * @param value
-     * @return
-     */
-    public static boolean putString(String key, String value) {
-        editor.putString(key, value);
-        return editor.commit();
-    }
+	public static MySharedPreference getInstance() {
+		if (instance != null)
+			return instance;
+		synchronized (MySharedPreference.class) {
+			if (instance != null)
+				return instance;
+			instance = new MySharedPreference();
+			return instance;
+		}
+	}
 
-    /**
-     * 保存boolean
-     *
-     * @param key
-     * @param value
-     * @return
-     */
-    public static boolean putBoolean(String key, boolean value) {
-        editor.putBoolean(key, value);
-        return editor.commit();
-    }
+	public void putString(String key, String value) {
+		editor.putString(key, value);
+		editor.commit();
+	}
 
-    /**
-     * 保存int
-     *
-     * @param key
-     * @param value
-     * @return
-     */
-    public static boolean putInt(String key, int value) {
-        editor.putInt(key, value);
-        return editor.commit();
-    }
+	public void putInt(String key, int value) {
+		editor.putInt(key, value);
+		editor.commit();
+	}
 
-    /**
-     * 保存 long
-     *
-     * @param key
-     * @param value
-     * @return
-     */
-    public static boolean putLong(String key, long value) {
-        editor.putLong(key, value);
-        return editor.commit();
-    }
+	public void putFloat(String key, float value) {
+		editor.putFloat(key, value);
+		editor.commit();
+	}
 
-    /**
-     * 读取String
-     *
-     * @param key
-     * @return
-     */
-    public static String getString(String key) {
-        if (null == sharedPreferences) {
-            sharedPreferences = mContext.getSharedPreferences("JVCONFIG",
-                    Context.MODE_PRIVATE);
-        }
-        String value = sharedPreferences.getString(key, "");
-        return value;
-    }
+	public void putLong(String key, long value) {
+		editor.putLong(key, value);
+		editor.commit();
+	}
 
-    /**
-     * 读取boolean
-     *
-     * @param key
-     * @return
-     */
-    public static boolean getBoolean(String key) {
-        if (null == sharedPreferences) {
-            sharedPreferences = mContext.getSharedPreferences("JVCONFIG",
-                    Context.MODE_PRIVATE);
-        }
-        boolean value = sharedPreferences.getBoolean(key, false);
-        return value;
-    }
+	public void putBoolean(String key, boolean value) {
+		editor.putBoolean(key, value);
+		editor.commit();
+	}
 
-    /**
-     * 读取boolean
-     *
-     * @param key
-     * @return
-     */
-    public static boolean getBoolean(String key, boolean def) {
-        if (null == sharedPreferences) {
-            sharedPreferences = mContext.getSharedPreferences("JVCONFIG",
-                    Context.MODE_PRIVATE);
-        }
-        boolean value = sharedPreferences.getBoolean(key, def);
-        return value;
-    }
+	public String getString(String key, String defValue) {
+		return preferences.getString(key, defValue);
+	}
 
-    /**
-     * 读取int
-     *
-     * @param key
-     * @return
-     */
-    public static int getInt(String key) {
-        if (null == sharedPreferences) {
-            sharedPreferences = mContext.getSharedPreferences("JVCONFIG",
-                    Context.MODE_PRIVATE);
-        }
-        int value = sharedPreferences.getInt(key, 0);
-        return value;
-    }
+	public int getInt(String key, int defValue) {
+		return preferences.getInt(key, defValue);
+	}
 
-    /**
-     * 读取int
-     *
-     * @param key
-     * @return
-     */
-    public static int getInt(String key, int defaultValue) {
-        if (null == sharedPreferences) {
-            sharedPreferences = mContext.getSharedPreferences("JVCONFIG",
-                    Context.MODE_PRIVATE);
-        }
-        int value = sharedPreferences.getInt(key, defaultValue);
-        return value;
-    }
+	public Float getFloat(String key, Float defValue) {
+		return preferences.getFloat(key, defValue);
+	}
 
-    /**
-     * 读取 long
-     *
-     * @param key
-     * @return
-     */
-    public static long getLong(String key, long defaultValue) {
-        if (null == sharedPreferences) {
-            sharedPreferences = mContext.getSharedPreferences("JVCONFIG",
-                    Context.MODE_PRIVATE);
-        }
-        return sharedPreferences.getLong(key, defaultValue);
-    }
+	public Long getLong(String key, Long defValue) {
+		return preferences.getLong(key, defValue);
+	}
 
-    /**
-     * 清空所有数据
-     */
+	public boolean getBoolean(String key, boolean defValue) {
+		return preferences.getBoolean(key, defValue);
+	}
+	
+	public String getString(String key) {
+		return preferences.getString(key, "");
+	}
 
-    public static void clearAll() {
-        if (null != editor) {
-            editor.clear();
-            editor.commit();
-        }
-    }
+	public int getInt(String key) {
+		return preferences.getInt(key, 0);
+	}
+
+	public boolean getBoolean(String key) {
+		return preferences.getBoolean(key, false);
+	}
+
+	public void clearAll() {
+		editor.clear();
+		editor.commit();
+	}
+
+	/**
+	 * 将字符串写入packageName/files/路径下
+	 * 
+	 * @param info
+	 * @param filename
+	 */
+	public void createFile(String filename, String info) {
+		FileOutputStream outStream;
+		try {
+			outStream = mContext.openFileOutput(filename, mContext.MODE_PRIVATE
+					+ mContext.MODE_WORLD_READABLE
+					+ mContext.MODE_WORLD_WRITEABLE);
+			outStream.write(info.getBytes());
+			outStream.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * 读取packageName/files/目录下的filename文件
+	 * 
+	 * @param filename
+	 * @return 返回读取字符串
+	 */
+	public String readinfo(String filename) {
+		FileInputStream inStream;
+		try {
+			inStream = mContext.openFileInput(filename);
+
+			ByteArrayOutputStream outStream = new ByteArrayOutputStream();// 输出到内存
+
+			int len = 0;
+			byte[] buffer = new byte[1024];
+			while ((len = inStream.read(buffer)) != -1) {
+				outStream.write(buffer, 0, len);//
+			}
+			outStream.close();
+			byte[] content_byte = outStream.toByteArray();
+			String content = new String(content_byte);
+			return content;
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			MyLog.i("e.getmessage = " + e.getMessage());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			MyLog.i("e.getmessage = " + e.getMessage());
+		}
+
+		return null;
+	}
+
 }

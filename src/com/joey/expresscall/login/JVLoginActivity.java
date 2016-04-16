@@ -18,7 +18,7 @@ import android.widget.TextView;
 
 import com.joey.expresscall.MainActivity;
 import com.joey.expresscall.R;
-import com.joey.expresscall.account.AccountManager;
+import com.joey.expresscall.account.ECAccountManager;
 import com.joey.expresscall.protocol.RequestError;
 import com.joey.expresscall.protocol.ResponseListener;
 import com.joey.expresscall.storage.JVAccount;
@@ -58,9 +58,9 @@ public class JVLoginActivity extends BaseActivity {
         public void onSuccess(Object jsonData) {
             dismissDialog();
             // 保存账号信息
-            MySharedPreference.putString(MySharedPreferencesConsts.USERNAME,
+            MySharedPreference.getInstance().putString(MySharedPreferencesConsts.USERNAME,
                     userName);
-            MySharedPreference.putString(MySharedPreferencesConsts.PASSWORD,
+            MySharedPreference.getInstance().putString(MySharedPreferencesConsts.PASSWORD,
                     password);
             statusHashMap.put(MySharedPreferencesConsts.USERNAME, userName);
             statusHashMap.put(MySharedPreferencesConsts.PASSWORD, password);
@@ -155,9 +155,9 @@ public class JVLoginActivity extends BaseActivity {
     @Override
     protected void initSettings() {
         isGoBack = getIntent() != null ? getIntent().getBooleanExtra("isGoBack", false) : false;
-        userName = MySharedPreference
+        userName = MySharedPreference.getInstance()
                 .getString(MySharedPreferencesConsts.USERNAME);
-        password = MySharedPreference
+        password = MySharedPreference.getInstance()
                 .getString(MySharedPreferencesConsts.PASSWORD);
     }
 
@@ -323,9 +323,9 @@ public class JVLoginActivity extends BaseActivity {
                 adapter.notifyDataSetChanged();
                 // 刷新UI，下拉列表刷新
                 if (accountList.isEmpty()) {
-                    MySharedPreference.putString(
+                    MySharedPreference.getInstance().putString(
                             MySharedPreferencesConsts.USERNAME, "");
-                    MySharedPreference.putString(
+                    MySharedPreference.getInstance().putString(
                             MySharedPreferencesConsts.PASSWORD, "");
                     userName = "";
                     password = "";
@@ -347,7 +347,7 @@ public class JVLoginActivity extends BaseActivity {
 
         if (checkoutUsername(userName) && checkoutPassword(password)) {
             createDialog(R.string.login_loading, true);
-            AccountManager.getInstance().login(userName, password, listener);
+            ECAccountManager.getInstance().login(userName, password, listener);
         }
     }
 

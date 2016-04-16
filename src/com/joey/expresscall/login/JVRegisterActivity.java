@@ -17,7 +17,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSONObject;
-import com.joey.expresscall.account.AccountManager;
+import com.joey.expresscall.account.ECAccountManager;
 import com.joey.expresscall.protocol.RequestError;
 import com.joey.expresscall.protocol.ResponseListener;
 import com.joey.general.BaseActivity;
@@ -135,16 +135,16 @@ public class JVRegisterActivity extends BaseActivity {
                 case R.id.register_button:
                     MyLog.fmt("hasRead %s,isCheckedRead %s", hasRead + "",
                             isCheckedRead + "");
-                    if (!hasRead) {
-                        ToastUtil.show(JVRegisterActivity.this,
-                                R.string.register_read_first);
-                        return;
-                    }
-                    if (!isCheckedRead) {
-                        ToastUtil.show(JVRegisterActivity.this,
-                                R.string.register_not_agree);
-                        return;
-                    }
+//                    if (!hasRead) {
+//                        ToastUtil.show(JVRegisterActivity.this,
+//                                R.string.register_read_first);
+//                        return;
+//                    }
+//                    if (!isCheckedRead) {
+//                        ToastUtil.show(JVRegisterActivity.this,
+//                                R.string.register_not_agree);
+//                        return;
+//                    }
                     if (!hasCode) {
                         ToastUtil.show(JVRegisterActivity.this,
                                 R.string.register_got_code_first);
@@ -227,9 +227,9 @@ public class JVRegisterActivity extends BaseActivity {
         confirmEdit = (EditText) findViewById(R.id.register_confirm_edittext);
         validateCodeEdit = (EditText) findViewById(R.id.register_code_edittext);
 //        checkAgreementBtn = (CheckBox) findViewById(R.id.register_agreement_checkbox);
-        checkAgreementBtn.setOnCheckedChangeListener(checkedChangeListener);
+//        checkAgreementBtn.setOnCheckedChangeListener(checkedChangeListener);
 //        agreeProfileText = (TextView) findViewById(R.id.register_agreement_textview2);
-        agreeProfileText.setOnClickListener(mOnClickListener);
+//        agreeProfileText.setOnClickListener(mOnClickListener);
         getCodeBtn = (Button) findViewById(R.id.register_code_button);
         registBtn = (Button) findViewById(R.id.register_button);
         registBtn.setEnabled(false);
@@ -267,25 +267,25 @@ public class JVRegisterActivity extends BaseActivity {
          * 判断账号存在不
          */
         createDialog(R.string.tips_account_vertifying, true);
-        AccountManager.getInstance().isAccountExist(user,
+        ECAccountManager.getInstance().isAccountExist(user,
                 new ResponseListener<JSONObject>() {
                     // 账号库反馈
                     @Override
                     public void onSuccess(JSONObject jsonData) {
                         MyLog.i("jsonData = " + jsonData.toString());
-                        if (jsonData instanceof JSONObject) {
-                            isExist = ((JSONObject) jsonData)
-                                    .getBooleanValue("isExist");
-                            isCheckedExist = true;
-                            // 账号存在，出提示
-                            if (isExist) {
-                                showInputWarn(R.string.register_conflict, false);
-                            } else {// 进行注册第二部
+//                        if (jsonData instanceof JSONObject) {
+//                            isExist = ((JSONObject) jsonData)
+//                                    .getBooleanValue("isExist");
+//                            isCheckedExist = true;
+//                            // 账号存在，出提示
+//                            if (isExist) {
+//                                showInputWarn(R.string.register_conflict, false);
+//                            } else {// 进行注册第二部
                                 showInputWarn(R.string.register_no_conflict,
                                         false);
                                 gotoSecondTip();
-                            }
-                        }
+//                            }
+//                        }
                     }
 
                     @Override
@@ -413,7 +413,7 @@ public class JVRegisterActivity extends BaseActivity {
                 return;
             }
             createDialog("", true);
-            AccountManager.getInstance().register(registerUserName, password,
+            ECAccountManager.getInstance().register(registerUserName, password,
                     validateCode, new ResponseListener<JSONObject>() {
 
                         public void onSuccess(JSONObject jsonData) {
@@ -459,7 +459,7 @@ public class JVRegisterActivity extends BaseActivity {
         registBtn.setEnabled(true);
         hasCode = true;
         createDialog("", true);
-        AccountManager.getInstance().validateCode(registerUserName,
+        ECAccountManager.getInstance().validateCode(registerUserName,
                 new ResponseListener<JSONObject>() {
                     public void onSuccess(JSONObject jsonData) {
                         // 关闭Progress提示框

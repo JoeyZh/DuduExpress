@@ -7,6 +7,9 @@ public class MySharedPreferencesConsts {
 
     // MTU配置
     public static final String PROFILE_SETTING_MTU_RADIO_BTN = "MtuRadioBtn";
+    
+//  初始化的一些设置
+    public static final String FIRST_OPEN_APP = "first_open_app";
     /**
      * 设置中心中的一些开关
      */

@@ -3,6 +3,7 @@ package com.joey.general;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -103,6 +104,11 @@ public abstract class BaseActivity extends Activity {
         getWindowManager().getDefaultDisplay().getMetrics(dm);
         mScreenWidth = dm.widthPixels;// 获取屏幕分辨率宽度
         mScreenHeight = dm.heightPixels;
+        
+        mLayoutInflater = LayoutInflater.from(this);
+        statusHashMap = ((MainApplication) getApplicationContext())
+                .getStatusHashMap();     
+        mVibrator = (Vibrator) getSystemService(Service.VIBRATOR_SERVICE);
         
         initSuperView();
         initSettings();

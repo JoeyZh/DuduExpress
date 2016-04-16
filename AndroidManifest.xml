@@ -9,28 +9,31 @@
         android:targetSdkVersion="22" />
 
     <application
+        android:name="com.joey.general.MainApplication"
         android:allowBackup="true"
+        android:hardwareAccelerated="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name" >
+        </activity>
+        <activity android:name=".login.JVLoginActivity" >
+        </activity>
+        <activity android:name=".login.JVFoundPasswordActivity" >
+        </activity>
+        <activity android:name=".login.JVRegisterActivity" >
+        </activity>
+        <activity android:name=".welcome.JVWelcomeActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-       <activity android:name=".login.JVLoginActivity">
-           <intent-filter>
-               <action android:name="android.intent.action.MAIN" />
-               <category android:name="android.intent.category.LAUNCHER" />
-           </intent-filter>
-       </activity>
-        <activity android:name=".login.JVFoundPasswordActivity"></activity>
-        <activity android:name=".login.JVRegisterActivity"></activity>
-
+        <activity android:name=".welcome.JVGuidActivity" >
+        </activity>
     </application>
     <!-- 允许程序开机自动运行 -->
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
@@ -73,6 +76,5 @@
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
     <!-- 拨出电话的权限 -->
     <uses-permission android:name="android.permission.CALL_PHONE" />
-
 
 </manifest>

@@ -6,6 +6,7 @@ import android.graphics.Bitmap.CompressFormat;
 
 
 import com.joey.expresscall.storage.JVDbHelper;
+import com.joey.general.utils.MySharedPreference;
 
 
 import java.util.HashMap;
@@ -44,7 +45,7 @@ public class MainApplication extends Application  {
         mAppInstance = this;
         mAppContext = getApplicationContext();
         // 获取当前进程名称
-       
+       init();
     }
 
     /**
@@ -56,6 +57,7 @@ public class MainApplication extends Application  {
         setupDefaults();
         // 数据库小助手
         JVDbHelper.getInstance().init(this);
+        MySharedPreference.getInstance().init(this);
     }
 
     /**
@@ -71,7 +73,15 @@ public class MainApplication extends Application  {
         
     }
 
-  
+    /**
+     * 获取状态 Map
+     *
+     * @return
+     */
+    public HashMap<String, String> getStatusHashMap() {
+        return statusHashMap;
+    }
+    
     /**
      * 获取context
      *

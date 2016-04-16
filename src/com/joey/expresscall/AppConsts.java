@@ -9,9 +9,10 @@ public class AppConsts {
     /**
      * app info
      **/
-    public static final String APP_NAME = "XiaoWei";
+    public static final String APP_NAME = "ExpressCall";
     public static final int APP_KEY = 1;// 1是小维，以后定制版本往后累加
     public static final boolean APP_CUSTOM = false;// 是否定制 true：定制 false：小维
+    public static boolean DEBUG_STATE = false;
     /**
      * 广播
      **/

@@ -210,7 +210,7 @@ public class RequestHandler<T> {
      * 统计异常web接口调用
      */
     private void statisticsException(String exception) {
-        String userName = MySharedPreference.getString("userName");
+        String userName = MySharedPreference.getInstance().getString("userName");
         StringBuffer sb = new StringBuffer();
         sb.append(DateUtil.getTime());
         sb.append(" ");

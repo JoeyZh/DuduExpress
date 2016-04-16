@@ -12,7 +12,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSONObject;
-import com.joey.expresscall.account.AccountManager;
+import com.joey.expresscall.account.ECAccountManager;
 import com.joey.expresscall.protocol.RequestError;
 import com.joey.expresscall.protocol.ResponseListener;
 import com.joey.general.BaseActivity;
@@ -289,33 +289,33 @@ public class JVFoundPasswordActivity extends BaseActivity {
     }
 
     private void checkoutUserExists(final String user) {
-        AccountManager.getInstance().isAccountExist(user,
+        ECAccountManager.getInstance().isAccountExist(user,
                 new ResponseListener<JSONObject>() {
                     // 账号库反馈
                     @Override
                     public void onSuccess(JSONObject jsonData) {
-                        MyLog.i("jsonData = " + jsonData.toString());
-                        if (jsonData instanceof JSONObject) {
-                            boolean isExist = ((JSONObject) jsonData)
-                                    .getBooleanValue("isExist");
-                            // 账号存在，提示
-                            if (isExist) {
-                                accountIsPhone = isPhoneNum(user);
-                                if (accountIsPhone) {
-                                    codeWarnStr = getResources().getString(
-                                            R.string.found_send_code2phone);
-                                    codeWarnText.setText(R.string.found_send_code2phone);
-                                } else {
-                                    codeWarnStr = getResources().getString(
-                                            R.string.found_send_code2mail);
-                                    codeWarnText.setText(R.string.found_send_code2mail);
-                                }
+//                        MyLog.i("jsonData = " + jsonData.toString());
+//                        if (jsonData instanceof JSONObject) {
+//                            boolean isExist = ((JSONObject) jsonData)
+//                                    .getBooleanValue("isExist");
+//                            // 账号存在，提示
+//                            if (isExist) {
+//                                accountIsPhone = isPhoneNum(user);
+//                                if (accountIsPhone) {
+//                                    codeWarnStr = getResources().getString(
+//                                            R.string.found_send_code2phone);
+//                                    codeWarnText.setText(R.string.found_send_code2phone);
+//                                } else {
+//                                    codeWarnStr = getResources().getString(
+//                                            R.string.found_send_code2mail);
+//                                    codeWarnText.setText(R.string.found_send_code2mail);
+//                                }
                                 gotoResetPwdLayout();
-                            } else {// 账号不存在，
-                                showInputWarn(R.string.found_user_not_exist,
-                                        false);
-                            }
-                        }
+//                            } else {// 账号不存在，
+//                                showInputWarn(R.string.found_user_not_exist,
+//                                        false);
+//                            }
+//                        }
                     }
 
                     @Override
@@ -331,7 +331,7 @@ public class JVFoundPasswordActivity extends BaseActivity {
      * 获取验证码
      */
     private void getValidateCode() {
-        AccountManager.getInstance().validateCode(userName,
+        ECAccountManager.getInstance().validateCode(userName,
                 new ResponseListener<JSONObject>() {
 
                     public void onSuccess(JSONObject jsonData) {
@@ -393,7 +393,7 @@ public class JVFoundPasswordActivity extends BaseActivity {
      */
     private void resetPassword(String newPwd, String confirmPwd,
                                String validateCode) {
-        AccountManager.getInstance().forgetPassword(userName, newPwd,
+        ECAccountManager.getInstance().forgetPassword(userName, newPwd,
                 validateCode, new ResponseListener<JSONObject>() {
 
                     @Override
@@ -405,10 +405,10 @@ public class JVFoundPasswordActivity extends BaseActivity {
                         /**
                          * 判断忘记密码的账号是否是当前登录的账号
                          */
-                        String lastUser = MySharedPreference
-                                .getString(MySharedPreferencesConsts.USERNAME);
+                        String lastUser = MySharedPreference.getInstance()
+                                .getString(MySharedPreferencesConsts.USERNAME,null);
                         if (userName.equals(lastUser)) {
-                            MySharedPreference.putString(
+                            MySharedPreference.getInstance().putString(
                                     MySharedPreferencesConsts.PASSWORD, "");
                         }
                         dismissDialog();
