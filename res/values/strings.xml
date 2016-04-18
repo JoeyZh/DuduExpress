@@ -622,9 +622,9 @@
     <string name="web_error_502">版本过高</string>
     <string name="auto_login_account_exception">账号登录异常，点击重新登录</string>
     <string name="error_customize_account_exception">账号登录异常，请重新登录</string>
-    <string name="title_activity_ecdefault">ECDefaultActivity</string>
-    <string name="title_activity_main2">Main2Activity</string>
-    <string name="title_activity_main_activity2">MainActivity2Activity</string>
-    <string name="title_activity_tab_fragment">TabFragmentActivity</string>
+
+    <string name="error_no_sdcard">没有SD卡，无法存储录音数据</string>
+    <string name="error_state_record">正在录音中，请先停止录音</string>
+    <string name="error_unknown">无法识别的错误</string>
 
 </resources>
