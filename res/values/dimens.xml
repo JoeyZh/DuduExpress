@@ -38,7 +38,7 @@
     <dimen name="text_min_size">14sp</dimen>
     <dimen name="text_mid_size">16sp</dimen>
     <dimen name="text_max_size">20sp</dimen>
-    <dimen name="text_large_size">44sp</dimen>
+    <dimen name="text_large_size">30sp</dimen>
 
     <!-- 标题栏高度 -->
     <dimen name="topbar_height">50dp</dimen>

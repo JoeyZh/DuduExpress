@@ -1,6 +1,8 @@
 package com.joey.expresscall;
 
+import android.app.Activity;
 import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.view.View;
@@ -18,7 +20,7 @@ public class TabHost {
 
     private LinearLayout mTabRoot;
     private FrameLayout mContentRoot;
-    private Context mContext;
+    private Activity mActivity;
     private ArrayList<HashMap<String,Object>> mTabArray;
     private OnTabHostChangeListener tabHostChangeListener;
     private View.OnClickListener tabOnClickListener = new View.OnClickListener() {
@@ -30,15 +32,7 @@ public class TabHost {
             mContentRoot.removeAllViews();
             if(view instanceof TabBarItem){
                 Integer index = (Integer)view.getTag();
-                if(index >= mTabArray.size()){
-                    return;
-                }
-                HashMap<String,Object> tabMap = mTabArray.get(index);
-                ViewGroup content = (ViewGroup)tabMap.get("content");
-                mContentRoot.addView(content);
-                if (tabHostChangeListener !=null){
-                    tabHostChangeListener.onTagChange((TabBarItem)view,index,content);
-                }
+                changeToIndex(index);
             }
         }
     };
@@ -50,15 +44,17 @@ public class TabHost {
      * @param tabRoot
      * @param contentRoot
      */
-    public TabHost(Context context,LinearLayout tabRoot,FrameLayout contentRoot){
+    public TabHost(Activity activity,LinearLayout tabRoot,FrameLayout contentRoot){
         mTabRoot = tabRoot;
         mContentRoot = contentRoot;
-        mContext = context;
+        mActivity = activity;
         mTabArray = new ArrayList<HashMap<String, Object>>();
     }
 
-    public void addTab(String text,int imgRes,ViewGroup content){
-        TabBarItem item = new TabBarItem(mContext);
+    public void addTab(String text,int imgRes,Fragment content){
+        TabBarItem item = new TabBarItem(mActivity);
+        item.setText(text);
+        item.setImageResource(imgRes);
         item.setTag(mTabRoot.getChildCount());
         HashMap<String,Object> tabmap = new HashMap<String, Object>();
         tabmap.put("tab",item);
@@ -70,7 +66,23 @@ public class TabHost {
         item.setOnClickListener(tabOnClickListener);
     }
 
+    public void changeToIndex(int index){
+    	 if(index >= mTabArray.size()){
+             return;
+         }
+         HashMap<String,Object> tabMap = mTabArray.get(index);
+         Fragment content = (Fragment)tabMap.get("content");
+         TabBarItem view = (TabBarItem)tabMap.get("tab");
+         FragmentTransaction transaction = mActivity.getFragmentManager() 
+                 .beginTransaction();
+         transaction.replace(R.id.tab_content, content);
+         transaction.commit();
+         if (tabHostChangeListener !=null){
+             tabHostChangeListener.onTagChange((TabBarItem)view,index,content);
+         }
+    }
+    
     public interface  OnTabHostChangeListener{
-        public void onTagChange(TabBarItem item,int index,ViewGroup content);
+        public void onTagChange(TabBarItem item,int index,Fragment content);
     }
 }
