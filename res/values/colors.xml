@@ -53,6 +53,9 @@
     <color name="btn_red_color">#fa6567</color>
     <color name="btn_red_alpha_20_color">#20fa6567</color>
     <color name="text_hint_color">#999999</color>
+    
+    <color name="blue_light">#47d1fd</color>
+    <color name="red_light">#fa6567</color>
 
     <!-- dialog title颜色 -->
     <color name="dialogchannaltext">#55A0FF</color>
