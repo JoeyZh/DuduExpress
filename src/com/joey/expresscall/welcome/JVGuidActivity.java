@@ -15,12 +15,12 @@ public class JVGuidActivity extends BaseActivity {
 
 
     @Override
-    protected void initSettings() {
+	public void initSettings() {
 
     }
 
     @Override
-    protected void initUi() {
+	public void initUi() {
         setContentView(R.layout.guid_layout);
         setTopBarVisiable(-1);
         initViewPager();
@@ -51,12 +51,12 @@ public class JVGuidActivity extends BaseActivity {
     }
 
     @Override
-    protected void saveSettings() {
+	public void saveSettings() {
 
     }
 
     @Override
-    protected void freeMe() {
+	public void freeMe() {
 
     }
 

@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/add_new_file_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center"
     android:orientation="vertical"
-    android:padding="10dp">
+    android:padding="10dp" >
 
-    <TextView
+    <Button
+        android:id="@+id/add_new_file_layout"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@drawable/btn_gray_bg"
+        android:background="@drawable/btn_gray_selector"
         android:gravity="center"
         android:text="@string/add_new_file"
         android:textColor="@color/text_color_gray86"

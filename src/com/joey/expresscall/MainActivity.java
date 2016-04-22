@@ -6,6 +6,7 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
 import com.joey.expresscall.main.ECMainFragment;
+import com.joey.expresscall.setting.ECSettingFragment;
 import com.joey.general.BaseActivity;
 import com.joey.general.BaseFragment;
 
@@ -17,13 +18,13 @@ public class MainActivity extends BaseActivity {
     private ECMainFragment mainFragment;
 
     @Override
-    protected void initSettings() {
+    public void initSettings() {
         // TODO Auto-generated method stub
         
     }
 
     @Override
-    protected void initUi() {
+    public void initUi() {
         // TODO Auto-generated method stub
         setContentView(R.layout.activity_main);
         setTopBarVisiable(-1);
@@ -32,7 +33,7 @@ public class MainActivity extends BaseActivity {
         tabHost = new TabHost(this,mTabLayout,contentRoot);
         
         mainFragment = new ECMainFragment();
-        TabFragment fragment = new TabFragment(); 
+        ECSettingFragment fragment = new ECSettingFragment(); 
         tabHost.addTab("主页",R.drawable.icon_back , mainFragment);
         tabHost.addTab("消息",R.drawable.icon_back , fragment);
 //        tabHost.addTab("设置",R.drawable.icon_back , mainFragment);
@@ -42,13 +43,13 @@ public class MainActivity extends BaseActivity {
     }
 
     @Override
-    protected void saveSettings() {
+    public void saveSettings() {
         // TODO Auto-generated method stub
         
     }
 
     @Override
-    protected void freeMe() {
+    public void freeMe() {
         // TODO Auto-generated method stub
         
     }

@@ -48,4 +48,6 @@
     <dimen name="default_cursor_width">1.5dp</dimen>
     <dimen name="tab_layout_height">55dp</dimen>
     <dimen name="tab_bar_item">35dp</dimen>
+    
+    <dimen name="btn_record_circle_height">80dp</dimen>
 </resources>

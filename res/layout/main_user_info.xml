@@ -2,11 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:descendantFocusability="blocksDescendants"
     android:orientation="vertical" >
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="180dp"
         android:background="@color/main_color" >
 
         <LinearLayout
@@ -78,6 +79,5 @@
         </RelativeLayout>
     </RelativeLayout>
     
-    <include layout="@layout/main_add_file_layout"/>
 
 </LinearLayout>

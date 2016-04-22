@@ -14,7 +14,7 @@
         android:padding="@dimen/layout_mid_margin" >
 
         <TextView
-            android:id="@+id/txt_logo"
+            android:id="@+id/text_logo"
             style="@style/text_large_style"
             android:layout_width="45dp"
             android:layout_height="45dp"
@@ -30,55 +30,52 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="12dp"
             android:layout_marginRight="2dp"
-            android:layout_toRightOf="@id/txt_logo"
+            android:layout_toRightOf="@id/text_logo"
             android:orientation="vertical" >
 
             <TextView
-                android:id="@+id/third_dev_nick"
+                android:id="@+id/text_content"
+                style="@style/text_mid_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:text="通知一"
-                android:textColor="@color/text_color_gray68"
-                android:textSize="@dimen/text_size_18" />
+                android:textColor="@color/text_color_gray86" />
 
             <TextView
-                android:id="@+id/third_dev_yst"
+                android:id="@+id/text_desc"
+                style="@style/text_min_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginTop="4dp"
                 android:singleLine="false"
                 android:text="YST"
-                android:textColor="@color/text_color_gray68"
-                android:textSize="@dimen/text_mid_size" />
+                android:textColor="@color/text_color_gray8e" />
         </LinearLayout>
 
         <TextView
-            android:id="@+id/txt_btn_1"
+            android:id="@+id/text_extra"
+            style="@style/text_exmin_style"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_alignParentRight="true"
+            android:gravity="right"
+            android:text="11:00" />
+
+        <ImageView
+            android:id="@+id/item_indicator"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:background="@drawable/bg_circle_blue"
-            android:gravity="center"
-            android:text="1"
-            android:textColor="@color/white" />
-
-        <TextView
-            android:id="@+id/txt_btn_2"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_centerVertical="true"
-            android:layout_toLeftOf="@+id/txt_btn_1"
-            android:background="@drawable/bg_circle_red"
-            android:gravity="center"
-            android:text="2"
-            android:textColor="@color/white" />
+            android:background="@color/transparent"
+            android:visibility="gone"
+            android:src="@drawable/icon_right_arrow" />
     </RelativeLayout>
 
-    <ImageView
-        android:id="@+id/bottom_longline_img"
+    <View
+        android:id="@+id/divider_line"
         android:layout_width="match_parent"
         android:layout_height="@dimen/divide_line_height"
         android:background="@color/divider_line"

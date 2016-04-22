@@ -6,25 +6,25 @@ import com.joey.general.BaseActivity;
 public class UserCenterActivity extends BaseActivity {
 
     @Override
-    protected void initSettings() {
+    public void initSettings() {
         // TODO Auto-generated method stub
         
     }
 
     @Override
-    protected void initUi() {
+    public void initUi() {
         // TODO Auto-generated method stub
         
     }
 
     @Override
-    protected void saveSettings() {
+    public void saveSettings() {
         // TODO Auto-generated method stub
         
     }
 
     @Override
-    protected void freeMe() {
+    public void freeMe() {
         // TODO Auto-generated method stub
         
     }

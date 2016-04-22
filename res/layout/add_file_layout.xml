@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <ListView
+        android:id="@+id/add_file_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@null"
+        android:dividerHeight="0dp" />
+
+    <TabWidget
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent" >
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:orientation="horizontal" >
+
+                <RelativeLayout
+                    android:id="@+id/add_file_record_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+
+                    <Button
+                        android:layout_width="@dimen/btn_record_circle_height"
+                        android:layout_height="@dimen/btn_record_circle_height"
+                        android:background="@drawable/btn_record_circle_selector" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/add_file_edit_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+                </RelativeLayout>
+            </LinearLayout>
+        </HorizontalScrollView>
+    </TabWidget>
+
+</LinearLayout>

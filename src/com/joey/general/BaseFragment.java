@@ -17,7 +17,7 @@ import com.joey.general.views.TopBarLayout;
 /**
  * Fragment的基类
  */
-public abstract class BaseFragment extends Fragment  {
+public abstract class BaseFragment extends Fragment implements OnCreateInterface {
     // 日志标记
     protected String TAG = "";
     protected BaseActivity mActivity;
@@ -50,6 +50,8 @@ public abstract class BaseFragment extends Fragment  {
                 LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT, 1));
         contentContainer.addView(contentView);
 
+        initUi();
+        initSettings();
         return view;
     }
 
@@ -84,11 +86,24 @@ public abstract class BaseFragment extends Fragment  {
          * 每一个界面展示的时候,都要判断是否有服务器的信息<br/>
          * 如果有服务器连接异常的信息,需要显示错误标题栏.正常,隐藏<br/>
          */
-//
-// interceptServerState(eventType, eventMsg);
     }
 
-    /**
+	@Override
+	public void onDestroyView() {
+		// TODO Auto-generated method stub
+		super.onDestroyView();
+		freeMe();
+	}
+
+	
+	@Override
+	public void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+		saveSettings();
+	}
+
+	/**
      * 子类重载该方法自定义标题布局文件<br />
      * 子类重载该方法返回-1,不显示标题
      *

@@ -153,7 +153,7 @@ public class JVLoginActivity extends BaseActivity {
     };
 
     @Override
-    protected void initSettings() {
+    public void initSettings() {
         isGoBack = getIntent() != null ? getIntent().getBooleanExtra("isGoBack", false) : false;
         userName = MySharedPreference.getInstance()
                 .getString(MySharedPreferencesConsts.USERNAME);
@@ -162,7 +162,7 @@ public class JVLoginActivity extends BaseActivity {
     }
 
     @Override
-    protected void initUi() {
+    public void initUi() {
         setContentView(R.layout.login_layout);
         setTopBarVisiable(-1);
 
@@ -181,7 +181,7 @@ public class JVLoginActivity extends BaseActivity {
     }
 
     @Override
-    protected void onResume() {
+    public void onResume() {
         super.onResume();
         // 通过statusHashMap 来传递值，如果此时有用名的值传递过来，就不加载share prefenrences 的内容了
         if (statusHashMap.containsKey(MySharedPreferencesConsts.USERNAME)) {
@@ -293,12 +293,12 @@ public class JVLoginActivity extends BaseActivity {
     }
 
     @Override
-    protected void saveSettings() {
+    public void saveSettings() {
         statusHashMap.put(MySharedPreferencesConsts.USERNAME, userNameET.getText().toString());
     }
 
     @Override
-    protected void freeMe() {
+    public void freeMe() {
 
     }
 

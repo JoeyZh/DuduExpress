@@ -33,6 +33,9 @@
     <style name="text_min_style" parent="text_default_style">
         <item name="android:textSize">@dimen/text_min_size</item>
     </style>
+    <style name="text_exmin_style" parent="text_default_style">
+        <item name="android:textSize">@dimen/text_exmin_size</item>
+    </style>
 
     <style name="text_max_style" parent="text_default_style">
         <item name="android:textSize">@dimen/text_max_size</item>

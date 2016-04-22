@@ -2,7 +2,7 @@
 <resources>
 
     <!-- 通用 -->
-    <string name="app_name">速易呼</string>
+    <string name="app_name">lalala</string>
     <string name="waiting">加载中...</string>
     <string name="load_more">加载更多...</string>
     <string name="exiting">退出中...</string>
@@ -44,6 +44,9 @@
     <string name="send_validate_code">获取验证码</string>
     <string name="edit_now">立即修改</string>
     <string name="not_open">此功能暂未开通</string>
+    <string name="next_tip">下一步</string>
+    <string name="sdcard_out_memery">您的手机未插入SDCard,暂时无法使用此功能.</string>
+    <string name="sdcard_notenough">您的手机内存卡内存不足</string>
 
     <!-- 登录相关 -->
     <string name="guid_title1">功能简化，便捷易用</string>
@@ -115,282 +118,10 @@
     <string name="network_error_tips">网络连接不可用,是否进行设置?</string>
     <string name="network_error">网络连接不可用,是否进行设置?</string>
     <string name="pressback_exit">再按一次退出程序</string>
-    <!-- left Func -->
-    <string name="left_myservice">我的服务</string>
-    <string name="left_myalbum">我的相册</string>
-    <string name="left_setting">设置中心</string>
-    <string name="left_help">帮助</string>
-    <string name="left_aboutus">关于</string>
 
-    <!-- 设备分享 -->
-    <string name="share_title">邀请家人一起观看</string>
-    <string name="myshared_users">我邀请的家人</string>
-    <string name="use_qr_share">用二维码邀请家人</string>
-    <string name="share_username">请输入分享用户</string>
-    <string name="share_username_empty">用户名不能为空</string>
-    <string name="share_add_user">添加其他用户</string>
-    <string name="share_success">分享成功</string>
-    <string name="share_error">分享失败</string>
-    <string name="share_limit">分享设备已经到上限,不能继续添加</string>
-    <string name="share_list_error">获取分享列表失败</string>
-    <string name="share_return">以后再试</string>
-    <string name="share_try_again">再试一次</string>
-    <string name="delete_share_success">已删除%1$s对设备%2$s的分享</string>
-    <string name="delete_share_error">取消分享失败</string>
-    <string name="delete_share_msg">您确定要取消%1$s对用户%2$s的分享?</string>
-    <string name="share_limit_positive">查看分享列表</string>
-    <string name="share_limit_negative">返回</string>
-    <string name="share_dev_description"></string>
-    <string name="shared_usercount">已成功邀请？位家人</string>
-    <string name="share_by_qr">使用二维码邀请家人</string>
-    <string name="share_by_qr_description">请让您的家人打开小维E家，扫描下面的邀请码，就可以与您一起观看家里的摄像机了</string>
-    <string name="share_device_qr">我的邀请码</string>
-    <string name="not_share_device">取消分享</string>
-    <string name="no_share_user_device">您还没有分享过您的设备</string>
-    <string name="get_share_qr_error">获取邀请码失败</string>
-    <string name="scan_share_device_qr">将扫描框对准家人摄像机的邀请码，开始扫描</string>
-    <string name="share_device_qr_invalid">邀请码失效了？点击重新生成</string>
+    <!-- 主页 -->
+    <string name="add_new_file">呼一下</string>
 
-    <!-- 我的设备 -->
-    <string name="mydev_add_success">添加设备成功</string>
-    <string name="mydev_add_error">添加设备失败</string>
-    <string name="mydev_list_error">设备列表获取失败</string>
-    <string name="mydev_delete_error">删除设备失败</string>
-    <string name="mydev_on_delete">正在删除设备</string>
-    <string name="mydev_cancel_share_error">删除设备失败</string>
-    <string name="store">商城</string>
-    <string name="community">社区</string>
-    <string name="square">广场</string>
-    <string name="mydev_modify_title">修改设备</string>
-    <string name="mydev_modify_success">设备修改成功</string>
-    <string name="mydev_modify_error">修改设备失败</string>
-    <string name="mydev_permission_deny">对不起，您没有设备操作的权限</string>
-    <string name="mydev_receive_share_msg">您收到了一个设备分享消息！</string>
-    <string name="mydev_receive_cancel_share_msg">设备的主人取消了对您的分享！</string>
-    <string name="mydev_delete_msg">您确定要删除设备：%1$s？</string>
-    <string name="mydev_delete_title">删除设备</string>
-    <string name="mydev_shared_tag">分享给我的设备</string>
-    <string name="mydev_online">设备在线</string>
-    <string name="mydev_offline">设备离线</string>
-
-    <!-- 添加设备相关 -->
-    <string name="add_new_file">添加一条录音</string>
-    <string name="add_dev">请选择任一添加方式</string>
-    <string name="add_dev_wifi">声波配置添加</string>
-    <string name="not_support_5G">摄像机暂不支持连接5G Wi-Fi</string>
-    <string name="add_dev_wifi_description">未连网设备</string>
-    <string name="add_dev_net_qr">扫描设备上的二维码</string>
-    <string name="add_dev_other_qr">扫描家人邀请码</string>
-    <string name="add_dev_net">云视通号添加</string>
-    <string name="add_dev_net_description">已连网设备</string>
-    <string name="add_dev_net_confirm">添加设备</string>
-    <string name="add_other_dev">连接家人摄像机</string>
-    <string name="add_other_dev_description">二维码扫描添加家人摄像机</string>
-    <string name="next_tip">下一步</string>
-    <string name="wave_config_first_title">请用顶针轻插设备的RESET孔，直到听到提示音</string>
-    <string name="wave_config_first_highlight">“RESET”</string>
-    <string name="wave_config_hint_SSID">TP_LINK_222</string>
-    <string name="wave_config_third_title">点击发送声波按钮让摄像机连接无线网络</string>
-    <string name="wave_config_start_text">点击发送声波</string>
-    <string name="wave_send_btn_text">点击\n发送声波</string>
-    <string name="add_dev_username">输入设备用户名</string>
-    <string name="add_dev_password">输入设备密码</string>
-    <string name="yst_id">输入设备云视通号</string>
-    <string name="nickname">昵称(选填)</string>
-    <string name="dev_online">已上线成功，无论距离多远，爱就在身边！</string>
-    <string name="adddevice_conflict">该设备已被绑定，您无需再次绑定</string>
-    <string name="add_dev_qr_error">二维码信息有误,无法添加设备</string>
-    <string name="add_dev_yst_id_error">云视通号有误</string>
-    <string name="add_dev_yst_id_empty">云视通号不能为空</string>
-    <string name="add_dev_search">正在搜索设备</string>
-    <string name="add_dev_search_highlight">正在连接摄像机，</string>
-    <string name="add_dev_search_success_title">摄像机连接成功</string>
-    <string name="add_dev_search_msg">在结果中，点击一个设备绑定</string>
-    <string name="add_dev_search_error_title">可能是给摄像机配置的WiFi密码错误,导致摄像机配置失败，请重新输入WiFi密码再试一次</string>
-    <string name="add_dev_search_again">再试一次</string>
-    <string name="add_dev_search_give_up">取消</string>
-    <string name="add_dev_first_step">第一步 准备摄像机</string>
-    <string name="add_dev_has_heard_sound">已经听到提示音</string>
-    <string name="add_dev_second_step">第二步 连接无线网</string>
-    <string name="add_dev_third_step">第三步 发送声波</string>
-    <string name="add_dev_fourth_step">第四步 配置无线</string>
-    <string name="add_dev_connect_wifi">连接Wifi</string>
-    <string name="add_dev_sending">正在发送声波...</string>
-    <string name="add_dev_send_finished">声波发送完毕，等待摄像机发出\n收到网络配置提示</string>
-    <string name="add_dev_send_failed">如果没有听到提示，请再次发送声波</string>
-    <string name="add_dev_send_received">收到网络配置</string>
-    <string name="not_supportx86">暂不支持x86架构的设备</string>
-
-    <!-- 二维码扫描 -->
-    <string name="scan_camera_error_title">开启相机失败</string>
-    <string name="scan_camera_error1">正在拍照，请在关闭相机后重试</string>
-    <string name="scan_camera_error2">相机已被其他应用占用，请在关闭占用相机的应用后重试</string>
-    <string name="scan_camera_error3">无法获取相机权限，请在手机【设置】中打开小维E家的相机权限</string>
-    <string name="scan_camera_error_msg">可能有以下原因和解决方法</string>
-    <string name="scan_camera_error_btn">取消</string>
-    <string name="scan_camera_add_manual">手动添加</string>
-    <string name="scan_result_title">扫描结果</string>
-    <string name="scan_result_warning">不是小维E家的设备</string>
-    <string name="scan_result_http">网址：</string>
-    <string name="scan_result_positive_btn">继续扫描</string>
-    <string name="scan_result_positive_btn2">浏览器打开</string>
-
-    <!-- 视频连接相关 -->
-    <string name="closed">已断开</string>
-    <string name="connectting">视频连接中...</string>
-    <string name="buffering1">视频缓冲中</string>
-    <string name="buffering2">视频缓冲中...</string>
-    <string name="connectfailed">视频连接失败</string>
-    <string name="connfailed_auth">用户名或密码错误</string>
-    <string name="connfailed_auth_cat">发现猫眼设备新版本，请在设备端升级新版本之后再连接。</string>
-    <string name="device_user_format_error">用户名格式不正确，用户名只能由1–16位的英文、数字及-_+().组成.</string>
-    <string name="device_pass_format_error">密码格式不正确，密码只能由0–12位的英文、数字及-_+().组成.</string>
-    <string name="device_nickname_format_error">昵称应由0–20个字母、数字、汉字及特殊字符-_+().组成</string>
-    <string name="connfailed_channel_notopen">该通道不存在或未开放</string>
-    <string name="connfailed_type_invalid">视频连接类型无效</string>
-    <string name="connfailed_maxcount">超过设备最大连接数</string>
-    <string name="connfailed_timeout">视频连接超时</string>
-    <string name="disconnected">视频已断开</string>
-    <string name="connfailed_checkpass_timout">视频连接超时.</string>
-    <string name="change_stream">视频切换到</string>
-    <string name="connfailed_device_busy">设备正忙，请稍后再连接。</string>
-    <string name="connfailed_device_offline">设备不在线，请检查设备网络设置</string>
-    <string name="connfailed_auth_tips">为了保证您的隐私，强烈建议您立即修改设备的密码。</string>
-    <string name="connect_failed">视频连接失败</string>
-    <string name="abnormal_closed">视频连接异常断开</string>
-    <string name="click_to_connect">点击继续播放</string>
-    <string name="zoom">变倍</string>
-    <string name="focus">变焦</string>
-    <string name="capture">抓拍</string>
-    <string name="video_change">设备画质切换，录像重新打包。</string>
-    <string name="capture_path">图像保存在</string>
-    <string name="video_path">录像保存在</string>
-    <string name="capture_error">抓拍失败</string>
-    <string name="sdcard_out_memery">您的手机未插入SDCard,暂时无法使用此功能.</string>
-    <string name="sdcard_notenough">您的手机内存卡内存不足</string>
-    <string name="record_short_failed">录像时间过短，保存失败</string>
-    <string name="audiolistener">音频监听</string>
-    <string name="audiolistening">正在监听</string>
-    <string name="voicecall">对讲</string>
-    <string name="press_to_talk">按住说话</string>
-    <string name="release_to_end">松开结束</string>
-    <string name="click_to_open_voicecall">点击开启对讲</string>
-    <string name="click_to_close_voicecall">点击关闭对讲</string>
-    <string name="wifiset">无线配置</string>
-    <string name="set">配置</string>
-    <string name="manualset">高级配置</string>
-    <string name="set_success"> 配置成功</string>
-    <string name="set_failed"> 配置失败</string>
-    <string name="record">录像</string>
-    <string name="recording">正在录像</string>
-    <string name="record_savedas">录像保存在：</string>
-    <string name="changestream">码流</string>
-    <string name="hd">高清</string>
-    <string name="sd">标清</string>
-    <string name="fluent">流畅</string>
-    <string name="voice_send">按住说话</string>
-    <string name="voice_stop">松开结束</string>
-    <string name="call_close"> 对讲功能成功关闭</string>
-    <string name="voice_tips1">亲，你现在可以和对方说话了</string>
-    <string name="voice_tips2">对讲功能成功开启，长按向对方喊话.</string>
-    <string name="has_calling">设备已在其他手机开启语音对讲，请稍后重试.</string>
-    <string name="checkremote">远程回放</string>
-    <string name="date_piker">日期选择</string>
-    <string name="dev_setting">设备设置</string>
-    <string name="wait_connect">请等待视频连接成功后再执行此操作</string>
-    <string name="pause_wait_connect">该功能在视频暂停时暂停使用</string>
-    <string name="yt_speed">云台速度调节</string>
-    <string name="record_time">录像时间</string>
-    <string name="record_kind">录像类型</string>
-    <string name="download">下载</string>
-    <string name="cat_album">猫眼相册</string>
-    <string name="down_success">下载完成</string>
-
-    <!-- 设备设置相关 -->
-    <string name="add_third_alarm_dev">添加第三方报警设备</string>
-    <string name="third_alarm_dev">报警设备</string>
-    <string name="enter_third_alarm_dev_nickname">请输入绑定设备昵称 ：</string>
-    <string name="third_alarm_dev_nickname">设备昵称</string>
-    <string name="third_alarm_dev_nickname_not_null">设备昵称不能为空</string>
-    <string name="third_alarm_dev_nickname_illegal">昵称应由1–20个字母、数字、汉字及特殊字符-_+().组成</string>
-    <string name="set_alarm_time">安全防护时间段</string>
-    <string name="set_alarm_switch">报警推送开关</string>
-    <string name="set_alarm_detection_switch">移动侦测开关</string>
-    <string name="set_alarm_detection_sensity">移动侦测灵敏度</string>
-    <string name="set_alarm_sound_switch">报警声音开关</string>
-    <string name="set_alarm_email_switch">报警邮件开关</string>
-    <string name="set_alarm_email_param">报警邮件参数设置</string>
-    <string name="set_alarm_add_third_dev">添加第三方报警设备</string>
-    <string name="alarm_start_time">开始时间</string>
-    <string name="alarm_end_time">结束时间</string>
-    <string name="all_day">全天</string>
-    <string name="receiver">收件人</string>
-    <string name="sender">发件人</string>
-    <string name="server">服务器</string>
-    <string name="port">端口</string>
-    <string name="enc">加密</string>
-    <string name="advance">高级</string>
-    <string name="send_test_email">发送测试邮件</string>
-    <string name="sure_to_restart">确定重启设备吗？</string>
-    <string name="sure_to_restore">重置后设备将恢复出厂设置，确定重置设备吗？</string>
-    <string name="sure_to_poweroff">确定将设备关机吗？</string>
-    <string name="dev_no_sdcard">设备还没有插存储卡</string>
-    <string name="dev_not_online">您的设备不在线</string>
-    <string name="dev_no_sdcard_tips">插入TF（MicroSD）存储卡后即可自动录像\n支持8G、16G、32G、64G存储卡\n请确保您的存储卡为FAT32或EXFAT格式</string>
-    <string name="sdcard_list">设备列表</string>
-    <string name="sdcard_state">设备状态</string>
-    <string name="sdcard_use">使用情况</string>
-    <string name="sdcard_record_mode">录像模式</string>
-    <string name="sdcard_unit">GB</string>
-    <string name="sdcard">存储卡</string>
-    <string name="used">已使用</string>
-    <string name="sdcard_format">格式化</string>
-    <string name="sdcard_format_tips">格式化SD卡后，将清空SD卡上的内容，且不可恢复，确定格式化吗？</string>
-    <string name="sdcard_format_success">格式化成功</string>
-    <string name="no_sdcard">未发现存储设备</string>
-    <string name="stop_before_format">请选择停止录像，再执行此操作！</string>
-    <string name="update_info">升级内容</string>
-    <string name="dev_update_downloading">正在下载</string>
-    <string name="dev_update_writing">正在烧写</string>
-    <string name="dev_update_writing_tips">设备正在烧写，请勿断电…</string>
-    <string name="dev_update_success">设备版本更新成功，是否重启设备？</string>
-    <string name="cat_update_success">猫眼升级成功，设备将自动重启！</string>
-    <string name="dev_update_write_error2">升级失败</string>
-    <string name="dev_update_write_error3">设备已经是最新版本，无需更新。</string>
-    <string name="dev_update_write_error4">升级文件不可用</string>
-    <string name="dev_update_write_error5">升级错误</string>
-    <string name="dev_update_write_error6">升级文件不是本设备配套的</string>
-    <string name="restart_dev">重启设备</string>
-    <string name="dev_update_failed">设备升级失败，请手动重启.</string>
-    <string name="sure_to_delete_dev">确定删除此设备吗？</string>
-    <string name="bind_no_third_dev">该设备暂无绑定第三方设备</string>
-    <string name="can_not_rebind_third_dev">您已经绑定该设备。</string>
-    <string name="add_third_dev_timeout">添加设备超时</string>
-    <string name="dev_admin_user_pwd_error">密码只能由英文、数字及-_+().组成,且长度不能超过12位</string>
-    <string name="cat_version_info">版本信息</string>
-    <string name="cat_service_call">客服热线</string>
-    <string name="cat_website">官方网站</string>
-    <string name="cat_alarm_file_kind">报警文件类型</string>
-    <string name="cat_sdcard_used">已用容量</string>
-    <string name="cat_sdcard_content">剩余容量</string>
-    <!-- 远程回放 -->
-    <string name="remote_play">远程回放</string>
-    <string name="video_normal">手动录像</string>
-    <string name="video_alarm">报警录像</string>
-    <string name="video_stop">停止录像</string>
-    <string name="video_motion">移动检测</string>
-    <string name="video_time">定时录像</string>
-    <string name="video_download_failed">录像下载失败</string>
-    <string name="video_download_success">录像下载成功</string>
-    <string name="video_load_failed">数据加载失败</string>
-    <string name="video_load_success">数据加载成功</string>
-    <string name="video_nodata_failed">暂无远程视频文件</string>
-    <string name="video_play_failed">回放失败，请重试.</string>
-    <string name="video_disconnected">视频已断开，暂时无法播放远程回放视频</string>
-    <string name="play_failed"> 播放失败</string>
-    <string name="play_over">播放结束</string>
-    <string name="nofile">暂无远程视频文件</string>
-    <string name="nofile_at_time">该时间暂无远程视频文件</string>
     <!-- 下拉刷新，上拉加载更多 -->
     <string name="pull_to_refresh">下拉刷新</string>
     <string name="release_to_refresh">松开立即刷新</string>
@@ -400,60 +131,6 @@
     <string name="release_to_load">松开立即加载</string>
     <string name="loading">正在加载</string>
     <string name="loaded">加载完毕</string>
-
-    <!-- 关于 -->
-    <string name="has_update">发现新版本</string>
-    <string name="newest_version">最新版本:</string>
-    <string name="newest_content">更新内容：</string>
-    <string name="check_update_failed">检查更新失败</string>
-    <string name="already_newest">已经是最新版本，无需更新</string>
-    <string name="terms_of_service">服务条款</string>
-    <string name="website">官网</string>
-    <string name="app_version">版本号:V%s</string>
-    <string name="customer_service">客服</string>
-    <string name="app_copyright">Copyright © 2011-2015 济南中维世纪科技有限公司 版权所有</string>
-    <string name="app_feedback">我要吐槽</string>
-    <string name="error_feedback_not_empty">请输入反馈内容.</string>
-    <string name="feedback_send_success">反馈信息已经提交.</string>
-    <string name="feedback_send_failed">反馈信息发送失败.</string>
-    <string name="qr_tips">快来邀请好友扫描二维码下载小维E家吧！</string>
-    <string name="feedback_content">请尽量详细描述反馈，小维会在第一时间帮您解决问题。</string>
-    <string name="feedback_contact">请输入手机号码、邮箱或者QQ号码等联系方式</string>
-    <string name="feedback_contact_tips">联系方式有助于我们沟通和解决问题，仅工作人员可见。</string>
-    <string name="sim_error">您的设备未插入手机SIM卡或手机SIM卡异常，无法拨打客服电话</string>
-
-    <!-- 网页 -->
-    <string name="web_load_failed">网页加载失败，点击重试！</string>
-    <string name="identity_qr_img">识别图中二维码</string>
-
-    <!-- 我的相册 -->
-    <string name="album_photos">抓拍照片</string>
-    <string name="album_no_photos">暂无照片</string>
-    <string name="album_videos">录制视频</string>
-    <string name="album_no_videos">暂无视频</string>
-    <string name="album_image_downloads">下载图片</string>
-    <string name="album_video_downloads">下载视频</string>
-    <string name="album_no_downloads">暂无下载内容</string>
-    <string name="album_item_nothing_deleted">请至少选择一个文件</string>
-    <string name="title_activity_jvalbum_photos_display_layout">JVAlbumPhotosDisplayLayoutActivity</string>
-    <string name="action_settings">Settings</string>
-    <string name="hello_world">Hello world!</string>
-
-    <!-- 个人中心 -->
-    <string name="personalcenter">个人中心</string>
-    <string name="account_type_mobile">手机号</string>
-    <string name="account_type_mail">邮箱</string>
-    <string name="profile_function_modifypwd">修改密码</string>
-    <string name="profile_function_bindaccount">绑定%s</string>
-    <string name="profile_function_modify_nick">修改昵称</string>
-    <string name="profile_function_mtu">MTU设置</string>
-    <string name="profile_function_mtu_failed">MTU设置失败</string>
-    <string name="tips_update_head_success">设置头像成功.</string>
-    <string name="tips_update_head_failed">设置头像失败!</string>
-    <string name="photo_choice">请选择照片上传</string>
-    <string name="photo_choice_album">照片库</string>
-    <string name="photo_choice_camera">相机</string>
-    <string name="tips_has_bind">已经绑定:%s</string>
 
     <!-- 网络类型 -->
     <string name="net_2g">2G</string>
@@ -468,39 +145,6 @@
     <string name="not_loginin">请先登录</string>
     <string name="login_expire">登录过期，请重新登录</string>
 
-    <!-- 报警 -->
-    <string name="alarm_msg">报警消息</string>
-    <string name="offline_alarm_msg">一定不能错过的报警消息</string>
-    <string name="alarm_video_url_error">视频地址错误</string>
-    <string name="flow_info">流量预警</string>
-    <string name="buy_now">立即购买</string>
-    <string name="flow_error_26">您所购买的流量小于100M，是否立即充值？</string>
-    <string name="flow_error_27">您的流量已耗尽，云存储功能将自动关闭，充值后需要手动打开云存储功能，是否立即充值？</string>
-    <string name="flow_error_29">您的赠送流量小于100M，是否立即充值？</string>
-    <string name="no_flow_error">您当前流量为0，请购买流量后再做此操作.</string>
-    <string name="alarm_dev">设备</string>
-    <string name="alarm_type">类型</string>
-    <string name="alarm_time">报警时间  :</string>
-    <string name="alarm_preview">查看</string>
-    <string name="alarm_ignore">忽略</string>
-    <string name="alarm_suffix">报警</string>
-    <string name="alarm_type_move">移动侦测</string>
-    <string name="alarm_type_third">第三方设备报警</string>
-    <string name="alarm_type_external">外接报警</string>
-    <string name="alarm_type_bell">门铃报警</string>
-    <string name="alarm_type_pir">人体感应报警</string>
-    <string name="alarm_type_low_power">电量低报警</string>
-    <string name="alarm_type_unknown">未知报警类型</string>
-    <string name="alarm_look_video">查看视频</string>
-    <string name="alarm_image_download_success">报警图片下载完毕</string>
-    <string name="alarm_image_download_failed">报警图片下载失败</string>
-    <string name="alarm_title">%1$s发生%2$s。</string>
-    <string name="alarm_del_no_data">没有要删除的报警信息</string>
-    <string name="alarm_del_no_data_selected">请勾选要删除的报警信息</string>
-    <string name="alarm_deleteing">删除中...</string>
-    <string name="alarm_del_tips">确定要删除？</string>
-    <string name="alarm_del_success">删除成功</string>
-    <string name="alarm_no_msg">暂无报警消息</string>
     <!-- 个人中心_修改昵称 -->
     <string name="hint_input_new_nickname">请输入新昵称</string>
     <string name="tips_nick_not_empty">昵称不能为空</string>
@@ -518,6 +162,7 @@
     <string name="tips_new_pwd_length_error">新密码长度必须在6-20之间</string>
     <string name="tips_new_pwd_format_error">密码只能包含字母、数字和下划线</string>
     <string name="tips_modify_success_relogin">修改密码成功，请重新登录</string>
+
     <!-- 个人中心_绑定邮箱/手机 -->
     <string name="tips_account_vertify">账号验证</string>
     <string name="tips_account_vertifying">账号检验中</string>
@@ -531,21 +176,6 @@
     <string name="tips_code_not_empty">请输入验证码</string>
     <string name="hint_input_account">请输入%s</string>
     <string name="quickly_bind">立即绑定</string>
-
-    <!-- 猫眼 -->
-    <string name="tips_cat_device">\"猫眼设备\"</string>
-    <string name="tips_cat_door_alarm">门铃来电</string>
-    <string name="cat_device_hang_up">挂断</string>
-    <string name="cat_device_answer">接听</string>
-    <string name="cat_device_snapshot">抓拍</string>
-    <string name="cat_device_voice">声音</string>
-    <string name="cat_hold_and_speak">按住说话</string>
-    <!-- 设置中心 -->
-    <string name="tips_mobile_net">2G/3G/4G网络提醒</string>
-    <string name="tips_msg_push">消息推送</string>
-    <string name="tips_ring">铃声提示</string>
-    <string name="tips_vibrator">震动提示</string>
-    <string name="tips_mtu_setting">MTU设置</string>
     <!-- 账号异常 -->
     <string name="account_exception">账号异常</string>
     <string name="offline_other_login">账号在其他地方登录或者账号异常</string>
@@ -622,8 +252,13 @@
     <string name="web_error_502">版本过高</string>
     <string name="auto_login_account_exception">账号登录异常，点击重新登录</string>
     <string name="error_customize_account_exception">账号登录异常，请重新登录</string>
-
     <string name="error_no_sdcard">没有SD卡，无法存储录音数据</string>
     <string name="error_state_record">正在录音中，请先停止录音</string>
+
+    <string-array name="array_add_tag">
+        <item>接收人:</item>
+        <item>通知方式:</item>
+        <item>选择模板:</item>
+    </string-array>
 
 </resources>

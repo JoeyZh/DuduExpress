@@ -39,7 +39,7 @@ import java.util.HashMap;
  *
  * @author neo
  */
-public abstract class BaseActivity extends Activity {
+public abstract class BaseActivity extends Activity implements OnCreateInterface {
 
     public HashMap<String, String> statusHashMap;
     public int mScreenWidth;
@@ -73,25 +73,6 @@ public abstract class BaseActivity extends Activity {
      */
     private View mTopBarView;
 
-    /**
-     * 初始化设置，不要在这里写费时的操作
-     */
-    protected abstract void initSettings();
-
-    /**
-     * 初始化界面，不要在这里写费时的操作
-     */
-    protected abstract void initUi();
-
-    /**
-     * 保存设置，不要在这里写费时的操作
-     */
-    protected abstract void saveSettings();
-
-    /**
-     * 释放资源、解锁、删除不用的对象，不要在这里写费时的操作
-     */
-    protected abstract void freeMe();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

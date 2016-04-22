@@ -32,7 +32,7 @@ public class JVWelcomeActivity extends BaseActivity {
     private String mSplashName;
 
     @Override
-    protected void initSettings() {
+	public void initSettings() {
     	
         AppConsts.DEBUG_STATE = MySharedPreference.getInstance().getBoolean("DEBUG_STATE", false);
 
@@ -85,7 +85,7 @@ public class JVWelcomeActivity extends BaseActivity {
     }
 
     @Override
-    protected void initUi() {
+	public void initUi() {
         setContentView(R.layout.welcome_layout);
         welcomeImg = (ImageView) findViewById(R.id.welcome_img);
         // 设置启动页图片
@@ -137,12 +137,12 @@ public class JVWelcomeActivity extends BaseActivity {
     }
 
     @Override
-    protected void saveSettings() {
+	public void saveSettings() {
 
     }
 
     @Override
-    protected void freeMe() {
+	public void freeMe() {
 
     }
 

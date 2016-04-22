@@ -173,13 +173,13 @@ public class JVFoundPasswordActivity extends BaseActivity {
     };
 
     @Override
-    protected void initSettings() {
+    public void initSettings() {
         userName = getIntent().getStringExtra(
                 MySharedPreferencesConsts.USERNAME);
     }
 
     @Override
-    protected void initUi() {
+    public void initUi() {
         inputUserLayout = View.inflate(this,
                 R.layout.foundpwd_first_tip_layout, null);
         resetPwdLayout = View.inflate(this, R.layout.foundpwd_reset_pwd_layout,
@@ -442,12 +442,12 @@ public class JVFoundPasswordActivity extends BaseActivity {
     }
 
     @Override
-    protected void saveSettings() {
+    public void saveSettings() {
 
     }
 
     @Override
-    protected void freeMe() {
+    public void freeMe() {
 
     }
 

@@ -19,6 +19,30 @@ public class ECSettingFragment extends BaseFragment{
 		// TODO Auto-generated method stub
 		return super.createView(inflater, container, savedInstanceState);
 	}
+
+	@Override
+	public void initSettings() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void initUi() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void saveSettings() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void freeMe() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 }

@@ -203,13 +203,13 @@ public class JVRegisterActivity extends BaseActivity {
     };
 
     @Override
-    protected void initSettings() {
+    public void initSettings() {
 
     }
 
 
     @Override
-    protected void initUi() {
+    public void initUi() {
         setContentView(R.layout.register_layout);
         mTopBarView = getTopBarView();
         mTopBarView.setTopBar(R.drawable.icon_back, -1, R.string.register,
@@ -252,12 +252,12 @@ public class JVRegisterActivity extends BaseActivity {
     }
 
     @Override
-    protected void saveSettings() {
+    public void saveSettings() {
 
     }
 
     @Override
-    protected void freeMe() {
+    public void freeMe() {
 
     }
 
