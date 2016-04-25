@@ -2,7 +2,7 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="oval"
     android:useLevel="false" >
-   <solid android:color="@color/btn_green_color" />
+   <solid android:color="@color/main_color" />
      <padding
         android:bottom="10dip"
         android:left="10dip"
@@ -10,9 +10,7 @@
         android:top="10dip" />
 
     <stroke
-        android:width="1dp"
-        android:color="@color/white" />
-
-    <solid android:color="@color/red_light" />
+        android:width="20dp"
+        android:color="@color/transparent" />
 
 </shape>

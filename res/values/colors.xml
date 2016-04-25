@@ -89,7 +89,7 @@
     <color name="moretransparent">#19000000</color>
 
     <!-- 设备的背景色 -->
-    <color name="mydevice_segment_bg">#efefef</color>
+    <color name="main_tab_background">#efefef</color>
     <color name="mydevice_addbtn_text_bg">#ededed</color>
     <color name="reband_modify">#1786FF</color>
     <color name="line">#B6B6B6</color>

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/mydevice_segment_bg"
+    android:background="@color/main_tab_background"
     android:fadingEdge="none"
     android:scrollbars="none"
     tools:ignore="UnusedAttribute,ContentDescription">

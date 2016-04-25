@@ -260,5 +260,7 @@
         <item>通知方式:</item>
         <item>选择模板:</item>
     </string-array>
+    
+    <string name="press_to_talk">按住说话</string>
 
 </resources>
