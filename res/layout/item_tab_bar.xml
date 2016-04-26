@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/tab_item_image"
         android:id="@+id/tab_item_text"
-        style="@style/text_min_style"
+        style="@style/text_exmin_style"
         android:layout_centerHorizontal="true"
         android:gravity="top|center_horizontal"
         android:text="tab"

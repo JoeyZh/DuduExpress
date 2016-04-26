@@ -38,14 +38,14 @@ public class TabBarItem extends RelativeLayout{
         View.inflate(context,R.layout.item_tab_bar,this);
         title = (TextView)findViewById(R.id.tab_item_text);
         image = (ImageView)findViewById(R.id.tab_item_image);
-        tagView = new BadgeView(context);
-        tagView.setTargetView(image);
-        tagView.setBadgeMargin(10, 5, 0, 0);
-        tagView.setBadgeCount(0);
+//        tagView = new BadgeView(context);
+//        tagView.setTargetView(image);
+//        tagView.setBadgeMargin(10, 5, 0, 0);
+//        tagView.setBadgeCount(0);
     }
 
     public void setTagCount(int count){
-        tagView.setBadgeCount(count);
+//        tagView.setBadgeCount(count);
     }
 
     public void setText(int resid){
