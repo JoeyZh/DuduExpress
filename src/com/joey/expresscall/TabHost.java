@@ -23,13 +23,13 @@ public class TabHost {
     private Activity mActivity;
     private ArrayList<HashMap<String,Object>> mTabArray;
     private OnTabHostChangeListener tabHostChangeListener;
+    private int currentIndex = -1;
     private View.OnClickListener tabOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             if (mContentRoot == null){
                 return;
             }
-            mContentRoot.removeAllViews();
             if(view instanceof TabBarItem){
                 Integer index = (Integer)view.getTag();
                 changeToIndex(index);
@@ -70,6 +70,10 @@ public class TabHost {
     	 if(index >= mTabArray.size()){
              return;
          }
+    	 if(index == currentIndex){
+    		 return;
+    	 }
+    	 currentIndex = index;
          HashMap<String,Object> tabMap = mTabArray.get(index);
          Fragment content = (Fragment)tabMap.get("content");
          TabBarItem view = (TabBarItem)tabMap.get("tab");
@@ -80,6 +84,7 @@ public class TabHost {
          if (tabHostChangeListener !=null){
              tabHostChangeListener.onTagChange((TabBarItem)view,index,content);
          }
+         view.requestFocus();
     }
     
     public interface  OnTabHostChangeListener{

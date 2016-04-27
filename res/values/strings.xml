@@ -261,6 +261,12 @@
         <item>选择模板:</item>
     </string-array>
     
+    <string-array name="array_setting_list">
+        <item>修改密码</item>
+        <item>定时设置</item>
+        <item>资费介绍</item>
+    </string-array>
+    
     <string name="press_to_talk">按住说话</string>
 
 </resources>

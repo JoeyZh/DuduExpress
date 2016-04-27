@@ -1,14 +1,13 @@
 
 package com.joey.expresscall;
 
-import android.transition.ChangeBounds;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
+import com.joey.expresscall.contacts.ECContactsFragment;
 import com.joey.expresscall.main.ECMainFragment;
 import com.joey.expresscall.setting.ECSettingFragment;
 import com.joey.general.BaseActivity;
-import com.joey.general.BaseFragment;
 
 public class MainActivity extends BaseActivity {
 
@@ -16,6 +15,8 @@ public class MainActivity extends BaseActivity {
     private  FrameLayout contentRoot;
     private LinearLayout mTabLayout;
     private ECMainFragment mainFragment;
+    private ECSettingFragment settingFragment;
+    private ECContactsFragment contactsFragment;
 
     @Override
     public void initSettings() {
@@ -33,10 +34,12 @@ public class MainActivity extends BaseActivity {
         tabHost = new TabHost(this,mTabLayout,contentRoot);
         
         mainFragment = new ECMainFragment();
-        ECSettingFragment fragment = new ECSettingFragment(); 
-        tabHost.addTab("主页",R.drawable.icon_back , mainFragment);
-        tabHost.addTab("消息",R.drawable.icon_back , fragment);
-//        tabHost.addTab("设置",R.drawable.icon_back , mainFragment);
+        settingFragment = new ECSettingFragment();
+        contactsFragment = new ECContactsFragment();
+        
+        tabHost.addTab("主页",R.drawable.tabbar_main_selector, mainFragment);
+        tabHost.addTab("联系人",R.drawable.tabbar_info_selector , contactsFragment);
+        tabHost.addTab("文件",R.drawable.tabbar_files_selector , settingFragment);
         
        tabHost.changeToIndex(0);
         

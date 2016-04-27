@@ -1,6 +1,7 @@
 package com.joey.expresscall;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageButton;
@@ -59,4 +60,5 @@ public class TabBarItem extends RelativeLayout{
     public void setImageResource(int resid){
         image.setImageResource(resid);
     }
+    
 }

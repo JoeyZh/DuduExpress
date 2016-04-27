@@ -27,7 +27,8 @@ public abstract class BaseFragment extends Fragment implements OnCreateInterface
      */
     private View mTopBarView;
 
-
+    protected View currentView;
+    
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // 设置日志标志
@@ -50,8 +51,8 @@ public abstract class BaseFragment extends Fragment implements OnCreateInterface
                 LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT, 1));
         contentContainer.addView(contentView);
 
-        initUi();
         initSettings();
+        initUi();
         return view;
     }
 
