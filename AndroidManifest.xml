@@ -6,7 +6,7 @@
 
     <uses-sdk
         android:minSdkVersion="12"
-        android:targetSdkVersion="22" />
+         />
 
     <application
         android:name="com.joey.general.MainApplication"
@@ -35,6 +35,15 @@
         <activity android:name=".welcome.JVGuidActivity" >
         </activity>
         <activity android:name=".addfile.ECAddFileActivity" >
+        </activity>
+        <!-- 接口测试 -->
+         <activity android:name=".test.ECInterfaceTest"
+             android:label="接口测试" >
+             <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
     <!-- 允许程序开机自动运行 -->
