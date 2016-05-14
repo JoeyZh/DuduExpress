@@ -293,6 +293,18 @@ public class JVRegisterActivity extends BaseActivity {
                         // 关闭Progress提示框
 
                     }
+
+					@Override
+					public void onStart() {
+						// TODO Auto-generated method stub
+						
+					}
+
+					@Override
+					public void onFinish() {
+						// TODO Auto-generated method stub
+						
+					}
                 });
     }
 
@@ -432,6 +444,18 @@ public class JVRegisterActivity extends BaseActivity {
                             ToastUtil.show(JVRegisterActivity.this, error.errmsg);
                             MyLog.e("error = " + error.errmsg);
                         }
+
+						@Override
+						public void onStart() {
+							// TODO Auto-generated method stub
+							
+						}
+
+						@Override
+						public void onFinish() {
+							// TODO Auto-generated method stub
+							
+						}
                     });
         }
     }
@@ -479,6 +503,18 @@ public class JVRegisterActivity extends BaseActivity {
                                 + getString(R.string.register_code_send_error);
                         ToastUtil.show(JVRegisterActivity.this, msg);
                     }
+
+					@Override
+					public void onStart() {
+						// TODO Auto-generated method stub
+						
+					}
+
+					@Override
+					public void onFinish() {
+						// TODO Auto-generated method stub
+						
+					}
                 });
     }
 

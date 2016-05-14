@@ -19,53 +19,11 @@ public class MobileUtil {
             rootFile.mkdirs();
         }
 
-//        if (AppConsts.DEBUG_STATE) {//调试版本
-            AppConsts.LOG_PATH = AppConsts.LOG_PATH_SHOW;
-            AppConsts.LOG_CLOUD_PATH = AppConsts.LOG_CLOUD_PATH_SHOW;
-            AppConsts.LOG_ACCOUNT_PATH = AppConsts.LOG_ACCOUNT_PATH_SHOW;
-//        } else {
-//            AppConsts.LOG_PATH = AppConsts.LOG_PATH_DISMISS;
-//            AppConsts.LOG_CLOUD_PATH = AppConsts.LOG_CLOUD_PATH_DISMISS;
-//            AppConsts.LOG_ACCOUNT_PATH = AppConsts.LOG_ACCOUNT_PATH_DISMISS;
-//        }
-
         createDirectory(AppConsts.LOG_PATH);
-        createDirectory(AppConsts.LOG_CLOUD_PATH);
-        createDirectory(AppConsts.LOG_ACCOUNT_PATH);
+        createDirectory(AppConsts.RECORD_DIR);
+        createDirectory(AppConsts.FILE_DIR);
 
-        createDirectory(AppConsts.CAPTURE_PATH);
-        createDirectory(AppConsts.VIDEO_PATH);
-        createDirectory(AppConsts.DOWNLOAD_VIDEO_PATH);
-        createDirectory(AppConsts.DOWNLOAD_IMAGE_PATH);
-        createDirectory(AppConsts.BBSIMG_PATH);
-        createDirectory(AppConsts.BUG_PATH);
-        createDirectory(AppConsts.HEAD_PATH);
-        createDirectory(AppConsts.WELCOME_IMG_PATH);
-        createDirectory(AppConsts.SCENE_PATH);
-        createDirectory(AppConsts.CLOUDVIDEO_PATH);
-        createDirectory(AppConsts.ALARM_IMG_PATH);
-        createDirectory(AppConsts.ALARM_VIDEO_PATH);
-        createDirectory(AppConsts.CAT_PATH);
-    }
-
-
-    public static void showLogFile(boolean show) {
-        if (show) {//显示log文件
-            reNameFile(AppConsts.LOG_PATH, AppConsts.LOG_PATH_SHOW);
-            reNameFile(AppConsts.LOG_CLOUD_PATH, AppConsts.LOG_CLOUD_PATH_SHOW);
-            reNameFile(AppConsts.LOG_ACCOUNT_PATH, AppConsts.LOG_ACCOUNT_PATH_SHOW);
-            AppConsts.LOG_PATH = AppConsts.LOG_PATH_SHOW;
-            AppConsts.LOG_CLOUD_PATH = AppConsts.LOG_CLOUD_PATH_SHOW;
-            AppConsts.LOG_ACCOUNT_PATH = AppConsts.LOG_ACCOUNT_PATH_SHOW;
-        } else {
-            reNameFile(AppConsts.LOG_PATH, AppConsts.LOG_PATH_DISMISS);
-            reNameFile(AppConsts.LOG_CLOUD_PATH, AppConsts.LOG_CLOUD_PATH_DISMISS);
-            reNameFile(AppConsts.LOG_ACCOUNT_PATH, AppConsts.LOG_ACCOUNT_PATH_DISMISS);
-            AppConsts.LOG_PATH = AppConsts.LOG_PATH_DISMISS;
-            AppConsts.LOG_CLOUD_PATH = AppConsts.LOG_CLOUD_PATH_DISMISS;
-            AppConsts.LOG_ACCOUNT_PATH = AppConsts.LOG_ACCOUNT_PATH_DISMISS;
-        }
-
+      
     }
 
     public static void reNameFile(String oldFileName, String newFileName) {

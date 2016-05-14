@@ -36,7 +36,6 @@ public class JVWelcomeActivity extends BaseActivity {
     	
         AppConsts.DEBUG_STATE = MySharedPreference.getInstance().getBoolean("DEBUG_STATE", false);
 
-        MobileUtil.creatAllFolder();
         MyLog.enableFile(AppConsts.DEBUG_STATE);
         MyLog.enableLogcat(AppConsts.DEBUG_STATE);
         
@@ -130,6 +129,18 @@ public class JVWelcomeActivity extends BaseActivity {
                             MyLog.e(TAG, "do auto login error: errorCode:"
                                     + error.errcode + ", errorMsg:" + error.errmsg);
                         }
+
+						@Override
+						public void onStart() {
+							// TODO Auto-generated method stub
+							
+						}
+
+						@Override
+						public void onFinish() {
+							// TODO Auto-generated method stub
+							
+						}
                     });
             return true;
         }

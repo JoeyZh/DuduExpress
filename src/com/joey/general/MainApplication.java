@@ -6,6 +6,7 @@ import android.graphics.Bitmap.CompressFormat;
 
 
 import com.joey.expresscall.storage.JVDbHelper;
+import com.joey.general.utils.MobileUtil;
 import com.joey.general.utils.MySharedPreference;
 
 
@@ -19,13 +20,8 @@ import java.util.HashMap;
 public class MainApplication extends Application  {
 
     private static final String TAG = "MainApplication";
-    private static final String PROCESS_MAIN_NAME = "com.jovision.xiaowei";
-    private static final String PROCESS_SERVICE_NAME = "com.jovision.xiaowei:message";
     private static MainApplication mAppInstance;
-    // 二级缓存需要的变量(现在没用到,Volley本身支持二级缓存)
-    private static int DISK_IMAGECACHE_SIZE = 1024 * 1024 * 10;
-    private static CompressFormat DISK_IMAGECACHE_COMPRESS_FORMAT = CompressFormat.PNG;
-    private static int DISK_IMAGECACHE_QUALITY = 100;
+   
     private Context mAppContext;
     private HashMap<String, String> statusHashMap;
     // 账号操作对象句柄
@@ -58,6 +54,8 @@ public class MainApplication extends Application  {
         // 数据库小助手
         JVDbHelper.getInstance().init(this);
         MySharedPreference.getInstance().init(this);
+//        创建文件目录
+        MobileUtil.creatAllFolder();
     }
 
     /**

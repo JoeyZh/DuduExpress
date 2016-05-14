@@ -324,6 +324,18 @@ public class JVFoundPasswordActivity extends BaseActivity {
                             ToastUtil.show(JVFoundPasswordActivity.this, error.errmsg);
                         }
                     }
+
+					@Override
+					public void onStart() {
+						// TODO Auto-generated method stub
+						
+					}
+
+					@Override
+					public void onFinish() {
+						// TODO Auto-generated method stub
+						
+					}
                 });
     }
 
@@ -365,6 +377,18 @@ public class JVFoundPasswordActivity extends BaseActivity {
                                 + getString(R.string.register_code_send_error);
                         ToastUtil.show(JVFoundPasswordActivity.this, msg);
                     }
+
+					@Override
+					public void onStart() {
+						// TODO Auto-generated method stub
+						
+					}
+
+					@Override
+					public void onFinish() {
+						// TODO Auto-generated method stub
+						
+					}
                 });
     }
 
@@ -423,6 +447,18 @@ public class JVFoundPasswordActivity extends BaseActivity {
                             ToastUtil.show(JVFoundPasswordActivity.this, error.errmsg);
                         }
                     }
+
+					@Override
+					public void onStart() {
+						// TODO Auto-generated method stub
+						
+					}
+
+					@Override
+					public void onFinish() {
+						// TODO Auto-generated method stub
+						
+					}
                 });
     }
 

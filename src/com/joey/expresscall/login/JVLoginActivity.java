@@ -103,6 +103,18 @@ public class JVLoginActivity extends BaseActivity {
                     break;
             }
         }
+
+		@Override
+		public void onStart() {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void onFinish() {
+			// TODO Auto-generated method stub
+			
+		}
     };
     /**
      * 按钮点击事件

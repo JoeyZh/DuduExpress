@@ -10,4 +10,9 @@ public interface ResponseListener<T> {
     public void onSuccess(T json);
 
     public void onError(RequestError error);
+    
+    public void onStart();
+    
+    public void onFinish();
+    
 }

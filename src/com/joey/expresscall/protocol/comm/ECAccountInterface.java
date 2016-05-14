@@ -39,6 +39,9 @@ public class ECAccountInterface {
 		return jsonStr;
 	}
 
+	public String logout(){
+		return "";
+	}
 	/**
 	 * 
 	 * @param account

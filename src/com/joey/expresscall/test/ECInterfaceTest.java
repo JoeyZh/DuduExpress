@@ -1,5 +1,8 @@
 package com.joey.expresscall.test;
 
+import java.util.Arrays;
+import java.util.Collection;
+
 import com.alibaba.fastjson.JSONObject;
 import com.joey.expresscall.protocol.comm.ECAccountInterface;
 import com.joey.expresscall.protocol.comm.ECFileInterface;
@@ -72,15 +75,9 @@ public class ECInterfaceTest extends ListActivity {
 					response = account.register("18663753236", "123456", text);
 					break;
 				case 3:// 登陆
+//					response = account.login("18663753236", "123456");
 					response = account.login("18910517619", "654321");
 					root = JSONObject.parseObject(response);
-					MyLog.i("interfacetest%%%",
-							"login root = " + root.toJSONString());
-
-					root = root.getJSONObject("Response");
-					MyLog.i("interfacetest%%%",
-							"login response = " + root.toString());
-
 					root = root.getJSONObject("data");
 					String token = root.getString("token");
 					MyLog.i("interfacetest%%%", "token = " + token);
@@ -104,8 +101,12 @@ public class ECInterfaceTest extends ListActivity {
 					response = fileInterface.getFiles();
 					break;
 				case 9:// 发起呼叫
+					String [] phones = new String[]{"18663753236"};
+					Arrays.asList(phones);
+					response = fileInterface.callArray("bye.wav", "wav",Arrays.asList(phones));
 					break;
 				case 10:// 下载
+					response = fileInterface.downloadFile("bye.wav", "wav");
 					break;
 				case 11:// 获取账单
 					response = fileInterface.getBillList();

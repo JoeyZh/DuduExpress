@@ -1,6 +1,9 @@
 package com.joey.expresscall.protocol.comm;
 
 import java.util.HashMap;
+import java.util.List;
+
+import com.joey.expresscall.AppConsts;
 
 public class ECFileInterface {
 
@@ -20,73 +23,62 @@ public class ECFileInterface {
 		this.token = token;
 	}
 
-	public String upLoadFile(String path,String fileType,String extraName) {
-		String URI = ECNetUrlConsts
-				.getFullUrl(ECNetUrlConsts.DO_LOGIN);
+	public String upLoadFile(String path, String fileType, String extraName) {
+		String URI = ECNetUrlConsts.getFullUrl(ECNetUrlConsts.DO_LOGIN);
 		HashMap param = new HashMap();
-		String jsonStr = this.httpcomm
-				.httpRequestPost(URI, param);
+		String jsonStr = this.httpcomm.httpRequestPost(URI, param);
 
 		return jsonStr;
 	}
 
 	public String getFiles() {
-		String URI = ECNetUrlConsts
-				.getFullUrl(ECNetUrlConsts.DO_FILE_LIST);
+		String URI = ECNetUrlConsts.getFullUrl(ECNetUrlConsts.DO_FILE_LIST);
 		HashMap param = new HashMap();
 		param.put("token", this.token);
-		String jsonStr = this.httpcomm
-				.httpRequestPost(URI, param);
+		String jsonStr = this.httpcomm.httpRequestPost(URI, param);
 
 		return jsonStr;
 	}
 
-	public String callArray(String fileId, String fileType, String... phones) {
-		String URI = ECNetUrlConsts
-				.getFullUrl(ECNetUrlConsts.DO_CALL);
+	public String callArray(String fileId, String fileType, List<String> phones) {
+		String URI = ECNetUrlConsts.getFullUrl(ECNetUrlConsts.DO_CALL);
 		HashMap param = new HashMap();
 		param.put("token", this.token);
 		param.put("fileId", fileId);
 		param.put("fileType", fileType);
 		param.put("phoneArray", phones);
-		String jsonStr = this.httpcomm
-				.httpRequestPost(URI, param);
+		String jsonStr = this.httpcomm.httpRequestPost(URI, param);
 
 		return jsonStr;
 	}
 
-	public String downloadFile(String fileId, String fileType) {
-		String URI = ECNetUrlConsts
-				.getFullUrl(ECNetUrlConsts.DO_DOWNLOAD_FILE);
+	public String downloadFile(String fileId, String fileType,String savePath) {
+		String URI = ECNetUrlConsts.getFullUrl(ECNetUrlConsts.DO_DOWNLOAD_FILE);
 		HashMap param = new HashMap();
 		param.put("token", this.token);
 		param.put("fileId", fileId);
 		param.put("fileType", fileType);
-		String jsonStr = this.httpcomm
-				.httpRequestPost(URI, param);
+		
+		String jsonStr = this.httpcomm.httpRequestGetFile(URI, param,savePath);
 
 		return jsonStr;
 	}
 
 	public String getBillDetail(String callId) {
-		String URI = ECNetUrlConsts
-				.getFullUrl(ECNetUrlConsts.DO_BILL_DETAIL);
+		String URI = ECNetUrlConsts.getFullUrl(ECNetUrlConsts.DO_BILL_DETAIL);
 		HashMap param = new HashMap();
 		param.put("token", this.token);
 		param.put("callId", callId);
-		String jsonStr = this.httpcomm
-				.httpRequestPost(URI, param);
+		String jsonStr = this.httpcomm.httpRequestPost(URI, param);
 
 		return jsonStr;
 	}
 
 	public String getBillList() {
-		String URI = ECNetUrlConsts
-				.getFullUrl(ECNetUrlConsts.DO_BILL_LIST);
+		String URI = ECNetUrlConsts.getFullUrl(ECNetUrlConsts.DO_BILL_LIST);
 		HashMap param = new HashMap();
 		param.put("token", this.token);
-		String jsonStr = this.httpcomm
-				.httpRequestPost(URI, param);
+		String jsonStr = this.httpcomm.httpRequestPost(URI, param);
 
 		return jsonStr;
 	}

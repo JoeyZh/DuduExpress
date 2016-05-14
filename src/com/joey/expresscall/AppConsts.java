@@ -28,66 +28,11 @@ public class AppConsts {
     public static final String SD_CARD_PATH = Environment
             .getExternalStorageDirectory().getPath() + File.separator;
     public static final String APP_PATH = SD_CARD_PATH + APP_NAME + File.separator;
-    public static final String LOG_PATH_DISMISS = SD_CARD_PATH + APP_NAME
-            + File.separator + ".log" + File.separator;
     public static String LOG_PATH = SD_CARD_PATH + APP_NAME
             + File.separator + ".log" + File.separator;
-    public static String LOG_CLOUD_PATH = SD_CARD_PATH + APP_NAME
-            + File.separator + ".logcloud" + File.separator;
-    public static String LOG_ACCOUNT_PATH = SD_CARD_PATH + APP_NAME
-            + File.separator + ".logaccout" + File.separator;
-    public static final String LOG_CLOUD_PATH_DISMISS = SD_CARD_PATH + APP_NAME
-            + File.separator + ".logcloud" + File.separator;
-    public static final String LOG_ACCOUNT_PATH_DISMISS = SD_CARD_PATH + APP_NAME
-            + File.separator + ".logaccout" + File.separator;
-    public static final String LOG_PATH_SHOW = SD_CARD_PATH + APP_NAME
-            + File.separator + "log" + File.separator;
-    public static final String LOG_CLOUD_PATH_SHOW = SD_CARD_PATH + APP_NAME
-            + File.separator + "logcloud" + File.separator;
-    public static final String LOG_ACCOUNT_PATH_SHOW = SD_CARD_PATH + APP_NAME
-            + File.separator + "logaccout" + File.separator;
-    // 小维不用此路径
-    public static final String AD_PATH = SD_CARD_PATH + APP_NAME
-            + File.separator + "ad" + File.separator;
-    public static final String CAPTURE_PATH = SD_CARD_PATH + APP_NAME
-            + File.separator + "capture" + File.separator;
-    public static final String VIDEO_PATH = SD_CARD_PATH + APP_NAME
-            + File.separator + "video" + File.separator;
-    public static final String DOWNLOAD_VIDEO_PATH = SD_CARD_PATH
-            + APP_NAME + File.separator + "downvideo" + File.separator;
-    public static final String BUG_PATH = SD_CARD_PATH + APP_NAME
-            + File.separator + "bugs" + File.separator;
-    public static final String DOWNLOAD_IMAGE_PATH = SD_CARD_PATH
-            + APP_NAME + File.separator + "downimage" + File.separator;
-    public static final String HEAD_PATH = SD_CARD_PATH + APP_NAME
-            + File.separator + "head" + File.separator;
-    public static final String WELCOME_IMG_PATH = SD_CARD_PATH
-            + APP_NAME + File.separator + "welcome" + File.separator;
-    public static final String SCENE_PATH = SD_CARD_PATH + APP_NAME
-            + File.separator + "scene" + File.separator;
-    public static final String BBSIMG_PATH = SD_CARD_PATH + APP_NAME
-            + File.separator + "bbsimage" + File.separator;
-    // 云存储边下载边播放ts,m3u8文件路径
-    public static final String CLOUDVIDEO_PATH = SD_CARD_PATH + APP_NAME
-            + File.separator + "cloudvideo" + File.separator;
-    // 报警图片路径
-    public static final String ALARM_IMG_PATH = SD_CARD_PATH + APP_NAME
-            + File.separator + "alarmimage" + File.separator;
-    // 报警视频路径
-    public static final String ALARM_VIDEO_PATH = SD_CARD_PATH + APP_NAME
-            + File.separator + "alarmvideo" + File.separator;
-    // 猫眼路径
-    public static final String CAT_PATH = SD_CARD_PATH + APP_NAME
-            + File.separator + "cat" + File.separator;
-    /*************
-     * 媒体类型
-     ********************/
-    public static final String IMAGE_PNG_KIND = ".png";// 图片类型
-    public static final String IMAGE_JPG_KIND = ".jpg";// 图片类型
-    public static final String VIDEO_MP4_KIND = ".mp4";// 视频类型
-    public static final String VIDEO_M3U8_KIND = ".m3u8";// 视频类型
-    public static final int RECORD_AMR = 0;// 音频格式
-    public static final int RECORD_ALAW = 1;// 音频格式
+    public static final String RECORD_DIR = APP_PATH + "Records"+ File.separator;
+    public static final String FILE_DIR = APP_PATH + "Files"+File.separator;
+    
     /**
      * 日期formater
      **/

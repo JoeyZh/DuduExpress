@@ -8,5 +8,5 @@ public abstract interface IHttpComm
 
   public abstract String httpRequestGet(String paramString, HashMap<String, Object> paramHashMap);
 
-  public abstract boolean httpRequestGetFile(String paramString1, HashMap<String, Object> paramHashMap, String paramString2);
+  public abstract String httpRequestGetFile(String url, HashMap<String, Object> paramHashMap, String paramString2);
 }
