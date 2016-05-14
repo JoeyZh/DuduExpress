@@ -20,6 +20,8 @@ public class ECNetUrlConsts {
 	public final static String DO_BILL_LIST = "record/billList.do";
 	// 获取账单详情
 	public final static String DO_BILL_DETAIL = "record/billDetail.do";
+	// 上传文件
+	public final static String DO_UPLOAD = "record/upload.do";
 
 	public static String getFullUrl(String url) {
 		return DNS + url;

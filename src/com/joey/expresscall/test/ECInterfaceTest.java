@@ -4,8 +4,11 @@ import java.util.Arrays;
 import java.util.Collection;
 
 import com.alibaba.fastjson.JSONObject;
+import com.joey.expresscall.AppConsts;
 import com.joey.expresscall.protocol.comm.ECAccountInterface;
 import com.joey.expresscall.protocol.comm.ECFileInterface;
+import com.joey.expresscall.protocol.comm.ECNetUrlConsts;
+import com.joey.expresscall.protocol.comm.InterfaceTestDemo;
 import com.joey.general.utils.MyLog;
 import com.joey.general.utils.ToastUtil;
 
@@ -95,18 +98,24 @@ public class ECInterfaceTest extends ListActivity {
 					response = account.requireInfo();
 					break;
 				case 7:// 上传
-					response = fileInterface.upLoadFile("", "wav", "测试一");
+//					response = "result:"+fileInterface.upLoadFile(AppConsts.RECORD_DIR+"byeaaa.wav","18663853236","wav","哈哈啊哈哈");
+					try {
+						response = "result:"+InterfaceTestDemo.upload(ECNetUrlConsts.getFullUrl(ECNetUrlConsts.DO_UPLOAD), AppConsts.RECORD_DIR+"byeaaa.wav");
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					break;
 				case 8:// 获取文件
 					response = fileInterface.getFiles();
 					break;
 				case 9:// 发起呼叫
-					String [] phones = new String[]{"18663753236"};
+					String [] phones = new String[]{"18663753236","15610131752"};
 					Arrays.asList(phones);
 					response = fileInterface.callArray("bye.wav", "wav",Arrays.asList(phones));
 					break;
 				case 10:// 下载
-					response = fileInterface.downloadFile("bye.wav", "wav");
+					response = "result:"+fileInterface.downloadFile("bye.wav", "wav",AppConsts.RECORD_DIR+"bye.wav");
 					break;
 				case 11:// 获取账单
 					response = fileInterface.getBillList();

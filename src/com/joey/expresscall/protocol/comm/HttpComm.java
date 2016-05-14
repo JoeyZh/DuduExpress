@@ -37,6 +37,7 @@ import org.apache.http.conn.scheme.PlainSocketFactory;
 import org.apache.http.conn.scheme.Scheme;
 import org.apache.http.conn.scheme.SchemeRegistry;
 import org.apache.http.conn.scheme.SocketFactory;
+import org.apache.http.entity.FileEntity;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.impl.conn.tsccm.ThreadSafeClientConnManager;
@@ -67,58 +68,14 @@ public class HttpComm implements IHttpComm {
 
 	public String httpRequestPost(String url, HashMap<String, Object> param) {
 		String jsonString = null;
-		Set keys = param.keySet();
-		JSONObject root = new JSONObject();
-		JSONObject request = new JSONObject();
-		Log.v(TAG, "Url  " + url);
-
-		try {
-			for (Iterator iterator = keys.iterator(); iterator.hasNext();) {
-				String key = (String) iterator.next();
-				Object value = (Object) param.get(key);
-				if ((key == null) || (value == null)) {
-					if (key != null)
-						Log.v("HttpCommImp", "key=" + key + "value=null");
-					else if (value != null)
-						Log.v("HttpCommImp", "value=" + value + "key=null");
-					else {
-						Log.v("HttpCommImp", "key=null,value=null");
-					}
-				}
-
-				if (value == null) {
-					return "-6";
-				}
-				if (value instanceof String)
-					value = URLEncoder.encode((String) value, "UTF-8");
-				request.put(key, value);
-			}
-		} catch (Exception e) {
-			StringWriter sw = new StringWriter();
-			PrintWriter pw = new PrintWriter(sw);
-			e.printStackTrace(pw);
-
-			return "-5:[" + sw.toString() + "][" + e.getMessage() + "]";
-		}
-		try {
-			root.put("Request", request);
-		} catch (JSONException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		Log.v(TAG, "Post string = " + root.toString());
+		String requestJson = createRequestJsonString(param);
 
 		HttpResponse response = null;
 		HttpPost post = new HttpPost(url);
-		post.addHeader(HTTP.CONTENT_TYPE, APPLICATION_JSON);
+		
 		try {
-			StringEntity s = new StringEntity(root.toString());
-			s.setContentEncoding("UTF-8");
-			s.setContentType("application/json");
-			post.setEntity(s);
+			this.setPostEntity(post, requestJson);
 			response = executeHttpRequest(post);
-			Log.v(TAG, "Post string = " + root.toString());
-
 			int statusCode = response.getStatusLine().getStatusCode();
 			if (statusCode == 200) {
 				InputStream is = response.getEntity().getContent();
@@ -143,7 +100,7 @@ public class HttpComm implements IHttpComm {
 
 			return "-4:[" + sw.toString() + "][" + e.getMessage() + "]";
 		}
-	
+
 		Log.v(TAG, "Post request string = " + jsonString);
 		return jsonString;
 	}
@@ -156,20 +113,6 @@ public class HttpComm implements IHttpComm {
 			for (Iterator iterator = keys.iterator(); iterator.hasNext();) {
 				String key = (String) iterator.next();
 				String value = (String) param.get(key);
-
-				if ((key == null) || (value == null)) {
-					if (key != null)
-						Log.v("HttpCommImp", "key=" + key + "value=null");
-					else if (value != null)
-						Log.v("HttpCommImp", "value=" + value + "key=null");
-					else {
-						Log.v("HttpCommImp", "key=null,value=null");
-					}
-				}
-
-				if (value == null) {
-					return "-6";
-				}
 				value = URLEncoder.encode(value, "UTF-8");
 
 				paramStr = paramStr + key + "=" + value + "&";
@@ -188,7 +131,6 @@ public class HttpComm implements IHttpComm {
 			else {
 				url = url + "?" + paramStr;
 			}
-
 		}
 
 		HttpResponse response = null;
@@ -225,41 +167,16 @@ public class HttpComm implements IHttpComm {
 
 	public boolean httpRequestGetFile(String url,
 			HashMap<String, Object> param, String filepath) {
-		String paramStr = "";
-		JSONObject root = new JSONObject();
-		JSONObject request = new JSONObject();
-		Set keys = param.keySet();
-		try {
-			for (Iterator iterator = keys.iterator(); iterator.hasNext();) {
-				String key = (String) iterator.next();
-				Object value = param.get(key);
-				if (value instanceof String)
-					value = URLEncoder.encode((String) value, "UTF-8");
-				request.put(key, value);
-			}
-			root.put("Request", request);
-		} catch (JSONException e) {
-
-		} catch (Exception e) {
-
-		}
-
+		String paramStr = createRequestJsonString(param);
 		HttpResponse response = null;
 		HttpPost post = new HttpPost(url);
 		try {
-			post.addHeader(HTTP.CONTENT_TYPE, APPLICATION_JSON);
-			StringEntity s = new StringEntity(root.toString());
-			s.setContentEncoding("UTF-8");
-			s.setContentType("application/json");
-			post.setEntity(s);
-			Log.v(TAG, "Post string = " + root.toString());
+			setPostEntity(post, paramStr);
 			response = executeHttpRequest(post);
 			int statusCode = response.getStatusLine().getStatusCode();
 			if (statusCode == 200) {
 				HttpEntity entity = response.getEntity();
-
 				InputStream in = entity.getContent();
-
 				File file = new File(filepath);
 				file.getParentFile().mkdirs();
 				FileOutputStream fileout = new FileOutputStream(file);
@@ -284,25 +201,56 @@ public class HttpComm implements IHttpComm {
 
 		return false;
 	}
+	@Override
+	public boolean httpUpLoadFile(String path, String url,
+			HashMap<String, Object> parasMap) {
+		String json = createRequestJsonString(parasMap);
+		 FileEntity fileBody = new FileEntity(new File(path),"multipart/form-data");  
+	      
+		 HttpPost post = new HttpPost(url);
+		 try {
+//			post.addHeader(HTTP.CONTENT_TYPE, "multipart/form-data");
+			post.addHeader(HTTP.CONTENT_TYPE, "application/octet-stream");
+			post.setEntity(fileBody);
+			setPostEntity(post, json);
+			HttpResponse response = executeHttpRequest(post);
 
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	}
 	private String createRequestJsonString(HashMap<String, Object> param) {
 		Set keys = param.keySet();
 		JSONObject request = new JSONObject();
+		JSONObject root = new JSONObject();
 		try {
 			for (Iterator iterator = keys.iterator(); iterator.hasNext();) {
 				String key = (String) iterator.next();
 				Object value = (Object) param.get(key);
-				if ((key == null) || (value == null)) {
+				if (key == null) {
+					continue;
 				}
 				if (value instanceof String)
 					value = URLEncoder.encode((String) value, "UTF-8");
 				request.put(key, value);
 			}
-			request.put("Request",request);
+			root.put("Request", request);
 		} catch (Exception e) {
-			
+
 		}
-		return request.toJSONString();
+		Log.v(TAG, "Post string = " + root.toJSONString());
+
+		return root.toJSONString();
+	}
+
+	private void setPostEntity(HttpPost post, String str) throws Exception {
+		post.addHeader(HTTP.CONTENT_TYPE, APPLICATION_JSON);
+		StringEntity s = new StringEntity(str);
+		s.setContentEncoding("UTF-8");
+		s.setContentType("application/json");
+		post.setEntity(s);
 	}
 
 	private String parseResponse(InputStream in) {
@@ -373,5 +321,6 @@ public class HttpComm implements IHttpComm {
 			throw e;
 		}
 	}
+
 
 }

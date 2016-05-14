@@ -152,7 +152,7 @@ public class InterfaceTestDemo {
 		sb.append("--" + boundary + "\r\n");
 		sb.append("Content-Disposition: form-data; name=\"extraName\"" + "\r\n");
 		sb.append("\r\n");
-		sb.append("zhoujie_Test_File" + "\r\n");
+		sb.append("TestTest" + "\r\n");
 
 		// 文件部分
 		sb.append("--" + boundary + "\r\n");
