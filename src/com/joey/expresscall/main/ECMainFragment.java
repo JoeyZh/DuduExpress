@@ -11,9 +11,16 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.joey.expresscall.R;
+import com.joey.expresscall.account.ECAccountManager;
+import com.joey.expresscall.account.ECCallManager;
 import com.joey.expresscall.addfile.ECAddFileActivity;
+import com.joey.expresscall.protocol.RequestError;
+import com.joey.expresscall.protocol.ResponseListener;
 import com.joey.general.BaseFragment;
 import com.joey.general.utils.MyLog;
 
@@ -27,6 +34,10 @@ public class ECMainFragment extends BaseFragment {
 	private View header;
 	private ECFileItemAdapter mAdapter;
 	private ArrayList<HashMap<String, Object>> mCallList;
+	private TextView tvUserName;
+	private TextView tvRetain;
+	private TextView tvWarning;
+	private TextView tvCostDetail;
 	private OnClickListener mOnClickListener = new OnClickListener() {
 
 		@Override
@@ -55,6 +66,7 @@ public class ECMainFragment extends BaseFragment {
 		addFileView = header.findViewById(R.id.add_new_file_layout);
 		addFileView.setOnClickListener(mOnClickListener);
 		fileListView.addHeaderView(header);
+		
 		return currentView;
 	}
 
@@ -76,6 +88,11 @@ public class ECMainFragment extends BaseFragment {
 						R.id.text_extra });
 		
 		fileListView.setAdapter(mAdapter);
+		
+		tvUserName = (TextView)currentView.findViewById(R.id.text_user_info);
+		tvRetain = (TextView)currentView.findViewById(R.id.text_cost_retain);
+		tvWarning = (TextView)currentView.findViewById(R.id.text_cost_warning);
+		tvCostDetail = (TextView)currentView.findViewById(R.id.text_cost_info);
 	}
 
 	@Override
@@ -96,13 +113,81 @@ public class ECMainFragment extends BaseFragment {
 	}
 
 	private void getUseInfo() {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stubs
+		ECAccountManager.getInstance().getUserInfo(new ResponseListener<JSONObject>() {
 
+			@Override
+			public void onSuccess(JSONObject json) {
+				MyLog.i("");
+				final String nickName = json.getString("nickName");
+				final float retain = json.getFloat("totalMoney");
+				final String mobile = json.getString("mobile");
+				getActivity().runOnUiThread(new Runnable(){
+
+					@Override
+					public void run() {
+						if(nickName != null)
+							tvUserName.setText(nickName);
+						else{
+							tvUserName.setText(mobile);
+						}
+						tvRetain.setText(retain+"元");
+						if(retain<=0){
+							tvWarning.setVisibility(View.VISIBLE);
+							return;
+						}
+						tvWarning.setVisibility(View.GONE);
+					}
+					
+				});
+			}
+
+			@Override
+			public void onError(RequestError error) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void onStart() {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void onFinish() {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 	}
 
 	private void getCallList() {
-		// TODO Auto-generated method stub
+		ECCallManager.getInstance().getCallList(new ResponseListener<JSONArray>() {
 
+			@Override
+			public void onSuccess(JSONArray json) {
+				MyLog.i("callList = "+json.toString());
+			}
+
+			@Override
+			public void onError(RequestError error) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void onStart() {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void onFinish() {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 	}
 	
 	private void test(){

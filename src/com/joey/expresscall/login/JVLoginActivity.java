@@ -16,6 +16,7 @@ import android.widget.PopupWindow;
 import android.widget.PopupWindow.OnDismissListener;
 import android.widget.TextView;
 
+import com.alibaba.fastjson.JSONObject;
 import com.joey.expresscall.MainActivity;
 import com.joey.expresscall.R;
 import com.joey.expresscall.account.ECAccountManager;
@@ -54,9 +55,10 @@ public class JVLoginActivity extends BaseActivity {
     /**
      * 账号库状态监听
      */
-    private ResponseListener listener = new ResponseListener() {
-        public void onSuccess(Object jsonData) {
-            dismissDialog();
+    private ResponseListener<JSONObject> listener = new ResponseListener<JSONObject>() {
+        public void onSuccess(JSONObject jsonData) {
+        	String token = jsonData.getString("token");
+        	ECAccountManager.getInstance().setToken(token);
             // 保存账号信息
             MySharedPreference.getInstance().putString(MySharedPreferencesConsts.USERNAME,
                     userName);
@@ -82,7 +84,6 @@ public class JVLoginActivity extends BaseActivity {
 
         @Override
         public void onError(RequestError error) {
-            dismissDialog();
             if (error == null) {
                 ToastUtil.show(JVLoginActivity.this, "error is null");
                 return;
@@ -112,7 +113,7 @@ public class JVLoginActivity extends BaseActivity {
 
 		@Override
 		public void onFinish() {
-			// TODO Auto-generated method stub
+            dismissDialog();
 			
 		}
     };

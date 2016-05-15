@@ -34,7 +34,7 @@ public class JVWelcomeActivity extends BaseActivity {
     @Override
 	public void initSettings() {
     	
-        AppConsts.DEBUG_STATE = MySharedPreference.getInstance().getBoolean("DEBUG_STATE", false);
+        AppConsts.DEBUG_STATE = MySharedPreference.getInstance().getBoolean("DEBUG_STATE", true);
 
         MyLog.enableFile(AppConsts.DEBUG_STATE);
         MyLog.enableLogcat(AppConsts.DEBUG_STATE);
@@ -69,13 +69,13 @@ public class JVWelcomeActivity extends BaseActivity {
 			@Override
 			public void run() {
 				// TODO Auto-generated method stub
-//				boolean firstOpen = MySharedPreference.getInstance().getBoolean(MySharedPreferencesConsts.FIRST_OPEN_APP);
+				boolean firstOpen = MySharedPreference.getInstance().getBoolean(MySharedPreferencesConsts.FIRST_OPEN_APP,true);
 				Intent intent = new Intent();
-//				if(firstOpen){
+				if(firstOpen){
 					intent.setClass(JVWelcomeActivity.this,JVGuidActivity.class);
-//				}else{
-//					intent.setClass(JVWelcomeActivity.this,JVLoginActivity.class);
-//				}
+				}else{
+					intent.setClass(JVWelcomeActivity.this,JVLoginActivity.class);
+				}
 			    ToastUtil.show(JVWelcomeActivity.this, "跳转开始");
 				startActivity(intent);
 				finish();

@@ -50,17 +50,17 @@
             android:layout_marginBottom="@dimen/layout_min_margin" >
 
             <TextView
-                android:id="@+id/text_cost"
+                android:id="@+id/text_cost_warning"
                 style="@style/text_min_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_above="@+id/text_cost"
-                android:layout_toRightOf="@+id/text_cost"
+                android:layout_above="@+id/text_cost_retain"
+                android:layout_toRightOf="@+id/text_cost_retain"
                 android:text="余额不足"
                 android:textColor="@color/yellow" />
 
             <TextView
-                android:id="@+id/text_cost"
+                android:id="@+id/text_cost_retain"
                 style="@style/text_large_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

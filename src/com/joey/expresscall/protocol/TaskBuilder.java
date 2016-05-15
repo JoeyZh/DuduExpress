@@ -81,8 +81,10 @@ public class TaskBuilder extends CommonHandler implements Callable<JVTask> {
             MyLog.v(TAG, "[" + mTaskName + "]" + "check login after, task execute.");
             /** 4.执行任务 */
             String jsonData = mTaskListener.execute();
+            mResponseListener.onStart();
             /** 5.任务执行完成,回调 */
             String result = handlerOperation(jsonData, mResponseListener);
+            mResponseListener.onFinish();
             setTaskResult(result);
             // 如果session超时(回避策)
             if (result.indexOf("403") != -1) {

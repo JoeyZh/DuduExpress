@@ -14,16 +14,16 @@ import java.util.Set;
 
 import com.joey.expresscall.AppConsts;
 
-public class ECFileInterface {
+public class ECCallInterface {
 
 	private IHttpComm httpcomm;
 	private String token;
 
-	public ECFileInterface() {
+	public ECCallInterface() {
 		httpcomm = new HttpComm();
 	}
 
-	public ECFileInterface(String token) {
+	public ECCallInterface(String token) {
 		this.token = token;
 		httpcomm = new HttpComm();
 	}

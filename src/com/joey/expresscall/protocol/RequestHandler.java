@@ -123,14 +123,13 @@ public class RequestHandler<T> {
         // 检测json中的result是否为true
         try {
             JSONObject root = JSON.parseObject(mJson);
-            String result = root.getString("result");
-            if ("true".equals(result)) {
+            int errCode = root.getIntValue("code");
+            if (errCode == RequestError.ERROR_CODE_NULL) {
                 return null;
             } else {
-                String errCode = root.getString("errorCode");
                 String strErrName = ERROR_CODE_PREFIX + errCode;
                 String errmsg = ResourcesUnusualUtil.getString(strErrName);
-                return new RequestError(Integer.valueOf(errCode), errmsg);
+                return new RequestError(errCode, errmsg);
             }
         } catch (Exception e) {
             return new RequestError(
@@ -150,6 +149,7 @@ public class RequestHandler<T> {
         Object dataJson = null;
         try {
             dataJson = JSON.parseObject(mJson).get("data");
+            MyLog.i("convert = "+dataJson.toString());
             return (T) dataJson;
         } catch (Exception e) {
             mResponseListener.onError(new RequestError(

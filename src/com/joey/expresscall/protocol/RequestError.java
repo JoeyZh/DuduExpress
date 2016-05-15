@@ -7,6 +7,7 @@ import com.joey.expresscall.R;
 
 public class RequestError {
 
+	public static final int ERROR_CODE_NULL = 0;
     /**
      * 自己定义的错误码
      */

@@ -13,6 +13,7 @@ public class ECAccountManager {
     
     public static ECAccountManager accountManager;
     public ECAccountInterface mAccount;
+    public boolean isLogin;
     
     private ECAccountManager(){
        mAccount = new ECAccountInterface();
@@ -29,8 +30,13 @@ public class ECAccountManager {
         
     }
 
+    public void setToken(String token){
+    	mAccount.setToken(token);
+    	ECCallManager.getInstance().init(token);	
+    }
+    
     public boolean isLogin(){
-    	return true;
+    	return isLogin;
     }
     /**
      *
@@ -83,6 +89,16 @@ public class ECAccountManager {
         BackgroundHandler.execute(task);
     }
     
+    public <T> void getUserInfo(ResponseListener<T> listener){
+    	TaskBuilder task = new TaskBuilder("userInfo", listener, new OnTaskListener() {
+            @Override
+            public String execute() {
+                return mAccount.requireInfo();
+            }
+        });
+       
+        BackgroundHandler.execute(task);
+    }
     public void forgetPassword(String username,String resetPass,String veryCode,ResponseListener<JSONObject> listener){
         handleOperation(listener);
     }

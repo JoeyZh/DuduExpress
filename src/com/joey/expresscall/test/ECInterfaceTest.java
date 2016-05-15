@@ -6,7 +6,7 @@ import java.util.Collection;
 import com.alibaba.fastjson.JSONObject;
 import com.joey.expresscall.AppConsts;
 import com.joey.expresscall.protocol.comm.ECAccountInterface;
-import com.joey.expresscall.protocol.comm.ECFileInterface;
+import com.joey.expresscall.protocol.comm.ECCallInterface;
 import com.joey.expresscall.protocol.comm.ECNetUrlConsts;
 import com.joey.expresscall.protocol.comm.InterfaceTestDemo;
 import com.joey.general.utils.MyLog;
@@ -30,7 +30,7 @@ public class ECInterfaceTest extends ListActivity {
 	public ArrayAdapter adapter;
 	public ECAccountInterface account;
 	public EditText inputEdit;
-	private ECFileInterface fileInterface;
+	private ECCallInterface fileInterface;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -78,15 +78,15 @@ public class ECInterfaceTest extends ListActivity {
 					response = account.register("18663753236", "123456", text);
 					break;
 				case 3:// 登陆
-//					response = account.login("18663753236", "123456");
-					response = account.login("18910517619", "654321");
+					response = account.login("18663753236", "123456");
+//					response = account.login("18910517619", "654321");
 					root = JSONObject.parseObject(response);
 					root = root.getJSONObject("data");
 					String token = root.getString("token");
 					MyLog.i("interfacetest%%%", "token = " + token);
 
 					account.setToken(token);
-					fileInterface = new ECFileInterface(token);
+					fileInterface = new ECCallInterface(token);
 					break;
 				case 4:// 找回密码
 					response = account.forgetPwd("18663753236", "123456", text);
@@ -98,13 +98,13 @@ public class ECInterfaceTest extends ListActivity {
 					response = account.requireInfo();
 					break;
 				case 7:// 上传
-//					response = "result:"+fileInterface.upLoadFile(AppConsts.RECORD_DIR+"byeaaa.wav","18663853236","wav","哈哈啊哈哈");
-					try {
-						response = "result:"+InterfaceTestDemo.upload(ECNetUrlConsts.getFullUrl(ECNetUrlConsts.DO_UPLOAD), AppConsts.RECORD_DIR+"byeaaa.wav");
-					} catch (Exception e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+					response = "result:"+fileInterface.upLoadFile(AppConsts.RECORD_DIR+"byeaaa.wav","18663853236","wav","哈哈啊哈哈");
+//					try {
+//						response = "result:"+InterfaceTestDemo.upload(ECNetUrlConsts.getFullUrl(ECNetUrlConsts.DO_UPLOAD), AppConsts.RECORD_DIR+"byeaaa.wav");
+//					} catch (Exception e) {
+//						// TODO Auto-generated catch block
+//						e.printStackTrace();
+//					}
 					break;
 				case 8:// 获取文件
 					response = fileInterface.getFiles();

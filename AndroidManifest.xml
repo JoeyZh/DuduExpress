@@ -4,9 +4,7 @@
     android:versionCode="1"
     android:versionName="1.0" >
 
-    <uses-sdk
-        android:minSdkVersion="12"
-         />
+    <uses-sdk android:minSdkVersion="12" />
 
     <application
         android:name="com.joey.general.MainApplication"
@@ -18,7 +16,6 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name" >
-           
         </activity>
         <activity android:name=".login.JVLoginActivity" >
         </activity>
@@ -27,19 +24,20 @@
         <activity android:name=".login.JVRegisterActivity" >
         </activity>
         <activity android:name=".welcome.JVWelcomeActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".welcome.JVGuidActivity" >
         </activity>
         <activity android:name=".addfile.ECAddFileActivity" >
         </activity>
         <!-- 接口测试 -->
-         <activity android:name=".test.ECInterfaceTest"
-             android:label="接口测试" >
-             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+        <activity
+            android:name=".test.ECInterfaceTest"
+            android:label="接口测试" >
         </activity>
     </application>
     <!-- 允许程序开机自动运行 -->
