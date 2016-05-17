@@ -64,18 +64,15 @@
     <string name="password_null">请输入密码</string>
     <string name="user_null">请输入用户名</string>
     <string name="login_password_error">密码不正确</string>
-    <string name="login_loading">小维正在登录...</string>
+    <string name="login_loading">正在登录...</string>
     <string name="login_join_register">还没有帐号,快速</string>
     <string name="login_auth_error">用户名或密码错误</string>
-    <string name="login_ad_text1">小维E家</string>
-    <string name="login_ad_text2">从心出发</string>
-    <string name="login_ad_text3">有一种体贴，叫关注</string>
     <string name="login_found_pwd">忘记密码?</string>
 
     <!-- 注册相关 -->
     <string name="register">注册</string>
-    <string name="register_phone_mail_input">请输入手机号/邮箱</string>
-    <string name="register_conflict">该手机号或邮箱地址已被注册</string>
+    <string name="register_phone_mail_input">请输入手机号</string>
+    <string name="register_conflict">该手机号已被注册</string>
     <string name="register_no_conflict">恭喜，该账号可注册</string>
     <string name="register_phone_input">请输入手机号</string>
     <string name="register_phone_input_error">请输入正确的手机号</string>

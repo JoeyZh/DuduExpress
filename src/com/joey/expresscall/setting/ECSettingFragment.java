@@ -52,6 +52,7 @@ public class ECSettingFragment extends BaseFragment{
 			mapList.add(map);
 		}
 		mAdapter = new ECSimpleAdapter1(currentView.getContext(), mapList, R.layout.simple_item_layout_1, keys, ids);
+		mAdapter.setEnableChecked(true);
 		settingListView.setAdapter(mAdapter);
 	}
 

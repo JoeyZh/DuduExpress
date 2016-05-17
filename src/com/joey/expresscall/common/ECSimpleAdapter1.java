@@ -18,6 +18,7 @@ public class ECSimpleAdapter1 extends SimpleAdapter{
 	private int adapterType = SIMPLE_ADAPTER_TYPE_LOGO;
 	protected List<? extends Map<String, ?>> mData;
 	private Context mContext;
+	private boolean enable;
 
 	public ECSimpleAdapter1(Context context,
 			List<? extends Map<String, ?>> data, int resource, String[] from,
@@ -33,6 +34,11 @@ public class ECSimpleAdapter1 extends SimpleAdapter{
 	public View getView(int position, View convertView, ViewGroup parent) {
 		// TODO Auto-generated method stub
 		View view = super.getView(position, convertView, parent);
+		if(enable){
+			view.findViewById(R.id.item_simple1_checkbox).setVisibility(View.VISIBLE);
+		}else{
+			view.findViewById(R.id.item_simple1_checkbox).setVisibility(View.GONE);
+		}
 		switch(adapterType){
 			case SIMPLE_ADAPTER_TYPE_LOGO:
 				view.findViewById(R.id.item_text_tag).setVisibility(View.GONE);
@@ -49,6 +55,10 @@ public class ECSimpleAdapter1 extends SimpleAdapter{
 	}
 
 
+	public void setEnableChecked(boolean enable ){
+		this.enable = enable;
+		notifyDataSetChanged();
+	}
 
 	/**
 	 * 

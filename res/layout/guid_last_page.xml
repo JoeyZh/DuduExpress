@@ -1,17 +1,19 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/guide_4">
+    android:background="@drawable/guide_4" >
 
     <Button
         android:id="@+id/bt_login"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/default_btn_height"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="50dp"
-        android:background="@drawable/btn_default_bg_selector"
+        style="@style/btn_default_style"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"        
         android:text="@string/start_now"
-        android:textColor="@color/main_color" />
+         />
 
 </RelativeLayout>

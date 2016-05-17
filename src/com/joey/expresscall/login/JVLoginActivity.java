@@ -133,6 +133,7 @@ public class JVLoginActivity extends BaseActivity {
                     login(userName, password);
                     break;
                 }
+                case R.id.register_layout:
                 case R.id.register_textview: {// 注册
 //                    Analysis.analysisClickEvent(JVLoginActivity.this, "Register");
                     Intent registerIntent = new Intent(JVLoginActivity.this,
@@ -186,6 +187,8 @@ public class JVLoginActivity extends BaseActivity {
 
         registerTV = (TextView) findViewById(R.id.register_textview);
         registerTV.setOnClickListener(mOnClickListener);
+        View registerLayout = findViewById(R.id.register_layout);
+        registerLayout.setOnClickListener(mOnClickListener);
         findPassTV = (TextView) findViewById(R.id.findpass_textview);
         findPassTV.setOnClickListener(mOnClickListener);
 
