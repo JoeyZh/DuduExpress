@@ -251,19 +251,18 @@
     <string name="error_customize_account_exception">账号登录异常，请重新登录</string>
     <string name="error_no_sdcard">没有SD卡，无法存储录音数据</string>
     <string name="error_state_record">正在录音中，请先停止录音</string>
-
+    <string name="call_add_contasts">接收人 : </string>
     <string-array name="array_add_tag">
-        <item>接收人:</item>
         <item>通知方式:</item>
         <item>选择模板:</item>
     </string-array>
-    
+
     <string-array name="array_setting_list">
         <item>修改密码</item>
         <item>定时设置</item>
         <item>资费介绍</item>
     </string-array>
-    
+
     <string name="press_to_talk">按住说话</string>
 
 </resources>
