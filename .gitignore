@@ -3,5 +3,5 @@
 /gen
 .bak
 /build/*
-/app/build/*
+/DuduExpress/build/*
 *.apk
