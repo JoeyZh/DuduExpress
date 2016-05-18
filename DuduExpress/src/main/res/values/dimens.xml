@@ -1,0 +1,54 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!-- 几种margin值的定义 -->
+    <dimen name="layout_mid_margin">15dp</dimen>
+    <dimen name="layout_max_margin">24dp</dimen>
+    <dimen name="layout_exlarge_margin">41dp</dimen>
+    <dimen name="layout_large_margin">34dp</dimen>
+    <dimen name="layout_min1_margin">3dp</dimen>
+    <dimen name="layout_min_margin">9dp</dimen>
+    <dimen name="format_item_height">48dp</dimen>
+    <dimen name="square_btn_height">40dp</dimen>
+    <dimen name="dev_set_right_margin">10dp</dimen>
+
+    <!-- 我的设备 -->
+    <dimen name="mydevice_head_height">95dp</dimen>
+    <dimen name="mydevice_head_margin_bottom">13dp</dimen>
+    <dimen name="mydevice_head_item_margin_top">15dp</dimen>
+    <dimen name="mydevice_head_item_margin">35dp</dimen>
+    <dimen name="mydevice_segment_height">14dp</dimen>
+    <dimen name="mydevice_item_horizontal_spacing">69dp</dimen>
+    <dimen name="mydevice_list_item_margin">17dp</dimen>
+    <dimen name="mydevice_item_tool_height">45dp</dimen>
+    <dimen name="mydevice_item_margin">10dp</dimen>
+    <dimen name="mydevice_item_content_heght">155dp</dimen>
+
+    <!-- 设备分享 -->
+    <dimen name="share_device_margin">20dp</dimen>
+    <dimen name="share_device_margin_top">15dp</dimen>
+    <dimen name="share_device_padding">10dp</dimen>
+
+
+    <!-- 文字部分 -->
+    <dimen name="text_exmin_size">9sp</dimen>
+    <dimen name="text_min_size">14sp</dimen>
+    <dimen name="text_mid_size">16sp</dimen>
+    <dimen name="text_max_size">20sp</dimen>
+    <dimen name="text_large_size">30sp</dimen>
+
+    <!-- 标题栏高度 -->
+    <dimen name="topbar_height">50dp</dimen>
+    <!-- 分隔线高度 -->
+    <dimen name="divide_line_height">1dp</dimen>
+    <dimen name="default_edit_height">48dp</dimen>
+    <dimen name="default_btn_height">40dp</dimen>
+    <dimen name="default_cursor_width">1.5dp</dimen>
+    <dimen name="tab_layout_height">55dp</dimen>
+    <dimen name="tab_bar_item">35dp</dimen>
+    
+    <dimen name="btn_record_circle_height">150dp</dimen>
+</resources>

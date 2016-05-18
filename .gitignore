@@ -4,4 +4,8 @@
 .bak
 /build/*
 /DuduExpress/build/*
+/.gradle/
+/.idea/
+local.properties
+/.settings/
 *.apk

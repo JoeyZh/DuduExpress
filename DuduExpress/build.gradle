@@ -1,0 +1,24 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 19
+    buildToolsVersion "23.0.3"
+
+    defaultConfig {
+        applicationId "com.joey.expresscall"
+        minSdkVersion 12
+        targetSdkVersion 12
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+}
+
+dependencies {
+    compile files('libs/android-support-v4.jar')
+    compile files('libs/fastjson-1.2.7.jar')
+}

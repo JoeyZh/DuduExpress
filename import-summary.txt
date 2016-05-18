@@ -1,0 +1,271 @@
+ECLIPSE ANDROID PROJECT IMPORT SUMMARY
+======================================
+
+Ignored Files:
+--------------
+The following files were *not* copied into the new Gradle project; you
+should evaluate whether these are still needed in your project and if
+so manually move them:
+
+* .gitignore
+* .idea\
+* .idea\.name
+* .idea\compiler.xml
+* .idea\copyright\
+* .idea\copyright\profiles_settings.xml
+* .idea\encodings.xml
+* .idea\misc.xml
+* .idea\workspace.xml
+* DuduExpress\
+* DuduExpress\build.gradle
+* DuduExpress\libs\
+* DuduExpress\libs\android-support-v4.jar
+* DuduExpress\libs\fastjson-1.2.7.jar
+* DuduExpress\src\
+* DuduExpress\src\main\
+* DuduExpress\src\main\AndroidManifest.xml
+* DuduExpress\src\main\java\
+* DuduExpress\src\main\java\com\
+* DuduExpress\src\main\java\com\joey\
+* DuduExpress\src\main\java\com\joey\expresscall\
+* DuduExpress\src\main\java\com\joey\expresscall\AppConsts.java
+* DuduExpress\src\main\java\com\joey\expresscall\MainActivity.java
+* DuduExpress\src\main\java\com\joey\expresscall\TabBarItem.java
+* DuduExpress\src\main\java\com\joey\expresscall\TabFragmentActivity.java
+* DuduExpress\src\main\java\com\joey\expresscall\TabHost.java
+* DuduExpress\src\main\java\com\joey\expresscall\account\
+* DuduExpress\src\main\java\com\joey\expresscall\account\ECAccountManager.java
+* DuduExpress\src\main\java\com\joey\expresscall\account\ECCallManager.java
+* DuduExpress\src\main\java\com\joey\expresscall\addfile\
+* DuduExpress\src\main\java\com\joey\expresscall\addfile\ECAddFileActivity.java
+* DuduExpress\src\main\java\com\joey\expresscall\common\
+* DuduExpress\src\main\java\com\joey\expresscall\common\CheckableLayout.java
+* DuduExpress\src\main\java\com\joey\expresscall\common\ECSearchView.java
+* DuduExpress\src\main\java\com\joey\expresscall\common\ECSimpleAdapter1.java
+* DuduExpress\src\main\java\com\joey\expresscall\contacts\
+* DuduExpress\src\main\java\com\joey\expresscall\contacts\ECContactsFragment.java
+* DuduExpress\src\main\java\com\joey\expresscall\file\
+* DuduExpress\src\main\java\com\joey\expresscall\file\FileListFragment.java
+* DuduExpress\src\main\java\com\joey\expresscall\login\
+* DuduExpress\src\main\java\com\joey\expresscall\login\JVAccountAdapter.java
+* DuduExpress\src\main\java\com\joey\expresscall\login\JVFoundPasswordActivity.java
+* DuduExpress\src\main\java\com\joey\expresscall\login\JVLoginActivity.java
+* DuduExpress\src\main\java\com\joey\expresscall\login\JVRegisterActivity.java
+* DuduExpress\src\main\java\com\joey\expresscall\main\
+* DuduExpress\src\main\java\com\joey\expresscall\main\ECFileItemAdapter.java
+* DuduExpress\src\main\java\com\joey\expresscall\main\ECMainFragment.java
+* DuduExpress\src\main\java\com\joey\expresscall\protocol\
+* DuduExpress\src\main\java\com\joey\expresscall\protocol\BackgroundHandler.java
+* DuduExpress\src\main\java\com\joey\expresscall\protocol\CommonHandler.java
+* DuduExpress\src\main\java\com\joey\expresscall\protocol\JVTask.java
+* DuduExpress\src\main\java\com\joey\expresscall\protocol\RequestError.java
+* DuduExpress\src\main\java\com\joey\expresscall\protocol\RequestHandler.java
+* DuduExpress\src\main\java\com\joey\expresscall\protocol\ResponseListener.java
+* DuduExpress\src\main\java\com\joey\expresscall\protocol\SimpleTask.java
+* DuduExpress\src\main\java\com\joey\expresscall\protocol\TaskBuilder.java
+* DuduExpress\src\main\java\com\joey\expresscall\protocol\comm\
+* DuduExpress\src\main\java\com\joey\expresscall\protocol\comm\ECAccountInterface.java
+* DuduExpress\src\main\java\com\joey\expresscall\protocol\comm\ECCallInterface.java
+* DuduExpress\src\main\java\com\joey\expresscall\protocol\comm\ECNetUrlConsts.java
+* DuduExpress\src\main\java\com\joey\expresscall\protocol\comm\HttpComm.java
+* DuduExpress\src\main\java\com\joey\expresscall\protocol\comm\IHttpComm.java
+* DuduExpress\src\main\java\com\joey\expresscall\protocol\comm\InterfaceTestDemo.java
+* DuduExpress\src\main\java\com\joey\expresscall\record\
+* DuduExpress\src\main\java\com\joey\expresscall\record\AudioFileFunc.java
+* DuduExpress\src\main\java\com\joey\expresscall\record\AudioRecordFunc.java
+* DuduExpress\src\main\java\com\joey\expresscall\record\ErrorCode.java
+* DuduExpress\src\main\java\com\joey\expresscall\record\MainActivity.java
+* DuduExpress\src\main\java\com\joey\expresscall\record\MediaRecordFunc.java
+* DuduExpress\src\main\java\com\joey\expresscall\service\
+* DuduExpress\src\main\java\com\joey\expresscall\service\CoreService.java
+* DuduExpress\src\main\java\com\joey\expresscall\setting\
+* DuduExpress\src\main\java\com\joey\expresscall\setting\ECSettingFragment.java
+* DuduExpress\src\main\java\com\joey\expresscall\storage\
+* DuduExpress\src\main\java\com\joey\expresscall\storage\JVAccount.java
+* DuduExpress\src\main\java\com\joey\expresscall\storage\JVDbHelper.java
+* DuduExpress\src\main\java\com\joey\expresscall\storage\JVDevice.java
+* DuduExpress\src\main\java\com\joey\expresscall\test\
+* DuduExpress\src\main\java\com\joey\expresscall\test\ECInterfaceTest.java
+* DuduExpress\src\main\java\com\joey\expresscall\welcome\
+* DuduExpress\src\main\java\com\joey\expresscall\welcome\GuideContoler.java
+* DuduExpress\src\main\java\com\joey\expresscall\welcome\GuideViewPagerAdapter.java
+* DuduExpress\src\main\java\com\joey\expresscall\welcome\JVGuidActivity.java
+* DuduExpress\src\main\java\com\joey\expresscall\welcome\JVWelcomeActivity.java
+* DuduExpress\src\main\java\com\joey\general\
+* DuduExpress\src\main\java\com\joey\general\BaseActivity.java
+* DuduExpress\src\main\java\com\joey\general\BaseFragment.java
+* DuduExpress\src\main\java\com\joey\general\MainApplication.java
+* DuduExpress\src\main\java\com\joey\general\MyActivityManager.java
+* DuduExpress\src\main\java\com\joey\general\OnCreateInterface.java
+* DuduExpress\src\main\java\com\joey\general\utils\
+* DuduExpress\src\main\java\com\joey\general\utils\CheckPhoneNumber.java
+* DuduExpress\src\main\java\com\joey\general\utils\CommonUtil.java
+* DuduExpress\src\main\java\com\joey\general\utils\DateUtil.java
+* DuduExpress\src\main\java\com\joey\general\utils\MobileUtil.java
+* DuduExpress\src\main\java\com\joey\general\utils\MyLog.java
+* DuduExpress\src\main\java\com\joey\general\utils\MySharedPreference.java
+* DuduExpress\src\main\java\com\joey\general\utils\MySharedPreferencesConsts.java
+* DuduExpress\src\main\java\com\joey\general\utils\NetWorkUtil.java
+* DuduExpress\src\main\java\com\joey\general\utils\RegularUtil.java
+* DuduExpress\src\main\java\com\joey\general\utils\ResourcesUnusualUtil.java
+* DuduExpress\src\main\java\com\joey\general\utils\ToastUtil.java
+* DuduExpress\src\main\java\com\joey\general\views\
+* DuduExpress\src\main\java\com\joey\general\views\BadgeView.java
+* DuduExpress\src\main\java\com\joey\general\views\MarqueeTextView.java
+* DuduExpress\src\main\java\com\joey\general\views\TopBarLayout.java
+* DuduExpress\src\main\res\
+* DuduExpress\src\main\res\anim\
+* DuduExpress\src\main\res\anim\loading_animation.xml
+* DuduExpress\src\main\res\anim\rotate_180.xml
+* DuduExpress\src\main\res\anim\rotate_ccw_180.xml
+* DuduExpress\src\main\res\drawable-hdpi\
+* DuduExpress\src\main\res\drawable-hdpi\ic_launcher.png
+* DuduExpress\src\main\res\drawable-mdpi\
+* DuduExpress\src\main\res\drawable-mdpi\ic_launcher.png
+* DuduExpress\src\main\res\drawable-xhdpi\
+* DuduExpress\src\main\res\drawable-xhdpi\cloud_downed.png
+* DuduExpress\src\main\res\drawable-xhdpi\ic_launcher.png
+* DuduExpress\src\main\res\drawable-xhdpi\icon_add.png
+* DuduExpress\src\main\res\drawable-xhdpi\icon_album_photo.png
+* DuduExpress\src\main\res\drawable-xhdpi\icon_back.png
+* DuduExpress\src\main\res\drawable-xhdpi\icon_checkbox_normal2.png
+* DuduExpress\src\main\res\drawable-xhdpi\icon_checkbox_selected2.png
+* DuduExpress\src\main\res\drawable-xhdpi\icon_delete_x.png
+* DuduExpress\src\main\res\drawable-xhdpi\icon_dot_default.png
+* DuduExpress\src\main\res\drawable-xhdpi\icon_dot_selected.png
+* DuduExpress\src\main\res\drawable-xhdpi\icon_edit_right_arrow.png
+* DuduExpress\src\main\res\drawable-xhdpi\icon_login_item_delete.png
+* DuduExpress\src\main\res\drawable-xhdpi\icon_right_arrow.png
+* DuduExpress\src\main\res\drawable-xhdpi\icon_warn.png
+* DuduExpress\src\main\res\drawable-xhdpi\loading1.png
+* DuduExpress\src\main\res\drawable-xhdpi\tabbar_discover.png
+* DuduExpress\src\main\res\drawable-xhdpi\tabbar_discover_selected.png
+* DuduExpress\src\main\res\drawable-xhdpi\tabbar_home.png
+* DuduExpress\src\main\res\drawable-xhdpi\tabbar_home_selected.png
+* DuduExpress\src\main\res\drawable-xhdpi\tabbar_message_center.png
+* DuduExpress\src\main\res\drawable-xhdpi\tabbar_message_center_selected.png
+* DuduExpress\src\main\res\drawable-xhdpi\tabbar_profile.png
+* DuduExpress\src\main\res\drawable-xhdpi\tabbar_profile_selected.png
+* DuduExpress\src\main\res\drawable-xxhdpi\
+* DuduExpress\src\main\res\drawable-xxhdpi\guide_1.jpg
+* DuduExpress\src\main\res\drawable-xxhdpi\guide_2.jpg
+* DuduExpress\src\main\res\drawable-xxhdpi\guide_3.jpg
+* DuduExpress\src\main\res\drawable-xxhdpi\guide_4.jpg
+* DuduExpress\src\main\res\drawable-xxhdpi\ic_launcher.png
+* DuduExpress\src\main\res\drawable\
+* DuduExpress\src\main\res\drawable\bg_circle_blue.xml
+* DuduExpress\src\main\res\drawable\bg_circle_green.xml
+* DuduExpress\src\main\res\drawable\bg_circle_green_20.xml
+* DuduExpress\src\main\res\drawable\bg_circle_green_stroke.xml
+* DuduExpress\src\main\res\drawable\bg_circle_red.xml
+* DuduExpress\src\main\res\drawable\bg_cursor_default.xml
+* DuduExpress\src\main\res\drawable\bg_default_edit.xml
+* DuduExpress\src\main\res\drawable\bg_shape_with_corner.xml
+* DuduExpress\src\main\res\drawable\bg_with_segment.xml
+* DuduExpress\src\main\res\drawable\btn_checkbox_selector.xml
+* DuduExpress\src\main\res\drawable\btn_default_bg_selector.xml
+* DuduExpress\src\main\res\drawable\btn_default_normal_bg.xml
+* DuduExpress\src\main\res\drawable\btn_default_pressed_bg.xml
+* DuduExpress\src\main\res\drawable\btn_default_unenable_bg.xml
+* DuduExpress\src\main\res\drawable\btn_gray_bg.xml
+* DuduExpress\src\main\res\drawable\btn_gray_selector.xml
+* DuduExpress\src\main\res\drawable\btn_record_circle_selector.xml
+* DuduExpress\src\main\res\drawable\btn_red_bg_selector.xml
+* DuduExpress\src\main\res\drawable\btn_red_normal_bg.xml
+* DuduExpress\src\main\res\drawable\btn_red_pressed_bg.xml
+* DuduExpress\src\main\res\drawable\btn_red_unenable_bg.xml
+* DuduExpress\src\main\res\drawable\btn_stroke_bg.xml
+* DuduExpress\src\main\res\drawable\btn_text_selector.xml
+* DuduExpress\src\main\res\drawable\loading_dialog_bg.xml
+* DuduExpress\src\main\res\drawable\shape_indicator_selected_oval.xml
+* DuduExpress\src\main\res\drawable\shape_indicator_selected_rect.xml
+* DuduExpress\src\main\res\drawable\shape_indicator_unselected_oval.xml
+* DuduExpress\src\main\res\drawable\shape_indicator_unselected_rect.xml
+* DuduExpress\src\main\res\drawable\tabbar_files_selector.xml
+* DuduExpress\src\main\res\drawable\tabbar_info_selector.xml
+* DuduExpress\src\main\res\drawable\tabbar_main_selector.xml
+* DuduExpress\src\main\res\layout\
+* DuduExpress\src\main\res\layout\activity_fragment_base_view.xml
+* DuduExpress\src\main\res\layout\activity_main.xml
+* DuduExpress\src\main\res\layout\activity_tab_fragment.xml
+* DuduExpress\src\main\res\layout\add_file_layout.xml
+* DuduExpress\src\main\res\layout\common_divider.xml
+* DuduExpress\src\main\res\layout\common_titlebar_view.xml
+* DuduExpress\src\main\res\layout\contacts_list_layout.xml
+* DuduExpress\src\main\res\layout\divider_horizontal.xml
+* DuduExpress\src\main\res\layout\foundpwd_first_tip_layout.xml
+* DuduExpress\src\main\res\layout\foundpwd_layout.xml
+* DuduExpress\src\main\res\layout\foundpwd_reset_pwd_layout.xml
+* DuduExpress\src\main\res\layout\guid_last_page.xml
+* DuduExpress\src\main\res\layout\guid_layout.xml
+* DuduExpress\src\main\res\layout\guid_viewpager_layout.xml
+* DuduExpress\src\main\res\layout\item_tab_bar.xml
+* DuduExpress\src\main\res\layout\loading_dialog.xml
+* DuduExpress\src\main\res\layout\login_account_item.xml
+* DuduExpress\src\main\res\layout\login_layout.xml
+* DuduExpress\src\main\res\layout\main_add_file_layout.xml
+* DuduExpress\src\main\res\layout\main_fragment_layout.xml
+* DuduExpress\src\main\res\layout\main_user_info.xml
+* DuduExpress\src\main\res\layout\register_first_tip_layout.xml
+* DuduExpress\src\main\res\layout\register_layout.xml
+* DuduExpress\src\main\res\layout\register_second_tip_layout.xml
+* DuduExpress\src\main\res\layout\search_view_layout.xml
+* DuduExpress\src\main\res\layout\setting_layout.xml
+* DuduExpress\src\main\res\layout\simple_item_extra_layout.xml
+* DuduExpress\src\main\res\layout\simple_item_layout_1.xml
+* DuduExpress\src\main\res\layout\topbar_layout.xml
+* DuduExpress\src\main\res\layout\welcome_layout.xml
+* DuduExpress\src\main\res\values-large\
+* DuduExpress\src\main\res\values-large\styles.xml
+* DuduExpress\src\main\res\values-sw600dp\
+* DuduExpress\src\main\res\values-sw600dp\dimens.xml
+* DuduExpress\src\main\res\values-sw720dp-land\
+* DuduExpress\src\main\res\values-sw720dp-land\dimens.xml
+* DuduExpress\src\main\res\values-v11\
+* DuduExpress\src\main\res\values-v11\styles.xml
+* DuduExpress\src\main\res\values-v14\
+* DuduExpress\src\main\res\values-v14\styles.xml
+* DuduExpress\src\main\res\values-w820dp\
+* DuduExpress\src\main\res\values-w820dp\dimens.xml
+* DuduExpress\src\main\res\values\
+* DuduExpress\src\main\res\values\colors.xml
+* DuduExpress\src\main\res\values\dimens.xml
+* DuduExpress\src\main\res\values\strings.xml
+* DuduExpress\src\main\res\values\styles.xml
+* build.gradle
+* gradle\
+* gradle\wrapper\
+* gradle\wrapper\gradle-wrapper.jar
+* gradle\wrapper\gradle-wrapper.properties
+* gradlew
+* gradlew.bat
+* ic_launcher-web.png
+* mobo.log
+* proguard-project.txt
+* settings.gradle
+
+Moved Files:
+------------
+Android Gradle projects use a different directory structure than ADT
+Eclipse projects. Here's how the projects were restructured:
+
+* AndroidManifest.xml => DuduExpress\src\main\AndroidManifest.xml
+* libs\android-support-v4.jar => DuduExpress\libs\android-support-v4.jar
+* libs\fastjson-1.2.7.jar => DuduExpress\libs\fastjson-1.2.7.jar
+* res\ => DuduExpress\src\main\res\
+* src\ => DuduExpress\src\main\java\
+
+Next Steps:
+-----------
+You can now build the project. The Gradle project needs network
+connectivity to download dependencies.
+
+Bugs:
+-----
+If for some reason your project does not build, and you determine that
+it is due to a bug or limitation of the Eclipse to Gradle importer,
+please file a bug at http://b.android.com with category
+Component-Tools.
+
+(This import summary is for your information only, and can be deleted
+after import once you are satisfied with the results.)

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:background="@color/main_color" >
+
+        <LinearLayout
+            android:id="@+id/layout_menu_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/topbar_height"
+            android:layout_alignParentRight="true"
+            android:background="@color/main_hint_color"
+            android:orientation="horizontal" >
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/img_user_logo"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="@dimen/layout_mid_margin"
+            android:layout_marginTop="@dimen/layout_min_margin"
+            android:src="@drawable/ic_launcher" />
+
+        <TextView
+            android:id="@+id/text_user_info"
+            style="@style/text_mid_style"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/img_user_logo"
+            android:layout_marginRight="@dimen/layout_min_margin"
+            android:layout_toRightOf="@+id/img_user_logo"
+            android:text="15264182313"
+            android:textColor="@color/white" />
+
+        <RelativeLayout
+            android:id="@+id/layout_text_cost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/img_user_logo"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/img_user_logo"
+            android:layout_marginBottom="@dimen/layout_min_margin" >
+
+            <TextView
+                android:id="@+id/text_cost_warning"
+                style="@style/text_min_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/text_cost_retain"
+                android:layout_toRightOf="@+id/text_cost_retain"
+                android:text="余额不足"
+                android:textColor="@color/yellow" />
+
+            <TextView
+                android:id="@+id/text_cost_retain"
+                style="@style/text_large_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/text_cost_info"
+                android:text="10.00元"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/text_cost_info"
+                style="@style/text_min_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:text="【数据仅供参考，点击查看详情】"
+                android:textColor="@color/white" />
+        </RelativeLayout>
+    </RelativeLayout>
+    
+
+</LinearLayout>

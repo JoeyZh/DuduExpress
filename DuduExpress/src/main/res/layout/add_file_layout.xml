@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <ListView
+            android:id="@+id/add_file_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@null"
+            android:dividerHeight="0dp" />
+
+        <TabHost
+            android:id="@+id/tabhost_add_file"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical" >
+
+                <TabWidget
+                    android:id="@android:id/tabs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+                </TabWidget>
+
+                <FrameLayout
+                    android:id="@android:id/tabcontent"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="@dimen/layout_mid_margin" >
+
+                    <RelativeLayout
+                        android:id="@+id/add_file_record_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" >
+
+                        <Button
+                            android:id="@+id/btn_add_file_record"
+                            android:layout_width="@dimen/btn_record_circle_height"
+                            android:layout_height="@dimen/btn_record_circle_height"
+                            android:layout_centerInParent="true"
+                            android:background="@drawable/btn_record_circle_selector"
+                            android:text="@string/press_to_talk"
+                            android:textColor="@color/white" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/add_file_edit_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" >
+
+                        <EditText
+                            android:id="@+id/edit_add_file_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_centerInParent="true"
+                            android:gravity="top|left"
+                            android:hint="请输入发送内容" />
+                    </RelativeLayout>
+                </FrameLayout>
+            </LinearLayout>
+        </TabHost>
+    </LinearLayout>
+
+</ScrollView>
