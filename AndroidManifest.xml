@@ -31,6 +31,7 @@
         <activity android:name=".welcome.JVGuidActivity"></activity>
         <activity android:name=".addfile.ECAddFileActivity"></activity>
         <activity android:name=".contacts.PhoneContactsActivity"></activity>
+        <activity android:name=".contacts.library.ContactsActivity"></activity>
 
         <!-- 接口测试 -->
         <activity

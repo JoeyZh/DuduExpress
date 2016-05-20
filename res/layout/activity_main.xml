@@ -26,24 +26,6 @@
         android:background="@color/main_tab_background"
         android:orientation="horizontal" >
 
-        <!--
-        <com.joey.expresscall.TabBarItem
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="fill_parent"
-            android:id="@+id/tab0" />
-        <com.joey.expresscall.TabBarItem
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="fill_parent"
-            android:id="@+id/tab1"
-            />
-        <com.joey.expresscall.TabBarItem
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="fill_parent"
-            android:id="@+id/tab2" />
-        -->
     </LinearLayout>
 
 </RelativeLayout>

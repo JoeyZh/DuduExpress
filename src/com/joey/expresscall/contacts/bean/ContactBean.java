@@ -1,8 +1,9 @@
 package com.joey.expresscall.contacts.bean;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
-public class ContactBean {
+public class ContactBean implements Serializable {
 
 	private int contactId; //id
 	private String desplayName;//姓名

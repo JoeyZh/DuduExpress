@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.joey.expresscall.R;
+import com.joey.expresscall.contacts.library.ContactsActivity;
 import com.joey.general.BaseFragment;
 
 import java.util.zip.Inflater;
@@ -17,7 +18,7 @@ public class ECContactsFragment extends BaseFragment {
 	private View.OnClickListener clickListener = new View.OnClickListener() {
 		@Override
 		public void onClick(View v) {
-			Intent intent = new Intent(getActivity(),PhoneContactsActivity.class);
+			Intent intent = new Intent(getActivity(),ContactsActivity.class);
 			startActivity(intent);
 		}
 	};
