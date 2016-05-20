@@ -1,5 +1,6 @@
 package com.joey.expresscall.contacts;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,7 +9,18 @@ import android.view.ViewGroup;
 import com.joey.expresscall.R;
 import com.joey.general.BaseFragment;
 
+import java.util.zip.Inflater;
+
 public class ECContactsFragment extends BaseFragment {
+
+	private View layoutShowContact;
+	private View.OnClickListener clickListener = new View.OnClickListener() {
+		@Override
+		public void onClick(View v) {
+			Intent intent = new Intent(getActivity(),PhoneContactsActivity.class);
+			startActivity(intent);
+		}
+	};
 
 	@Override
 	protected View createView(LayoutInflater inflater, ViewGroup container,
@@ -28,7 +40,8 @@ public class ECContactsFragment extends BaseFragment {
 	@Override
 	public void initUi() {
 		// TODO Auto-generated method stub
-
+		layoutShowContact = currentView.findViewById(R.id.contact_layout_show);
+		layoutShowContact.setOnClickListener(clickListener);
 	}
 
 	@Override

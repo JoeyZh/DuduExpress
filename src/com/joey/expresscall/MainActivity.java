@@ -8,6 +8,7 @@ import com.joey.expresscall.contacts.ECContactsFragment;
 import com.joey.expresscall.main.ECMainFragment;
 import com.joey.expresscall.setting.ECSettingFragment;
 import com.joey.general.BaseActivity;
+import com.joey.general.tab.TabHost;
 
 public class MainActivity extends BaseActivity {
 
@@ -37,9 +38,9 @@ public class MainActivity extends BaseActivity {
         settingFragment = new ECSettingFragment();
         contactsFragment = new ECContactsFragment();
         
-        tabHost.addTab("主页",R.drawable.tabbar_main_selector, mainFragment);
-        tabHost.addTab("联系人",R.drawable.tabbar_info_selector , contactsFragment);
-        tabHost.addTab("文件",R.drawable.tabbar_files_selector , settingFragment);
+        tabHost.addTab("主页",R.drawable.tabbar_main_selector,R.drawable.tabbar_home_selected, mainFragment);
+        tabHost.addTab("联系人",R.drawable.tabbar_info_selector ,R.drawable.tabbar_profile_selected, contactsFragment);
+        tabHost.addTab("文件",R.drawable.tabbar_files_selector ,R.drawable.tabbar_message_center_selected, settingFragment);
         
        tabHost.changeToIndex(0);
         

@@ -91,7 +91,6 @@ public class TopBarLayout extends RelativeLayout {
         alarmNetLayout = (RelativeLayout) findViewById(R.id.alarmnet);
         alarmText = (TextView) findViewById(R.id.warning_textview);
         topBarContentLayout = (RelativeLayout) findViewById(R.id.topbar_content_layout);
-        mRightArrow = (ImageView) findViewById(R.id.iv_right_arrow);
         mRightText = (TextView) findViewById(R.id.tv_right);
     }
 

@@ -102,7 +102,6 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginRight="10dp"
-            android:layout_toLeftOf="@+id/iv_right_arrow"
             android:layout_toRightOf="@+id/warning_img"
             android:singleLine="false"
             android:text="@string/network_error_tips"

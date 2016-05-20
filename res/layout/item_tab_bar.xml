@@ -12,6 +12,7 @@
         android:layout_height="@dimen/tab_bar_item"
         android:layout_centerHorizontal="true"
         android:focusable="true"
+        android:src="@drawable/tabbar_discover_selected"
         android:focusableInTouchMode="true"
          />
 
@@ -23,8 +24,9 @@
         android:layout_below="@+id/tab_item_image"
         android:layout_centerHorizontal="true"
         android:focusable="false"
+        android:singleLine="true"
         android:focusableInTouchMode="false"
         android:gravity="top|center_horizontal"
-        android:text="tab" />
+        android:text="tabgadggad" />
 
 </RelativeLayout>

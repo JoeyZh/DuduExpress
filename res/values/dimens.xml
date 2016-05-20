@@ -34,7 +34,7 @@
 
 
     <!-- 文字部分 -->
-    <dimen name="text_exmin_size">9sp</dimen>
+    <dimen name="text_exmin_size">12sp</dimen>
     <dimen name="text_min_size">14sp</dimen>
     <dimen name="text_mid_size">16sp</dimen>
     <dimen name="text_max_size">20sp</dimen>
@@ -48,7 +48,7 @@
     <dimen name="default_btn_height">40dp</dimen>
     <dimen name="default_cursor_width">1.5dp</dimen>
     <dimen name="tab_layout_height">55dp</dimen>
-    <dimen name="tab_bar_item">35dp</dimen>
+    <dimen name="tab_bar_item">30dp</dimen>
     
     <dimen name="btn_record_circle_height">150dp</dimen>
 </resources>

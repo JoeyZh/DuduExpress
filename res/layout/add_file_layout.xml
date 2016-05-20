@@ -1,12 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical" >
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/default_edit_height"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/layout_mid_margin">
+
+            <TextView
+                android:id="@+id/text_contacts_tag"
+                style="@style/text_mid_style"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/default_edit_height"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:text="@string/call_add_contasts"
+                android:textColor="@color/text_color_gray8e" />
+
+            <ImageView
+                android:id="@+id/item_img_logo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/layout_min_margin"
+                android:layout_marginRight="@dimen/layout_min_margin"
+                android:background="@android:color/transparent"
+                android:gravity="center_vertical"
+                android:src="@drawable/icon_add" />
+
+            <TextView
+                android:id="@+id/text_contacts_list"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/text_contacts_selected"
+                style="@style/text_exmin_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:text="选择0人"
+                android:textColor="@color/text_color_gray8e" />
+
+            <ImageView
+                android:id="@+id/img_indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:scaleType="center"
+                android:src="@drawable/icon_right_arrow" />
+        </LinearLayout>
+
+        <include layout="@layout/common_divider" />
+
+        <include layout="@layout/simple_item_layout_1" />
+
+        <include layout="@layout/simple_item_layout_1" />
 
         <ListView
             android:id="@+id/add_file_list"
@@ -18,54 +76,30 @@
         <TabHost
             android:id="@+id/tabhost_add_file"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" >
+            android:layout_height="match_parent"
+            android:layout_weight="1">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <TabWidget
                     android:id="@android:id/tabs"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" >
-                </TabWidget>
+                    android:layout_height="wrap_content"></TabWidget>
 
                 <FrameLayout
                     android:id="@android:id/tabcontent"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:padding="@dimen/layout_mid_margin" >
+                    android:background="@color/yellow"
+                    android:padding="@dimen/layout_mid_margin">
 
-                    <RelativeLayout
-                        android:id="@+id/add_file_record_layout"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" >
+                    <include layout="@layout/add_record_layout" />
 
-                        <Button
-                            android:id="@+id/btn_add_file_record"
-                            android:layout_width="@dimen/btn_record_circle_height"
-                            android:layout_height="@dimen/btn_record_circle_height"
-                            android:layout_centerInParent="true"
-                            android:background="@drawable/btn_record_circle_selector"
-                            android:text="@string/press_to_talk"
-                            android:textColor="@color/white" />
-                    </RelativeLayout>
+                    <include layout="@layout/add_text_layout" />
 
-                    <RelativeLayout
-                        android:id="@+id/add_file_edit_layout"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" >
-
-                        <EditText
-                            android:id="@+id/edit_add_file_text"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_centerInParent="true"
-                            android:gravity="top|left"
-                            android:hint="请输入发送内容" />
-                    </RelativeLayout>
                 </FrameLayout>
             </LinearLayout>
         </TabHost>

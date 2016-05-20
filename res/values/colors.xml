@@ -30,6 +30,7 @@
     <color name="playsurfacebg">#01000000</color>
     <color name="rulerbg">#394752</color>
     <color name="play_grey_area">#F9F9F9</color>
+    <color name="background">#F9F9F9</color>
 
     <!-- 登陆界面在线登陆按钮的橘黄色 -->
     <color name="login_color2">#FEA517</color>
@@ -53,7 +54,7 @@
     <color name="btn_red_color">#fa6567</color>
     <color name="btn_red_alpha_20_color">#20fa6567</color>
     <color name="text_hint_color">#999999</color>
-    
+
     <color name="blue_light">#47d1fd</color>
     <color name="red_light">#fa6567</color>
 
