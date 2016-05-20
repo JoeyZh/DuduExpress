@@ -28,12 +28,12 @@ public abstract class BaseFragment extends Fragment implements OnCreateInterface
     private View mTopBarView;
 
     protected View currentView;
-    
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // 设置日志标志
 //        TAG = AppConsts.LOG_PREFIX_FRAGMENT + this.getClass().getSimpleName();
-        TAG =  this.getClass().getSimpleName();
+        TAG = this.getClass().getSimpleName();
         ViewGroup view = (ViewGroup) inflater.inflate(R.layout.activity_fragment_base_view, null);
         LinearLayout contentContainer = (LinearLayout) view.findViewById(R.id.xiaowei_root_view);
 
@@ -69,6 +69,18 @@ public abstract class BaseFragment extends Fragment implements OnCreateInterface
         return null;
     }
 
+    public void setTitle(int resId) {
+        if (getTitleLayout() != -1 && mTopBarView instanceof TopBarLayout) {
+            ((TopBarLayout) mTopBarView).setTitle(resId);
+        }
+    }
+
+    public void setTitle(CharSequence text) {
+        if (getTitleLayout() != -1 && mTopBarView instanceof TopBarLayout) {
+            ((TopBarLayout) mTopBarView).setTitle(text);
+        }
+    }
+
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -89,22 +101,22 @@ public abstract class BaseFragment extends Fragment implements OnCreateInterface
          */
     }
 
-	@Override
-	public void onDestroyView() {
-		// TODO Auto-generated method stub
-		super.onDestroyView();
-		freeMe();
-	}
+    @Override
+    public void onDestroyView() {
+        // TODO Auto-generated method stub
+        super.onDestroyView();
+        freeMe();
+    }
 
-	
-	@Override
-	public void onPause() {
-		// TODO Auto-generated method stub
-		super.onPause();
-		saveSettings();
-	}
 
-	/**
+    @Override
+    public void onPause() {
+        // TODO Auto-generated method stub
+        super.onPause();
+        saveSettings();
+    }
+
+    /**
      * 子类重载该方法自定义标题布局文件<br />
      * 子类重载该方法返回-1,不显示标题
      *

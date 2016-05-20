@@ -37,7 +37,7 @@ import java.util.HashMap;
 /**
  * 抽象的活动基类，所有活动都应该继承这个类，并实现其抽象方法和接口
  *
- * @author neo
+ * @author Joey
  */
 public abstract class BaseActivity extends Activity implements OnCreateInterface {
 
@@ -349,6 +349,17 @@ public abstract class BaseActivity extends Activity implements OnCreateInterface
         }
     }
 
+    public void setTitle(int resId){
+        if(getTitleLayout() != -1 && mTopBarView instanceof  TopBarLayout){
+            ((TopBarLayout)mTopBarView).setTitle(resId);
+        }
+    }
+
+    public void setTitle(CharSequence text){
+        if(getTitleLayout() != -1 && mTopBarView instanceof  TopBarLayout){
+            ((TopBarLayout)mTopBarView).setTitle(text);
+        }
+    }
     /**
      * 子类重载该方法自定义标题布局文件<br />
      * 子类重载该方法返回-1,不显示标题

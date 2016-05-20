@@ -6,7 +6,7 @@
     <string name="waiting">加载中...</string>
     <string name="load_more">加载更多...</string>
     <string name="exiting">退出中...</string>
-    <string name="setting">设置中...</string>
+    <string name="on_setting">设置中...</string>
     <string name="tips">提示</string>
     <string name="username">用户名</string>
     <string name="password">密码</string>
@@ -264,5 +264,12 @@
     </string-array>
 
     <string name="press_to_talk">按住说话</string>
+    <string name="contact">联系人</string>
+    <string name="setting">设置</string>
+    <string name="bill_title">账单</string>
+    <string name="bill_detail">账单详情</string>
+    <string name="callList">呼叫记录</string>
+    <string name="callDetail">呼叫情况</string>
+
 
 </resources>

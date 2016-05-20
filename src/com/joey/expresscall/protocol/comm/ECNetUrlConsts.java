@@ -23,6 +23,10 @@ public class ECNetUrlConsts {
 	// 上传文件
 	public final static String DO_UPLOAD = "record/upload.do";
 
+	public final static String DO_CALL_LIST="record/callList.do";
+	public final static String DO_CALL_LIST_DETAIL="record/callListDetail.do";
+
+
 	public static String getFullUrl(String url) {
 		return DNS + url;
 	}

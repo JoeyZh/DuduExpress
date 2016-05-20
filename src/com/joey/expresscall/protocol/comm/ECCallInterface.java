@@ -110,7 +110,24 @@ public class ECCallInterface {
 
 		return jsonStr;
 	}
-	
+
+	public String getCallList(){
+		String URI = ECNetUrlConsts.getFullUrl(ECNetUrlConsts.DO_CALL_LIST);
+		HashMap param = new HashMap();
+		param.put("token", this.token);
+		String jsonStr = this.httpcomm.httpRequestPost(URI, param);
+		return jsonStr;
+	}
+
+	public String getCallListDetail(String callListID){
+		String URI = ECNetUrlConsts.getFullUrl(ECNetUrlConsts.DO_CALL_LIST_DETAIL);
+		HashMap param = new HashMap();
+		param.put("token", this.token);
+		param.put("callListId",callListID);
+		String jsonStr = this.httpcomm.httpRequestPost(URI, param);
+		return jsonStr;
+	}
+
 	private  boolean upload(String urlStr, String filepath,HashMap<String,Object> params) throws Exception {
 		String boundary = "------------------------";
 		// 分割线

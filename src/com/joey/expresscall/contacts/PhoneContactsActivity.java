@@ -33,6 +33,7 @@ public class PhoneContactsActivity extends BaseActivity{
             PhoneContactsActivity.this.runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
+                    dismissDialog();
                     listContact.setAdapter(adapter);
                 }
             });
@@ -41,6 +42,7 @@ public class PhoneContactsActivity extends BaseActivity{
     private SimpleAdapter adapter;
     @Override
     public void initSettings() {
+        createLoadingDialog(this,getString(R.string.waiting));
         asyncQueryHandler = new MyAsyncQueryHandler(getContentResolver());
         Uri uri = ContactsContract.CommonDataKinds.Phone.CONTENT_URI; // 联系人Uri；
         // 查询的字段

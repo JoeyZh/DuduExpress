@@ -42,6 +42,7 @@ public class ECContactsFragment extends BaseFragment {
 		// TODO Auto-generated method stub
 		layoutShowContact = currentView.findViewById(R.id.contact_layout_show);
 		layoutShowContact.setOnClickListener(clickListener);
+		setTitle(R.string.contact);
 	}
 
 	@Override

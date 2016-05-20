@@ -75,7 +75,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:text="【数据仅供参考，点击查看详情】"
-                android:textColor="@color/white" />
+                android:textColor="@drawable/text_normal_white_selector" />
         </RelativeLayout>
     </RelativeLayout>
     

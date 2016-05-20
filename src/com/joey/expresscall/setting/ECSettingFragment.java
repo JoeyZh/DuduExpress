@@ -41,6 +41,7 @@ public class ECSettingFragment extends BaseFragment{
 
 	@Override
 	public void initUi() {
+		setTitle(R.string.setting);
 		items = getResources().getStringArray(R.array.array_setting_list);
 		mapList = new ArrayList<HashMap<String,Object>>();
 		for(int i = 0;i<items.length;i++){
