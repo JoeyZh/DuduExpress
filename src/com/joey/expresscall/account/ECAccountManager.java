@@ -110,6 +110,28 @@ public class ECAccountManager {
 
         BackgroundHandler.execute(task);
     }
+    
+    public void modifyPwd(final String oldPwd, final String newPwd,final ResponseListener<JSONObject> listener) {
+        TaskBuilder task = new TaskBuilder("modifyPwd", listener, new OnTaskListener() {
+            @Override
+            public String execute() {
+                return mAccount.modifyPwd(oldPwd, newPwd);
+            }
+        });
+
+        BackgroundHandler.execute(task);
+    }
+    
+    public void modifyNickName( final String nickName,final ResponseListener<JSONObject> listener) {
+        TaskBuilder task = new TaskBuilder("modifyNickName", listener, new OnTaskListener() {
+            @Override
+            public String execute() {
+                return mAccount.modifyInfo(nickName);
+            }
+        });
+
+        BackgroundHandler.execute(task);
+    }
 
     public void isAccountExist(final String username, ResponseListener<JSONObject> listener) {
         TaskBuilder task = new TaskBuilder("isExist", listener, new OnTaskListener() {

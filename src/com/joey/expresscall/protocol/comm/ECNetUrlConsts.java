@@ -3,6 +3,7 @@ package com.joey.expresscall.protocol.comm;
 public class ECNetUrlConsts {
 	public final static String DNS = "http://jdsc2015.xicp.net/SYH/";
 	public final static String DO_LOGIN = "user/login.do";
+	public final static String DO_LOGOUT = "user/logout.do";
 	public final static String DO_REGIST = "user/register.do";
 	public final static String DO_GET_VALIDTECODE = "user/validate.do";
 	public final static String DO_FOUND_PWD = "user/forgetPwd.do";
@@ -23,8 +24,8 @@ public class ECNetUrlConsts {
 	// 上传文件
 	public final static String DO_UPLOAD = "record/upload.do";
 
-	public final static String DO_CALL_LIST="record/callList.do";
-	public final static String DO_CALL_LIST_DETAIL="record/callListDetail.do";
+	public final static String DO_CALL_LIST="record/groupCallList.do";
+	public final static String DO_CALL_LIST_DETAIL="record/billDetail.do";
 
 
 	public static String getFullUrl(String url) {

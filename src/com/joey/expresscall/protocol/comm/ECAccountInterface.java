@@ -40,7 +40,13 @@ public class ECAccountInterface {
 	}
 
 	public String logout(){
-		return "";
+		String URI_ACCOUNT_MODIFYPWD = ECNetUrlConsts
+				.getFullUrl(ECNetUrlConsts.DO_LOGOUT);
+		HashMap param = new HashMap();
+		param.put("token", this.token);
+		String jsonStr = this.httpcomm.httpRequestPost(URI_ACCOUNT_MODIFYPWD,
+				param);
+		return jsonStr;
 	}
 	/**
 	 * 

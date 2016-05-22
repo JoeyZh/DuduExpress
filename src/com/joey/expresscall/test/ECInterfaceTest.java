@@ -25,7 +25,8 @@ public class ECInterfaceTest extends ListActivity {
 
 	// public String test[] = {"账号","通知","文件管理"};
 	public String test[] = { "0验证码", "1是否存在", "2注册", "3登陆", "4找回密码", "5修改密码",
-			"6用户信息", "7上传", "8获取文件", "9发起呼叫", "10下载", "11获取账单", "12获取详单" };
+			"6用户信息", "7上传", "8获取文件", "9发起呼叫", "10下载", "11获取账单", "12获取详单","13群呼列表",
+			"14群呼详情","15注销"};
 
 	public ArrayAdapter adapter;
 	public ECAccountInterface account;
@@ -78,8 +79,8 @@ public class ECInterfaceTest extends ListActivity {
 					response = account.register("18663753236", "123456", text);
 					break;
 				case 3:// 登陆
-					response = account.login("18663753236", "123456");
-//					response = account.login("18910517619", "654321");
+//					response = account.login("18663753236", "123456");
+					response = account.login("18910517619", "654321");
 					root = JSONObject.parseObject(response);
 					root = root.getJSONObject("data");
 					String token = root.getString("token");
@@ -121,7 +122,16 @@ public class ECInterfaceTest extends ListActivity {
 					response = fileInterface.getBillList();
 					break;
 				case 12:// 获取详单
-					response = fileInterface.getBillDetail("");
+					response = fileInterface.getBillDetail("1463926736355");
+					break;
+				case 13:
+					response = fileInterface.getCallList(10,1);
+					break;
+				case 14:
+					response = fileInterface.getCallListDetail("1463926011616");
+					break;
+				case 15:
+					response = account.logout();
 					break;
 				}
 				super.run();

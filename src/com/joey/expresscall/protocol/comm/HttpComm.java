@@ -49,6 +49,7 @@ import org.apache.http.protocol.HTTP;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONException;
 import com.alibaba.fastjson.JSONObject;
+import com.joey.general.utils.MyLog;
 
 public class HttpComm implements IHttpComm {
 	private final String TAG = "HttpCommImp";
@@ -69,7 +70,7 @@ public class HttpComm implements IHttpComm {
 	public String httpRequestPost(String url, HashMap<String, Object> param) {
 		String jsonString = null;
 		String requestJson = createRequestJsonString(param);
-
+		MyLog.i("httpComm","url = "+url);
 		HttpResponse response = null;
 		HttpPost post = new HttpPost(url);
 		

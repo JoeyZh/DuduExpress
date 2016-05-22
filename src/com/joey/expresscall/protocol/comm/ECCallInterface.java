@@ -111,10 +111,12 @@ public class ECCallInterface {
 		return jsonStr;
 	}
 
-	public String getCallList(){
+	public String getCallList(int pageSize,int pageNum){
 		String URI = ECNetUrlConsts.getFullUrl(ECNetUrlConsts.DO_CALL_LIST);
 		HashMap param = new HashMap();
 		param.put("token", this.token);
+		param.put("pageSize", pageSize);
+		param.put("pageNum", pageNum);
 		String jsonStr = this.httpcomm.httpRequestPost(URI, param);
 		return jsonStr;
 	}
