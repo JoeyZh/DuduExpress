@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingTop="16dp">
+
+    <!-- 长分隔线 -->
+
+    <include layout="@layout/divider_horizontal" />
+
+    <EditText
+        android:id="@+id/nickname_new"
+        android:layout_width="match_parent"
+        android:layout_height="47dp"
+        android:background="@color/white"
+        android:hint="@string/hint_input_new_nickname"
+        android:maxLength="10"
+        android:paddingBottom="5dp"
+        android:paddingLeft="13dp"
+        android:paddingRight="20dp"
+        android:paddingTop="5dp"
+        android:singleLine="true"
+        android:textColor="@color/text_color_gray68"
+        android:textColorHint="@color/main_hint_color"
+        android:textCursorDrawable="@drawable/bg_cursor_default"
+        android:textSize="@dimen/text_min_size" />
+
+    <!-- 长分隔线 -->
+
+    <include layout="@layout/divider_horizontal" />
+
+    <TextView
+        android:id="@+id/tv_error_tips"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="5dp"
+        android:drawableLeft="@drawable/icon_warn"
+        android:gravity="center_vertical"
+        android:textColor="@color/main_hint_color"
+        android:textSize="@dimen/text_min_size"
+        android:visibility="invisible" />
+
+    <Button
+        android:id="@+id/nickname_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:layout_marginLeft="@dimen/layout_max_margin"
+        android:layout_marginRight="@dimen/layout_max_margin"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/btn_default_bg_selector"
+        android:text="@string/sure"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_mid_size" />
+
+</LinearLayout>

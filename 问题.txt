@@ -1,0 +1,10 @@
+问题汇总
+1、groupCallList.do 
+json 格式不对  后来改的json中 没有list
+2.groupCallList.do 中的返回数据中加两个字段 “fileId" 和”description“ 这两个字段可以表示出 群呼呼叫的录音文件ID和录音文件描述
+3、groupCallList.do 中的 callTime 格式改成毫秒
+4、单条呼叫详情查询 billDetail.do 传callID和token 时，返回 参数为空 {"desc":"参数为空","data":"","code":"407"}  
+5、群呼的详情 billDetail.do 数据正确了，问题4和5 可以改完一块测一下
+										
+										  
+ 
