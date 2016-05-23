@@ -40,10 +40,10 @@ public class ECSettingActivity extends BaseActivity {
 		setContentView(R.layout.activity_setting);
 		setTopBarVisiable(-1);
 		fragment = new ECSettingFragment();
-		FragmentTransaction transaction = getFragmentManager() 
-                .beginTransaction();
-        transaction.replace(R.id.setting_content, fragment);
-        transaction.commit();
+		FragmentTransaction transaction = getFragmentManager()
+				.beginTransaction();
+		transaction.replace(R.id.setting_content, fragment);
+		transaction.commit();
 	}
 
 	@Override
@@ -58,4 +58,9 @@ public class ECSettingActivity extends BaseActivity {
 
 	}
 
+	@Override
+	public void onBackPressed() {
+		super.onBackPressed();
+		overridePendingTransition(R.anim.push_right_out, R.anim.push_right_in);
+	}
 }

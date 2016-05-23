@@ -10,6 +10,7 @@
         android:background="@color/divider_line" />
 
     <LinearLayout
+        android:id="@+id/layout_select_contact"
         android:layout_width="match_parent"
         android:layout_height="@dimen/default_edit_height"
         android:background="@color/white"
@@ -28,7 +29,7 @@
             android:textColor="@color/text_color_gray8e" />
 
         <ImageView
-            android:id="@+id/item_img_logo"
+            android:id="@+id/img_select_contact"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/layout_min_margin"

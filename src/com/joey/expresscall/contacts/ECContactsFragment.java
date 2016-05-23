@@ -18,8 +18,10 @@ public class ECContactsFragment extends BaseFragment {
 	private View.OnClickListener clickListener = new View.OnClickListener() {
 		@Override
 		public void onClick(View v) {
-			Intent intent = new Intent(getActivity(),ContactsActivity.class);
+			Intent intent = new Intent(getActivity(), ContactsActivity.class);
 			startActivity(intent);
+			mActivity.overridePendingTransition(R.anim.push_left_in,
+					R.anim.push_left_out);
 		}
 	};
 

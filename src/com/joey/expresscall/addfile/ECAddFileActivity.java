@@ -5,11 +5,14 @@ import java.util.HashMap;
 import java.util.Timer;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TabHost;
 import android.widget.TabHost.OnTabChangeListener;
@@ -18,6 +21,7 @@ import com.joey.expresscall.R;
 import com.joey.expresscall.account.ECAccountManager;
 import com.joey.expresscall.common.ECSimpleAdapter1;
 import com.joey.expresscall.common.widget.LongPressButton;
+import com.joey.expresscall.contacts.ECContactActivity;
 import com.joey.general.BaseActivity;
 import com.joey.general.utils.MyLog;
 
@@ -26,6 +30,8 @@ public class ECAddFileActivity extends BaseActivity {
     private ListView mListView;
     private ECSimpleAdapter1 mAdapter;
     private TabHost tabHost;
+    private View vSelectContact;
+    private ImageView imgvSelectContact;
 
     private ArrayList<HashMap<String, Object>> mData;
     private String tags[];
@@ -52,6 +58,19 @@ public class ECAddFileActivity extends BaseActivity {
         }
     };
 
+    private OnClickListener clickListener = new OnClickListener() {
+		
+		@Override
+		public void onClick(View arg0) {
+			switch(arg0.getId()){
+			case R.id.layout_select_contact:
+			case R.id.img_select_contact:
+				Intent intent = new Intent(ECAddFileActivity.this,ECContactActivity.class);
+				startActivity(intent);
+				break;
+			}
+		}
+	};
 
     @Override
     public void initSettings() {
@@ -79,6 +98,10 @@ public class ECAddFileActivity extends BaseActivity {
         mAdapter.setType(ECSimpleAdapter1.SIMPLE_ADAPTER_TYPE_TAG);
         mListView.setAdapter(mAdapter);
 
+        vSelectContact = findViewById(R.id.layout_select_contact);
+        vSelectContact.setOnClickListener(clickListener);
+        imgvSelectContact = (ImageView)findViewById(R.id.img_select_contact);
+        imgvSelectContact.setOnClickListener(clickListener);
         initTabHost();
 
     }

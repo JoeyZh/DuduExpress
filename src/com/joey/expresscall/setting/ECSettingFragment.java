@@ -78,6 +78,8 @@ public class ECSettingFragment extends BaseFragment {
 				Intent intent = new Intent(getActivity(),
 						ECModifyNicknameActivity.class);
 				startActivity(intent);
+				mActivity.overridePendingTransition(R.anim.push_left_in,
+						R.anim.push_left_out);
 				break;
 			case R.id.left_btn:
 				getActivity().onBackPressed();
@@ -92,11 +94,14 @@ public class ECSettingFragment extends BaseFragment {
 		@Override
 		public void onItemClick(AdapterView<?> parent, View view, int position,
 				long id) {
+
 			switch (position) {
 			case TYPE_MODIFY:
 				Intent intent = new Intent(getActivity(),
 						ECModifyPwdActivity.class);
 				startActivity(intent);
+				mActivity.overridePendingTransition(R.anim.push_left_in,
+						R.anim.push_left_out);
 				break;
 			case TYPE_COST_DESC:
 				break;
@@ -126,8 +131,6 @@ public class ECSettingFragment extends BaseFragment {
 			map.put(keys[3], R.drawable.icon_right_arrow);
 			mapList.add(map);
 		}
-
-		
 
 		mAdapter = new ECSimpleAdapter1(getActivity(), mapList,
 				R.layout.simple_item_layout_1, keys, ids);
