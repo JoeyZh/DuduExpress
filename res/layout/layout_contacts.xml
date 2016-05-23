@@ -61,7 +61,7 @@
             android:textSize="30.0dip"
             android:visibility="invisible" />
 
-        <com.xbc.utils.activity.SideBar
+        <com.joey.expresscall.contacts.library.SideBar
             android:id="@+id/sidrbar"
             android:layout_width="30.0dip"
             android:layout_height="match_parent"

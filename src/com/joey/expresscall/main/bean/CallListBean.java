@@ -1,7 +1,9 @@
 package com.joey.expresscall.main.bean;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONException;
 import com.alibaba.fastjson.JSONObject;
+import com.joey.general.utils.MyLog;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -17,6 +19,13 @@ public class CallListBean implements Serializable{
 
     public int getTotalSize() {
         return totalSize;
+    }
+
+    public CallListBean() {
+        totalSize = 20;
+        successCount = 4;
+        description = "喇叭喇叭喇叭喇叭";
+        callTime = "2015-10-16 10:55:00";
     }
 
     public void setTotalSize(int totalSize) {
@@ -88,13 +97,17 @@ public class CallListBean implements Serializable{
 
     public static CallListBean parseJson(String json){
         CallListBean bean = new CallListBean();
-        JSONObject jsonObject = JSON.parseObject(json);
-        bean.setCallListId(jsonObject.getString("callListId"));
-        bean.setCallTime(jsonObject.getString("callTime"));
-        bean.setDescription(jsonObject.getString("description"));
-        bean.setSuccessCount(jsonObject.getInteger("successCount"));
-        bean.setTotalSize(jsonObject.getInteger("totalSize"));
-        bean.setFileId(jsonObject.getString("fileId"));
+        try {
+            JSONObject jsonObject = JSON.parseObject(json);
+            bean.setCallListId(jsonObject.getString("callListId"));
+            bean.setCallTime(jsonObject.getString("callTime"));
+            bean.setDescription(jsonObject.getString("description"));
+            bean.setSuccessCount(jsonObject.getInteger("successCount"));
+            bean.setTotalSize(jsonObject.getInteger("totalSize"));
+            bean.setFileId(jsonObject.getString("fileId"));
+        }catch (JSONException e){
+            MyLog.e("parse error"+e.getMessage());
+        }
         return bean;
     }
 }

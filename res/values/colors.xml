@@ -9,7 +9,7 @@
     <color name="text_color_gray68">#686868</color>
     <color name="text_color_half_white">#7fffffff</color>
     <color name="transparent">#00000000</color>
-    <color name="halftransparent">#65000000</color>
+    <color name="half_transparent">#65000000</color>
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
     <color name="divider_line">#E9E8E8</color>
@@ -82,12 +82,11 @@
     <color name="user_register_success">#1567D7</color>
     <!-- 白色 -->
 
-    <color name="whitetransparent">#FFFFFFFF</color>
-    <color name="halfstransparent">#65000000</color>
-    <color name="helptransparent">#b1000000</color>
-    <color name="devicetransparent">#55000000</color>
-    <color name="picturetransparent">#66000000</color>
-    <color name="moretransparent">#19000000</color>
+    <color name="white_transparent">#FFFFFFFF</color>
+    <color name="help_transparent">#b1000000</color>
+    <color name="device_transparent">#55000000</color>
+    <color name="picture_transparent">#66000000</color>
+    <color name="more_transparent">#19000000</color>
 
     <!-- 设备的背景色 -->
     <color name="main_tab_background">#efefef</color>

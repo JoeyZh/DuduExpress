@@ -212,7 +212,7 @@ public class RequestHandler<T> {
     private void statisticsException(String exception) {
         String userName = MySharedPreference.getInstance().getString("userName");
         StringBuffer sb = new StringBuffer();
-        sb.append(DateUtil.getTime());
+        sb.append(DateUtil.getTime(DateUtil.DATE_FORMMAT_STR_1));
         sb.append(" ");
         sb.append("[");
         sb.append(userName);

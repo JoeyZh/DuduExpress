@@ -64,10 +64,8 @@ public abstract class BaseFragment extends Fragment implements OnCreateInterface
      * @param savedInstanceState
      * @return
      */
-    protected View createView(LayoutInflater inflater, ViewGroup container,
-                              Bundle savedInstanceState) {
-        return null;
-    }
+    protected abstract View createView(LayoutInflater inflater, ViewGroup container,
+                              Bundle savedInstanceState);
 
     public void setTitle(int resId) {
         if (getTitleLayout() != -1 && mTopBarView instanceof TopBarLayout) {

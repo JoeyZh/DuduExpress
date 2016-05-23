@@ -5,7 +5,7 @@
     <!-- 描边 ：边框宽度与颜色 -->
     <stroke
         android:width="@dimen/divide_line_height"
-        android:color="@color/text_color_graye9" />
+        android:color="@color/text_color_grayed" />
     <!-- 主要内容的padding 文字距离上下左右的距离 -->
     <padding
         android:bottom="0dp"
@@ -15,5 +15,6 @@
     <!-- 圆角的半径  也可以统一设置半径 android:radius="9dip" -->
     <corners android:radius="5dp" />
     <solid android:color="@color/text_color_graye9" />
+
 
 </shape>

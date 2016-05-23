@@ -68,6 +68,27 @@ public class ECCallInterface {
 		return jsonStr;
 	}
 
+	public String deleteFile(String fileId){
+		String URI = ECNetUrlConsts.getFullUrl(ECNetUrlConsts.DO_FILE_LIST);
+		HashMap param = new HashMap();
+		param.put("token", this.token);
+		param.put("fileId",fileId);
+		String jsonStr = this.httpcomm.httpRequestPost(URI, param);
+
+		return jsonStr;
+	}
+
+	public String updateFile(String fileId,String extraName){
+		String URI = ECNetUrlConsts.getFullUrl(ECNetUrlConsts.DO_FILE_LIST);
+		HashMap param = new HashMap();
+		param.put("token", this.token);
+		param.put("fileId",fileId);
+		param.put("extraName",extraName);
+		String jsonStr = this.httpcomm.httpRequestPost(URI, param);
+
+		return jsonStr;
+	}
+
 	public String callArray(String fileId, String fileType, List<String> phones) {
 		String URI = ECNetUrlConsts.getFullUrl(ECNetUrlConsts.DO_CALL);
 		HashMap param = new HashMap();

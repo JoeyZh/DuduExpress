@@ -15,8 +15,16 @@
             android:layout_width="wrap_content"
             android:layout_height="@dimen/topbar_height"
             android:layout_alignParentRight="true"
-            android:background="@color/main_hint_color"
             android:orientation="horizontal" >
+            
+            <ImageButton
+                android:id="@+id/btn_user_setting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_back"
+                android:padding="@dimen/layout_min_margin"
+                android:layout_gravity="center_vertical"
+                android:background="@color/transparent"/>
         </LinearLayout>
 
         <ImageView
@@ -32,7 +40,7 @@
         <TextView
             android:id="@+id/text_user_info"
             style="@style/text_mid_style"
-            android:layout_width="fill_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/img_user_logo"
             android:layout_marginRight="@dimen/layout_min_margin"

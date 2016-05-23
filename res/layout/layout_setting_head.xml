@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/setting_head_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/group_divider_height"
+        android:background="@color/divider_line" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/setting_head_item_height"
+        android:paddingLeft="10dp">
+
+        <ImageView
+            android:id="@+id/setting_img_user_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@color/transparent"
+            android:paddingLeft="@dimen/layout_min_margin"
+            android:src="@drawable/ic_launcher" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@+id/setting_img_user_logo"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/layout_min_margin">
+
+            <TextView
+                android:id="@+id/setting_head_text_username"
+                style="@style/text_mid_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="12345678909" />
+
+            <TextView
+                android:id="@+id/setting_head_text_nickname"
+                style="@style/text_mid_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="小红帽" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/item_access"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:scaleType="center"
+            android:src="@drawable/icon_right_arrow" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/group_divider_height"
+        android:background="@color/divider_line" />
+
+</LinearLayout>
