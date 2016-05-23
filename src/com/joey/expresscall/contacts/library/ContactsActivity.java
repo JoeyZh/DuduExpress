@@ -129,6 +129,7 @@ public class ContactsActivity extends BaseActivity {
 	}
 
 	private void initView() {
+		setTitle(R.string.phone_contact);
 		sideBar = (SideBar) findViewById(R.id.sidrbar);
 		dialog = (TextView) findViewById(R.id.dialog);
 		sideBar.setTextView(dialog);

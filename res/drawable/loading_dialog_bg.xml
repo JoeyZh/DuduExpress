@@ -4,7 +4,7 @@
 
     <stroke
         android:width="0dp"
-        android:color="@color/halfstransparent" />
+        android:color="@color/half_transparent" />
     <!-- 描边 ：边框宽度与颜色 -->
     <padding
         android:bottom="0dp"
@@ -15,6 +15,6 @@
     <corners android:radius="5dp" />
     <!-- 圆角的半径  也可以统一设置半径 android:radius="9dip" -->
     <!-- 渐变 -->
-    <solid android:color="@color/halfstransparent" />
+    <solid android:color="@color/half_transparent" />
 
 </shape>

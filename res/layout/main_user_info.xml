@@ -21,7 +21,7 @@
                 android:id="@+id/btn_user_setting"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/icon_back"
+                android:src="@drawable/icon_setting_white_selector"
                 android:padding="@dimen/layout_min_margin"
                 android:layout_gravity="center_vertical"
                 android:background="@color/transparent"/>
@@ -29,8 +29,8 @@
 
         <ImageView
             android:id="@+id/img_user_logo"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:layout_marginLeft="@dimen/layout_mid_margin"
@@ -41,7 +41,8 @@
             android:id="@+id/text_user_info"
             style="@style/text_mid_style"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
+            android:gravity="center_vertical"
             android:layout_alignTop="@+id/img_user_logo"
             android:layout_marginRight="@dimen/layout_min_margin"
             android:layout_toRightOf="@+id/img_user_logo"

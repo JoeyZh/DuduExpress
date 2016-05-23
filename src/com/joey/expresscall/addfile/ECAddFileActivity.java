@@ -62,6 +62,7 @@ public class ECAddFileActivity extends BaseActivity {
     @Override
     public void initUi() {
         setContentView(R.layout.add_file_layout);
+        setTitle(R.string.add_new_file);
         mListView = (ListView) findViewById(R.id.add_file_list);
         mData = new ArrayList<HashMap<String, Object>>();
         tags = getResources().getStringArray(R.array.array_add_tag);

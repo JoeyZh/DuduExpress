@@ -81,7 +81,7 @@
 
     <!-- 自定义半透明的Activity -->
     <style name="MyTranslucentActivity" parent="@android:style/Theme.Translucent.NoTitleBar">
-        <item name="android:windowBackground">@color/halfstransparent</item>
+        <item name="android:windowBackground">@color/half_transparent</item>
     </style>
 
     <style name="ShadowStyleForWhite">

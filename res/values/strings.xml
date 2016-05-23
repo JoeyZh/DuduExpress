@@ -252,11 +252,11 @@
     <string name="error_no_sdcard">没有SD卡，无法存储录音数据</string>
     <string name="error_state_record">正在录音中，请先停止录音</string>
     <string name="call_add_contasts">接收人 : </string>
+
     <string-array name="array_add_tag">
         <item>通知方式:</item>
         <item>选择模板:</item>
     </string-array>
-
     <string-array name="array_setting_list">
         <item>修改密码</item>
         <item>定时设置</item>
@@ -272,5 +272,7 @@
     <string name="callList">呼叫记录</string>
     <string name="callDetail">呼叫情况</string>
 
+    <!-- 联系人 -->
+    <string name="phone_contact">手机通讯录</string>
 
 </resources>
