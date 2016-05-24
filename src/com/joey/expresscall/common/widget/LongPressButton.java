@@ -78,7 +78,6 @@ public class LongPressButton extends Button {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        MyLog.i("");
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 isOnTouch = true;

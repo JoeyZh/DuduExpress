@@ -78,10 +78,10 @@ public class ECCallingActivity extends BaseActivity {
                     startActivity(intent);
                     break;
                 case R.id.right_btn:
-                    onBackPressed();
+                    startCall();
                     break;
                 case R.id.left_btn:
-                    startCall();
+                    onBackPressed();
                     break;
             }
         }

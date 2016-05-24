@@ -120,7 +120,7 @@ public class ECAddContactActivity extends BaseActivity{
 
     @Override
     public void saveSettings() {
-
+        statusHashMap.put("contact",mAdapter.getSelectList());
     }
 
     @Override
