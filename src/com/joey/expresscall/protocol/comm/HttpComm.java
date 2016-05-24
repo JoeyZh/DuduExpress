@@ -70,7 +70,7 @@ public class HttpComm implements IHttpComm {
 	public String httpRequestPost(String url, HashMap<String, Object> param) {
 		String jsonString = null;
 		String requestJson = createRequestJsonString(param);
-		MyLog.i("httpComm","url = "+url);
+		MyLog.i(TAG,"url = "+url);
 		HttpResponse response = null;
 		HttpPost post = new HttpPost(url);
 		

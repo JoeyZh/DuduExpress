@@ -13,6 +13,7 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.joey.expresscall.R;
@@ -25,6 +26,7 @@ import com.joey.expresscall.protocol.ResponseListener;
 import com.joey.expresscall.setting.ECSettingActivity;
 import com.joey.general.BaseFragment;
 import com.joey.general.utils.MyLog;
+import com.joey.general.utils.MySharedPreference;
 
 public class ECMainFragment extends BaseFragment {
 
@@ -40,7 +42,8 @@ public class ECMainFragment extends BaseFragment {
 	private TextView tvRetain;
 	private TextView tvWarning;
 	private TextView tvCostDetail;
-	private int callPageNum = 1;
+	private final int IDEL_PAGE_NUM = 1;
+	private int callPageNum = IDEL_PAGE_NUM;
 	private final int PAGE_SIZE = 10;
 	private ImageButton imgBtnSetting;
 	private OnClickListener mOnClickListener = new OnClickListener() {
@@ -89,7 +92,6 @@ public class ECMainFragment extends BaseFragment {
 
 	@Override
 	public void initSettings() {
-		loadData();
 		getUseInfo();
 		getCallList();
 	}
@@ -129,9 +131,24 @@ public class ECMainFragment extends BaseFragment {
 
 	}
 
-	private void loadData() {
-		// TODO Auto-generated method stub
+	
+	@Override
+	public void onResume() {
+		super.onResume();
+		loadData();
+	}
 
+	private void loadData() {
+		MyLog.i("");
+		String userInfo = MySharedPreference.getInstance()
+				.getString("userInfo");
+		if (!userInfo.isEmpty()) {
+			parseUserInfo(JSON.parseObject(userInfo));
+		}
+		String groupInfo = MySharedPreference.getInstance().getString("groupList");
+		if(!groupInfo.isEmpty()){
+			parseGroupList(JSON.parseObject(groupInfo));
+		}
 	}
 
 	private void getUseInfo() {
@@ -142,27 +159,9 @@ public class ECMainFragment extends BaseFragment {
 					@Override
 					public void onSuccess(JSONObject json) {
 						MyLog.i("");
-						final String nickName = json.getString("nickName");
-						final float retain = json.getFloat("totalMoney");
-						final String mobile = json.getString("mobile");
-						getActivity().runOnUiThread(new Runnable() {
-
-							@Override
-							public void run() {
-								if (nickName != null)
-									tvUserName.setText(nickName);
-								else {
-									tvUserName.setText(mobile);
-								}
-								tvRetain.setText(retain + "元");
-								if (retain <= 0) {
-									tvWarning.setVisibility(View.VISIBLE);
-									return;
-								}
-								tvWarning.setVisibility(View.GONE);
-							}
-
-						});
+						MySharedPreference.getInstance().putString("userInfo",
+								json.toString());
+						parseUserInfo(json);
 					}
 
 					@Override
@@ -185,6 +184,30 @@ public class ECMainFragment extends BaseFragment {
 				});
 	}
 
+	private void parseUserInfo(JSONObject json) {
+		final String nickName = json.getString("nickName");
+		final float retain = json.getFloat("totalMoney");
+		final String mobile = json.getString("mobile");
+		getActivity().runOnUiThread(new Runnable() {
+
+			@Override
+			public void run() {
+				if (nickName != null)
+					tvUserName.setText(nickName);
+				else {
+					tvUserName.setText(mobile);
+				}
+				tvRetain.setText(retain + "元");
+				if (retain <= 0) {
+					tvWarning.setVisibility(View.VISIBLE);
+					return;
+				}
+				tvWarning.setVisibility(View.GONE);
+			}
+
+		});
+	}
+
 	private void getCallList() {
 		ECCallManager.getInstance().getGroupCallList(callPageNum, PAGE_SIZE,
 				new ResponseListener<JSONObject>() {
@@ -192,25 +215,9 @@ public class ECMainFragment extends BaseFragment {
 					@Override
 					public void onSuccess(JSONObject json) {
 						MyLog.i("callList = " + json.toString());
-						JSONArray array = json.getJSONArray("list");
-						if (array.isEmpty()) {
-							test();
-							return;
-						}
-						mCallList.clear();
-						for (int i = 0; i < array.size(); i++) {
-							JSONObject obj = array.getJSONObject(i);
-							CallListBean bean = CallListBean.parseJson(obj
-									.toJSONString());
-							mCallList.add(bean.getMap());
-						}
-						mActivity.runOnUiThread(new Runnable() {
-							@Override
-							public void run() {
-								mAdapter.notifyDataSetChanged();
-							}
-						});
-
+						MySharedPreference.getInstance().putString("groupList",
+								json.toJSONString());
+						parseGroupList(json);
 					}
 
 					@Override
@@ -239,6 +246,27 @@ public class ECMainFragment extends BaseFragment {
 						});
 					}
 				});
+	}
+
+	private void parseGroupList(JSONObject json) {
+		JSONArray array = json.getJSONArray("list");
+//		if (array.isEmpty()) {
+//			test();
+//			return;
+//		}
+		if(callPageNum == IDEL_PAGE_NUM)
+			mCallList.clear();
+		for (int i = 0; i < array.size(); i++) {
+			JSONObject obj = array.getJSONObject(i);
+			CallListBean bean = CallListBean.parseJson(obj.toJSONString());
+			mCallList.add(bean.getMap());
+		}
+		mActivity.runOnUiThread(new Runnable() {
+			@Override
+			public void run() {
+				mAdapter.notifyDataSetChanged();
+			}
+		});
 	}
 
 	private void test() {

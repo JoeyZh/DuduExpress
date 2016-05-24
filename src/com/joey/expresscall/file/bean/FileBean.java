@@ -83,7 +83,7 @@ public class FileBean implements Serializable {
 
     public HashMap<String,Object> getMap(){
         HashMap<String,Object> map = new HashMap<String, Object>();
-        map.put("fileName",getFileName());
+        map.put("fileId",getFileId());
         map.put("extraName",getExtraName());
         map.put("createTime",getCreateTime());
         map.put("path",this.path);
@@ -96,8 +96,7 @@ public class FileBean implements Serializable {
             JSONObject jsonObject = JSON.parseObject(json);
             bean.setFileId(jsonObject.getString("fileId"));
             bean.setFileType(jsonObject.getString("fileType"));
-            bean.setFileName(jsonObject.getString("fileName"));
-            bean.setDuration(jsonObject.getInteger("duration"));
+//            bean.setDuration(jsonObject.getInteger("duration"));
             bean.setCreateTime(jsonObject.getLong("createTime"));
             bean.setExtraName(jsonObject.getString("extraName"));
         }catch (JSONException e){

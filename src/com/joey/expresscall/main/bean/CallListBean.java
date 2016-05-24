@@ -3,6 +3,7 @@ package com.joey.expresscall.main.bean;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONException;
 import com.alibaba.fastjson.JSONObject;
+import com.joey.general.utils.DateUtil;
 import com.joey.general.utils.MyLog;
 
 import java.io.Serializable;
@@ -25,7 +26,7 @@ public class CallListBean implements Serializable{
         totalSize = 20;
         successCount = 4;
         description = "喇叭喇叭喇叭喇叭";
-        callTime = "2015-10-16 10:55:00";
+        callTime = System.currentTimeMillis();
     }
 
     public void setTotalSize(int totalSize) {
@@ -37,15 +38,15 @@ public class CallListBean implements Serializable{
     private String description;
     private String fileId;
 
-    public String getCallTime() {
+    public long getCallTime() {
         return callTime;
     }
 
-    public void setCallTime(String callTime) {
+    public void setCallTime(long callTime) {
         this.callTime = callTime;
     }
 
-    private String callTime;
+    private long callTime;
 
     public String getDescription() {
         return description;
@@ -90,7 +91,8 @@ public class CallListBean implements Serializable{
     public HashMap<String,Object> getMap(){
         HashMap<String,Object> map = new HashMap<String, Object>();
         map.put("description",getDescription());
-        map.put("callTime",getCallTime());
+        String timeStr = DateUtil.convertToDateStr(DateUtil.DATE_FORMMAT_STR_3, getCallTime());
+        map.put("callTime",timeStr);
         map.put("extra",getSuccessCount()+"/"+getTotalSize());
         return map;
     }
@@ -100,7 +102,7 @@ public class CallListBean implements Serializable{
         try {
             JSONObject jsonObject = JSON.parseObject(json);
             bean.setCallListId(jsonObject.getString("callListId"));
-            bean.setCallTime(jsonObject.getString("callTime"));
+            bean.setCallTime(jsonObject.getLong("callTime"));
             bean.setDescription(jsonObject.getString("description"));
             bean.setSuccessCount(jsonObject.getInteger("successCount"));
             bean.setTotalSize(jsonObject.getInteger("totalSize"));
