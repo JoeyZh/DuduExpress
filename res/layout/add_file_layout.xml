@@ -42,6 +42,7 @@
             android:id="@+id/text_contacts_list"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingRight="@dimen/layout_min_margin"
             android:layout_weight="1" />
 
         <TextView

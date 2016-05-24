@@ -11,7 +11,6 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSONArray;
@@ -19,7 +18,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.joey.expresscall.R;
 import com.joey.expresscall.account.ECAccountManager;
 import com.joey.expresscall.account.ECCallManager;
-import com.joey.expresscall.addfile.ECAddFileActivity;
+import com.joey.expresscall.addfile.ECCallingActivity;
 import com.joey.expresscall.main.bean.CallListBean;
 import com.joey.expresscall.protocol.RequestError;
 import com.joey.expresscall.protocol.ResponseListener;
@@ -51,7 +50,7 @@ public class ECMainFragment extends BaseFragment {
 			switch (v.getId()) {
 			case R.id.add_new_file_layout:
 				Intent intent = new Intent(getActivity(),
-						ECAddFileActivity.class);
+						ECCallingActivity.class);
 				startActivity(intent);
 				break;
 			case R.id.text_cost_info:

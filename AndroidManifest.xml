@@ -34,7 +34,7 @@
         </activity>
         <activity android:name=".welcome.JVGuidActivity" >
         </activity>
-        <activity android:name=".addfile.ECAddFileActivity" >
+        <activity android:name=".addfile.ECCallingActivity" >
         </activity>
         <activity android:name=".addfile.ECAddContactActivity" >
         </activity>

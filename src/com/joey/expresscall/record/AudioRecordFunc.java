@@ -74,6 +74,10 @@ public class AudioRecordFunc {
     public long getRecordFileSize(){
         return AudioFileFunc.getFileSize(NewAudioName);
     }
+
+    public String getRecordFileName(){
+        return AudioFileFunc.getFileName(NewAudioName);
+    }
      
    
     private void close() {  

@@ -8,6 +8,8 @@ public class DateUtil {
     public  static final String DATE_FORMMAT_STR_1 = "yyyy-MM-dd HH:mm:ss SSS";
     public  static final String DATE_FORMMAT_STR_2 = "MM-dd HH:mm:ss SSS";
     public  static final String DATE_FORMMAT_STR_DAY = "yyyy-MM-dd";
+    public  static final String DATE_FORMMAT_STR_3 = "yyyyMMddHHmmss";
+
 
     /**
      * 获取时间

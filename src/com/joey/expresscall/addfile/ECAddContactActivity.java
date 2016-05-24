@@ -1,6 +1,7 @@
 package com.joey.expresscall.addfile;
 
 import android.content.Intent;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.CompoundButton;
@@ -86,7 +87,10 @@ public class ECAddContactActivity extends BaseActivity{
 
         listView = (ListView)findViewById(R.id.list_selected_contacts);
         listView.setOnItemClickListener(itemClickListener);
-        View footer =
+        LayoutInflater inflater = (LayoutInflater) getSystemService(this.LAYOUT_INFLATER_SERVICE);
+
+        View footer = inflater.inflate(R.layout.common_divider,null);
+        listView.addFooterView(footer);
 
         vSelectContact = findViewById(R.id.layout_add_new_contact);
         vSelectContact.setOnClickListener(clickListener);

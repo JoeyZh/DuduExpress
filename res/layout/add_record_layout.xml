@@ -4,6 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:id="@+id/text_record_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:text="10"
+        android:padding="@dimen/layout_min_margin" />
+
     <com.joey.expresscall.common.widget.LongPressButton
         android:id="@+id/btn_add_file_record"
         android:layout_width="@dimen/btn_record_circle_height"
@@ -12,4 +20,6 @@
         android:background="@drawable/btn_record_circle_selector"
         android:text="@string/press_to_talk"
         android:textColor="@color/white" />
+
+
 </RelativeLayout>
