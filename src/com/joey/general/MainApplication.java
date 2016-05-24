@@ -23,7 +23,7 @@ public class MainApplication extends Application  {
     private static MainApplication mAppInstance;
    
     private Context mAppContext;
-    private HashMap<String, String> statusHashMap;
+    private HashMap<String, Object> statusHashMap;
     // 账号操作对象句柄
 
     /**
@@ -49,7 +49,7 @@ public class MainApplication extends Application  {
      */
     private void init() {
 
-        statusHashMap = new HashMap<String, String>();
+        statusHashMap = new HashMap<String, Object>();
         setupDefaults();
         // 数据库小助手
         JVDbHelper.getInstance().init(this);
@@ -76,7 +76,7 @@ public class MainApplication extends Application  {
      *
      * @return
      */
-    public HashMap<String, String> getStatusHashMap() {
+    public HashMap<String, Object> getStatusHashMap() {
         return statusHashMap;
     }
     

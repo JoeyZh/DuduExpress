@@ -68,6 +68,10 @@ public class ECSimpleAdapter1 extends SimpleAdapter{
 		return view;
 	}
 
+	public void upDateList(ArrayList<HashMap<String,Object>> list){
+		mData = list;
+		notifyDataSetChanged();
+	}
 	public void setEnableChecked(boolean enable ){
 		this.enable = enable;
 		notifyDataSetChanged();

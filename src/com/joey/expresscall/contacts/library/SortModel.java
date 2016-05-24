@@ -2,7 +2,6 @@ package com.joey.expresscall.contacts.library;
 
 public class SortModel extends Contact {
 
-
 	public SortModel(String name, String number, String sortKey) {
 		super(name, number, sortKey);
 	}

@@ -68,6 +68,7 @@
             android:padding="@dimen/layout_min_margin"
             android:text="全选" />
     </com.joey.expresscall.common.CheckableLayout>
+    <include layout="@layout/divider_horizontal"/>
 
     <ListView
         android:id="@+id/list_selected_contacts"

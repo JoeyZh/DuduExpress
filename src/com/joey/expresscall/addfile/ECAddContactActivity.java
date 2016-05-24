@@ -40,10 +40,10 @@ public class ECAddContactActivity extends BaseActivity{
                     break;
                 case R.id.layout_add_new_contact:
                 case R.id.img_add_new_contact:
-//                    Intent intent = new Intent(ECAddContactActivity.this,ECContactActivity.class);
-//                    startActivity(intent);
-                    MyLog.d("size = "+mAdapter.getSelectList().size());
-                    MyLog.d(mAdapter.getSelectList().toString());
+                    Intent intent = new Intent(ECAddContactActivity.this,ECContactActivity.class);
+                    startActivity(intent);
+//                    MyLog.d("size = "+mAdapter.getSelectList().size());
+//                    MyLog.d(mAdapter.getSelectList().toString());
                     break;
             }
         }
@@ -61,7 +61,10 @@ public class ECAddContactActivity extends BaseActivity{
     };
     @Override
     public void initSettings() {
-
+        if(statusHashMap.get("contact") != null){
+            mSelectList = (ArrayList<HashMap<String,Object>>)statusHashMap.get("contact");
+            MyLog.i("");
+        }
     }
 
     @Override
@@ -82,19 +85,33 @@ public class ECAddContactActivity extends BaseActivity{
         checkableLayout.setOnClickListener(clickListener);
 
         listView = (ListView)findViewById(R.id.list_selected_contacts);
-        mAdapter = new ECSimpleAdapter1(ECAddContactActivity.this,mSelectList,R.layout.simple_item_layout_1,new String []{"phone"},new int[]{R.id.item_text});
-        mAdapter.setEnableChecked(true);
-        mAdapter.setType(mAdapter.SIMPLE_ADAPTER_TYPE_TAG);
-        listView.setAdapter(mAdapter);
-//        listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);//开启多选模式
         listView.setOnItemClickListener(itemClickListener);
+        View footer =
 
         vSelectContact = findViewById(R.id.layout_add_new_contact);
         vSelectContact.setOnClickListener(clickListener);
         imgvSelectContact = (ImageView)findViewById(R.id.img_add_new_contact);
         imgvSelectContact.setOnClickListener(clickListener);
-        test();
-        mAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        MyLog.e("");
+        if(statusHashMap.containsKey("contact")){
+            mSelectList = (ArrayList<HashMap<String,Object>>)statusHashMap.get("contact");
+            MyLog.e("onResume",statusHashMap.get("contact").toString());
+        }
+        mAdapter = new ECSimpleAdapter1(ECAddContactActivity.this,mSelectList,R.layout.simple_item_layout_1,new String []{"number"},new int[]{R.id.item_text});
+        mAdapter.setEnableChecked(true);
+        mAdapter.setType(mAdapter.SIMPLE_ADAPTER_TYPE_TAG);
+        listView.setAdapter(mAdapter);
+        mAdapter.upDateList(mSelectList);
+        if(mSelectList == null||mSelectList.isEmpty()){
+            checkableLayout.setChecked(false);
+        }else{
+            checkableLayout.setChecked(true);
+        }
     }
 
     @Override
@@ -111,7 +128,7 @@ public class ECAddContactActivity extends BaseActivity{
         mSelectList.clear();
         for(int i=0;i<10;i++){
             HashMap<String,Object> map = new HashMap<String, Object>();
-            map.put("phone","18512345679"+i);
+            map.put("number","18512345679"+i);
             map.put("checked",false);
             mSelectList.add(map);
         }

@@ -41,6 +41,9 @@ public class ContactsSortAdapter extends BaseAdapter implements SectionIndexer {
 		} else {
 			this.mList = list;
 		}
+		if(mSelectedList != null){
+			mSelectedList.clear();
+		}
 		notifyDataSetChanged();
 	}
 

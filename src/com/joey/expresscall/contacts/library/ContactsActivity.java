@@ -21,9 +21,11 @@ import android.widget.Toast;
 
 import com.joey.expresscall.R;
 import com.joey.general.BaseActivity;
+import com.joey.general.utils.MyLog;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
@@ -307,7 +309,12 @@ public class ContactsActivity extends BaseActivity {
 
 	@Override
 	public void saveSettings() {
-
+		ArrayList<HashMap<String,Object>> maps = new ArrayList<HashMap<String, Object>>();
+		for (SortModel model : adapter.getSelectedList()){
+			maps.add(model.getMap());
+		}
+		statusHashMap.put("contact",maps);
+		MyLog.e("saveSettings",maps.toString());
 	}
 
 	@Override

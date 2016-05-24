@@ -201,7 +201,7 @@ public class JVLoginActivity extends BaseActivity {
         super.onResume();
         // 通过statusHashMap 来传递值，如果此时有用名的值传递过来，就不加载share prefenrences 的内容了
         if (statusHashMap.containsKey(MySharedPreferencesConsts.USERNAME)) {
-            String tmpUserName = statusHashMap
+            String tmpUserName =(String) statusHashMap
                     .get(MySharedPreferencesConsts.USERNAME);
             if (tmpUserName != null && !tmpUserName.isEmpty()) {
                 userName = tmpUserName;

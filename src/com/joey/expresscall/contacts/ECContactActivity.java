@@ -3,8 +3,12 @@ package com.joey.expresscall.contacts;
 import android.app.FragmentTransaction;
 
 import com.joey.expresscall.R;
+import com.joey.expresscall.contacts.library.SortModel;
 import com.joey.expresscall.setting.ECSettingFragment;
 import com.joey.general.BaseActivity;
+import com.joey.general.utils.MyLog;
+
+import java.util.ArrayList;
 
 public class ECContactActivity extends BaseActivity{
 	private ECContactsFragment fragment;
@@ -28,13 +32,13 @@ public class ECContactActivity extends BaseActivity{
 
 	@Override
 	public void saveSettings() {
-		// TODO Auto-generated method stub
-
+		if(statusHashMap.containsKey("contact")){
+			MyLog.e("statusMap",statusHashMap.get("contact").toString());
+		}
 	}
 
 	@Override
 	public void freeMe() {
-		// TODO Auto-generated method stub
 
 	}
 

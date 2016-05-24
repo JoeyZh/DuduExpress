@@ -41,7 +41,7 @@ import java.util.HashMap;
  */
 public abstract class BaseActivity extends Activity implements OnCreateInterface {
 
-    public HashMap<String, String> statusHashMap;
+    public HashMap<String, Object> statusHashMap;
     public int mScreenWidth;
     public int mScreenHeight;
     // 设备无SD卡提示

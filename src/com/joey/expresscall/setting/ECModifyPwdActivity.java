@@ -141,7 +141,7 @@ public class ECModifyPwdActivity extends BaseActivity implements OnClickListener
         String newPwd = mNewPwd.getText().toString();
         String againPwd = mConfirmPwd.getText().toString();
         // 账号名称
-        String accountName = statusHashMap.get(MySharedPreferencesConsts.USERNAME);
+        String accountName = (String) statusHashMap.get(MySharedPreferencesConsts.USERNAME);
         // 调用修改密码的接口
         createDialog(R.string.setting, false);
         mAccontHandle.modifyPwd(originPwd, newPwd,

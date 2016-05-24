@@ -59,18 +59,18 @@ public class ECAddFileActivity extends BaseActivity {
     };
 
     private OnClickListener clickListener = new OnClickListener() {
-		
-		@Override
-		public void onClick(View arg0) {
-			switch(arg0.getId()){
-			case R.id.layout_select_contact:
-			case R.id.img_select_contact:
-				Intent intent = new Intent(ECAddFileActivity.this,ECAddContactActivity.class);
-				startActivity(intent);
-				break;
-			}
-		}
-	};
+
+        @Override
+        public void onClick(View arg0) {
+            switch (arg0.getId()) {
+                case R.id.layout_select_contact:
+                case R.id.img_select_contact:
+                    Intent intent = new Intent(ECAddFileActivity.this, ECAddContactActivity.class);
+                    startActivity(intent);
+                    break;
+            }
+        }
+    };
 
     @Override
     public void initSettings() {
@@ -100,7 +100,7 @@ public class ECAddFileActivity extends BaseActivity {
 
         vSelectContact = findViewById(R.id.layout_select_contact);
         vSelectContact.setOnClickListener(clickListener);
-        imgvSelectContact = (ImageView)findViewById(R.id.img_select_contact);
+        imgvSelectContact = (ImageView) findViewById(R.id.img_select_contact);
         imgvSelectContact.setOnClickListener(clickListener);
         initTabHost();
 
@@ -108,14 +108,12 @@ public class ECAddFileActivity extends BaseActivity {
 
     @Override
     public void saveSettings() {
-        // TODO Auto-generated method stub
 
     }
 
     @Override
     public void freeMe() {
-        // TODO Auto-generated method stub
-
+        statusHashMap.remove("contact");
     }
 
     private void initTabHost() {
