@@ -65,7 +65,7 @@ public class ECAddFileActivity extends BaseActivity {
 			switch(arg0.getId()){
 			case R.id.layout_select_contact:
 			case R.id.img_select_contact:
-				Intent intent = new Intent(ECAddFileActivity.this,ECContactActivity.class);
+				Intent intent = new Intent(ECAddFileActivity.this,ECAddContactActivity.class);
 				startActivity(intent);
 				break;
 			}

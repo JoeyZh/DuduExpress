@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 public class CheckableLayout extends LinearLayout implements Checkable {
 
     private boolean isChecked = false;
+    OnCheckedChangeListener listener;
 
     public CheckableLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -24,6 +25,15 @@ public class CheckableLayout extends LinearLayout implements Checkable {
 
     @Override
     public boolean isChecked() {
+        isChecked = false;
+        for (int i = 0, len = getChildCount(); i < len; i++) {
+            View child = getChildAt(i);
+            if (child instanceof Checkable) {
+                isChecked = ((Checkable) child).isChecked();
+                MyLog.i("isChecked = "+isChecked);
+                break;
+            }
+        }
         return isChecked;
     }
 
@@ -55,6 +65,7 @@ public class CheckableLayout extends LinearLayout implements Checkable {
     }
 
     public void setOnCheckedChangeListener(OnCheckedChangeListener listener) {
+        this.listener = listener;
         for (int i = 0, len = getChildCount(); i < len; i++) {
             View child = getChildAt(i);
             if (child instanceof CheckBox) {

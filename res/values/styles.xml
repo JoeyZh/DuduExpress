@@ -91,6 +91,10 @@
         <item name="android:shadowRadius">2.0</item>
     </style>
 
+    <style name="list_view_style1">
+        <item name="android:divider">@color/divider_line</item>
+        <item name="android:dividerHeight">@dimen/divide_line_height</item>
+    </style>
 
     <!-- 自定义loading dialog -->
     <style name="my_loading_dialog" parent="android:style/Theme.Dialog">

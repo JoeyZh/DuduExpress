@@ -274,5 +274,6 @@
 
     <!-- 联系人 -->
     <string name="phone_contact">手机通讯录</string>
+    <string name="add_contact">添加联系人</string>
 
 </resources>

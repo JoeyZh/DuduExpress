@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <View
         android:layout_width="match_parent"
@@ -16,7 +16,7 @@
         android:background="@color/white"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:paddingLeft="@dimen/layout_mid_margin" >
+        android:paddingLeft="@dimen/layout_mid_margin">
 
         <TextView
             android:id="@+id/text_contacts_tag"
@@ -66,13 +66,10 @@
 
     <ListView
         android:id="@+id/add_file_list"
+        style="@style/list_view_style1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:divider="@null"
-        android:dividerHeight="0dp" />
+        android:layout_height="wrap_content" />
 
-    <include
-        android:layout_weight="1"
-        layout="@layout/layout_add_tabs" />
+    <include layout="@layout/layout_add_tabs" />
 
 </LinearLayout>

@@ -2,15 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
-    <include layout="@layout/main_user_info"/>"
+    android:orientation="vertical">
+
+    <include layout="@layout/main_user_info" />"
 
     <ListView
         android:id="@+id/main_file_list"
+        style="@style/list_view_style1"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:divider="@null"
-        android:dividerHeight="0dp" >
-    </ListView>
+        android:layout_height="fill_parent"></ListView>
 
 </LinearLayout>

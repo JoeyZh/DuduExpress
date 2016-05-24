@@ -43,8 +43,8 @@
     <!-- 标题栏高度 -->
     <dimen name="topbar_height">50dp</dimen>
     <!-- 分隔线高度 -->
-    <dimen name="divide_line_height">1dp</dimen>
-    <dimen name="group_divider_height">10dp</dimen>
+    <dimen name="divide_line_height">0.75dp</dimen>
+    <dimen name="group_divider_height">15dp</dimen>
     <dimen name="default_edit_height">48dp</dimen>
     <dimen name="default_btn_height">40dp</dimen>
     <dimen name="default_cursor_width">1.5dp</dimen>

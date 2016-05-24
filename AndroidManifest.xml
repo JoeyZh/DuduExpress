@@ -36,6 +36,8 @@
         </activity>
         <activity android:name=".addfile.ECAddFileActivity" >
         </activity>
+        <activity android:name=".addfile.ECAddContactActivity" >
+        </activity>
         <activity android:name=".contacts.ECContactActivity" >
         </activity>
         <activity android:name=".contacts.PhoneContactsActivity" >
