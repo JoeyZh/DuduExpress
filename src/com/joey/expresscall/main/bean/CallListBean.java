@@ -3,6 +3,7 @@ package com.joey.expresscall.main.bean;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONException;
 import com.alibaba.fastjson.JSONObject;
+import com.joey.expresscall.storage.BaseBean;
 import com.joey.general.utils.DateUtil;
 import com.joey.general.utils.MyLog;
 
@@ -13,7 +14,7 @@ import java.util.HashMap;
 /**
  * Created by Administrator on 2016/5/20.
  */
-public class CallListBean implements Serializable{
+public class CallListBean extends BaseBean{
 
     private String callListId;
     private ArrayList<CallBean> callList;
@@ -62,6 +63,7 @@ public class CallListBean implements Serializable{
 
     public void setFileId(String fileId) {
         this.fileId = fileId;
+        setId(fileId);
     }
 
     public String getCallListId() {
