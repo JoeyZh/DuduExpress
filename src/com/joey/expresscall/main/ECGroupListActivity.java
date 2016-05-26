@@ -1,7 +1,6 @@
 package com.joey.expresscall.main;
 
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
@@ -9,8 +8,6 @@ import com.joey.expresscall.R;
 import com.joey.expresscall.account.ECCallManager;
 import com.joey.expresscall.common.ECSimpleAdapter1;
 import com.joey.expresscall.main.bean.BillBean;
-import com.joey.expresscall.main.bean.CallBean;
-import com.joey.expresscall.main.bean.CallListBean;
 import com.joey.expresscall.protocol.RequestError;
 import com.joey.expresscall.protocol.ResponseListener;
 import com.joey.general.BaseActivity;
@@ -19,10 +16,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * Created by Administrator on 2016/5/20.
+ * Created by Administrator on 2016/5/26.
  */
-public class ECBillListActivity extends BaseActivity {
-
+public class ECGroupListActivity extends BaseActivity{
     private ListView listBill;
     private String fileId;
     private final int IDEL_PAGE_NUM = 1;
@@ -31,18 +27,18 @@ public class ECBillListActivity extends BaseActivity {
     private ArrayList<HashMap<String,Object>> mMapList = new ArrayList<HashMap<String, Object>>();
 
     private ECSimpleAdapter1 mAdapter;
-    private String[] keys = {"callTime","count","phoneNum"};
-    private int[] ids = {R.id.item_text,R.id.timeline_tag_extra,R.id.timeline_content_text};
+    private String[] keys = {"callId","callTime","phoneNum"};
+    private int[] ids = {R.id.timeline_tag,R.id.item_text_tag,R.id.text_extra};
     @Override
     public void initSettings() {
-       getCallList();
+        getBillList();
     }
 
     @Override
     public void initUi() {
         setContentView(R.layout.activity_bill_list_layout);
         listBill = (ListView) findViewById(R.id.bill_list);
-        mAdapter = new ECSimpleAdapter1(this,mMapList,R.layout.simple_item_layout_1,keys,ids);
+        mAdapter = new ECSimpleAdapter1(this,mMapList,R.layout.timeline_item,keys,ids);
         setTitle(R.string.bill_title);
         listBill.setAdapter(mAdapter);
 
@@ -58,12 +54,12 @@ public class ECBillListActivity extends BaseActivity {
 
     }
 
-    private void getCallList() {
+    private void getBillList() {
         ECCallManager.getInstance().getCalls(pageNum, PAGE_SIZE, new ResponseListener<JSONObject>() {
             @Override
             public void onSuccess(JSONObject json) {
                 JSONArray array = json.getJSONArray("list");
-                parseList(array);
+                parseBillList(array);
             }
 
             @Override
@@ -93,15 +89,15 @@ public class ECBillListActivity extends BaseActivity {
         });
     }
 
-    private void parseList(JSONArray array) {
-		if (array.isEmpty()) {
-			return;
-		}
+    private void parseBillList(JSONArray array) {
+        if (array.isEmpty()) {
+            return;
+        }
         if(pageNum == IDEL_PAGE_NUM)
             mMapList.clear();
         for (int i = 0; i < array.size(); i++) {
             JSONObject obj = array.getJSONObject(i);
-            CallBean bean = CallBean.parseJson(obj.toJSONString());
+            BillBean bean = BillBean.parseJson(obj.toJSONString());
             mMapList.add(bean.getMap());
         }
         runOnUiThread(new Runnable() {

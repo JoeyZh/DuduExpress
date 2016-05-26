@@ -6,6 +6,7 @@
     <item name="timeline_content" type="id"></item>
     <item name="timeline_tag" type="id"></item>
     <item name="timeline_segment" type="id"></item>
+    <item name="timeline_content_text" type="id"></item>
     <item name="timeline_tag_extra" type="id" />
     <item name="timeline_segment_dot" type="id" />
     <item name="timeline_child_item_img" type="id" />

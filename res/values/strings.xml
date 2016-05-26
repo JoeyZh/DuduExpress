@@ -264,6 +264,7 @@
     </string-array>
 
     <string name="press_to_talk">按住说话</string>
+    <string name="start_recording">开始录音</string>
     <string name="contact">联系人</string>
     <string name="setting">设置</string>
     <string name="file_title">文件</string>

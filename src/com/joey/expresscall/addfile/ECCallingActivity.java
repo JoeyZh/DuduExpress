@@ -24,8 +24,10 @@ import com.joey.expresscall.file.bean.FileBean;
 import com.joey.expresscall.protocol.RequestError;
 import com.joey.expresscall.protocol.ResponseListener;
 import com.joey.expresscall.record.AudioRecordFunc;
+import com.joey.expresscall.record.ErrorCode;
 import com.joey.general.BaseActivity;
 import com.joey.general.utils.MyLog;
+import com.joey.general.utils.ToastUtil;
 import com.joey.general.views.TopBarLayout;
 
 public class ECCallingActivity extends BaseActivity {
@@ -57,7 +59,14 @@ public class ECCallingActivity extends BaseActivity {
         @Override
         public void onStartPress(View view) {
             MyLog.i("OnLongStart");
-            startRecord();
+            int result = startRecord();
+            if(result == ErrorCode.SUCCESS){
+                handler.postDelayed(recordTimeRunnable,1000);
+                recordBtn.setText(R.string.start_recording);
+                return;
+            }
+            stopRecord();
+            recordBtn.setText(R.string.press_to_talk);
         }
 
         @Override
@@ -227,12 +236,11 @@ public class ECCallingActivity extends BaseActivity {
     };
 
     //开始录音
-    private void startRecord() {
+    private int startRecord() {
         second = 0;
         startRecording = true;
         tvRecordTime.setText("");
-        handler.postDelayed(recordTimeRunnable, 1000);
-        AudioRecordFunc.getInstance().startRecordAndFile();
+        return AudioRecordFunc.getInstance().startRecordAndFile();
     }
 
     private void stopRecord() {

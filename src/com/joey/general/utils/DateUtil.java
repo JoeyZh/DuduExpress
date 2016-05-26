@@ -9,7 +9,7 @@ public class DateUtil {
     public  static final String DATE_FORMMAT_STR_2 = "MM-dd HH:mm:ss SSS";
     public  static final String DATE_FORMMAT_STR_DAY = "yyyy-MM-dd";
     public  static final String DATE_FORMMAT_STR_3 = "yyyy年MM月dd HH:mm:ss";
-
+    public  static final String DATE_FORMMAT_STR_4 = "yyyyMMddHHmmss";
 
     /**
      * 获取时间
