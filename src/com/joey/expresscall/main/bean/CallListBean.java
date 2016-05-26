@@ -90,10 +90,13 @@ public class CallListBean implements Serializable{
 
     public HashMap<String,Object> getMap(){
         HashMap<String,Object> map = new HashMap<String, Object>();
+        map.put("fileId",getFileId());
+        map.put("callListId",getCallListId());
         map.put("description",getDescription());
         String timeStr = DateUtil.convertToDateStr(DateUtil.DATE_FORMMAT_STR_3, getCallTime());
         map.put("callTime",timeStr);
         map.put("extra",getSuccessCount()+"/"+getTotalSize());
+//        MyLog.i("map = "+map.toString());
         return map;
     }
 

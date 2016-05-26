@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -71,6 +72,18 @@ public class ECMainFragment extends BaseFragment {
 		}
 	};
 
+	private AdapterView.OnItemClickListener itemClickListener = new AdapterView.OnItemClickListener() {
+		@Override
+		public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+			if(position > mCallList.size())
+				return;
+			String callListId = mCallList.get(position).get("callListId").toString();
+			Intent intent = new Intent(getActivity(),ECGroupListActivity.class);
+			intent.putExtra("callListId",callListId);
+			startActivity(intent);
+
+		}
+	};
 	public ECMainFragment() {
 	}
 
@@ -85,8 +98,8 @@ public class ECMainFragment extends BaseFragment {
 		fileListView = (ListView) currentView.findViewById(R.id.main_file_list);
 		addFileView = header.findViewById(R.id.add_new_file_layout);
 		addFileView.setOnClickListener(mOnClickListener);
-		fileListView.addHeaderView(header);
-
+//		fileListView.addHeaderView(header);
+		fileListView.setOnItemClickListener(itemClickListener);
 		return currentView;
 	}
 

@@ -32,11 +32,11 @@ public class ECCallManager {
         callInterface = new ECCallInterface(token);
     }
 
-    public <T> void getCallListDetail(final String callId,ResponseListener<T> listener) {
+    public <T> void getCallListDetail(final String callListId,ResponseListener<T> listener) {
         TaskBuilder task = new TaskBuilder("callListDetail", listener, new OnTaskListener() {
             @Override
             public String execute() {
-                return callInterface.getCallListDetail(callId);
+                return callInterface.getCallListDetail(callListId);
             }
         });
 

@@ -38,7 +38,6 @@ public class ECSimpleAdapter1 extends SimpleAdapter{
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-		// TODO Auto-generated method stub
 		View view = super.getView(position, convertView, parent);
 
 		if(enable){

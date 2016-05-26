@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
+    android:descendantFocusability="blocksDescendants"
     android:paddingBottom="@dimen/layout_mid_margin"
     android:paddingLeft="@dimen/layout_mid_margin"
     android:paddingTop="@dimen/layout_mid_margin">
@@ -14,16 +15,13 @@
         android:button="@drawable/btn_checkbox_selector"
         android:gravity="center_vertical"
         android:padding="5dp"
-        android:visibility="visible" />
+        android:visibility="gone" />
 
 
     <RelativeLayout
         android:id="@+id/item_layout"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:clickable="true"
-        android:descendantFocusability="blocksDescendants"
-        android:longClickable="true"
         android:paddingRight="@dimen/layout_mid_margin">
 
 

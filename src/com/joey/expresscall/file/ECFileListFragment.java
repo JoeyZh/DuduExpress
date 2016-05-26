@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.alibaba.fastjson.JSON;
@@ -21,6 +22,7 @@ import com.joey.expresscall.protocol.comm.ECCallInterface;
 import com.joey.general.BaseFragment;
 import com.joey.general.utils.MyLog;
 import com.joey.general.utils.MySharedPreference;
+import com.joey.general.utils.ToastUtil;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,6 +34,12 @@ public class ECFileListFragment extends BaseFragment {
 	private final String keys[] = new String[] { "type", "fileName",
 			"fileExtra", "createTime", "color" };
 	private ArrayList<HashMap<String, Object>> mMapList = new ArrayList<HashMap<String, Object>>();
+	private AdapterView.OnItemClickListener itemClickListener = new AdapterView.OnItemClickListener() {
+		@Override
+		public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+			ToastUtil.show(getActivity(),"点一下");
+		}
+	};
 
 	@Override
 	protected View createView(LayoutInflater inflater, ViewGroup container,

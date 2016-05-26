@@ -19,10 +19,36 @@ public class CallBean implements Serializable {
     private String phone;
     private long callTime;
     private String fileId;
-
+    private long startTime;
+    private long endTime;
+    private float cost;
     private int duration;
 
     public CallBean() {
+    }
+
+    public long getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(long startTime) {
+        this.startTime = startTime;
+    }
+
+    public long getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(long endTime) {
+        this.endTime = endTime;
+    }
+
+    public float getCost() {
+        return cost;
+    }
+
+    public void setCost(float money) {
+        this.cost = money;
     }
 
     public String getFileId() {
@@ -72,8 +98,10 @@ public class CallBean implements Serializable {
         map.put("callId", getCallId());
         String timeStr = DateUtil.convertToDateStr(DateUtil.DATE_FORMMAT_STR_3, getCallTime());
         map.put("callTime", timeStr);
-//        map.put("phoneNum",getPhoneNum());
-        map.put("callCount", getFileId());
+        map.put("phone",getPhone());
+        map.put("cost", getCost());
+        map.put("startTime",getStartTime());
+        map.put("endTime",getEndTime());
         return map;
     }
 
@@ -83,8 +111,10 @@ public class CallBean implements Serializable {
             JSONObject jsonObject = JSON.parseObject(json);
             bean.setCallId(jsonObject.getString("callId"));
             bean.setCallTime(jsonObject.getLong("callTime"));
-//            bean.setCost(jsonObject.getFloat("money"));
-//            bean.setPhoneNum(jsonObject.getString("phoneNum"));
+//            bean.setStartTime(jsonObject.getLong("startTime"));
+//            bean.setEndTime(jsonObject.getLong("endTime"));
+            bean.setCost(jsonObject.getFloat("money"));
+            bean.setPhone(jsonObject.getString("toMoible"));
 //            bean.setCallCount(jsonObject.getInteger("callCount"));
         } catch (JSONException e) {
             MyLog.e("parse error" + e.getMessage());

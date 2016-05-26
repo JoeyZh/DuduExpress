@@ -14,6 +14,7 @@ import com.joey.expresscall.main.bean.CallListBean;
 import com.joey.expresscall.protocol.RequestError;
 import com.joey.expresscall.protocol.ResponseListener;
 import com.joey.general.BaseActivity;
+import com.joey.general.utils.MyLog;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,7 +33,7 @@ public class ECBillListActivity extends BaseActivity {
 
     private ECSimpleAdapter1 mAdapter;
     private String[] keys = {"callTime","count","phoneNum"};
-    private int[] ids = {R.id.item_text,R.id.timeline_tag_extra,R.id.timeline_content_text};
+    private int[] ids = {R.id.item_text,R.id.item_text_tag,R.id.item_extra};
     @Override
     public void initSettings() {
        getCallList();
@@ -43,6 +44,7 @@ public class ECBillListActivity extends BaseActivity {
         setContentView(R.layout.activity_bill_list_layout);
         listBill = (ListView) findViewById(R.id.bill_list);
         mAdapter = new ECSimpleAdapter1(this,mMapList,R.layout.simple_item_layout_1,keys,ids);
+        mAdapter.setType(ECSimpleAdapter1.SIMPLE_ADAPTER_TYPE_TAG);
         setTitle(R.string.bill_title);
         listBill.setAdapter(mAdapter);
 
@@ -63,7 +65,7 @@ public class ECBillListActivity extends BaseActivity {
             @Override
             public void onSuccess(JSONObject json) {
                 JSONArray array = json.getJSONArray("list");
-                parseList(array);
+                parseBillList(array);
             }
 
             @Override
@@ -92,16 +94,15 @@ public class ECBillListActivity extends BaseActivity {
             }
         });
     }
-
-    private void parseList(JSONArray array) {
-		if (array.isEmpty()) {
-			return;
-		}
+    private void parseBillList(JSONArray array) {
+        if (array.isEmpty()) {
+            return;
+        }
         if(pageNum == IDEL_PAGE_NUM)
             mMapList.clear();
         for (int i = 0; i < array.size(); i++) {
             JSONObject obj = array.getJSONObject(i);
-            CallBean bean = CallBean.parseJson(obj.toJSONString());
+            BillBean bean = BillBean.parseJson(obj.toJSONString());
             mMapList.add(bean.getMap());
         }
         runOnUiThread(new Runnable() {
@@ -111,4 +112,5 @@ public class ECBillListActivity extends BaseActivity {
             }
         });
     }
+
 }
