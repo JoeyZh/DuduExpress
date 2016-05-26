@@ -31,10 +31,17 @@ Post request string = {"Response":{"desc":"请求成功","data":{"pageSize":10,"
 Post string = {"Request":{"token":"189105176191463321329304"}}
 Post request string = {"desc":"请求成功","data":{"pageSize":10,"list":[{"callId ":"1463220107277","callTime ":"1463220104000","callCount ":"2","money":"0.06","type":"wav","successCount":"2"},{"callId ":"1463219514791","callTime ":"1463219515000","callCount ":"1","money":"0.00","type":"wav","successCount":"0"},{"callId ":"1463210527348","callTime ":"1463210524000","callCount ":"2","money":"0.00","type":"wav","successCount":"1"},{"callId ":"1463207100390","callTime ":"1463207098000","callCount ":"2","money":"0.00","type":"wav","successCount":"1"},{"callId ":"1462284306743","callTime ":"1462284307000","callCount ":"3","money":"0.30","type":"wav","successCount":"1"},{"callId ":"1462284255718","callTime ":"1462284256000","callCount ":"1","money":"0.10","type":"wav","successCount":"1"},{"callId ":"1462284141415","callTime ":"1462284142000","callCount ":"1","money":"0.10","type":"wav","successCount":"1"},{"callId ":"1462283407758","callTime ":"1462283410000","callCount ":"1","mon...
 
-群呼详单
+群呼列表
 Post string = {"Request":{"token":"189105176191463926571383","pageSize":10,"pageNum":1}}
 url = http://jdsc2015.xicp.net/SYH/record/groupCallList.do
 Post request string = {"desc":"请求成功","data":{"pageSize":10,"list":"[{totalSize=2, callListId=1463926011616, successCount=0, callTime=20160522 10:06:44}, {totalSize=2, callListId=1463925932367, successCount=0, callTime=20160522 10:05:25}, {totalSize=2, callListId=1463220107277, successCount=1, callTime=20160520 06:01:44}, {totalSize=1, callListId=1463219514791, successCount=0, callTime=20160520 05:51:55}, {totalSize=1, callListId=1463210527348, successCount=0, callTime=20160520 03:22:04}, {totalSize=2, callListId=1463207100390, successCount=0, callTime=20160520 02:24:58}, {totalSize=1, callListId=1462284306743, successCount=0, callTime=20160503 10:05:07}, {totalSize=1, callListId=1462284255718, successCount=1, callTime=20160503 10:04:16}, {totalSize=1, callListId=1462284141415, successCount=0, callTime=20160503 10:02:22}, {totalSize=1, callListId=1462283407758, successCount=0, callTime=20160503 09:50:10}]","totalSize":"10","pageNum":1},"code":"000"}
+
+群呼详单
+url = http://jdsc2015.xicp.net/SYH/record/billDetail.do
+Post string = {"Request":{"callListId":"1463925932367_bye.wav","token":"189105176191464251293595"}}
+Post request string = {"desc":"请求成功","data":{"totalCount":2,"list":[{"startTime":"","toMoible":"15610131752","duration":"0","callTime":"1463925926000","money":"0.00","type":"wav","endTime":"1463925978000","callId":"1463925932367_bye.wav"},{"startTime":"","toMoible":"18663753236","duration":"0","callTime":"1463925925000","money":"0.00","type":"wav","endTime":"1463925982000","callId":"1463925932367_bye.wav"}]},"code":"000"}
+
+
 
 注销
 	Post string = {"Request":{"token":"189105176191463927464130"}}

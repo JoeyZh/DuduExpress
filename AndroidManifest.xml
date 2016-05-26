@@ -19,7 +19,7 @@
         <activity android:name=".login.JVLoginActivity"></activity>
         <activity android:name=".main.ECBillListActivity"></activity>
         <activity android:name=".main.ECGroupListActivity"></activity>
-
+        <activity android:name=".main.ECCallDetailActivity"></activity>
         <activity android:name=".login.JVFoundPasswordActivity"></activity>
         <activity android:name=".login.JVRegisterActivity"></activity>
         <activity android:name=".welcome.JVWelcomeActivity">
