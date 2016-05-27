@@ -266,44 +266,45 @@ public class JVRegisterActivity extends BaseActivity {
         /**
          * 判断账号存在不
          */
-        createDialog(R.string.tips_account_vertifying, true);
         ECAccountManager.getInstance().isAccountExist(user,
                 new ResponseListener<JSONObject>() {
                     // 账号库反馈
                     @Override
                     public void onSuccess(JSONObject jsonData) {
                         MyLog.i("jsonData = " + jsonData.toString());
-//                        if (jsonData instanceof JSONObject) {
-//                            isExist = ((JSONObject) jsonData)
-//                                    .getBooleanValue("isExist");
-//                            isCheckedExist = true;
-//                            // 账号存在，出提示
-//                            if (isExist) {
-//                                showInputWarn(R.string.register_conflict, false);
-//                            } else {// 进行注册第二部
+                        if (jsonData instanceof JSONObject) {
+                            isExist = ((JSONObject) jsonData)
+                                    .getBooleanValue("isExist");
+                            isCheckedExist = true;
+                            // 账号存在，出提示
+                            if (isExist) {
+                                showInputWarn(R.string.register_conflict, false);
+                            } else {// 进行注册第二部
                                 showInputWarn(R.string.register_no_conflict,
                                         false);
                                 gotoSecondTip();
-//                            }
-//                        }
+                            }
+                        }
                     }
 
                     @Override
                     public void onError(RequestError error) {
-                        // 关闭Progress提示框
 
                     }
 
 					@Override
 					public void onStart() {
-						// TODO Auto-generated method stub
-						
+                        createDialog(R.string.tips_account_vertifying, true);
 					}
 
 					@Override
 					public void onFinish() {
-						// TODO Auto-generated method stub
-						
+						runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                dismissDialog();
+                            }
+                        });
 					}
                 });
     }

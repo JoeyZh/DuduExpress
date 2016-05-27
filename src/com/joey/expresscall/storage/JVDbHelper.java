@@ -32,7 +32,7 @@ public class JVDbHelper {
 	public static final int SQL_VERSIOIN = 4;
 	public static final String ACCOUNT_TABLE = "account";
 	public static final String FILE_TABLE = "file";
-	public static final String GROUP_TABLE = "group";
+	public static final String GROUP_TABLE = "group_call";
 	public static final String CALL_TABLE = "call";
 	public static final String COLUMN_ID = "id";
 	public static final String COLUMN_DATA = "data";
@@ -272,8 +272,8 @@ public class JVDbHelper {
 	 *            数据库表格
 	 * @param columnKey
 	 *            数据表格列key
-	 * @param row
-	 *            行数
+	 * @param conditions
+	 *            查询条件
 	 * @return
 	 */
 	public Serializable getObject(String table, String columnKey,
@@ -329,7 +329,7 @@ public class JVDbHelper {
 				+ "id text,"
 				+ "data text, accountId text, foreign key(accountId) references  account(id) on delete cascade on update cascade)";
 
-		public final static String CREATE_GROUP_TABLE = "create table if not exists group ("
+		public final static String CREATE_GROUP_TABLE = "create table if not exists group_call ("
 				+ "keyid integer primary key autoincrement,"
 				+ "id text,"
 				+ "data text, accountId text, foreign key(accountId) references  account(id) on delete cascade on update cascade)";
@@ -352,7 +352,7 @@ public class JVDbHelper {
 		public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 			db.execSQL("drop table if exists account");
 			db.execSQL("drop table if exists file");
-			db.execSQL("drop table if exists group");
+			db.execSQL("drop table if exists group_call");
 			db.execSQL("drop table if exists call");
 
 			onCreate(db);

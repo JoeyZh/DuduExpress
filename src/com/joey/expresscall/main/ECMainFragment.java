@@ -98,7 +98,7 @@ public class ECMainFragment extends BaseFragment {
 		fileListView = (ListView) currentView.findViewById(R.id.main_file_list);
 		addFileView = header.findViewById(R.id.add_new_file_layout);
 		addFileView.setOnClickListener(mOnClickListener);
-//		fileListView.addHeaderView(header);
+		fileListView.addHeaderView(header);
 		fileListView.setOnItemClickListener(itemClickListener);
 		return currentView;
 	}
@@ -263,10 +263,9 @@ public class ECMainFragment extends BaseFragment {
 
 	private void parseGroupList(JSONObject json) {
 		JSONArray array = json.getJSONArray("list");
-//		if (array.isEmpty()) {
-//			test();
-//			return;
-//		}
+		if (array == null || array.isEmpty()) {
+			return;
+		}
 		if(callPageNum == IDEL_PAGE_NUM)
 			mCallList.clear();
 		for (int i = 0; i < array.size(); i++) {

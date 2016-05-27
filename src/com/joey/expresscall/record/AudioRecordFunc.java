@@ -21,8 +21,8 @@ public class AudioRecordFunc {
      
     private AudioRecord audioRecord;  
     private boolean isRecord = false;// 设置正在录制的状态  
-     
-     
+    private double voicedb;
+
     private static AudioRecordFunc mInstance; 
           
     private AudioRecordFunc(){

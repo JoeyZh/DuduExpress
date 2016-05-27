@@ -16,9 +16,11 @@ import android.widget.ListView;
 import com.joey.expresscall.R;
 import com.joey.expresscall.account.ECAccountManager;
 import com.joey.expresscall.common.ECSimpleAdapter1;
+import com.joey.expresscall.login.JVLoginActivity;
 import com.joey.expresscall.protocol.RequestError;
 import com.joey.expresscall.protocol.ResponseListener;
 import com.joey.general.BaseFragment;
+import com.joey.general.MyActivityManager;
 import com.joey.general.utils.ToastUtil;
 import com.joey.general.views.TopBarLayout;
 
@@ -153,7 +155,10 @@ public class ECSettingFragment extends BaseFragment {
 		ECAccountManager.getInstance().logOut(new ResponseListener<String>() {
 			@Override
 			public void onSuccess(String json) {
+
 				ToastUtil.show(getActivity(), R.string.logout);
+				MyActivityManager.getActivityManager().popAllActivityExceptOne(JVLoginActivity.class);
+
 			}
 
 			@Override

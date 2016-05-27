@@ -3,28 +3,28 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:descendantFocusability="blocksDescendants"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="180dp"
-        android:background="@color/main_color" >
+        android:background="@color/main_color">
 
         <LinearLayout
             android:id="@+id/layout_menu_bar"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/topbar_height"
             android:layout_alignParentRight="true"
-            android:orientation="horizontal" >
-            
+            android:orientation="horizontal">
+
             <ImageButton
                 android:id="@+id/btn_user_setting"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/icon_setting_white_selector"
-                android:padding="@dimen/layout_min_margin"
                 android:layout_gravity="center_vertical"
-                android:background="@color/transparent"/>
+                android:background="@color/transparent"
+                android:padding="@dimen/layout_min_margin"
+                android:src="@drawable/icon_setting_white_selector" />
         </LinearLayout>
 
         <ImageView
@@ -42,10 +42,10 @@
             style="@style/text_mid_style"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:gravity="center_vertical"
             android:layout_alignTop="@+id/img_user_logo"
             android:layout_marginRight="@dimen/layout_min_margin"
             android:layout_toRightOf="@+id/img_user_logo"
+            android:gravity="center_vertical"
             android:text="15264182313"
             android:textColor="@color/white" />
 
@@ -56,7 +56,7 @@
             android:layout_alignLeft="@+id/img_user_logo"
             android:layout_alignParentBottom="true"
             android:layout_below="@+id/img_user_logo"
-            android:layout_marginBottom="@dimen/layout_min_margin" >
+            android:layout_marginBottom="@dimen/layout_min_margin">
 
             <TextView
                 android:id="@+id/text_cost_warning"
@@ -87,6 +87,6 @@
                 android:textColor="@drawable/text_normal_white_selector" />
         </RelativeLayout>
     </RelativeLayout>
-    
+
 
 </LinearLayout>
