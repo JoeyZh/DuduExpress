@@ -100,7 +100,7 @@ public class ECCallManager {
 
     }
 
-    public <T> void upDateFile(final String fileId,String extraName,ResponseListener<T> listener){
+    public <T> void updateFile(final String fileId,String extraName,ResponseListener<T> listener){
         TaskBuilder task = new TaskBuilder("files", listener, new OnTaskListener() {
             @Override
             public String execute() {

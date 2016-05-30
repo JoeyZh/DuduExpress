@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
 import com.alibaba.fastjson.JSON;
@@ -34,14 +35,25 @@ public class ECFileListFragment extends BaseFragment {
 	public ECFileItemAdapter mAdapter;
 	private final String keys[] = new String[] { "type", "fileName",
 			"fileExtra", "createTime", "color" };
+	private ArrayList<FileBean> fileList = new ArrayList<FileBean>();
 	private ArrayList<HashMap<String, Object>> mMapList = new ArrayList<HashMap<String, Object>>();
 	private AdapterView.OnItemClickListener itemClickListener = new AdapterView.OnItemClickListener() {
 		@Override
 		public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 			ToastUtil.show(getActivity(),"点一下");
+			FileBean bean = fileList.get(position);
+			if(MobileUtil.isExist(bean.getPath())){
+				play(bean.getPath());
+				return;
+			}
+			download(bean);
 		}
 	};
 
+	public void setItemClickListener(OnItemClickListener listener){
+		listView.setOnItemClickListener(listener);
+	}
+	
 	@Override
 	protected View createView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -118,9 +130,11 @@ public class ECFileListFragment extends BaseFragment {
 
 	public void parseFiles(JSONArray array) {
 		mMapList.clear();
+		fileList.clear();
 		for (int i = 0; i < array.size(); i++) {
 			JSONObject obj = array.getJSONObject(i);
 			FileBean bean = FileBean.parseJson(obj.toJSONString());
+			fileList.add(bean);
 			HashMap<String, Object> map = bean.getMap();
 			map.put("type", bean.getFileType().equals("wav") ? "录" : "文");
 			map.put("color", bean.getFileType().equals("wav") ? "blue" : "red");
@@ -138,6 +152,13 @@ public class ECFileListFragment extends BaseFragment {
 				mAdapter.notifyDataSetChanged();
 			}
 		});
+	}	
+//  下载
+	private void download(FileBean bean){
+		
 	}
-
+//	播放
+	private void play(String Path){
+		
+	}
 }
