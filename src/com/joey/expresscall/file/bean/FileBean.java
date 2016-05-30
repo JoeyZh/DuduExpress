@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONException;
 import com.alibaba.fastjson.JSONObject;
 import com.joey.expresscall.AppConsts;
+import com.joey.general.utils.DateUtil;
 import com.joey.general.utils.MyLog;
 
 import java.io.Serializable;
@@ -85,8 +86,9 @@ public class FileBean implements Serializable {
         HashMap<String,Object> map = new HashMap<String, Object>();
         map.put("fileId",getFileId());
         map.put("extraName",getExtraName());
-        map.put("createTime",getCreateTime());
-        map.put("path",this.path);
+        String timeStr = DateUtil.convertToDateStr(DateUtil.DATE_FORMMAT_STR_3, getCreateTime());
+        map.put("createTime",timeStr);
+        map.put("path",getPath());
         return map;
     }
 
@@ -102,6 +104,7 @@ public class FileBean implements Serializable {
         }catch (JSONException e){
             MyLog.e("parse error"+e.getMessage());
         }
+        bean.setPath(AppConsts.RECORD_DIR+ bean.getFileId());
         return bean;
     }
 

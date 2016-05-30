@@ -3,15 +3,18 @@ package com.joey.expresscall.addfile;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import android.content.ClipData.Item;
 import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TabHost;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.TabHost.OnTabChangeListener;
 import android.widget.TextView;
 
@@ -20,6 +23,7 @@ import com.joey.expresscall.R;
 import com.joey.expresscall.account.ECCallManager;
 import com.joey.expresscall.common.ECSimpleAdapter1;
 import com.joey.expresscall.common.widget.LongPressButton;
+import com.joey.expresscall.file.ECFileActivity;
 import com.joey.expresscall.file.bean.FileBean;
 import com.joey.expresscall.protocol.RequestError;
 import com.joey.expresscall.protocol.ResponseListener;
@@ -51,10 +55,26 @@ public class ECCallingActivity extends BaseActivity {
             R.drawable.icon_right_arrow, R.drawable.icon_right_arrow};
 
     private final int LIST_SIZE = 2;
+    private final int ITEM_CHANGE_TYPE = 0;
+    private final int ITEM_SELECT_FILE = 1;
     private FileBean fileBean;
     private EditText editFile;
     private LongPressButton recordBtn;
     private TextView tvRecordTime;
+    private OnItemClickListener itemClickListener = new OnItemClickListener() {
+
+		@Override
+		public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+				long arg3) {
+			switch(arg2){
+			case ITEM_SELECT_FILE:
+				Intent intent = new Intent(ECCallingActivity.this, ECFileActivity.class);
+				startActivity(intent);
+				break;
+			}
+		}
+	}; 
+
     private LongPressButton.OnLongPressListener longPressListener = new LongPressButton.OnLongPressListener() {
         @Override
         public void onStartPress(View view) {

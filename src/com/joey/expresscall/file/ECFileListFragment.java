@@ -20,6 +20,7 @@ import com.joey.expresscall.protocol.ResponseListener;
 import com.joey.expresscall.protocol.TaskBuilder;
 import com.joey.expresscall.protocol.comm.ECCallInterface;
 import com.joey.general.BaseFragment;
+import com.joey.general.utils.MobileUtil;
 import com.joey.general.utils.MyLog;
 import com.joey.general.utils.MySharedPreference;
 import com.joey.general.utils.ToastUtil;
@@ -30,7 +31,7 @@ import java.util.HashMap;
 public class ECFileListFragment extends BaseFragment {
 
 	private ListView listView;
-	private ECFileItemAdapter mAdapter;
+	public ECFileItemAdapter mAdapter;
 	private final String keys[] = new String[] { "type", "fileName",
 			"fileExtra", "createTime", "color" };
 	private ArrayList<HashMap<String, Object>> mMapList = new ArrayList<HashMap<String, Object>>();
@@ -47,6 +48,7 @@ public class ECFileListFragment extends BaseFragment {
 		currentView = inflater.inflate(R.layout.fragment_file_list, container,
 				false);
 		listView = (ListView) currentView.findViewById(R.id.list_files);
+		listView.setOnItemClickListener(itemClickListener);
 		return currentView;
 	}
 
@@ -60,8 +62,8 @@ public class ECFileListFragment extends BaseFragment {
 		setTitle(R.string.file_title);
 		mAdapter = new ECFileItemAdapter(getActivity(), mMapList,
 				R.layout.simple_item_extra_layout, new String[] { "extraName",
-						"fileId", "createTime" }, new int[] {
-						R.id.text_content, R.id.text_desc, R.id.text_extra });
+						"fileId", "createTime","img" }, new int[] {
+						R.id.text_content, R.id.text_desc, R.id.text_extra,R.id.item_indicator });
 		listView.setAdapter(mAdapter);
 		loadingInfo();
 
@@ -122,6 +124,12 @@ public class ECFileListFragment extends BaseFragment {
 			HashMap<String, Object> map = bean.getMap();
 			map.put("type", bean.getFileType().equals("wav") ? "录" : "文");
 			map.put("color", bean.getFileType().equals("wav") ? "blue" : "red");
+			if(MobileUtil.isExist(bean.getPath())){
+				map.put("img", R.drawable.ic_download_selected);
+			}
+			else{
+				map.put("img", R.drawable.ic_download_normal);
+			}
 			mMapList.add(bean.getMap());
 		}
 		fragHandler.post(new Runnable() {

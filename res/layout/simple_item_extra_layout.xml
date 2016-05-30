@@ -83,7 +83,7 @@
             android:layout_centerVertical="true"
             android:background="@color/transparent"
             android:src="@drawable/icon_right_arrow"
-            android:visibility="gone" />
+             />
     </RelativeLayout>
 
     <View

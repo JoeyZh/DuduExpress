@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.joey.expresscall"
     android:versionCode="1"
-    android:versionName="1.0">
+    android:versionName="1.0" >
 
     <uses-sdk android:minSdkVersion="12" />
 
@@ -12,39 +12,56 @@
         android:hardwareAccelerated="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme" >
         <activity
             android:name=".MainActivity"
-            android:windowSoftInputMode="adjustPan">
-
-        </activity>
-        <activity android:name=".login.JVLoginActivity"></activity>
-        <activity android:name=".main.ECBillListActivity"></activity>
-        <activity android:name=".main.ECGroupListActivity"></activity>
-        <activity android:name=".main.ECCallDetailActivity"></activity>
-        <activity android:name=".login.JVFoundPasswordActivity"></activity>
-        <activity android:name=".login.JVRegisterActivity"></activity>
-        <activity android:name=".welcome.JVWelcomeActivity">
+            android:windowSoftInputMode="adjustPan" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".welcome.JVGuidActivity"></activity>
-        <activity android:name=".addfile.ECCallingActivity"></activity>
-        <activity android:name=".addfile.ECAddContactActivity"></activity>
-        <activity android:name=".contacts.ECContactActivity"></activity>
-        <activity android:name=".contacts.PhoneContactsActivity"></activity>
-        <activity android:name=".contacts.library.ContactsActivity"></activity>
-        <activity android:name=".setting.ECModifyNicknameActivity"></activity>
-        <activity android:name=".setting.ECModifyPwdActivity"></activity>
-        <activity android:name=".setting.ECSettingActivity"></activity>
+        <activity android:name=".login.JVLoginActivity" >
+        </activity>
+        <activity android:name=".main.ECBillListActivity" >
+        </activity>
+        <activity android:name=".main.ECGroupListActivity" >
+        </activity>
+        <activity android:name=".main.ECCallDetailActivity" >
+        </activity>
+        <activity android:name=".login.JVFoundPasswordActivity" >
+        </activity>
+        <activity android:name=".login.JVRegisterActivity" >
+        </activity>
+        <activity android:name=".welcome.JVWelcomeActivity" >
+        </activity>
+        <activity android:name=".welcome.JVGuidActivity" >
+        </activity>
+        <activity android:name=".addfile.ECCallingActivity" >
+        </activity>
+        <activity android:name=".addfile.ECAddContactActivity" >
+        </activity>
+        <activity android:name=".contacts.ECContactActivity" >
+        </activity>
+        <activity android:name=".contacts.PhoneContactsActivity" >
+        </activity>
+        <activity android:name=".contacts.library.ContactsActivity" >
+        </activity>
+        <activity android:name=".setting.ECModifyNicknameActivity" >
+        </activity>
+        <activity android:name=".setting.ECModifyPwdActivity" >
+        </activity>
+        <activity android:name=".setting.ECSettingActivity" >
+        </activity>
+        <activity android:name=".file.ECFileActivity" >
+        </activity>
 
         <!-- 接口测试 -->
         <activity
             android:name=".test.ECInterfaceTest"
-            android:label="接口测试"></activity>
+            android:label="接口测试" >
+        </activity>
     </application>
     <!-- 允许程序开机自动运行 -->
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />

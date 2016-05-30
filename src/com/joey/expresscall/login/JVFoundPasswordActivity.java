@@ -350,9 +350,9 @@ public class JVFoundPasswordActivity extends BaseActivity {
 	 */
 	private void getValidateCode() {
 		ECAccountManager.getInstance().validateCode(userName,
-				new ResponseListener<JSONObject>() {
+				new ResponseListener<String>() {
 
-					public void onSuccess(JSONObject jsonData) {
+					public void onSuccess(String data) {
 						runOnUiThread(new Runnable() {
 
 							@Override

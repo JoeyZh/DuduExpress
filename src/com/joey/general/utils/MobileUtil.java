@@ -112,5 +112,11 @@ public class MobileUtil {
         return (freeBlocks * blockSize) / 1024 / 1024; // 单位MB
     }
 
+    public static boolean isExist(String path){
+    	if(path == null ||path.isEmpty())
+    		return false;
+    	File file = new File(path);
+    	return file.exists();
+    }
 
 }

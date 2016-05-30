@@ -529,5 +529,4 @@ public abstract class BaseActivity extends Activity implements OnCreateInterface
         super.onActivityResult(requestCode, resultCode, data);
     }
 
-
 }

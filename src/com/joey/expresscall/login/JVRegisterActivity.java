@@ -485,8 +485,8 @@ public class JVRegisterActivity extends BaseActivity {
         hasCode = true;
         createDialog("", true);
         ECAccountManager.getInstance().validateCode(registerUserName,
-                new ResponseListener<JSONObject>() {
-                    public void onSuccess(JSONObject jsonData) {
+                new ResponseListener<String>() {
+                    public void onSuccess(String data) {
                         // 关闭Progress提示框
 
                             ToastUtil.show(JVRegisterActivity.this,

@@ -67,7 +67,7 @@ public class ECAccountManager {
         BackgroundHandler.execute(task);
     }
 
-    public void validateCode(final String username, final ResponseListener<JSONObject> listener) {
+    public <T> void validateCode(final String username, final ResponseListener<T> listener) {
         TaskBuilder task = new TaskBuilder("validateCode", listener, new OnTaskListener() {
             @Override
             public String execute() {
