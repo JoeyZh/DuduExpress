@@ -277,5 +277,9 @@
     <string name="phone_contact">手机通讯录</string>
     <string name="add_contact">添加联系人</string>
     <string name="add_contact_desc">输入手机号，多个请用逗号分隔</string>
+    
+    <!-- 添加文件 -->
+    <string name="upload">上传文件</string>
+    <string name="file_desc">录音的简单说明，比如：快递通知</string>
 
 </resources>
