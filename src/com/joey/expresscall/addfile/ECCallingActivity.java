@@ -127,6 +127,7 @@ public class ECCallingActivity extends BaseActivity {
         setContentView(R.layout.add_file_layout);
         setTitle(R.string.add_new_file);
         mListView = (ListView) findViewById(R.id.add_file_list);
+        mListView.setOnItemClickListener(itemClickListener);
         mData = new ArrayList<HashMap<String, Object>>();
         tags = getResources().getStringArray(R.array.array_add_tag);
         for (int i = 0; i < LIST_SIZE; i++) {
