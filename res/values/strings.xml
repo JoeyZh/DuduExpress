@@ -276,5 +276,6 @@
     <!-- 联系人 -->
     <string name="phone_contact">手机通讯录</string>
     <string name="add_contact">添加联系人</string>
+    <string name="add_contact_desc">输入手机号，多个请用逗号分隔</string>
 
 </resources>

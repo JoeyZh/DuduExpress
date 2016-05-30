@@ -13,6 +13,8 @@ import com.joey.general.utils.MyLog;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.SimpleAdapter;
 
 public class ECSimpleAdapter1 extends SimpleAdapter{
@@ -25,6 +27,23 @@ public class ECSimpleAdapter1 extends SimpleAdapter{
 	private Context mContext;
 	protected boolean enable;
 	protected boolean isAllChecked;
+
+	private CompoundButton.OnCheckedChangeListener checkedChangeListener = new CompoundButton.OnCheckedChangeListener() {
+		@Override
+		public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+			MyLog.e("$$$$$$$$$ ="+isChecked);
+			if(!isChecked){
+				isAllChecked = false;
+			}
+			if(buttonView.getTag() instanceof  Integer){
+				int position = (Integer) buttonView.getTag();
+				HashMap<String,Object> map = (HashMap<String,Object>) getItem(position);
+				map.put("checked",(Boolean)isChecked);
+			}
+			MyLog.e("size = "+getSelectList().size()+"\n"+getSelectList().toString());
+
+		}
+	};
 
 	public ECSimpleAdapter1(Context context,
 			List<? extends Map<String, ?>> data, int resource, String[] from,
@@ -39,7 +58,17 @@ public class ECSimpleAdapter1 extends SimpleAdapter{
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		View view = super.getView(position, convertView, parent);
-
+		if( view instanceof  CheckableLayout){
+			((CheckableLayout) view).setOnCheckedChangeListener(checkedChangeListener);
+			ViewHolder holder;
+			if(view.getTag() == null){
+				holder = new ViewHolder();
+				holder.checkBox = (CheckBox) view.findViewById(R.id.item_checkbox);
+				view.setTag(holder);
+			}
+			holder = (ViewHolder) view.getTag();
+			holder.checkBox.setTag(position);
+		}
 		if(enable){
 			view.findViewById(R.id.item_checkbox).setVisibility(View.VISIBLE);
 		}else{
@@ -67,6 +96,9 @@ public class ECSimpleAdapter1 extends SimpleAdapter{
 		return view;
 	}
 
+	private class ViewHolder{
+		private CheckBox checkBox;
+	}
 	public void upDateList(ArrayList<HashMap<String,Object>> list){
 		mData = list;
 		notifyDataSetChanged();
@@ -116,7 +148,4 @@ public class ECSimpleAdapter1 extends SimpleAdapter{
 		this.adapterType = type;
 	}
 
-	private class ViewHolder{
-		CheckableLayout layout;
-	}
 }

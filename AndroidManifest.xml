@@ -15,7 +15,9 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan">
+
+        </activity>
         <activity android:name=".login.JVLoginActivity"></activity>
         <activity android:name=".main.ECBillListActivity"></activity>
         <activity android:name=".main.ECGroupListActivity"></activity>

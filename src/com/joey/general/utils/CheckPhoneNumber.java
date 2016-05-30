@@ -56,18 +56,18 @@ public class CheckPhoneNumber {
         // 判断手机号码是否是11位
         if (mobPhnNum.length() == 11) {
 
-//            // 判断手机号码是否符合中国移动的号码规则
-//            if (mobPhnNum.matches(YD)) {
-//                flag = TYPE_CHINA_MOBILE;
-//            }
-//            // 判断手机号码是否符合中国联通的号码规则
-//            else if (mobPhnNum.matches(LT)) {
-//                flag = TYPE_CHINA_UNICOM;
-//            }
-//            // 判断手机号码是否符合中国电信的号码规则
-//            else if (mobPhnNum.matches(DX)) {
-//                flag = TYPE_CHINA_TELECOM;
-//            }
+            // 判断手机号码是否符合中国移动的号码规则
+            if (mobPhnNum.matches(YD)) {
+                flag = TYPE_CHINA_MOBILE;
+            }
+            // 判断手机号码是否符合中国联通的号码规则
+            else if (mobPhnNum.matches(LT)) {
+                flag = TYPE_CHINA_UNICOM;
+            }
+            // 判断手机号码是否符合中国电信的号码规则
+            else if (mobPhnNum.matches(DX)) {
+                flag = TYPE_CHINA_TELECOM;
+            }
             // 判断手机号码是否符合中国移动的号码规则
             if (mobPhnNum.startsWith("1")) {
                 flag = TYPE_CHINA_MOBILE;
