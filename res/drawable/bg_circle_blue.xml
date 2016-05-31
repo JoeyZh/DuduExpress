@@ -2,7 +2,7 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="oval"
     android:useLevel="false" >
-   <solid android:color="@color/btn_red_color" />
+   <solid android:color="@color/blue_light" />
      <padding
         android:bottom="1dip"
         android:left="2dip"

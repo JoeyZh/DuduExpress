@@ -1,5 +1,6 @@
 package com.joey.expresscall.file;
 
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,15 +12,15 @@ import android.widget.ListView;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.joey.expresscall.AppConsts;
 import com.joey.expresscall.R;
 import com.joey.expresscall.account.ECCallManager;
 import com.joey.expresscall.file.bean.FileBean;
 import com.joey.expresscall.main.ECFileItemAdapter;
-import com.joey.expresscall.main.bean.CallListBean;
+
+import com.joey.expresscall.player.PlaybackFragment;
 import com.joey.expresscall.protocol.RequestError;
 import com.joey.expresscall.protocol.ResponseListener;
-import com.joey.expresscall.protocol.TaskBuilder;
-import com.joey.expresscall.protocol.comm.ECCallInterface;
 import com.joey.general.BaseFragment;
 import com.joey.general.utils.MobileUtil;
 import com.joey.general.utils.MyLog;
@@ -43,7 +44,7 @@ public class ECFileListFragment extends BaseFragment {
 			ToastUtil.show(getActivity(),"点一下");
 			FileBean bean = fileList.get(position);
 			if(MobileUtil.isExist(bean.getPath())){
-				play(bean.getPath());
+				play(bean);
 				return;
 			}
 			download(bean);
@@ -155,10 +156,56 @@ public class ECFileListFragment extends BaseFragment {
 	}	
 //  下载
 	private void download(FileBean bean){
-		
+		MyLog.e(bean.toString());
+		ECCallManager.getInstance().downloadFile(bean.getFileId(), bean.getFileType(),
+				bean.getPath(), new ResponseListener<String>() {
+					@Override
+					public void onSuccess(String json) {
+
+					}
+
+					@Override
+					public void onError(RequestError error) {
+
+					}
+
+					@Override
+					public void onStart() {
+						fragHandler.post(new Runnable() {
+							@Override
+							public void run() {
+								mActivity.createDialog(R.string.waiting,false);
+							}
+						});
+					}
+
+					@Override
+					public void onFinish() {
+						fragHandler.post(new Runnable() {
+							@Override
+							public void run() {
+								mActivity.dismissDialog();
+							}
+						});
+					}
+				});
 	}
 //	播放
-	private void play(String Path){
-		
+	private void play(FileBean bean){
+		bean.setPath(AppConsts.RECORD_DIR+"20160531135658.wav");
+		bean.setDuration(30000);
+		try {
+			PlaybackFragment playbackFragment =
+					new PlaybackFragment().newInstance(bean);
+
+			FragmentTransaction transaction = (getActivity())
+					.getFragmentManager()
+					.beginTransaction();
+
+			playbackFragment.show(transaction, "dialog_playback");
+
+		} catch (Exception e) {
+			MyLog.e("exception", e);
+		}
 	}
 }

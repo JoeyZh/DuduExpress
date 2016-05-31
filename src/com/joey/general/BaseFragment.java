@@ -82,7 +82,8 @@ public abstract class BaseFragment extends Fragment implements OnCreateInterface
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mActivity = (BaseActivity) getActivity();
+        if(getActivity() instanceof BaseActivity)
+          mActivity = (BaseActivity) getActivity();
 //        if (null == mActivity
 //                | false == mActivity instanceof IHandlerLikeNotify) {
 //            throw new ClassCastException(

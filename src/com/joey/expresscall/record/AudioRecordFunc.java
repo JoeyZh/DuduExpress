@@ -86,7 +86,11 @@ public class AudioRecordFunc {
             isRecord = false;//停止文件写入  
             audioRecord.stop();  
             audioRecord.release();//释放资源  
-            audioRecord = null;  
+            audioRecord = null;
+            File file = new File(AudioName);
+            if (file.exists()) {
+                file.delete();
+            }
         }  
     }
      
@@ -110,7 +114,7 @@ public class AudioRecordFunc {
         @Override 
         public void run() {  
             writeDateTOFile();//往文件中写入裸数据  
-            copyWaveFile(AudioName, NewAudioName);//给裸数据加上头文件  
+            copyWaveFile(AudioName, NewAudioName);//给裸数据加上头文件
         }  
     }  
    

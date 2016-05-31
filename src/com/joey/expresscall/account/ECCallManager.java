@@ -1,6 +1,7 @@
 package com.joey.expresscall.account;
 
 import com.joey.expresscall.protocol.BackgroundHandler;
+import com.joey.expresscall.protocol.RequestError;
 import com.joey.expresscall.protocol.ResponseListener;
 import com.joey.expresscall.protocol.TaskBuilder;
 import com.joey.expresscall.protocol.TaskBuilder.OnTaskListener;
@@ -125,13 +126,39 @@ public class ECCallManager {
 		BackgroundHandler.execute(task);
 	}
 
-	public boolean upLoadCallFile(String path, String phone, String type,
-			String extraName) {
-		return callInterface.upLoadFile(path, phone, type, extraName);
+	public <T> void upLoadCallFile(String path, String phone, String type,
+			String extraName,ResponseListener<T>listener) {
+		listener.onStart();
+		new Thread(){
+			@Override
+			public void run() {
+				super.run();
+				boolean result =  callInterface.upLoadFile(path, phone, type, extraName);
+				listener.onFinish();
+				if(result){
+					listener.onSuccess((T)(result+""));
+					return;
+				}
+				listener.onError(new RequestError(-1));
+			}
+		}.start();
 	}
 
-	public boolean downloadFile(String fileId, String type, String path) {
-		return callInterface.downloadFile(fileId, type, path);
+	public  <T> void  downloadFile(String fileId, String type, String path,ResponseListener<T>listener) {
+		listener.onStart();
+		new Thread(){
+			@Override
+			public void run() {
+				super.run();
+				boolean result =  callInterface.downloadFile(fileId, type, path);
+				listener.onFinish();
+				if(result){
+					listener.onSuccess((T)(result+""));
+					return;
+				}
+				listener.onError(new RequestError(-1));
+			}
+		}.start();
 	}
 
 }

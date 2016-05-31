@@ -59,6 +59,18 @@ public class MyActivityManager {
         }
     }
 
+    public boolean cleanStack(){
+        if (null == activityStack || activityStack.size() == 0) {
+            return false;
+        }
+        int len = activityStack.size();
+        for (int i = len - 1; i >= 0; i--) {
+            Activity activity = activityStack.get(i);
+            popActivity(activity);
+        }
+        return true;
+    }
+
     // 退出栈中当前Activity
     public void popThisActivity(Class<?> cls) {
         while (true) {

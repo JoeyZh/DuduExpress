@@ -35,6 +35,6 @@ public class ECSaveFileActivity extends BaseActivity {
 	}
 	
 	private void upLoadFile(){
-		ECCallManager.getInstance().
+//		ECCallManager.getInstance().
 	}
 }

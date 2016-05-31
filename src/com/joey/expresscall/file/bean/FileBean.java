@@ -22,6 +22,7 @@ public class FileBean implements Serializable {
     private int duration;
     private String fileName;
     private long createTime;
+    private double fileLength;
 
 
     public long getCreateTime() {

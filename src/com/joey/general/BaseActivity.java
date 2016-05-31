@@ -32,6 +32,7 @@ import com.joey.general.utils.ToastUtil;
 import com.joey.general.views.TopBarLayout;
 
 import java.util.HashMap;
+import java.util.Set;
 
 
 /**
@@ -529,4 +530,9 @@ public abstract class BaseActivity extends Activity implements OnCreateInterface
         super.onActivityResult(requestCode, resultCode, data);
     }
 
+    public void openActivity(Class<?> activity, Intent intent) {
+        intent.setClass(getApplicationContext(), activity);
+        startActivity(intent);
+        overridePendingTransition(R.anim.push_right_in, R.anim.push_left_out);
+    }
 }
