@@ -13,6 +13,7 @@ import com.joey.expresscall.protocol.RequestError;
 import com.joey.expresscall.protocol.ResponseListener;
 import com.joey.general.BaseActivity;
 import com.joey.general.utils.MyLog;
+import com.joey.general.utils.ToastUtil;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -111,12 +112,12 @@ public class ECSaveFileActivity extends BaseActivity {
 				bean.getFileLength(),new ResponseListener<String>() {
 			@Override
 			public void onSuccess(String json) {
-
+				ToastUtil.show(getApplicationContext(),R.string.upload_over);
 			}
 
 			@Override
 			public void onError(RequestError error) {
-
+				ToastUtil.show(getApplicationContext(),R.string.upload_error);
 			}
 
 			@Override

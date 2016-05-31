@@ -41,7 +41,7 @@ public class ECFileListFragment extends BaseFragment {
 	private AdapterView.OnItemClickListener itemClickListener = new AdapterView.OnItemClickListener() {
 		@Override
 		public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-			ToastUtil.show(getActivity(),"点一下");
+//			ToastUtil.show(getActivity(),"点一下");
 			FileBean bean = fileList.get(position);
 			if(MobileUtil.isExist(bean.getPath())){
 				play(bean);
@@ -165,12 +165,12 @@ public class ECFileListFragment extends BaseFragment {
 				bean.getPath(), new ResponseListener<String>() {
 					@Override
 					public void onSuccess(String json) {
-
+						ToastUtil.show(mActivity,R.string.download_over);
 					}
 
 					@Override
 					public void onError(RequestError error) {
-
+						ToastUtil.show(mActivity,R.string.download_error);
 					}
 
 					@Override
@@ -178,7 +178,7 @@ public class ECFileListFragment extends BaseFragment {
 						fragHandler.post(new Runnable() {
 							@Override
 							public void run() {
-								mActivity.createDialog(R.string.waiting,false);
+								mActivity.createDialog(R.string.downloading,false);
 							}
 						});
 					}
