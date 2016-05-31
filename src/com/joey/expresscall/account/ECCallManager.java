@@ -127,13 +127,13 @@ public class ECCallManager {
 	}
 
 	public <T> void upLoadCallFile(String path, String phone, String type,
-			String extraName,ResponseListener<T>listener) {
+			String extraName,long duration,long fileSize,ResponseListener<T>listener) {
 		listener.onStart();
 		new Thread(){
 			@Override
 			public void run() {
 				super.run();
-				boolean result =  callInterface.upLoadFile(path, phone, type, extraName);
+				boolean result =  callInterface.upLoadFile(path, phone, type, extraName,duration,fileSize);
 				listener.onFinish();
 				if(result){
 					listener.onSuccess((T)(result+""));

@@ -533,6 +533,6 @@ public abstract class BaseActivity extends Activity implements OnCreateInterface
     public void openActivity(Class<?> activity, Intent intent) {
         intent.setClass(getApplicationContext(), activity);
         startActivity(intent);
-        overridePendingTransition(R.anim.push_right_in, R.anim.push_left_out);
-    }
+        overridePendingTransition(R.anim.push_left_in,
+                R.anim.push_left_out);    }
 }

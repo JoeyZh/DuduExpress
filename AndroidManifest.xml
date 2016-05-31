@@ -34,6 +34,7 @@
         <activity android:name=".welcome.JVGuidActivity"></activity>
         <activity android:name=".addfile.ECCallingActivity"></activity>
         <activity android:name=".addfile.ECAddContactActivity"></activity>
+        <activity android:name=".addfile.ECSaveFileActivity"></activity>
         <activity android:name=".contacts.ECContactActivity"></activity>
         <activity android:name=".contacts.PhoneContactsActivity"></activity>
         <activity android:name=".contacts.library.ContactsActivity"></activity>
@@ -41,11 +42,12 @@
         <activity android:name=".setting.ECModifyPwdActivity"></activity>
         <activity android:name=".setting.ECSettingActivity"></activity>
         <activity android:name=".file.ECFileActivity"></activity>
-
         <!-- 接口测试 -->
         <activity
             android:name=".test.ECInterfaceTest"
-            android:label="接口测试"></activity>
+            android:label="接口测试">
+
+        </activity>
     </application>
     <!-- 允许程序开机自动运行 -->
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />

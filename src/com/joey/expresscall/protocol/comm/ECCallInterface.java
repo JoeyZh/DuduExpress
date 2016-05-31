@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Set;
 
 import com.joey.expresscall.AppConsts;
+import com.joey.general.utils.MyLog;
 
 public class ECCallInterface {
 
@@ -40,13 +41,16 @@ public class ECCallInterface {
 	 * @param extraName
 	 * @return
 	 */
-	public boolean upLoadFile(String path,String phone, String fileType, String extraName) {
+	public boolean upLoadFile(String path,String phone, String fileType, String extraName,long duration,long fileSize) {
 		String URI = ECNetUrlConsts.getFullUrl(ECNetUrlConsts.DO_UPLOAD);
 		HashMap param = new HashMap();
 		param.put("mobile", phone);
 		param.put("fileType", fileType);
 		param.put("extraName", extraName);
+		param.put("duration",duration);
+		param.put("fileLength",fileSize);
 		param.put("token", this.token);
+		MyLog.i("httpComm",param.toString());
 
 		boolean result;
 		try {
@@ -97,7 +101,6 @@ public class ECCallInterface {
 		param.put("fileType", fileType);
 		param.put("phoneArray", phones);
 		String jsonStr = this.httpcomm.httpRequestPost(URI, param);
-
 		return jsonStr;
 	}
 
@@ -163,7 +166,7 @@ public class ECCallInterface {
 		StringBuilder sb = new StringBuilder();
 		Set<String> keys = params.keySet();
 		for(String key:keys){
-			String value = (String)params.get(key);
+			String value = params.get(key).toString();
 			if(key == null||value == null)
 				continue;
 			sb.append("--" + boundary + "\r\n");

@@ -5,7 +5,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
- 
+import java.util.Date;
+
 import android.media.AudioFormat;
 import android.media.AudioRecord;
  
@@ -22,6 +23,8 @@ public class AudioRecordFunc {
     private AudioRecord audioRecord;  
     private boolean isRecord = false;// 设置正在录制的状态  
     private double voicedb;
+    private long duration;
+    private long  startTime;
 
     private static AudioRecordFunc mInstance; 
           
@@ -54,7 +57,7 @@ public class AudioRecordFunc {
                 isRecord = true;  
                 // 开启音频文件写入线程  
                 new Thread(new AudioRecordThread()).start();  
-                 
+                startTime = System.currentTimeMillis();
                 return ErrorCode.SUCCESS;
             }
              
@@ -78,7 +81,10 @@ public class AudioRecordFunc {
     public String getRecordFileName(){
         return AudioFileFunc.getFileName(NewAudioName);
     }
-     
+
+    public long getRecordDuration(){
+        return duration;
+    }
    
     private void close() {  
         if (audioRecord != null) {  
@@ -87,11 +93,14 @@ public class AudioRecordFunc {
             audioRecord.stop();  
             audioRecord.release();//释放资源  
             audioRecord = null;
+//            删除源文件
             File file = new File(AudioName);
             if (file.exists()) {
                 file.delete();
             }
-        }  
+//          获取文件时长
+            duration = System.currentTimeMillis() - startTime;
+        }
     }
      
      

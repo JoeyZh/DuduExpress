@@ -19,11 +19,18 @@ public class FileBean implements Serializable {
     private String path;
     private String fileType;
     private String extraName;
-    private int duration;
+    private long duration;
     private String fileName;
     private long createTime;
-    private double fileLength;
+    private long fileLength;
 
+    public long getFileLength() {
+        return fileLength;
+    }
+
+    public void setFileLength(long fileLength) {
+        this.fileLength = fileLength;
+    }
 
     public long getCreateTime() {
         return createTime;
@@ -40,6 +47,7 @@ public class FileBean implements Serializable {
 
     public void setFileId(String fileId) {
         this.fileId = fileId;
+        setPath(AppConsts.RECORD_DIR+fileId);
     }
 
     public String getPath() {
@@ -66,11 +74,11 @@ public class FileBean implements Serializable {
         this.extraName = extraName;
     }
 
-    public int getDuration() {
+    public long getDuration() {
         return duration;
     }
 
-    public void setDuration(int duration) {
+    public void setDuration(long duration) {
         this.duration = duration;
     }
 
@@ -90,6 +98,8 @@ public class FileBean implements Serializable {
         String timeStr = DateUtil.convertToDateStr(DateUtil.DATE_FORMMAT_STR_3, getCreateTime());
         map.put("createTime",timeStr);
         map.put("path",getPath());
+        map.put("fileLength",String.format("%.2fKB",getFileLength()/1024.f));
+        map.put("duration",getDuration());
         return map;
     }
 
@@ -99,7 +109,10 @@ public class FileBean implements Serializable {
             JSONObject jsonObject = JSON.parseObject(json);
             bean.setFileId(jsonObject.getString("fileId"));
             bean.setFileType(jsonObject.getString("fileType"));
-//            bean.setDuration(jsonObject.getInteger("duration"));
+            if(jsonObject.containsKey("duration")&&jsonObject.getLong("duration") != null)
+                bean.setDuration(jsonObject.getLong("duration"));
+            if(jsonObject.containsKey("fileLength")&&jsonObject.getLong("fileLength") !=null)
+                bean.setFileLength(jsonObject.getLong("fileLength"));
             bean.setCreateTime(jsonObject.getLong("createTime"));
             bean.setExtraName(jsonObject.getString("extraName"));
         }catch (JSONException e){

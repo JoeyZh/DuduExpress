@@ -266,6 +266,8 @@ public class ECMainFragment extends BaseFragment {
 		if (array == null || array.isEmpty()) {
 			return;
 		}
+		if(!isOnTop)
+			return;
 		if(callPageNum == IDEL_PAGE_NUM)
 			mCallList.clear();
 		for (int i = 0; i < array.size(); i++) {

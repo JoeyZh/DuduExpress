@@ -93,6 +93,7 @@ public class ECCallingActivity extends BaseActivity {
         public void onFinishPress(View view) {
             MyLog.i("OnLongFinish");
             stopRecord();
+            savedFile();
         }
     };
 
@@ -275,5 +276,10 @@ public class ECCallingActivity extends BaseActivity {
         fileBean.setFileId(AudioRecordFunc.getInstance().getRecordFileName());
         fileBean.setFileType("wav");
         fileBean.setExtraName("测试上传demo");
+        fileBean.setDuration(AudioRecordFunc.getInstance().getRecordDuration());
+        fileBean.setFileLength(AudioRecordFunc.getInstance().getRecordFileSize());
+        statusHashMap.put("fileBean",fileBean);
+        Intent intent = new Intent(ECCallingActivity.this,ECSaveFileActivity.class);
+        startActivity(intent);
     }
 }

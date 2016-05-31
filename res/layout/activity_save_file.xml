@@ -4,6 +4,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <ListView
+        android:id="@+id/save_file_list"
+        style="@style/list_view_style1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/layout_mid_margin"></ListView>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -12,12 +19,12 @@
         <EditText
             android:id="@+id/save_edit_extra"
             style="@style/edit_default_style"
-            android:singleLine="false"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:background="@drawable/bg_with_segment"
             android:hint="@string/file_desc"
-            android:paddingLeft="13dp" />
+            android:paddingLeft="13dp"
+            android:singleLine="false" />
 
     </RelativeLayout>
 

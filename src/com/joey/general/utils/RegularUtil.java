@@ -5,54 +5,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class RegularUtil {
-    /**
-     * 验证云通号 最大是 2的31次方最大是2147483648
-     *
-     * @param ystNum
-     * @return
-     */
-    public static boolean checkYSTNum(String ystNum) {
-        boolean flag = true;
-
-        try {
-            int firstNumIndex;
-            for (firstNumIndex = 0; firstNumIndex < ystNum.length(); firstNumIndex++) {
-                char c = ystNum.charAt(firstNumIndex);
-                if (c <= '9' && c >= '0') {
-                    break;
-                }
-            }
-            String group = ystNum.substring(0, firstNumIndex);
-            String yst = ystNum.substring(firstNumIndex);
-            for (int mm = 0; mm < group.length(); mm++) {
-                char c = ystNum.charAt(mm);
-                if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z')) {
-
-                } else {
-                    flag = false;
-                }
-            }
-
-            for (int i = 0; i < yst.length(); i++) {
-                char c = yst.charAt(i);
-                if ((c >= '0' && c <= '9')) {
-
-                } else {
-                    flag = false;
-                }
-            }
-            int ystValue = "".equals(yst) ? 0 : Integer.parseInt(yst);
-            if (firstNumIndex > 4 || firstNumIndex <= 0 || ystValue <= 0) {
-                flag = false;
-            }
-        } catch (Exception e) {
-            flag = false;
-            e.printStackTrace();
-        }
-
-        return flag;
-
-    }
 
     /**
      * 检查ip地址格式是否正确

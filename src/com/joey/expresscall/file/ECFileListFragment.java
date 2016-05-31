@@ -75,7 +75,7 @@ public class ECFileListFragment extends BaseFragment {
 		setTitle(R.string.file_title);
 		mAdapter = new ECFileItemAdapter(getActivity(), mMapList,
 				R.layout.simple_item_extra_layout, new String[] { "extraName",
-						"fileId", "createTime","img" }, new int[] {
+				"createTime","fileLength", "img" }, new int[] {
 						R.id.text_content, R.id.text_desc, R.id.text_extra,R.id.item_indicator });
 		listView.setAdapter(mAdapter);
 		loadingInfo();
@@ -130,6 +130,10 @@ public class ECFileListFragment extends BaseFragment {
 	}
 
 	public void parseFiles(JSONArray array) {
+		if(array == null)
+			return;
+		if(!isOnTop)
+			return;
 		mMapList.clear();
 		fileList.clear();
 		for (int i = 0; i < array.size(); i++) {
@@ -192,8 +196,6 @@ public class ECFileListFragment extends BaseFragment {
 	}
 //	播放
 	private void play(FileBean bean){
-		bean.setPath(AppConsts.RECORD_DIR+"20160531135658.wav");
-		bean.setDuration(30000);
 		try {
 			PlaybackFragment playbackFragment =
 					new PlaybackFragment().newInstance(bean);

@@ -22,6 +22,7 @@ public abstract class BaseFragment extends Fragment implements OnCreateInterface
     protected String TAG = "";
     protected BaseActivity mActivity;
     protected FragHandler fragHandler = new FragHandler(this);
+    protected boolean isOnTop;
     /**
      * 标题
      */
@@ -94,6 +95,7 @@ public abstract class BaseFragment extends Fragment implements OnCreateInterface
     @Override
     public void onResume() {
         super.onResume();
+        isOnTop = true;
         /**
          * 每一个界面展示的时候,都要判断是否有服务器的信息<br/>
          * 如果有服务器连接异常的信息,需要显示错误标题栏.正常,隐藏<br/>
@@ -112,6 +114,7 @@ public abstract class BaseFragment extends Fragment implements OnCreateInterface
     public void onPause() {
         // TODO Auto-generated method stub
         super.onPause();
+        isOnTop = false;
         saveSettings();
     }
 

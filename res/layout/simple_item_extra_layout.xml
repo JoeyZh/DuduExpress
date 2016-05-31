@@ -2,8 +2,8 @@
 <com.joey.expresscall.common.CheckableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
     android:descendantFocusability="blocksDescendants"
+    android:orientation="horizontal"
     android:paddingBottom="@dimen/layout_mid_margin"
     android:paddingLeft="@dimen/layout_mid_margin"
     android:paddingTop="@dimen/layout_mid_margin">
@@ -80,9 +80,8 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:background="@color/transparent"
-             />
+            android:layout_below="@+id/text_extra"
+            android:background="@color/transparent" />
     </RelativeLayout>
 
     <View

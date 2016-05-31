@@ -99,7 +99,14 @@ public class ECInterfaceTest extends ListActivity {
 					response = account.requireInfo();
 					break;
 				case 7:// 上传
-					response = "result:"+fileInterface.upLoadFile(AppConsts.RECORD_DIR+"byeaaa.wav","18663853236","wav","哈哈啊哈哈");
+					String name = "哈哈啊哈哈";
+					byte [] bytes = name.getBytes();
+					try {
+						name =  new String(bytes,"UTF-8");
+					}catch (Exception e){
+
+					}
+					response = "result:"+fileInterface.upLoadFile(AppConsts.RECORD_DIR+"aaa.wav","18663853236","wav",name,10000,10000);
 //					try {
 //						response = "result:"+InterfaceTestDemo.upload(ECNetUrlConsts.getFullUrl(ECNetUrlConsts.DO_UPLOAD), AppConsts.RECORD_DIR+"byeaaa.wav");
 //					} catch (Exception e) {
