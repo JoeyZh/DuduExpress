@@ -18,7 +18,7 @@
         android:layout_height="@dimen/btn_record_circle_height"
         android:layout_centerInParent="true"
         android:background="@drawable/btn_record_circle_selector"
-        android:text="@string/press_to_talk"
+        android:text=""
         android:textColor="@color/white" />
 
 
