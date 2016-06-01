@@ -28,6 +28,7 @@ public class ECSaveFileActivity extends BaseActivity {
 	private final String tags[] = {"文件名：", "录制时长：","文件大小："};
 	private final int ids[] = {R.id.item_text_tag, R.id.item_text,
 			 R.id.item_access};
+	private final int access[] = {R.drawable.ic_launcher,-1,-1};
 
 	private ListView mListView;
 	private ECSimpleAdapter1 mAdapter;
