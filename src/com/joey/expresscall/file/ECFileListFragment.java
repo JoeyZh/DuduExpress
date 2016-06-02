@@ -100,7 +100,7 @@ public class ECFileListFragment extends BaseFragment {
 		mAdapter.setSwipeItemOnClickListener(new ECFileItemAdapter.SwipeItemOnClickListener() {
 			@Override
 			public void onItemClick(View view, int postion, HashMap<String, Object> map) {
-				ToastUtil.show(getActivity(),"删除");
+
 				if(lastSwipeLayout != null)
 					lastSwipeLayout.close(true);
 			}
@@ -237,6 +237,30 @@ public class ECFileListFragment extends BaseFragment {
 		} catch (Exception e) {
 			MyLog.e("exception", e);
 		}
+	}
+
+	private void deleteFile(FileBean bean){
+		ECCallManager.getInstance().deleteFile(bean.getFileId(), new ResponseListener<String>() {
+			@Override
+			public void onSuccess(String json) {
+
+			}
+
+			@Override
+			public void onError(RequestError error) {
+
+			}
+
+			@Override
+			public void onStart() {
+
+			}
+
+			@Override
+			public void onFinish() {
+
+			}
+		});
 	}
 //测试
 	private void test() {
