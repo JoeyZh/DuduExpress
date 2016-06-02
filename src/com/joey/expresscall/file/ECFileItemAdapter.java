@@ -29,7 +29,7 @@ public class ECFileItemAdapter extends BaseSwipeAdapter {
     private String from[];
     private ArrayList<HashMap<String,Object>> mData;
     private SwipeItemOnClickListener swipeItemOnClickListener;
-
+    private SimpleSwipeListener swipeListener;
     public ECFileItemAdapter(Context mContext,ArrayList<HashMap<String,Object>> data,String[] from,int []to) {
         this.mContext = mContext;
         this.from = from;
@@ -47,12 +47,15 @@ public class ECFileItemAdapter extends BaseSwipeAdapter {
         View v = LayoutInflater.from(mContext).inflate(R.layout.item_file_list, null);
         SwipeLayout swipeLayout = (SwipeLayout)v.findViewById(getSwipeLayoutResourceId(position));
         swipeLayout.setClickToClose(true);
-        swipeLayout.addSwipeListener(new SimpleSwipeListener() {
-            @Override
-            public void onOpen(SwipeLayout layout) {
-//                YoYo.with(Techniques.Tada).duration(500).delay(100).playOn(layout.findViewById(R.id.trash));
-            }
-        });
+        if(swipeListener != null){
+            swipeLayout.addSwipeListener(swipeListener);
+        }
+//        swipeLayout.addSwipeListener(new SimpleSwipeListener() {
+//            @Override
+//            public void onOpen(SwipeLayout layout) {
+////                YoYo.with(Techniques.Tada).duration(500).delay(100).playOn(layout.findViewById(R.id.trash));
+//            }
+//        });
         swipeLayout.setOnDoubleClickListener(new SwipeLayout.DoubleClickListener() {
             @Override
             public void onDoubleClick(SwipeLayout layout, boolean surface) {
@@ -62,6 +65,7 @@ public class ECFileItemAdapter extends BaseSwipeAdapter {
         ViewHolder holder;
         if(v.getTag() == null){
             holder = new ViewHolder();
+            v.setTag(holder);
         }
         holder = (ViewHolder)v.getTag();
         holder.imgDelete = (ImageView) v.findViewById(R.id.trash);
@@ -137,6 +141,10 @@ public class ECFileItemAdapter extends BaseSwipeAdapter {
 
     public void setSwipeItemOnClickListener(SwipeItemOnClickListener l){
         swipeItemOnClickListener = l;
+    }
+
+    public void setSimpleSwipeListener (SimpleSwipeListener listener){
+        this.swipeListener = listener;
     }
     private class ViewHolder{
         ImageView imgDelete;

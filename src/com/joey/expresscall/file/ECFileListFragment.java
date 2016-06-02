@@ -8,10 +8,12 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.daimajia.swipe.SimpleSwipeListener;
 import com.daimajia.swipe.SwipeLayout;
 import com.joey.expresscall.R;
 import com.joey.expresscall.account.ECCallManager;
@@ -45,6 +47,7 @@ public class ECFileListFragment extends BaseFragment {
 		public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 //			ToastUtil.show(getActivity(),"点一下");
 			if(lastSwipeLayout != null){
+				lastSwipeLayout.close(true);
 				return;
 			}
 			FileBean bean = fileList.get(position);
@@ -56,6 +59,17 @@ public class ECFileListFragment extends BaseFragment {
 		}
 	};
 
+	private SimpleSwipeListener swipeListener = new SimpleSwipeListener(){
+		@Override
+		public void onOpen(SwipeLayout layout) {
+			lastSwipeLayout = layout;
+		}
+		@Override
+		public void onClose(SwipeLayout layout) {
+			lastSwipeLayout = null;
+		}
+
+	};
 	public void setItemClickListener(OnItemClickListener listener){
 		listView.setOnItemClickListener(listener);
 	}
@@ -83,7 +97,17 @@ public class ECFileListFragment extends BaseFragment {
 				"createTime","fileLength", "img" }, new int[] {
 						R.id.text_content, R.id.text_desc, R.id.text_extra,R.id.item_indicator });
 		listView.setAdapter(mAdapter);
+		mAdapter.setSwipeItemOnClickListener(new ECFileItemAdapter.SwipeItemOnClickListener() {
+			@Override
+			public void onItemClick(View view, int postion, HashMap<String, Object> map) {
+				ToastUtil.show(getActivity(),"删除");
+				if(lastSwipeLayout != null)
+					lastSwipeLayout.close(true);
+			}
+		});
+		mAdapter.setSimpleSwipeListener(swipeListener);
 		loadingInfo();
+		test();
 	}
 
 	@Override
@@ -212,6 +236,25 @@ public class ECFileListFragment extends BaseFragment {
 
 		} catch (Exception e) {
 			MyLog.e("exception", e);
+		}
+	}
+//测试
+	private void test() {
+		for (int i = 0; i < 10; i++) {
+			CallListBean bean = new CallListBean();
+			HashMap<String, Object> map = bean.getMap();
+			if (i % 2 == 0) {
+				map.put(keys[0], "录");
+				map.put("color", "blue");
+			} else {
+				map.put(keys[0], "文");
+				map.put("color", "red");
+			}
+			map.put("img",R.drawable.ic_download_normal);
+			// map.put(keys[1], "通知XX小区拿快递");
+			// map.put(keys[2], "18666663333,已通知 3/10");
+			// map.put(keys[3], "18:00");
+			mMapList.add(map);
 		}
 	}
 }
