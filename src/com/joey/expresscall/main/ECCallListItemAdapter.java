@@ -9,11 +9,14 @@ import com.joey.expresscall.R;
 import com.joey.expresscall.common.CheckableLayout;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 
-public class ECFileItemAdapter extends SimpleAdapter {
+public class ECCallListItemAdapter extends SimpleAdapter {
 
     List<? extends Map<String, ?>> mData;
     Context mContext;
@@ -22,13 +25,17 @@ public class ECFileItemAdapter extends SimpleAdapter {
 
     private final String RED = "red";
     private final String BlUE = "blue";
+    private String from[];
+    private int to[];
 
-    public ECFileItemAdapter(Context context,
-                             List<? extends Map<String, ?>> data, int resource, String[] from,
-                             int[] to) {
+    public ECCallListItemAdapter(Context context,
+                                 List<? extends Map<String, ?>> data, int resource, String[] from,
+                                 int[] to) {
         super(context, data, resource, from, to);
         mData = data;
         mContext = context;
+        this.from = from;
+        this.to = to;
     }
 
     @Override
@@ -61,6 +68,29 @@ public class ECFileItemAdapter extends SimpleAdapter {
                 checked = (Boolean) map.get("checked");
             ((CheckableLayout) view).setChecked(checked);
             map.put("checked", checked);
+        }
+
+        for(int i=0;i<to.length;i++) {
+            View v = view.findViewById(to[i]);
+            Object obj = item.get(from[i]);
+            if (v instanceof TextView) {
+                if (obj instanceof String) {
+                    ((TextView) v).setText(obj.toString());
+                    continue;
+                }
+                if (obj instanceof Integer) {
+                    ((TextView) v).setText((Integer) obj);
+                }
+            }
+            if (v instanceof ImageView) {
+                if (obj instanceof Bitmap) {
+                    ((ImageView) v).setImageBitmap((Bitmap) obj);
+                    continue;
+                }
+                if (obj instanceof Integer) {
+                    ((ImageView) v).setImageResource((Integer) obj);
+                }
+            }
         }
         return view;
     }

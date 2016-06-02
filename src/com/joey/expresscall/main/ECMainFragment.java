@@ -37,7 +37,7 @@ public class ECMainFragment extends BaseFragment {
 	private View addFileView;
 	private ListView fileListView;
 	private View header;
-	private ECFileItemAdapter mAdapter;
+	private ECCallListItemAdapter mAdapter;
 	private ArrayList<HashMap<String, Object>> mCallList;
 	private TextView tvUserName;
 	private TextView tvRetain;
@@ -115,10 +115,10 @@ public class ECMainFragment extends BaseFragment {
 		// test();
 		MyLog.fmt("mActicity %s mCallList %s", (mActivity == null) + "",
 				(mCallList == null) + "");
-		mAdapter = new ECFileItemAdapter(fileListView.getContext(), mCallList,
+		mAdapter = new ECCallListItemAdapter(fileListView.getContext(), mCallList,
 				R.layout.simple_item_extra_layout, keys, new int[] {
 						R.id.text_logo, R.id.text_content, R.id.text_desc,
-						R.id.text_extra });
+						R.id.text_extra,R.id.item_access });
 
 		fileListView.setAdapter(mAdapter);
 		// 初始化头部
@@ -272,7 +272,8 @@ public class ECMainFragment extends BaseFragment {
 			mCallList.clear();
 		for (int i = 0; i < array.size(); i++) {
 			JSONObject obj = array.getJSONObject(i);
-			CallListBean bean = CallListBean.parseJson(obj.toJSONString());
+			CallListBean bean = (CallListBean)JSON.parseObject(obj.toString(),CallListBean.class);
+//			CallListBean bean = CallListBean.parseJson(obj.toJSONString());
 			mCallList.add(bean.getMap());
 		}
 		mActivity.runOnUiThread(new Runnable() {
@@ -285,15 +286,16 @@ public class ECMainFragment extends BaseFragment {
 
 	private void test() {
 		for (int i = 0; i < 10; i++) {
-			CallListBean bean = CallListBean.parseJson("{}");
+			CallListBean bean = new CallListBean();
 			HashMap<String, Object> map = bean.getMap();
 			if (i % 2 == 0) {
 				map.put(keys[0], "录");
-				map.put(keys[4], "blue");
+				map.put("color", "blue");
 			} else {
 				map.put(keys[0], "文");
-				map.put(keys[4], "red");
+				map.put("color", "red");
 			}
+			map.put("img",R.drawable.ic_download_normal);
 			// map.put(keys[1], "通知XX小区拿快递");
 			// map.put(keys[2], "18666663333,已通知 3/10");
 			// map.put(keys[3], "18:00");

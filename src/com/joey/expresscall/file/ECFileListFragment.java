@@ -12,12 +12,13 @@ import android.widget.ListView;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.joey.expresscall.AppConsts;
+import com.daimajia.swipe.SwipeLayout;
 import com.joey.expresscall.R;
 import com.joey.expresscall.account.ECCallManager;
 import com.joey.expresscall.file.bean.FileBean;
-import com.joey.expresscall.main.ECFileItemAdapter;
+import com.joey.expresscall.main.ECCallListItemAdapter;
 
+import com.joey.expresscall.main.bean.CallListBean;
 import com.joey.expresscall.player.PlaybackFragment;
 import com.joey.expresscall.protocol.RequestError;
 import com.joey.expresscall.protocol.ResponseListener;
@@ -35,13 +36,17 @@ public class ECFileListFragment extends BaseFragment {
 	private ListView listView;
 	public ECFileItemAdapter mAdapter;
 	private final String keys[] = new String[] { "type", "fileName",
-			"fileExtra", "createTime", "color" };
+			"fileExtra", "createTime", "img","color" };
 	private ArrayList<FileBean> fileList = new ArrayList<FileBean>();
 	private ArrayList<HashMap<String, Object>> mMapList = new ArrayList<HashMap<String, Object>>();
+	private SwipeLayout lastSwipeLayout;
 	private AdapterView.OnItemClickListener itemClickListener = new AdapterView.OnItemClickListener() {
 		@Override
 		public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 //			ToastUtil.show(getActivity(),"点一下");
+			if(lastSwipeLayout != null){
+				return;
+			}
 			FileBean bean = fileList.get(position);
 			if(MobileUtil.isExist(bean.getPath())){
 				play(bean);
@@ -74,12 +79,11 @@ public class ECFileListFragment extends BaseFragment {
 	public void initUi() {
 		setTitle(R.string.file_title);
 		mAdapter = new ECFileItemAdapter(getActivity(), mMapList,
-				R.layout.simple_item_extra_layout, new String[] { "extraName",
+				 new String[] { "extraName",
 				"createTime","fileLength", "img" }, new int[] {
 						R.id.text_content, R.id.text_desc, R.id.text_extra,R.id.item_indicator });
 		listView.setAdapter(mAdapter);
 		loadingInfo();
-
 	}
 
 	@Override
@@ -141,8 +145,8 @@ public class ECFileListFragment extends BaseFragment {
 			FileBean bean = FileBean.parseJson(obj.toJSONString());
 			fileList.add(bean);
 			HashMap<String, Object> map = bean.getMap();
-			map.put("type", bean.getFileType().equals("wav") ? "录" : "文");
-			map.put("color", bean.getFileType().equals("wav") ? "blue" : "red");
+//			map.put("type", bean.getFileType().equals("wav") ? "录" : "文");
+//			map.put("color", bean.getFileType().equals("wav") ? "blue" : "red");
 			if(MobileUtil.isExist(bean.getPath())){
 				map.put("img", R.drawable.ic_download_selected);
 			}

@@ -42,10 +42,11 @@
         <activity android:name=".setting.ECModifyPwdActivity"></activity>
         <activity android:name=".setting.ECSettingActivity"></activity>
         <activity android:name=".file.ECFileActivity"></activity>
-        <!-- 接口测试 -->
+        <!-- 测试 -->
         <activity
             android:name=".test.ECInterfaceTest"
-            android:label="接口测试">
+            android:label="接口测试"></activity>
+        <activity android:name=".test.ListViewExample">
 
         </activity>
     </application>

@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:descendantFocusability="blocksDescendants"
+    android:id="@+id/item_root"
     android:orientation="horizontal"
     android:paddingBottom="@dimen/layout_mid_margin"
     android:paddingLeft="@dimen/layout_mid_margin"

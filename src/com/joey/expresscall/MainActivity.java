@@ -6,7 +6,6 @@ import android.widget.LinearLayout;
 
 import com.joey.expresscall.contacts.ECContactsFragment;
 import com.joey.expresscall.file.ECFileListFragment;
-import com.joey.expresscall.main.ECFileItemAdapter;
 import com.joey.expresscall.main.ECMainFragment;
 import com.joey.expresscall.setting.ECSettingFragment;
 import com.joey.general.BaseActivity;

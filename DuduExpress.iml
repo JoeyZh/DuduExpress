@@ -11,8 +11,10 @@
       <sourceFolder url="file://$MODULE_DIR$/gen" isTestSource="false" generated="true" />
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
     </content>
-    <orderEntry type="jdk" jdkName="Android API 19 Platform (1)" jdkType="Android SDK" />
+    <orderEntry type="jdk" jdkName="Android API 18 Platform (2)" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="libs" level="project" />
+    <orderEntry type="library" name="android-support-annotations" level="project" />
+    <orderEntry type="library" name="android-support-v7-recyclerview" level="project" />
   </component>
 </module>

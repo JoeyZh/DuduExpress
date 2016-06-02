@@ -17,7 +17,11 @@ import java.util.HashMap;
 public class CallListBean extends BaseBean{
 
     private String callListId;
-    private ArrayList<CallBean> callList;
+    private int totalSize;
+    private int successCount;
+    private String description;
+    private String fileId;
+    private long callTime;
 
     public int getTotalSize() {
         return totalSize;
@@ -34,11 +38,6 @@ public class CallListBean extends BaseBean{
         this.totalSize = totalSize;
     }
 
-    private int totalSize;
-    private int successCount;
-    private String description;
-    private String fileId;
-
     public long getCallTime() {
         return callTime;
     }
@@ -46,8 +45,6 @@ public class CallListBean extends BaseBean{
     public void setCallTime(long callTime) {
         this.callTime = callTime;
     }
-
-    private long callTime;
 
     public String getDescription() {
         return description;
@@ -72,14 +69,6 @@ public class CallListBean extends BaseBean{
 
     public void setCallListId(String callListId) {
         this.callListId = callListId;
-    }
-
-    public ArrayList<CallBean> getCallList() {
-        return callList;
-    }
-
-    public void setCallList(ArrayList<CallBean> callList) {
-        this.callList = callList;
     }
 
     public int getSuccessCount() {
