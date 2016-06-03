@@ -3,14 +3,14 @@ package com.joey.expresscall.main;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.joey.expresscall.R;
 import com.joey.expresscall.account.ECCallManager;
-import com.joey.expresscall.addfile.ECCallingActivity;
 import com.joey.expresscall.common.ECSimpleAdapter1;
-import com.joey.expresscall.main.bean.BillBean;
 import com.joey.expresscall.main.bean.CallBean;
+import com.joey.expresscall.main.bean.CallListBean;
 import com.joey.expresscall.protocol.RequestError;
 import com.joey.expresscall.protocol.ResponseListener;
 import com.joey.general.BaseActivity;
@@ -31,9 +31,9 @@ public class ECCallDetailActivity extends BaseActivity{
     private final int PAGE_SIZE = 10;
     private ArrayList<HashMap<String,Object>> mMapList = new ArrayList<HashMap<String, Object>>();
 
-    private SimpleAdapter mAdapter;
-    private String[] keys = {"callId","callTime","phoneNum"};
-    private int[] ids = {R.id.timeline_tag,R.id.timeline_tag_extra,R.id.timeline_content_text};
+    private ECSimpleAdapter1 mAdapter;
+    private String[] keys = {"toMoible","callTime","money"};
+    private int[] ids = {R.id.item_text_tag,R.id.item_text,R.id.item_extra};
     @Override
     public void initSettings() {
         callId = getIntent().getStringExtra("callId");
@@ -44,7 +44,7 @@ public class ECCallDetailActivity extends BaseActivity{
     public void initUi() {
         setContentView(R.layout.activity_bill_list_layout);
         listBill = (ListView) findViewById(R.id.bill_list);
-        mAdapter = new SimpleAdapter(this,mMapList,R.layout.timeline_item,keys,ids);
+        mAdapter = new ECSimpleAdapter1(this,mMapList,R.layout.simple_item_layout_1,keys,ids);
         setTitle(R.string.bill_detail);
         listBill.setAdapter(mAdapter);
 
@@ -103,7 +103,8 @@ public class ECCallDetailActivity extends BaseActivity{
             mMapList.clear();
         for (int i = 0; i < array.size(); i++) {
             JSONObject obj = array.getJSONObject(i);
-            CallBean bean = CallBean.parseJson(obj.toJSONString());
+//            CallBean bean = CallBean.parseJson(obj.toJSONString());
+            CallBean bean = (CallBean) JSON.parseObject(obj.toJSONString(),CallBean.class);
             mMapList.add(bean.getMap());
         }
         runOnUiThread(new Runnable() {

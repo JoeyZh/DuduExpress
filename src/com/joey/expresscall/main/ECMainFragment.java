@@ -94,7 +94,7 @@ public class ECMainFragment extends BaseFragment {
 		currentView = inflater.inflate(R.layout.main_fragment_layout,
 				container, false);
 		setTopBarVisiable(-1);
-		header = inflater.inflate(R.layout.main_add_file_layout, null);
+		header = inflater.inflate(R.layout.main_user_info, null);
 		fileListView = (ListView) currentView.findViewById(R.id.main_file_list);
 		addFileView = header.findViewById(R.id.add_new_file_layout);
 		addFileView.setOnClickListener(mOnClickListener);
@@ -122,11 +122,11 @@ public class ECMainFragment extends BaseFragment {
 
 		fileListView.setAdapter(mAdapter);
 		// 初始化头部
-		tvUserName = (TextView) currentView.findViewById(R.id.text_user_info);
-		tvRetain = (TextView) currentView.findViewById(R.id.text_cost_retain);
-		tvWarning = (TextView) currentView.findViewById(R.id.text_cost_warning);
-		tvCostDetail = (TextView) currentView.findViewById(R.id.text_cost_info);
-		imgBtnSetting = (ImageButton) currentView
+		tvUserName = (TextView) header.findViewById(R.id.text_user_info);
+		tvRetain = (TextView) header.findViewById(R.id.text_cost_retain);
+		tvWarning = (TextView) header.findViewById(R.id.text_cost_warning);
+		tvCostDetail = (TextView) header.findViewById(R.id.text_cost_info);
+		imgBtnSetting = (ImageButton) header
 				.findViewById(R.id.btn_user_setting);
 		imgBtnSetting.setOnClickListener(mOnClickListener);
 		tvCostDetail.setOnClickListener(mOnClickListener);

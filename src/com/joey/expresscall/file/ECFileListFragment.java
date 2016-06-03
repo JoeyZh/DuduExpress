@@ -1,6 +1,8 @@
 package com.joey.expresscall.file;
 
+import android.app.AlertDialog;
 import android.app.FragmentTransaction;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,7 +20,6 @@ import com.daimajia.swipe.SwipeLayout;
 import com.joey.expresscall.R;
 import com.joey.expresscall.account.ECCallManager;
 import com.joey.expresscall.file.bean.FileBean;
-import com.joey.expresscall.main.ECCallListItemAdapter;
 
 import com.joey.expresscall.main.bean.CallListBean;
 import com.joey.expresscall.player.PlaybackFragment;
@@ -42,6 +43,8 @@ public class ECFileListFragment extends BaseFragment {
 	private ArrayList<FileBean> fileList = new ArrayList<FileBean>();
 	private ArrayList<HashMap<String, Object>> mMapList = new ArrayList<HashMap<String, Object>>();
 	private SwipeLayout lastSwipeLayout;
+	private AlertDialog dlgDelete;
+	private int operationIndex;
 	private AdapterView.OnItemClickListener itemClickListener = new AdapterView.OnItemClickListener() {
 		@Override
 		public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -101,15 +104,42 @@ public class ECFileListFragment extends BaseFragment {
 			@Override
 			public void onItemClick(View view, int postion, HashMap<String, Object> map) {
 
-				if(lastSwipeLayout != null)
-					lastSwipeLayout.close(true);
+				if(view.getParent().getParent() instanceof SwipeLayout){
+					lastSwipeLayout = (SwipeLayout)view.getParent().getParent();
+					lastSwipeLayout.close(false);
+					lastSwipeLayout = null;
+				}
+				operationIndex = postion;
+				createDialog("删除文件");
+				dlgDelete.show();
 			}
 		});
 		mAdapter.setSimpleSwipeListener(swipeListener);
 		loadingInfo();
-		test();
+//		test();
 	}
 
+	private void createDialog(String msg){
+		if(dlgDelete != null){
+			dlgDelete.setMessage(msg);
+			return;
+		}
+		dlgDelete = new AlertDialog.Builder(getActivity(),AlertDialog.THEME_DEVICE_DEFAULT_LIGHT)
+				.setTitle(R.string.warn_title)
+				.setMessage(msg)
+				.setPositiveButton(R.string.delete,new DialogInterface.OnClickListener(){
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						if(operationIndex<0||operationIndex>= fileList.size())
+							return;
+						FileBean bean = fileList.get(operationIndex);
+						deleteFile(bean);
+					}
+				})
+				.setNegativeButton(R.string.cancel,null)
+				.create();
+
+	}
 	@Override
 	public void saveSettings() {
 
@@ -243,12 +273,14 @@ public class ECFileListFragment extends BaseFragment {
 		ECCallManager.getInstance().deleteFile(bean.getFileId(), new ResponseListener<String>() {
 			@Override
 			public void onSuccess(String json) {
-
+				ToastUtil.show(getActivity(),R.string.delete_success);
+				getFiles();
+//				parseFiles(json.getJSONArray("list"));
 			}
 
 			@Override
 			public void onError(RequestError error) {
-
+				ToastUtil.show(getActivity(),R.string.delete_failed);
 			}
 
 			@Override

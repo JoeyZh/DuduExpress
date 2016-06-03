@@ -4,6 +4,7 @@
     <!-- 通用 -->
     <string name="app_name">速易呼</string>
     <string name="waiting">加载中...</string>
+    <string name="warn_title">温馨提示</string>
     <string name="load_more">加载更多...</string>
     <string name="exiting">退出中...</string>
     <string name="on_setting">设置中...</string>

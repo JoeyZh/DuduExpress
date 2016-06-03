@@ -73,7 +73,7 @@ public class ECCallInterface {
 	}
 
 	public String deleteFile(String fileIds){
-		String URI = ECNetUrlConsts.getFullUrl(ECNetUrlConsts.DO_FILE_LIST);
+		String URI = ECNetUrlConsts.getFullUrl(ECNetUrlConsts.DO_DELETE_FILE);
 		HashMap param = new HashMap();
 		param.put("token", this.token);
 		param.put("fileIds",fileIds);

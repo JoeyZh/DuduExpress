@@ -6,6 +6,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.joey.expresscall.R;
@@ -32,9 +33,9 @@ public class ECGroupListActivity extends BaseActivity{
     private final int PAGE_SIZE = 10;
     private ArrayList<HashMap<String,Object>> mMapList = new ArrayList<HashMap<String, Object>>();
 
-    private SimpleAdapter mAdapter;
-    private String[] keys = {"callId","callTime","phoneNum"};
-    private int[] ids = {R.id.timeline_tag,R.id.timeline_tag_extra,R.id.timeline_content_text};
+    private ECSimpleAdapter1 mAdapter;
+    private String[] keys = {"toMoible","callTime","money"};
+    private int[] ids = {R.id.item_text_tag,R.id.item_text,R.id.item_extra};
     @Override
     public void initSettings() {
         callListId = getIntent().getStringExtra("callListId");
@@ -58,7 +59,8 @@ public class ECGroupListActivity extends BaseActivity{
         setContentView(R.layout.activity_bill_list_layout);
         listBill = (ListView) findViewById(R.id.bill_list);
         listBill.setOnItemClickListener(itemClickListener);
-        mAdapter = new SimpleAdapter(this,mMapList,R.layout.timeline_item,keys,ids);
+        mAdapter = new ECSimpleAdapter1(this,mMapList,R.layout.simple_item_layout_1,keys,ids);
+        mAdapter.setType(ECSimpleAdapter1.SIMPLE_ADAPTER_TYPE_TAG);
         setTitle(R.string.bill_title);
         listBill.setAdapter(mAdapter);
 
@@ -117,7 +119,8 @@ public class ECGroupListActivity extends BaseActivity{
             mMapList.clear();
         for (int i = 0; i < array.size(); i++) {
             JSONObject obj = array.getJSONObject(i);
-            CallBean bean = CallBean.parseJson(obj.toJSONString());
+//            CallBean bean = CallBean.parseJson(obj.toJSONString());
+            CallBean bean = (CallBean) JSON.parseObject(obj.toString(),CallBean.class);
             mMapList.add(bean.getMap());
         }
         runOnUiThread(new Runnable() {

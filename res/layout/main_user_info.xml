@@ -88,5 +88,6 @@
         </RelativeLayout>
     </RelativeLayout>
 
+    <include layout="@layout/main_add_file_layout"/>
 
 </LinearLayout>

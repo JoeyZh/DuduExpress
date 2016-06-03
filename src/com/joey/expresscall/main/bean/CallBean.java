@@ -16,12 +16,12 @@ public class CallBean implements Serializable {
 
 
     private String callId;
-    private String phone;
+    private String toMoible;
     private long callTime;
     private String fileId;
     private long startTime;
     private long endTime;
-    private float cost;
+    private float money;
     private int duration;
 
     public CallBean() {
@@ -43,12 +43,12 @@ public class CallBean implements Serializable {
         this.endTime = endTime;
     }
 
-    public float getCost() {
-        return cost;
+    public float getMoney() {
+        return money;
     }
 
-    public void setCost(float money) {
-        this.cost = money;
+    public void setMoney(float money) {
+        this.money = money;
     }
 
     public String getFileId() {
@@ -68,12 +68,12 @@ public class CallBean implements Serializable {
         this.callId = callId;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getToMoible() {
+        return toMoible;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setToMoible(String phone) {
+        this.toMoible = phone;
     }
 
     public long getCallTime() {
@@ -98,8 +98,8 @@ public class CallBean implements Serializable {
         map.put("callId", getCallId());
         String timeStr = DateUtil.convertToDateStr(DateUtil.DATE_FORMMAT_STR_3, getCallTime());
         map.put("callTime", timeStr);
-        map.put("phone",getPhone());
-        map.put("cost", getCost());
+        map.put("toMoible",getToMoible());
+        map.put("cost", getMoney());
         map.put("startTime",getStartTime());
         map.put("endTime",getEndTime());
         return map;
@@ -113,8 +113,8 @@ public class CallBean implements Serializable {
             bean.setCallTime(jsonObject.getLong("callTime"));
 //            bean.setStartTime(jsonObject.getLong("startTime"));
 //            bean.setEndTime(jsonObject.getLong("endTime"));
-            bean.setCost(jsonObject.getFloat("money"));
-            bean.setPhone(jsonObject.getString("toMoible"));
+            bean.setMoney(jsonObject.getFloat("money"));
+            bean.setToMoible(jsonObject.getString("toMoible"));
 //            bean.setCallCount(jsonObject.getInteger("callCount"));
         } catch (JSONException e) {
             MyLog.e("parse error" + e.getMessage());
