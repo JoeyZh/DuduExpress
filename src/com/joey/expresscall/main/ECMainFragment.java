@@ -12,11 +12,13 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.demievil.library.RefreshLayout;
 import com.joey.expresscall.R;
 import com.joey.expresscall.account.ECAccountManager;
 import com.joey.expresscall.account.ECCallManager;
@@ -47,6 +49,10 @@ public class ECMainFragment extends BaseFragment {
 	private int callPageNum = IDEL_PAGE_NUM;
 	private final int PAGE_SIZE = 10;
 	private ImageButton imgBtnSetting;
+	private RefreshLayout mRefreshLayout;
+	private View footerLayout;
+	private TextView textMore;
+	private ProgressBar progressBar;
 	private OnClickListener mOnClickListener = new OnClickListener() {
 
 		@Override
@@ -100,13 +106,19 @@ public class ECMainFragment extends BaseFragment {
 		addFileView.setOnClickListener(mOnClickListener);
 		fileListView.addHeaderView(header);
 		fileListView.setOnItemClickListener(itemClickListener);
+		//初始化footer
+		mRefreshLayout = (RefreshLayout) currentView.findViewById(R.id.swipe_container);
+		footerLayout = inflater.inflate(R.layout.main_listview_footer, null);
+		textMore = (TextView) footerLayout.findViewById(R.id.text_more);
+		progressBar = (ProgressBar) footerLayout.findViewById(R.id.load_progress_bar);
+		fileListView.addFooterView(footerLayout);
 		return currentView;
 	}
 
 	@Override
 	public void initSettings() {
 		getUseInfo();
-		getCallList();
+		getCallList(IDEL_PAGE_NUM);
 	}
 
 	@Override
@@ -130,6 +142,33 @@ public class ECMainFragment extends BaseFragment {
 				.findViewById(R.id.btn_user_setting);
 		imgBtnSetting.setOnClickListener(mOnClickListener);
 		tvCostDetail.setOnClickListener(mOnClickListener);
+
+		//这里可以替换为自定义的footer布局
+		//you can custom FooterView
+		mRefreshLayout.setChildView(fileListView);
+		mRefreshLayout.setColorSchemeResources(R.color.blue_light,
+				R.color.main_color,
+				R.color.red_light,
+				R.color.dot_orange);
+
+
+		//使用SwipeRefreshLayout的下拉刷新监听
+		//use SwipeRefreshLayout OnRefreshListener
+		mRefreshLayout.setOnRefreshListener(new RefreshLayout.OnRefreshListener() {
+			@Override
+			public void onRefresh() {
+				getCallList(IDEL_PAGE_NUM);
+			}
+		});
+
+		//使用自定义的RefreshLayout加载更多监听
+		//use customed RefreshLayout OnLoadListener
+		mRefreshLayout.setOnLoadListener(new RefreshLayout.OnLoadListener() {
+			@Override
+			public void onLoad() {
+				getCallList(callPageNum++);
+			}
+		});
 	}
 
 	@Override
@@ -140,8 +179,7 @@ public class ECMainFragment extends BaseFragment {
 
 	@Override
 	public void freeMe() {
-		// TODO Auto-generated method stub
-
+		mRefreshLayout.setRefreshing(false);
 	}
 
 	
@@ -221,7 +259,8 @@ public class ECMainFragment extends BaseFragment {
 		});
 	}
 
-	private void getCallList() {
+	private void getCallList(int callPageNum) {
+		this.callPageNum = callPageNum;
 		ECCallManager.getInstance().getGroupCallList(callPageNum, PAGE_SIZE,
 				new ResponseListener<JSONObject>() {
 
@@ -254,6 +293,7 @@ public class ECMainFragment extends BaseFragment {
 						fragHandler.post(new Runnable() {
 							@Override
 							public void run() {
+								mRefreshLayout.setRefreshing(false);
 								mActivity.dismissDialog();
 							}
 						});
@@ -273,9 +313,9 @@ public class ECMainFragment extends BaseFragment {
 		for (int i = 0; i < array.size(); i++) {
 			JSONObject obj = array.getJSONObject(i);
 			CallListBean bean = (CallListBean)JSON.parseObject(obj.toString(),CallListBean.class);
-//			CallListBean bean = CallListBean.parseJson(obj.toJSONString());
 			mCallList.add(bean.getMap());
 		}
+//		更新UI
 		mActivity.runOnUiThread(new Runnable() {
 			@Override
 			public void run() {

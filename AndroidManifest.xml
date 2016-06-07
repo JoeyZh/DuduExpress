@@ -4,7 +4,7 @@
     android:versionCode="1"
     android:versionName="1.0">
 
-    <uses-sdk android:minSdkVersion="12" />
+    <uses-sdk android:minSdkVersion="14" />
 
     <application
         android:name="com.joey.general.MainApplication"
@@ -16,10 +16,7 @@
         <activity
             android:name=".MainActivity"
             android:windowSoftInputMode="adjustPan">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
         <activity android:name=".login.JVLoginActivity"></activity>
         <activity android:name=".main.ECBillListActivity"></activity>
@@ -28,7 +25,10 @@
         <activity android:name=".login.JVFoundPasswordActivity"></activity>
         <activity android:name=".login.JVRegisterActivity"></activity>
         <activity android:name=".welcome.JVWelcomeActivity">
-
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".welcome.JVGuidActivity"></activity>
         <activity android:name=".addfile.ECCallingActivity"></activity>

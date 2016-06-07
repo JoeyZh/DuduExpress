@@ -3,16 +3,16 @@ package com.joey.expresscall.main.bean;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONException;
 import com.alibaba.fastjson.JSONObject;
+import com.joey.expresscall.storage.BaseBean;
 import com.joey.general.utils.DateUtil;
 import com.joey.general.utils.MyLog;
 
-import java.io.Serializable;
 import java.util.HashMap;
 
 /**
  * Created by Administrator on 2016/5/20.
  */
-public class CallBean implements Serializable {
+public class CallBean extends BaseBean {
 
 
     private String callId;
@@ -65,6 +65,7 @@ public class CallBean implements Serializable {
     }
 
     public void setCallId(String callId) {
+        setId(callId);
         this.callId = callId;
     }
 

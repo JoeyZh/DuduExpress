@@ -79,7 +79,6 @@ public class ECFileItemAdapter extends BaseSwipeAdapter {
                         swipeItemOnClickListener.onItemClick(view,position,getItem(position));
                     }
                 }
-                Toast.makeText(mContext, "click delete", Toast.LENGTH_SHORT).show();
             }
         });
         return v;
