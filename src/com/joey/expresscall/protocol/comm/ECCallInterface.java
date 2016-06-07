@@ -129,10 +129,12 @@ public class ECCallInterface {
 		return jsonStr;
 	}
 
-	public String getBillList() {
+	public String getBillList(long startTime,long endTime) {
 		String URI = ECNetUrlConsts.getFullUrl(ECNetUrlConsts.DO_BILL_LIST);
 		HashMap param = new HashMap();
 		param.put("token", this.token);
+		param.put("startTime",startTime);
+		param.put("endTime",endTime);
 		String jsonStr = this.httpcomm.httpRequestPost(URI, param);
 
 		return jsonStr;

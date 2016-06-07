@@ -61,13 +61,13 @@ public class ECCallManager {
         BackgroundHandler.execute(task);
     }
 
-    public <T> void getCalls(final int pageNum, final int pageSize,
+    public <T> void getBills(final long startTime, final long endTime,
                              ResponseListener<T> listener) {
         TaskBuilder task = new TaskBuilder("callList", listener,
                 new OnTaskListener() {
                     @Override
                     public String execute() {
-                        return callInterface.getBillList();
+                        return callInterface.getBillList(startTime,endTime);
                     }
                 });
 

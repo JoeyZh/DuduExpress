@@ -87,7 +87,7 @@ public class ECModifyNicknameActivity extends BaseActivity implements
 			setErrorTipsVisible(R.string.tips_nick_length_error);
 			return;
 		}
-
+//		String nickName = mNewNick.getText().toString().trim();
 		// 显示正确图标
 		setRightIconVisible(true);
 		// 调用修改昵称接口
@@ -115,7 +115,7 @@ public class ECModifyNicknameActivity extends BaseActivity implements
 
 					@Override
 					public void run() {
-						createDialog(R.string.waiting, true);
+						createDialog(R.string.waiting, false);
 					}
 				});
 			}

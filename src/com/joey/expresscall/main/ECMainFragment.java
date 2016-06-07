@@ -59,13 +59,13 @@ public class ECMainFragment extends BaseFragment {
 		public void onClick(View v) {
 			switch (v.getId()) {
 			case R.id.add_new_file_layout:
-				Intent intent = new Intent(getActivity(),
-						ECCallingActivity.class);
-				startActivity(intent);
+				gotoCallActivity();
 				break;
 			case R.id.text_cost_info:
-				intent = new Intent(getActivity(), ECBillListActivity.class);
+				Intent intent = new Intent(getActivity(), ECBillListActivity.class);
 				startActivity(intent);
+				mActivity.overridePendingTransition(R.anim.push_left_in,
+						R.anim.push_left_out);
 				break;
 			case R.id.btn_user_setting:
 				intent = new Intent(getActivity(), ECSettingActivity.class);
@@ -81,9 +81,16 @@ public class ECMainFragment extends BaseFragment {
 	private AdapterView.OnItemClickListener itemClickListener = new AdapterView.OnItemClickListener() {
 		@Override
 		public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+			MyLog.i("position = "+position);
 			if(position > mCallList.size())
 				return;
-			String callListId = mCallList.get(position).get("callListId").toString();
+//          header 被点击
+			if(position  == 0){
+				gotoCallActivity();
+				return;
+			}
+			int index = position - 1;
+			String callListId = mCallList.get(index).get("callListId").toString();
 			Intent intent = new Intent(getActivity(),ECGroupListActivity.class);
 			intent.putExtra("callListId",callListId);
 			startActivity(intent);
@@ -239,7 +246,7 @@ public class ECMainFragment extends BaseFragment {
 	}
 
 	private void parseUserInfo(JSONObject json) {
-		final String nickName = json.getString("nickName");
+		final String nickName = json.getString("nickName") ;
 		final float retain = json.getFloat("totalMoney");
 		final String mobile = json.getString("mobile");
 		getActivity().runOnUiThread(new Runnable() {
@@ -319,7 +326,15 @@ public class ECMainFragment extends BaseFragment {
 		for (int i = 0; i < array.size(); i++) {
 			JSONObject obj = array.getJSONObject(i);
 			CallListBean bean = (CallListBean)JSON.parseObject(obj.toString(),CallListBean.class);
-			mCallList.add(bean.getMap());
+			HashMap<String,Object> map = bean.getMap();
+			if(bean.getFileId().toLowerCase().endsWith("wav")) {
+				map.put("type","录");
+				map.put("color", "blue");
+			}else {
+				map.put("type","文");
+				map.put("color", "red");
+			}
+			mCallList.add(map);
 		}
 //		更新UI
 		mActivity.runOnUiThread(new Runnable() {
@@ -349,4 +364,11 @@ public class ECMainFragment extends BaseFragment {
 		}
 	}
 
+	private void gotoCallActivity(){
+		Intent intent = new Intent(getActivity(),
+				ECCallingActivity.class);
+		startActivity(intent);
+		mActivity.overridePendingTransition(R.anim.push_left_in,
+				R.anim.push_left_out);
+	}
 }

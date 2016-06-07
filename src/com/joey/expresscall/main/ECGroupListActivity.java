@@ -18,6 +18,7 @@ import com.joey.expresscall.protocol.RequestError;
 import com.joey.expresscall.protocol.ResponseListener;
 import com.joey.general.BaseActivity;
 import com.joey.general.utils.MyLog;
+import com.joey.general.utils.ResourcesUnusualUtil;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -45,23 +46,17 @@ public class ECGroupListActivity extends BaseActivity{
     private AdapterView.OnItemClickListener itemClickListener = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            if(position > mMapList.size())
-                return;
-            String callListId = mMapList.get(position).get("callId").toString();
-            Intent intent = new Intent(ECGroupListActivity.this,ECCallDetailActivity.class);
-            intent.putExtra("callId",callListId);
-            startActivity(intent);
-
+            //TODO 账单点击情况
         }
     };
     @Override
     public void initUi() {
-        setContentView(R.layout.activity_bill_list_layout);
+        setContentView(R.layout.activity_group_list_layout);
         listBill = (ListView) findViewById(R.id.bill_list);
         listBill.setOnItemClickListener(itemClickListener);
         mAdapter = new ECSimpleAdapter1(this,mMapList,R.layout.simple_item_layout_1,keys,ids);
         mAdapter.setType(ECSimpleAdapter1.SIMPLE_ADAPTER_TYPE_TAG);
-        setTitle(R.string.bill_title);
+        setTitle(R.string.callList);
         listBill.setAdapter(mAdapter);
 
     }
@@ -121,6 +116,10 @@ public class ECGroupListActivity extends BaseActivity{
             JSONObject obj = array.getJSONObject(i);
 //            CallBean bean = CallBean.parseJson(obj.toJSONString());
             CallBean bean = (CallBean) JSON.parseObject(obj.toString(),CallBean.class);
+            HashMap<String,Object> map = bean.getMap();
+            String strErrName = CallBean.STATE_CALL_STR + bean.getCallState();
+            String errmsg = ResourcesUnusualUtil.getString(strErrName);
+            map.put("callState",errmsg);
             mMapList.add(bean.getMap());
         }
         runOnUiThread(new Runnable() {

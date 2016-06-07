@@ -23,8 +23,32 @@ public class CallBean extends BaseBean {
     private long endTime;
     private float money;
     private int duration;
+    private int callState;
+
+    public static final String STATE_CALL_STR = "callState_";
+    /**
+     * 呼叫被拒接
+     */
+    public static final int STATE_CALL_DENIAL = 1;
+    /**
+     * 呼叫失败
+     */
+    public static final int STATE_CALL_FALIED = 2;
+    /**
+     * 接听成功
+     */
+    public static final int STATE_CALL_RETURN = 0;
+
 
     public CallBean() {
+    }
+
+    public int getCallState() {
+        return callState;
+    }
+
+    public void setCallState(int callState) {
+        this.callState = callState;
     }
 
     public long getStartTime() {
@@ -99,27 +123,12 @@ public class CallBean extends BaseBean {
         map.put("callId", getCallId());
         String timeStr = DateUtil.convertToDateStr(DateUtil.DATE_FORMMAT_STR_3, getCallTime());
         map.put("callTime", timeStr);
-        map.put("toMoible",getToMoible());
-        map.put("cost", getMoney());
-        map.put("startTime",getStartTime());
-        map.put("endTime",getEndTime());
+        map.put("toMoible", getToMoible());
+        map.put("money", getMoney());
+        map.put("callState", getCallState());
+        map.put("startTime", getStartTime());
+        map.put("endTime", getEndTime());
         return map;
     }
 
-    public static CallBean parseJson(String json) {
-        CallBean bean = new CallBean();
-        try {
-            JSONObject jsonObject = JSON.parseObject(json);
-            bean.setCallId(jsonObject.getString("callId"));
-            bean.setCallTime(jsonObject.getLong("callTime"));
-//            bean.setStartTime(jsonObject.getLong("startTime"));
-//            bean.setEndTime(jsonObject.getLong("endTime"));
-            bean.setMoney(jsonObject.getFloat("money"));
-            bean.setToMoible(jsonObject.getString("toMoible"));
-//            bean.setCallCount(jsonObject.getInteger("callCount"));
-        } catch (JSONException e) {
-            MyLog.e("parse error" + e.getMessage());
-        }
-        return bean;
-    }
 }

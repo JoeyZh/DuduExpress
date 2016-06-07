@@ -252,6 +252,7 @@
     <string name="error_customize_account_exception">账号登录异常，请重新登录</string>
     <string name="error_no_sdcard">没有SD卡，无法存储录音数据</string>
     <string name="error_state_record">正在录音中，请先停止录音</string>
+
     <string name="call_add_contasts">接收人 : </string>
 
     <string-array name="array_add_tag">
@@ -273,6 +274,8 @@
     <string name="bill_detail">账单详情</string>
     <string name="callList">呼叫记录</string>
     <string name="callDetail">呼叫情况</string>
+    <string name="bill_total_tag">账户总额：</string>
+    <string name="bill_balance_tag">账户余额：</string>
 
     <!-- 联系人 -->
     <string name="phone_contact">手机通讯录</string>
@@ -289,4 +292,9 @@
     <string name="download_over">下载完毕</string>
     <string name="download_error">下载失败</string>
 
+    <!-- callStateError -->
+
+    <string name="callState_0">成功</string>
+    <string name="callState_1">电话未接通</string>
+    <string name="callState_2">呼叫失败</string>
 </resources>

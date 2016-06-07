@@ -245,7 +245,7 @@ public class ECCallingActivity extends BaseActivity {
         }
         if(fileBean == null||fileBean.getFileId() == null)
             return;
-        ECCallManager.getInstance().call(fileBean.getFileId(), fileBean.getFileType(), fileBean.getExtraName(), list, new ResponseListener<String>() {
+        ECCallManager.getInstance().call("bye.wav", fileBean.getFileType(), fileBean.getExtraName(), list, new ResponseListener<String>() {
             @Override
             public void onSuccess(String json) {
                 ToastUtil.show(ECCallingActivity.this,"呼叫成功");

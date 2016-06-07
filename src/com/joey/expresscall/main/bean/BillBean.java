@@ -3,6 +3,7 @@ package com.joey.expresscall.main.bean;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONException;
 import com.alibaba.fastjson.JSONObject;
+import com.joey.expresscall.storage.BaseBean;
 import com.joey.general.utils.DateUtil;
 import com.joey.general.utils.MyLog;
 
@@ -12,21 +13,21 @@ import java.util.HashMap;
 /**
  * Created by Administrator on 2016/5/20.
  */
-public class BillBean implements Serializable{
+public class BillBean extends BaseBean{
 
     private CallBean call;
-    private float cost;
+    private float money;
     private String callId;
     private long callTime;
     private int callCount;
-    private String phoneNum;
+    private String toMobile;
 
-    public String getPhoneNum() {
-        return phoneNum;
+    public String getToMobile() {
+        return toMobile;
     }
 
-    public void setPhoneNum(String phoneNum) {
-        this.phoneNum = phoneNum;
+    public void setToMobile(String phoneNum) {
+        this.toMobile = phoneNum;
     }
 
     public CallBean getCall() {
@@ -37,12 +38,12 @@ public class BillBean implements Serializable{
         this.call = call;
     }
 
-    public float getCost() {
-        return cost;
+    public float getMoney() {
+        return money;
     }
 
-    public void setCost(float cost) {
-        this.cost = cost;
+    public void setMoney(float cost) {
+        this.money = cost;
     }
 
     public String getCallId() {
@@ -50,6 +51,7 @@ public class BillBean implements Serializable{
     }
 
     public void setCallId(String callId) {
+        setId(callId);
         this.callId = callId;
     }
 
@@ -74,22 +76,8 @@ public class BillBean implements Serializable{
         map.put("callId",getCallId());
         String timeStr = DateUtil.convertToDateStr(DateUtil.DATE_FORMMAT_STR_3, getCallTime());
         map.put("callTime",timeStr);
-//        map.put("phoneNum",getPhoneNum());
-        map.put("callCount",getCallCount());
+        map.put("toMobile",getToMobile());
+        map.put("money",getMoney()+" 元 ");
         return map;
-    }
-    public static BillBean parseJson(String json){
-        BillBean bean = new BillBean();
-        try {
-            JSONObject jsonObject = JSON.parseObject(json);
-            bean.setCallId(jsonObject.getString("callId"));
-            bean.setCallTime(jsonObject.getLong("callTime"));
-            bean.setCost(jsonObject.getFloat("money"));
-//            bean.setPhoneNum(jsonObject.getString("phoneNum"));
-            bean.setCallCount(jsonObject.getInteger("callCount"));
-        }catch (JSONException e){
-            MyLog.e("parse error"+e.getMessage());
-        }
-        return bean;
     }
 }

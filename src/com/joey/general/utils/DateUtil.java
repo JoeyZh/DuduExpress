@@ -1,5 +1,6 @@
 package com.joey.general.utils;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -20,6 +21,23 @@ public class DateUtil {
         Date nowTime = new Date(System.currentTimeMillis());
         SimpleDateFormat sdFormatter = new SimpleDateFormat(dateFormat);
         return sdFormatter.format(nowTime);
+    }
+
+    /**
+     * 获取时间
+     *
+     * @return
+     */
+    public static long getMinTime(String dateFormat,String dateStr) {
+        SimpleDateFormat sdFormatter = new SimpleDateFormat(dateFormat);
+        Date date = null;
+        try {
+            date = sdFormatter.parse(dateStr);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return 0;
+        }
+        return date.getTime();
     }
 
     /**

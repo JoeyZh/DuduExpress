@@ -9,6 +9,7 @@ import com.joey.expresscall.protocol.comm.ECAccountInterface;
 import com.joey.expresscall.protocol.comm.ECCallInterface;
 import com.joey.expresscall.protocol.comm.ECNetUrlConsts;
 import com.joey.expresscall.protocol.comm.InterfaceTestDemo;
+import com.joey.general.utils.DateUtil;
 import com.joey.general.utils.MyLog;
 import com.joey.general.utils.ToastUtil;
 
@@ -126,7 +127,8 @@ public class ECInterfaceTest extends ListActivity {
 					response = "result:"+fileInterface.downloadFile("bye.wav", "wav",AppConsts.RECORD_DIR+"bye.wav");
 					break;
 				case 11:// 获取账单
-					response = fileInterface.getBillList();
+					String testStart = "2016-06-01 00:00:00 000";
+					response = fileInterface.getBillList(DateUtil.getMinTime(DateUtil.DATE_FORMMAT_STR_1,testStart),System.currentTimeMillis());
 					break;
 				case 12:// 获取详单
 					response = fileInterface.getBillDetail("1463926736355");

@@ -2,6 +2,7 @@ package com.joey.expresscall.main;
 
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
@@ -14,6 +15,7 @@ import com.joey.expresscall.main.bean.CallListBean;
 import com.joey.expresscall.protocol.RequestError;
 import com.joey.expresscall.protocol.ResponseListener;
 import com.joey.general.BaseActivity;
+import com.joey.general.utils.DateUtil;
 import com.joey.general.utils.MyLog;
 
 import java.util.ArrayList;
@@ -32,8 +34,10 @@ public class ECBillListActivity extends BaseActivity {
     private ArrayList<HashMap<String,Object>> mMapList = new ArrayList<HashMap<String, Object>>();
 
     private ECSimpleAdapter1 mAdapter;
-    private String[] keys = {"callTime","count","phoneNum"};
-    private int[] ids = {R.id.item_text,R.id.item_text_tag,R.id.item_extra};
+    private String[] keys = {"callTime","toMobile","money","img"};
+    private int[] ids = {R.id.item_text,R.id.item_text_tag,R.id.item_extra,R.id.item_access};
+    private TextView tvTotal;
+    private TextView tvBalance;
     @Override
     public void initSettings() {
        getCallList();
@@ -45,7 +49,9 @@ public class ECBillListActivity extends BaseActivity {
         listBill = (ListView) findViewById(R.id.bill_list);
         mAdapter = new ECSimpleAdapter1(this,mMapList,R.layout.simple_item_layout_1,keys,ids);
         mAdapter.setType(ECSimpleAdapter1.SIMPLE_ADAPTER_TYPE_TAG);
-        setTitle(R.string.bill_title);
+        tvTotal = (TextView)findViewById(R.id.bill_text_total);
+        tvBalance = (TextView)findViewById(R.id.bill_text_balance);
+        setTitle(R.string.bill_detail);
         listBill.setAdapter(mAdapter);
 
     }
@@ -61,11 +67,12 @@ public class ECBillListActivity extends BaseActivity {
     }
 
     private void getCallList() {
-        ECCallManager.getInstance().getCalls(pageNum, PAGE_SIZE, new ResponseListener<JSONObject>() {
+        String testStart = "2016-06-01 00:00:00 000";
+        ECCallManager.getInstance().getBills(DateUtil.getMinTime(DateUtil.DATE_FORMMAT_STR_1,testStart), System.currentTimeMillis(), new ResponseListener<JSONObject>() {
             @Override
             public void onSuccess(JSONObject json) {
                 JSONArray array = json.getJSONArray("list");
-                parseBillList(array);
+                parseBillList(json);
             }
 
             @Override
@@ -94,7 +101,14 @@ public class ECBillListActivity extends BaseActivity {
             }
         });
     }
-    private void parseBillList(JSONArray array) {
+    private void parseBillList(JSONObject object) {
+        final float balance = object.getFloat("balance");
+        final float total = object.getFloat("total")+balance;
+        if(!(object.get("list") instanceof JSONArray)){
+            return;
+        }
+
+        JSONArray array = object.getJSONArray("list");
         if (array.isEmpty()) {
             return;
         }
@@ -102,12 +116,14 @@ public class ECBillListActivity extends BaseActivity {
             mMapList.clear();
         for (int i = 0; i < array.size(); i++) {
             JSONObject obj = array.getJSONObject(i);
-            BillBean bean = BillBean.parseJson(obj.toJSONString());
+            BillBean bean = (BillBean) JSONObject.parseObject(obj.toString(),BillBean.class);
             mMapList.add(bean.getMap());
         }
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
+                tvBalance.setText(balance+" 元  ");
+                tvTotal.setText(total+" 元  ");
                 mAdapter.notifyDataSetChanged();
             }
         });
