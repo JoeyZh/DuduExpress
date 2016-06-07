@@ -12,6 +12,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.serializer.StringCodec;
 import com.joey.expresscall.AppConsts;
 import com.joey.general.utils.MyLog;
 
@@ -41,7 +44,7 @@ public class ECCallInterface {
 	 * @param extraName
 	 * @return
 	 */
-	public boolean upLoadFile(String path,String phone, String fileType, String extraName,long duration,long fileSize) {
+	public String upLoadFile(String path,String phone, String fileType, String extraName,long duration,long fileSize) {
 		String URI = ECNetUrlConsts.getFullUrl(ECNetUrlConsts.DO_UPLOAD);
 		HashMap param = new HashMap();
 		param.put("mobile", phone);
@@ -52,13 +55,13 @@ public class ECCallInterface {
 		param.put("token", this.token);
 		MyLog.i("httpComm",param.toString());
 
-		boolean result;
+		String result;
 		try {
 			result = this.upload(URI, path, param);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return false;
+			return "-1";
 		}
 		return result;
 	}
@@ -154,7 +157,9 @@ public class ECCallInterface {
 		return jsonStr;
 	}
 
-	private  boolean upload(String urlStr, String filepath,HashMap<String,Object> params) throws Exception {
+	private String upload(String urlStr, String filepath, HashMap<String,Object> params) throws Exception {
+		MyLog.i("params = " +params.toString());
+		MyLog.i(urlStr);
 		String boundary = "------------------------";
 		// 分割线
 		File file = new File(filepath);
@@ -219,15 +224,16 @@ public class ECCallInterface {
 			data.append(line);
 		}
 
-		System.out.println("上传结果：" + data.toString());
-
+		MyLog.i("上传结果：" + data.toString());
+		JSONObject object = JSON.parseObject(data.toString());
 		boolean sucess = conn.getResponseCode() == 200;
 		in.close();
 		fis.close();
 		out.close();
 		conn.disconnect();
 
-		return sucess;
+		return object.get("Response").toString();
+//		return sucess;
 	}
 
 }

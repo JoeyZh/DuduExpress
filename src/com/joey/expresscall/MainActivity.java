@@ -42,7 +42,7 @@ public class MainActivity extends BaseActivity {
         fileListFragment = new ECFileListFragment();
         
         tabHost.addTab("主页",R.drawable.tabbar_main_selector,R.drawable.tabbar_home_selected, mainFragment);
-        tabHost.addTab("联系人",R.drawable.tabbar_info_selector ,R.drawable.tabbar_profile_selected, contactsFragment);
+//        tabHost.addTab("联系人",R.drawable.tabbar_info_selector ,R.drawable.tabbar_profile_selected, contactsFragment);
         tabHost.addTab("文件",R.drawable.tabbar_files_selector ,R.drawable.tabbar_message_center_selected, fileListFragment);
         
        tabHost.changeToIndex(0);
@@ -61,5 +61,9 @@ public class MainActivity extends BaseActivity {
         
     }
 
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        exitTip();
+    }
 }

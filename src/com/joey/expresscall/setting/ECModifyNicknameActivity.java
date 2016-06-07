@@ -92,12 +92,12 @@ public class ECModifyNicknameActivity extends BaseActivity implements
 		setRightIconVisible(true);
 		// 调用修改昵称接口
 		createDialog("", false);
-		mAccontHandle.modifyNickName(nick, new ResponseListener<JSONObject>() {
+		String username = MySharedPreference.getInstance().getString("username");
+		mAccontHandle.modifyNickName(nick,username, new ResponseListener<String>() {
 
-			public void onSuccess(JSONObject json) {
+			public void onSuccess(String json) {
 				// 关闭Progress提示框
 				MySharedPreference.getInstance().putString("nickname", nick);
-
 				closeActivity();
 			}
 

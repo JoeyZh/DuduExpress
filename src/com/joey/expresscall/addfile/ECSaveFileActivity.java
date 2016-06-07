@@ -5,6 +5,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import com.alibaba.fastjson.JSONObject;
 import com.joey.expresscall.R;
 import com.joey.expresscall.account.ECCallManager;
 import com.joey.expresscall.common.ECSimpleAdapter1;
@@ -29,6 +30,7 @@ public class ECSaveFileActivity extends BaseActivity {
 	private final int ids[] = {R.id.item_text_tag, R.id.item_text,
 			 R.id.item_access};
 	private final int access[] = {R.drawable.ic_launcher,-1,-1};
+	private boolean loadSuccess;
 
 	private ListView mListView;
 	private ECSimpleAdapter1 mAdapter;
@@ -60,7 +62,7 @@ public class ECSaveFileActivity extends BaseActivity {
 		mListView = (ListView) findViewById(R.id.save_file_list);
 		mData = new ArrayList<HashMap<String, Object>>();
 		String []contents = {"","",""};
-		contents[0] = bean.getFileId();
+		contents[0] = bean.getFileName();
 		long minutes = TimeUnit.MILLISECONDS.toMinutes(bean.getDuration());
 		long seconds = TimeUnit.MILLISECONDS.toSeconds(bean.getDuration())
 				- TimeUnit.MINUTES.toSeconds(minutes);
@@ -86,13 +88,15 @@ public class ECSaveFileActivity extends BaseActivity {
 
 	@Override
 	public void saveSettings() {
-		// TODO Auto-generated method stub
-
+		if(loadSuccess)
+			statusHashMap.put("fileBean",bean);
+		else
+			statusHashMap.remove("fileBean");
 	}
 
 	@Override
 	public void freeMe() {
-		statusHashMap.remove("fileBean");
+
 	}
 
 	private boolean checkUploadInfo(){
@@ -110,14 +114,21 @@ public class ECSaveFileActivity extends BaseActivity {
 				"wav",
 				bean.getExtraName(),
 				bean.getDuration(),
-				bean.getFileLength(),new ResponseListener<String>() {
+				bean.getFileLength(),new ResponseListener<JSONObject>() {
 			@Override
-			public void onSuccess(String json) {
+			public void onSuccess(JSONObject json) {
+				loadSuccess = true;
+//			{"fileId":"1465270616703bye.wav","extraName ":"测试","mobile":"18663753236"}
+				String fileId = json.getString("fileId");
+				bean.setFileName(fileId);
+				bean.setFileId(fileId);
 				ToastUtil.show(getApplicationContext(),R.string.upload_over);
+				finish();
 			}
 
 			@Override
 			public void onError(RequestError error) {
+				loadSuccess = false;
 				ToastUtil.show(getApplicationContext(),R.string.upload_error);
 			}
 

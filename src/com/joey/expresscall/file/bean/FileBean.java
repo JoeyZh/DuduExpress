@@ -7,6 +7,7 @@ import com.joey.expresscall.AppConsts;
 import com.joey.general.utils.DateUtil;
 import com.joey.general.utils.MyLog;
 
+import java.io.File;
 import java.io.Serializable;
 import java.util.HashMap;
 
@@ -87,8 +88,17 @@ public class FileBean implements Serializable {
     }
 
     public void setFileName(String fileName) {
+        if(getPath() == null){
+            this.fileName = fileName;
+            return;
+        }
+        File file = new File(getPath());
+        String path = AppConsts.RECORD_DIR+fileName;
+        if(file.exists()){
+            file.renameTo(new File(path));
+        }
+        setPath(path);
         this.fileName = fileName;
-        this.fileType = AppConsts.FILE_DIR+fileName;
     }
 
     public HashMap<String,Object> getMap(){

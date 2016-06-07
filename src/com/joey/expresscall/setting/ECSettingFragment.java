@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.joey.expresscall.R;
 import com.joey.expresscall.account.ECAccountManager;
@@ -45,6 +46,11 @@ public class ECSettingFragment extends BaseFragment {
     private final int TYPE_TIME_SETTING = 2;
     private final int TYPE_COST_DESC = 3;
 
+    private String username;
+    private String nickname;
+    private TextView tvUsername;
+    private TextView tvNickname;
+
     public ECSettingFragment() {
     }
 
@@ -66,7 +72,14 @@ public class ECSettingFragment extends BaseFragment {
         header.setOnClickListener(clickListener);
         imgLogo = (ImageView) header.findViewById(R.id.setting_img_user_logo);
         imgLogo.setOnClickListener(clickListener);
+        tvUsername = (TextView)header.findViewById(R.id.setting_head_text_username);
+        tvNickname = (TextView)header.findViewById(R.id.setting_head_text_nickname);
         settingListView.addHeaderView(header);
+        username = MySharedPreference.getInstance().getString("username");
+        nickname = MySharedPreference.getInstance().getString("nickname");
+        tvNickname.setText(nickname);
+        tvUsername.setText(username);
+
         return currentView;
     }
 
@@ -151,6 +164,13 @@ public class ECSettingFragment extends BaseFragment {
     @Override
     public void freeMe() {
 
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        nickname = MySharedPreference.getInstance().getString("nickname");
+        tvNickname.setText(nickname);
     }
 
     private void logout() {

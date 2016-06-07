@@ -111,7 +111,7 @@ public class ECAccountManager {
         BackgroundHandler.execute(task);
     }
     
-    public void modifyPwd(final String oldPwd, final String newPwd,final ResponseListener<JSONObject> listener) {
+    public <T> void modifyPwd(final String oldPwd, final String newPwd,final ResponseListener<T> listener) {
         TaskBuilder task = new TaskBuilder("modifyPwd", listener, new OnTaskListener() {
             @Override
             public String execute() {
@@ -122,11 +122,11 @@ public class ECAccountManager {
         BackgroundHandler.execute(task);
     }
     
-    public void modifyNickName( final String nickName,final ResponseListener<JSONObject> listener) {
+    public <T> void modifyNickName( final String nickName,final String username,final ResponseListener<T> listener) {
         TaskBuilder task = new TaskBuilder("modifyNickName", listener, new OnTaskListener() {
             @Override
             public String execute() {
-                return mAccount.modifyInfo(nickName);
+                return mAccount.modifyInfo(nickName,username);
             }
         });
 

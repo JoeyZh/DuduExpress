@@ -45,6 +45,7 @@ public class ECFileListFragment extends BaseFragment {
 	private SwipeLayout lastSwipeLayout;
 	private AlertDialog dlgDelete;
 	private int operationIndex;
+	private OnItemClickListener customListener;
 	private AdapterView.OnItemClickListener itemClickListener = new AdapterView.OnItemClickListener() {
 		@Override
 		public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -54,6 +55,11 @@ public class ECFileListFragment extends BaseFragment {
 				return;
 			}
 			FileBean bean = fileList.get(position);
+			mActivity.statusHashMap.put("fileBean",bean);
+			if(customListener != null){
+				customListener.onItemClick(parent,view,position,id);
+				return;
+			}
 			if(MobileUtil.isExist(bean.getPath())){
 				play(bean);
 				return;
@@ -74,7 +80,7 @@ public class ECFileListFragment extends BaseFragment {
 
 	};
 	public void setItemClickListener(OnItemClickListener listener){
-		listView.setOnItemClickListener(listener);
+		customListener = listener;
 	}
 	
 	@Override

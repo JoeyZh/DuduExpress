@@ -1,5 +1,6 @@
 package com.joey.expresscall.setting;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.view.View;
@@ -12,9 +13,11 @@ import android.widget.TextView;
 import com.alibaba.fastjson.JSONObject;
 import com.joey.expresscall.R;
 import com.joey.expresscall.account.ECAccountManager;
+import com.joey.expresscall.login.JVLoginActivity;
 import com.joey.expresscall.protocol.RequestError;
 import com.joey.expresscall.protocol.ResponseListener;
 import com.joey.general.BaseActivity;
+import com.joey.general.MyActivityManager;
 import com.joey.general.utils.MySharedPreference;
 import com.joey.general.utils.MySharedPreferencesConsts;
 import com.joey.general.utils.RegularUtil;
@@ -72,7 +75,7 @@ public class ECModifyPwdActivity extends BaseActivity implements OnClickListener
     @Override
 	public void initSettings() {
         mAccontHandle = ECAccountManager.getInstance();
-        mInputRightIcon = getResources().getDrawable(R.drawable.icon_right_arrow);
+        mInputRightIcon = getResources().getDrawable(R.drawable.icon_edit_right_arrow);
         mInputRightIcon.setBounds(0, 0, mInputRightIcon.getIntrinsicWidth(),
                 mInputRightIcon.getIntrinsicHeight());
     }
@@ -145,11 +148,14 @@ public class ECModifyPwdActivity extends BaseActivity implements OnClickListener
         // 调用修改密码的接口
         createDialog(R.string.setting, false);
         mAccontHandle.modifyPwd(originPwd, newPwd,
-                new ResponseListener<JSONObject>() {
-                    public void onSuccess(JSONObject jsonData) {
-                        // 关闭Progress提示框
-         
-
+                new ResponseListener<String>() {
+                    public void onSuccess(String jsonData) {
+                        ToastUtil.show(ECModifyPwdActivity.this, R.string.tips_modify_success_relogin);
+                        MySharedPreference.getInstance().putString("password", "");
+                        MyActivityManager.getActivityManager().popAllActivityExceptOne(getClass());
+                        Intent intent = new Intent(ECModifyPwdActivity.this, JVLoginActivity.class);
+                        startActivity(intent);
+                        finish();
                     }
 
                     @Override
@@ -160,13 +166,23 @@ public class ECModifyPwdActivity extends BaseActivity implements OnClickListener
 
 					@Override
 					public void onStart() {
-												
+							handler.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    createDialog(R.string.loading,true);
+                                }
+                            });
 					}
 
 					@Override
 					public void onFinish() {
-						
-					}
+                        handler.post(new Runnable() {
+                            @Override
+                            public void run() {
+                               dismissDialog();
+                            }
+                        });
+                    }
                 });
     }
 

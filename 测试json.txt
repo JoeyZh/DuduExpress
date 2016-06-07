@@ -47,4 +47,7 @@ Post request string = {"desc":"请求成功","data":{"totalCount":2,"list":[{"st
 	Post string = {"Request":{"token":"189105176191463927464130"}}
 	Line 11018: I/httpComm(17779): url = http://jdsc2015.xicp.net/SYH/user/logout.do
 	Line 11344: V/HttpCommImp(17779): Post request string = {"desc":"请求成功","data":"","code":"000"}
+上传文件
+
+Post request string = {"desc":"请求成功","data":{"fileId":"1465269411163bye.wav","extraName ":"测试","mobile":"18663753236"},"code":"000"}
 

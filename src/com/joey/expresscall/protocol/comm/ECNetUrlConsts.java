@@ -9,6 +9,7 @@ public class ECNetUrlConsts {
     public final static String DO_FOUND_PWD = "user/forgetPwd.do";
     public final static String DO_INFO = "user/search.do";
     public final static String DO_MODIFY = "user/updatePwd.do";
+    public final static String DO_MODIFY_NICKNAME = "user/updateNickName.do";
     public final static String DO_EXIST = "user/search.do";
 
     // 文件管理相关

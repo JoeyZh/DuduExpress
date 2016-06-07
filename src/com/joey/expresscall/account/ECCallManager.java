@@ -1,5 +1,7 @@
 package com.joey.expresscall.account;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.joey.expresscall.protocol.BackgroundHandler;
 import com.joey.expresscall.protocol.RequestError;
 import com.joey.expresscall.protocol.ResponseListener;
@@ -141,15 +143,29 @@ public class ECCallManager {
             @Override
             public void run() {
                 super.run();
-                boolean result = callInterface.upLoadFile(path, phone, type, extraName, duration, fileSize);
+                String result = callInterface.upLoadFile(path, phone, type, extraName, duration, fileSize);
                 listener.onFinish();
-                if (result) {
-                    listener.onSuccess((T) (result + ""));
-                    return;
+                if (result != null) {
+                    JSONObject object = JSON.parseObject(result);
+                    int code = object.getInteger("code");
+                    if(code == 0)
+                    {
+                        listener.onSuccess((T)object.get("data"));
+                        return;
+                    }
+                    listener.onError(new RequestError(code));
                 }
                 listener.onError(new RequestError(-1));
             }
         }.start();
+//        TaskBuilder task = new TaskBuilder("upLoadFiles", listener,
+//                new OnTaskListener() {
+//                    @Override
+//                    public String execute() {
+//                        return callInterface.upLoadFile(path, phone, type, extraName, duration, fileSize);
+//                    }
+//                });
+//        BackgroundHandler.execute(task);
     }
 
     public <T> void downloadFile(String fileId, String type, String path, ResponseListener<T> listener) {

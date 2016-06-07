@@ -160,12 +160,13 @@ public class ECAccountInterface {
 	 * @param nickName
 	 * @return
 	 */
-	public String modifyInfo(String nickName) {
+	public String modifyInfo(String nickName,String username) {
 		String URI_ACCOUNT_MODIFY = ECNetUrlConsts
-				.getFullUrl(ECNetUrlConsts.DO_MODIFY);
+				.getFullUrl(ECNetUrlConsts.DO_MODIFY_NICKNAME);
 		HashMap param = new HashMap();
 		param.put("token", this.token);
 		param.put("nickName", nickName);
+		param.put("username",username);
 		String jsonStr = this.httpcomm.httpRequestPost(URI_ACCOUNT_MODIFY,
 				param);
 

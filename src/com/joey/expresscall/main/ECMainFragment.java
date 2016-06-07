@@ -111,7 +111,7 @@ public class ECMainFragment extends BaseFragment {
 		footerLayout = inflater.inflate(R.layout.main_listview_footer, null);
 		textMore = (TextView) footerLayout.findViewById(R.id.text_more);
 		progressBar = (ProgressBar) footerLayout.findViewById(R.id.load_progress_bar);
-		fileListView.addFooterView(footerLayout);
+//		fileListView.addFooterView(footerLayout);
 		return currentView;
 	}
 
@@ -196,6 +196,9 @@ public class ECMainFragment extends BaseFragment {
 		if (!userInfo.isEmpty()) {
 			parseUserInfo(JSON.parseObject(userInfo));
 		}
+		String nickname = MySharedPreference.getInstance().getString("nickname");
+		if(!nickname.isEmpty())
+			tvUserName.setText(nickname);
 		String groupInfo = MySharedPreference.getInstance().getString("groupList");
 		if(!groupInfo.isEmpty()){
 			parseGroupList(JSON.parseObject(groupInfo));
@@ -302,7 +305,10 @@ public class ECMainFragment extends BaseFragment {
 	}
 
 	private void parseGroupList(JSONObject json) {
-		JSONArray array = json.getJSONArray("list");
+		if(!(json.get("list") instanceof  JSONArray)) {
+			return;
+		}
+		JSONArray array= json.getJSONArray("list");
 		if (array == null || array.isEmpty()) {
 			return;
 		}
