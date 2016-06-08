@@ -112,7 +112,7 @@ public class ECCallManager {
         BackgroundHandler.execute(task);
     }
 
-    public <T> void deleteFile(final String fileIds, ResponseListener<T> listener) {
+    public <T> void deleteFile(final String fileIds,ResponseListener<T> listener) {
         TaskBuilder task = new TaskBuilder("deleteFiles", listener,
                 new OnTaskListener() {
                     @Override
@@ -123,7 +123,7 @@ public class ECCallManager {
         BackgroundHandler.execute(task);
     }
 
-    public <T> void updateFile(final String fileId, String extraName,
+    public <T> void updateFile(final String fileId,final String extraName,
                                ResponseListener<T> listener) {
         TaskBuilder task = new TaskBuilder("updateFiles", listener,
                 new OnTaskListener() {
@@ -136,8 +136,8 @@ public class ECCallManager {
         BackgroundHandler.execute(task);
     }
 
-    public <T> void upLoadCallFile(String path, String phone, String type,
-                                   String extraName, long duration, long fileSize, ResponseListener<T> listener) {
+    public <T> void upLoadCallFile(final String path,final String phone, final String type,
+                                   final String extraName, final long duration, final long fileSize, final ResponseListener<T> listener) {
         listener.onStart();
         new Thread() {
             @Override
@@ -168,7 +168,7 @@ public class ECCallManager {
 //        BackgroundHandler.execute(task);
     }
 
-    public <T> void downloadFile(String fileId, String type, String path, ResponseListener<T> listener) {
+    public <T> void downloadFile(final String fileId, final String type,final String path,final ResponseListener<T> listener) {
         listener.onStart();
         new Thread() {
             @Override

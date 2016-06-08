@@ -68,7 +68,7 @@ public class ECCallListManager {
     /**
      * 加载列表记录
      */
-    public void loadCallList(int callPageNum, ResponseListener<ArrayList<HashMap<String, Object>>> listener) {
+    public void loadCallList(int callPageNum,final ResponseListener<ArrayList<HashMap<String, Object>>> listener) {
         if (hasRefreshed)
             return;
         ECCallManager.getInstance().getGroupCallList(callPageNum, PAGE_SIZE,
