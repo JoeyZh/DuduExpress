@@ -43,7 +43,7 @@ public class ECModifyNicknameActivity extends BaseActivity implements
 	@Override
 	public void initSettings() {
 		mAccontHandle = ECAccountManager.getInstance();
-		mInputRightIcon = getResources().getDrawable(R.drawable.icon_right_arrow);
+		mInputRightIcon = getResources().getDrawable(R.drawable.icon_edit_right_arrow);
 		mInputRightIcon.setBounds(0, 0, mInputRightIcon.getIntrinsicWidth(),
 				mInputRightIcon.getIntrinsicHeight());
 	}

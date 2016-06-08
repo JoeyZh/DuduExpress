@@ -282,6 +282,7 @@ public class JVFoundPasswordActivity extends BaseActivity {
 				lostTimes = MAX_TIMES;
 				handler.removeCallbacks(resetCodeNotificationRunnalble);
 				codeWarnText.setVisibility(View.GONE);
+				checkLoadingBar.setVisibility(View.GONE);
 			}
 
 		});
@@ -305,12 +306,14 @@ public class JVFoundPasswordActivity extends BaseActivity {
 									.getBooleanValue("isExist");
 							// // 账号存在，提示
 							if (isExist) {
-								accountIsPhone = isPhoneNum(user);
+//								accountIsPhone = isPhoneNum(user);
+								accountIsPhone = true;
 								// if (accountIsPhone) {
 								codeWarnStr = getResources().getString(
 										R.string.found_send_code2phone);
 								codeWarnText
 										.setText(R.string.found_send_code2phone);
+								gotoResetPwdLayout();
 								// } else {
 								// codeWarnStr = getResources().getString(
 								// R.string.found_send_code2mail);
@@ -429,10 +432,10 @@ public class JVFoundPasswordActivity extends BaseActivity {
 	private void resetPassword(String newPwd, String confirmPwd,
 			String validateCode) {
 		ECAccountManager.getInstance().forgetPassword(userName, newPwd,
-				validateCode, new ResponseListener<JSONObject>() {
+				validateCode, new ResponseListener<String>() {
 
 					@Override
-					public void onSuccess(JSONObject json) {
+					public void onSuccess(String json) {
 						statusHashMap.put(MySharedPreferencesConsts.USERNAME,
 								userName);
 						statusHashMap.put(MySharedPreferencesConsts.PASSWORD,

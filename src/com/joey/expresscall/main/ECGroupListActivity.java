@@ -1,6 +1,5 @@
 package com.joey.expresscall.main;
 
-import android.content.Intent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -12,7 +11,6 @@ import com.alibaba.fastjson.JSONObject;
 import com.joey.expresscall.R;
 import com.joey.expresscall.account.ECCallManager;
 import com.joey.expresscall.common.ECSimpleAdapter1;
-import com.joey.expresscall.main.bean.BillBean;
 import com.joey.expresscall.main.bean.CallBean;
 import com.joey.expresscall.protocol.RequestError;
 import com.joey.expresscall.protocol.ResponseListener;
@@ -34,9 +32,9 @@ public class ECGroupListActivity extends BaseActivity{
     private final int PAGE_SIZE = 10;
     private ArrayList<HashMap<String,Object>> mMapList = new ArrayList<HashMap<String, Object>>();
 
-    private ECSimpleAdapter1 mAdapter;
-    private String[] keys = {"toMoible","callTime","money"};
-    private int[] ids = {R.id.item_text_tag,R.id.item_text,R.id.item_extra};
+    private ECCallListItemAdapter mAdapter;
+    private String[] keys = {"type","toMoible","callTime","extra","color"};
+    private int[] ids = {R.id.text_logo,R.id.text_content,R.id.text_desc,R.id.text_extra};
     @Override
     public void initSettings() {
         callListId = getIntent().getStringExtra("callListId");
@@ -54,8 +52,7 @@ public class ECGroupListActivity extends BaseActivity{
         setContentView(R.layout.activity_group_list_layout);
         listBill = (ListView) findViewById(R.id.bill_list);
         listBill.setOnItemClickListener(itemClickListener);
-        mAdapter = new ECSimpleAdapter1(this,mMapList,R.layout.simple_item_layout_1,keys,ids);
-        mAdapter.setType(ECSimpleAdapter1.SIMPLE_ADAPTER_TYPE_TAG);
+        mAdapter = new ECCallListItemAdapter(this,mMapList,R.layout.simple_item_extra_layout,keys,ids);
         setTitle(R.string.callList);
         listBill.setAdapter(mAdapter);
 
@@ -114,13 +111,13 @@ public class ECGroupListActivity extends BaseActivity{
             mMapList.clear();
         for (int i = 0; i < array.size(); i++) {
             JSONObject obj = array.getJSONObject(i);
-//            CallBean bean = CallBean.parseJson(obj.toJSONString());
             CallBean bean = (CallBean) JSON.parseObject(obj.toString(),CallBean.class);
             HashMap<String,Object> map = bean.getMap();
-            String strErrName = CallBean.STATE_CALL_STR + bean.getCallState();
-            String errmsg = ResourcesUnusualUtil.getString(strErrName);
-            map.put("callState",errmsg);
-            mMapList.add(bean.getMap());
+            ResourcesUnusualUtil.register(ECGroupListActivity.this);
+            map.put("extra",ResourcesUnusualUtil.getString(CallBean.STATE_CALL_STR + bean.getCallState()));
+            map.put("type",ResourcesUnusualUtil.getString("call_logo_"+bean.getCallState()));
+            map.put("color",ResourcesUnusualUtil.getString("call_color_"+bean.getCallState()));
+            mMapList.add(map);
         }
         runOnUiThread(new Runnable() {
             @Override

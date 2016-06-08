@@ -35,7 +35,7 @@ public class ECBillListActivity extends BaseActivity {
 
     private ECSimpleAdapter1 mAdapter;
     private String[] keys = {"callTime","toMobile","money","img"};
-    private int[] ids = {R.id.item_text,R.id.item_text_tag,R.id.item_extra,R.id.item_access};
+    private int[] ids = {R.id.item_text_tag,R.id.item_text,R.id.item_extra,R.id.item_access};
     private TextView tvTotal;
     private TextView tvBalance;
     @Override

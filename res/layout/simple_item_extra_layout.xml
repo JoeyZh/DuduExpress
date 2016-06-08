@@ -28,11 +28,12 @@
 
         <TextView
             android:id="@+id/text_logo"
-            style="@style/text_large_style"
             android:layout_width="45dp"
             android:layout_height="45dp"
             android:background="@drawable/bg_circle_blue"
             android:gravity="center"
+            android:textStyle="bold"
+            android:singleLine="true"
             android:text="录"
             android:textColor="@color/white" />
 
@@ -74,7 +75,7 @@
             android:layout_height="20dp"
             android:layout_alignParentRight="true"
             android:gravity="right"
-            android:text="11:00" />
+            android:text="" />
 
         <ImageView
             android:id="@+id/item_indicator"

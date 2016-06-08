@@ -25,7 +25,7 @@ public class CallBean extends BaseBean {
     private int duration;
     private int callState;
 
-    public static final String STATE_CALL_STR = "callState_";
+    public static final String STATE_CALL_STR = "call_state_";
     /**
      * 呼叫被拒接
      */

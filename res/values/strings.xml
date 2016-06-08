@@ -294,7 +294,16 @@
 
     <!-- callStateError -->
 
-    <string name="callState_0">成功</string>
-    <string name="callState_1">电话未接通</string>
-    <string name="callState_2">呼叫失败</string>
+    <string name="call_state_0">已接听</string>
+    <string name="call_state_1">未接听</string>
+    <string name="call_state_2">呼叫失败</string>
+
+    <string name="call_logo_0">接听</string>
+    <string name="call_logo_1">未接</string>
+    <string name="call_logo_2">失败</string>
+
+    <string name="call_color_0">green</string>
+    <string name="call_color_1">blue</string>
+    <string name="call_color_2">red</string>
+
 </resources>

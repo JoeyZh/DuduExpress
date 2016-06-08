@@ -25,6 +25,7 @@ public class ECCallListItemAdapter extends SimpleAdapter {
 
     private final String RED = "red";
     private final String BlUE = "blue";
+    private final String GREEN = "green";
     private String from[];
     private int to[];
 
@@ -43,19 +44,7 @@ public class ECCallListItemAdapter extends SimpleAdapter {
         // TODO Auto-generated method stub
         View view = super.getView(position, convertView, parent);
         HashMap<String, Object> item = (HashMap<String, Object>) getItem(position);
-
-        if (item.containsKey("color")) {
-            String color = (String) item.get("color");
-            if (color.equalsIgnoreCase(RED)) {
-                view.findViewById(R.id.text_logo).setBackgroundDrawable(
-                        mContext.getResources().getDrawable(
-                                R.drawable.bg_circle_red));
-            } else if (color.equalsIgnoreCase(BlUE)) {
-                view.findViewById(R.id.text_logo).setBackgroundDrawable(
-                        mContext.getResources().getDrawable(
-                                R.drawable.bg_circle_blue));
-            }
-        }
+        setLogoColor(position,view,parent);
         if (enable) {
             view.findViewById(R.id.item_checkbox).setVisibility(View.VISIBLE);
         } else {
@@ -73,15 +62,6 @@ public class ECCallListItemAdapter extends SimpleAdapter {
         for(int i=0;i<to.length;i++) {
             View v = view.findViewById(to[i]);
             Object obj = item.get(from[i]);
-            if (v instanceof TextView) {
-                if (obj instanceof String) {
-                    ((TextView) v).setText(obj.toString());
-                    continue;
-                }
-                if (obj instanceof Integer) {
-                    ((TextView) v).setText((Integer) obj);
-                }
-            }
             if (v instanceof ImageView) {
                 if (obj instanceof Bitmap) {
                     ((ImageView) v).setImageBitmap((Bitmap) obj);
@@ -95,6 +75,30 @@ public class ECCallListItemAdapter extends SimpleAdapter {
         return view;
     }
 
+    private void setLogoColor(int position, View view, ViewGroup parent){
+        HashMap<String, Object> item = (HashMap<String, Object>) getItem(position);
+        if (item.containsKey("color")) {
+            String color = (String) item.get("color");
+            if (color.equalsIgnoreCase(RED)) {
+                view.findViewById(R.id.text_logo).setBackgroundDrawable(
+                        mContext.getResources().getDrawable(
+                                R.drawable.bg_circle_red));
+                return;
+            }
+            if (color.equalsIgnoreCase(BlUE)) {
+                view.findViewById(R.id.text_logo).setBackgroundDrawable(
+                        mContext.getResources().getDrawable(
+                                R.drawable.bg_circle_blue));
+                return;
+            }
+            if (color.equalsIgnoreCase(GREEN)){
+                view.findViewById(R.id.text_logo).setBackgroundDrawable(
+                        mContext.getResources().getDrawable(
+                                R.drawable.bg_circle_green));
+                return;
+            }
+        }
+    }
     public void setEnableChecked(boolean enable) {
         this.enable = enable;
         notifyDataSetChanged();

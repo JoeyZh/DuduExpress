@@ -64,8 +64,19 @@
 
     <View
         android:layout_width="match_parent"
-        android:background="@color/divider_line"
-        android:layout_height="@dimen/group_divider_height"/>
+        android:layout_height="@dimen/group_divider_height"
+        android:background="@color/divider_line" />
+
+    <TextView
+        android:id="@+id/bill_text_description"
+        style="@dimen/text_mid_size"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/layout_min_margin"
+        android:text="@string/bill_detail" />
+
+    <include layout="@layout/divider_horizontal" />
+
     <ListView
         android:id="@+id/bill_list"
         style="@style/list_view_style1"

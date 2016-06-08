@@ -100,7 +100,7 @@ public class ECAccountManager {
         BackgroundHandler.execute(task);
     }
 
-    public void forgetPassword(final String username, final String resetPass, final String veryCode, final ResponseListener<JSONObject> listener) {
+    public <T> void forgetPassword(final String username, final String resetPass, final String veryCode, final ResponseListener<T> listener) {
         TaskBuilder task = new TaskBuilder("forgetPwd", listener, new OnTaskListener() {
             @Override
             public String execute() {
