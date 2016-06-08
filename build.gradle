@@ -1,0 +1,181 @@
+apply plugin: 'com.android.application'
+//apply plugin: 'android-apt'
+
+ext.appVersionCode = 1
+ext.appVersionName = "1.0.1"
+//def appReleaseDir = ""
+ext.appReleaseDir = ""
+/*Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+def appReleaseDir = properties.getProperty('appReleaseDir')
+def appVersionName = properties.getProperty('appVersionName')
+def appVersionCode = properties.getProperty('appVersionCode')*/
+def loadProperties() {
+    def proFile = file("../local.properties")
+    Properties p = new Properties()
+    proFile.withInputStream {stream->
+        p.load(stream)
+    }
+    appReleaseDir = p.appReleaseDir
+    appVersionCode = Integer.valueOf(p.appVersionCode)
+    appVersionName = p.appVersionName
+}
+loadProperties()
+android {
+    compileSdkVersion 23
+    buildToolsVersion '23.0.3'
+
+    defaultConfig {
+        applicationId "com.jlkj.jlb.app"
+        minSdkVersion 15
+        targetSdkVersion 23
+        versionCode appVersionCode
+        versionName appVersionName
+    }
+    lintOptions{
+        abortOnError false
+    }
+    signingConfigs {
+        jlbrelease {
+//            storeFile file("E:/jlbaowork/jlb.jks")
+//            storePassword "123456"
+//            keyAlias "123456"
+//            keyPassword "123456"
+        }
+    }
+    buildTypes {
+        release {
+            applicationIdSuffix ".release"
+            minifyEnabled true
+            zipAlignEnabled true // zip对齐优化
+            shrinkResources true // 移除不必要的资源
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig  signingConfigs.jlbrelease
+        }
+        debug{
+            //signingConfig  signingConfigs.jlbrelease
+            minifyEnabled false
+            zipAlignEnabled false
+            shrinkResources false
+        }
+        preview {
+            debuggable false // 是否保留调试信息
+            minifyEnabled true  //是否混淆
+            zipAlignEnabled true // 包优化
+            shrinkResources true // 移除不必要的资源
+
+            // 签名
+            signingConfig signingConfigs.jlbrelease
+            // 代码混淆规则文件
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    productFlavors {
+//  默认
+       /* Witspring {}
+        // google play
+        //谷歌商店 {}
+        // 百度应用市场
+        百度应用市场 {}
+        // 360应用市场
+        _360应用市场 {}
+        // 应用宝
+        应用宝 {}
+        // 豌豆荚
+        豌豆荚 {}
+        // 小米商店
+        小米商店 {}
+        // 安卓市场
+        安卓市场 {}
+        // 91助手
+        _91助手 {}
+        // 安智市场
+        安智市场 {}
+        // 应用汇
+//        应用汇 {}
+        // 机锋市场
+//        机锋市场 {}
+        // 魅族商店
+        魅族商店 {}
+        productFlavors.all {
+            flavor -> flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
+        }*/
+
+
+    }
+    //修改生成的apk名字
+   /* applicationVariants.all{variant->
+        variant.outputs.each {output->
+            def oldFile = output.outputFile
+            def newName = '';
+            if(output.outputFile != null && output.outputFile.name.endsWith('.apk')&&variant.buildType.name.equals('release')){
+                // APK输出文件名规则：aiyou-版本名-市场-release.apk
+//                def releaseApkName = 'jlbao-' + appVersionName + '-' + variant.productFlavors[0].name + '-release.apk'
+                def releaseApkName = 'jlbao-' + appVersionName  +"-fdsfds"+ '-release.apk'
+                // appReleaseDir对应local.properties里面定义的路径，再加上日期（格式：201503011230）文件夹
+                output.outputFile = new File(appReleaseDir + '/' + getDate(), releaseApkName)
+            }
+            if(variant.buildType.name.equals('beta')){
+                def releaseApkName = 'jlbao-' + appVersionName  + '-beta.apk'
+                // appReleaseDir对应local.properties里面定义的路径，再加上日期（格式：201503011230）文件夹
+                output.outputFile = new File(appReleaseDir + '/' + getDate(), releaseApkName)
+            }
+            if(variant.buildType.name.equals('debug')){
+//                def releaseApkName = 'jlbao-' + appVersionName  + '-debug.apk'
+//                // appReleaseDir对应local.properties里面定义的路径，再加上日期（格式：201503011230）文件夹
+//                output.outputFile = new File(appReleaseDir + '/' + getDate(), releaseApkName)
+
+            }
+//            def releaseApkName = 'jlbao-' + appVersionName  + '-debug.apk'
+//            // appReleaseDir对应local.properties里面定义的路径，再加上日期（格式：201503011230）文件夹
+//            output.outputFile = new File(appReleaseDir + '/' + getDate(), releaseApkName)
+
+//            def releaseApkName = "jlbao_v${appVersionName}_${variant.buildType.name}.apk"
+//            output.outputFile = new File(appReleaseDir + '/' + getDate(), releaseApkName)
+        }
+    }*/
+
+}
+//获取时间戳
+def getDate() {
+    def date = new Date()
+    def formattedDate = date.format('yyyyMMddHHmm')
+    return formattedDate
+}
+
+def retrofitVersion = '2.0.0'
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:23.3.0'
+    compile 'com.android.support:design:23.3.0'
+    compile 'com.jakewharton:butterknife:5.1.1'
+    compile files('libs/alipaySdk-20160516.jar')
+    /* compile 'com.squareup.retrofit:retrofit:2.0.0-beta2'
+                                    // retrofit
+                                    compile 'io.reactivex:rxandroid:1.1.0'
+                                    // rxjava extensions
+                                    compile 'com.orhanobut:logger:1.11'
+                                    // print pretty Log
+                                    compile 'com.google.code.gson:gson:2.5'
+                                    // gson
+                                    compile 'com.squareup.retrofit:converter-gson:2.0.0-beta2'
+                                    // gson convertor with retrofit
+                                    compile 'com.squareup.retrofit:adapter-rxjava:2.0.0-beta2'
+                                    // rxjava extension with retrofit
+                                    compile 'com.squareup.okhttp:logging-interceptor:2.7.0'
+                                    // filter request and response log with okHttpClient
+                                    compile 'com.squareup.okhttp:okhttp:2.0.0'*/
+    compile files('libs/commons-httpclient-3.1.jar')
+    compile files('libs/network.jar')
+    compile files('libs/sun.misc.BASE64Decoder.jar')
+    //    compile 'com.squareup.retrofit:retrofit:1.9.0'
+    compile "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    //    compile "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+}
+/*apt {
+    arguments {
+        androidManifestFile variant.outputs[0].processResources.manifestFile
+        resourcePackageName 'com.jlkj.jlb.app'
+    }
+}*/
