@@ -2,11 +2,10 @@ package com.joey.general;
 
 import android.app.Application;
 import android.content.Context;
-import android.graphics.Bitmap.CompressFormat;
 
 
 import com.joey.expresscall.storage.JVDbHelper;
-import com.joey.general.utils.MobileUtil;
+import com.joey.general.utils.FileUtil;
 import com.joey.general.utils.MySharedPreference;
 
 
@@ -55,7 +54,7 @@ public class MainApplication extends Application  {
         JVDbHelper.getInstance().init(this);
         MySharedPreference.getInstance().init(this);
 //        创建文件目录
-        MobileUtil.creatAllFolder();
+        FileUtil.creatAllFolder();
     }
 
     /**

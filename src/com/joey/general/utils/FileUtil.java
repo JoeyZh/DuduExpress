@@ -7,7 +7,7 @@ import com.joey.expresscall.AppConsts;
 
 import java.io.File;
 
-public class MobileUtil {
+public class FileUtil {
     
     /**
      * 创建手机软件所需要的文件夹
@@ -75,7 +75,8 @@ public class MobileUtil {
      *
      * @param file 要删除的根目录
      */
-    public static void deleteFile(File file) {
+    public static void deleteFile(String path) {
+        File file = new File(path);
         if (file.isFile()) {
             file.delete();
             return;
@@ -87,7 +88,7 @@ public class MobileUtil {
                 return;
             }
             for (File f : childFile) {
-                deleteFile(f);
+                deleteFile(f.getPath());
             }
             file.delete();
         }

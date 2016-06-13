@@ -102,24 +102,24 @@ public class NetWorkUtil {
     private static final int NETWORK_TYPE_WIFI = -101;
 
     // 适配低版本手机
-    private static final int NETWORK_CLASS_WIFI = -101;
-    private static final int NETWORK_CLASS_UNAVAILABLE = -1;
+    public static final int NETWORK_CLASS_WIFI = -101;
+    public static final int NETWORK_CLASS_UNAVAILABLE = -1;
     /**
      * Unknown network class.
      */
-    private static final int NETWORK_CLASS_UNKNOWN = 0;
+    public static final int NETWORK_CLASS_UNKNOWN = 0;
     /**
      * Class of broadly defined "2G" networks.
      */
-    private static final int NETWORK_CLASS_2_G = 1;
+    public static final int NETWORK_CLASS_2_G = 1;
     /**
      * Class of broadly defined "3G" networks.
      */
-    private static final int NETWORK_CLASS_3_G = 2;
+    public static final int NETWORK_CLASS_3_G = 2;
     /**
      * Class of broadly defined "4G" networks.
      */
-    private static final int NETWORK_CLASS_4_G = 3;
+    public static final int NETWORK_CLASS_4_G = 3;
     private static Context mContext;
     private static DecimalFormat df = new DecimalFormat("#.##");
 

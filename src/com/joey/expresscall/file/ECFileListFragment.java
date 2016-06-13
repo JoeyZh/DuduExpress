@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
@@ -26,9 +25,10 @@ import com.joey.expresscall.player.PlaybackFragment;
 import com.joey.expresscall.protocol.RequestError;
 import com.joey.expresscall.protocol.ResponseListener;
 import com.joey.general.BaseFragment;
-import com.joey.general.utils.MobileUtil;
+import com.joey.general.utils.FileUtil;
 import com.joey.general.utils.MyLog;
 import com.joey.general.utils.MySharedPreference;
+import com.joey.general.utils.NetWorkUtil;
 import com.joey.general.utils.ToastUtil;
 
 import java.util.ArrayList;
@@ -44,6 +44,7 @@ public class ECFileListFragment extends BaseFragment {
 	private ArrayList<HashMap<String, Object>> mMapList = new ArrayList<HashMap<String, Object>>();
 	private SwipeLayout lastSwipeLayout;
 	private AlertDialog dlgDelete;
+	private AlertDialog dlgDownload;
 	private int operationIndex;
 	private OnItemClickListener customListener;
 	private AdapterView.OnItemClickListener itemClickListener = new AdapterView.OnItemClickListener() {
@@ -54,14 +55,22 @@ public class ECFileListFragment extends BaseFragment {
 				lastSwipeLayout.close(true);
 				return;
 			}
-			FileBean bean = fileList.get(position);
+			FileBean bean = getFileBean(position);
+			if(bean == null)
+				return;
 			mActivity.statusHashMap.put("fileBean",bean);
 			if(customListener != null){
 				customListener.onItemClick(parent,view,position,id);
 				return;
 			}
-			if(MobileUtil.isExist(bean.getPath())){
+			if(FileUtil.isExist(bean.getPath())){
 				play(bean);
+				return;
+			}
+
+			if(NetWorkUtil.isMobileNetOpen()){
+				createDownloadDialog("您正在使用移动网络，下载可能消耗"+mMapList.get(position).get("fileLength")+"的流量");
+				dlgDownload.show();
 				return;
 			}
 			download(bean);
@@ -116,7 +125,15 @@ public class ECFileListFragment extends BaseFragment {
 					lastSwipeLayout = null;
 				}
 				operationIndex = postion;
-				createDialog("删除文件");
+				FileBean bean = getFileBean(postion);
+				if(bean == null)
+					return;
+				String msg = "请您再次确定删除文件信息\n" +
+						"名称：" +bean.getExtraName()+"\n"+
+						"路径："+bean.getPath()+"\n"+
+						"创建时间："+mMapList.get(postion).get("createTime")+"\n"+
+						"文件大小：" +mMapList.get(postion).get("fileLength").toString();
+				createDeleteDialog(msg);
 				dlgDelete.show();
 			}
 		});
@@ -125,7 +142,14 @@ public class ECFileListFragment extends BaseFragment {
 //		test();
 	}
 
-	private void createDialog(String msg){
+	private FileBean getFileBean(int position){
+		if(operationIndex<0||operationIndex>= fileList.size())
+			return null;
+		FileBean bean = fileList.get(operationIndex);
+		return  bean;
+	}
+
+	private void createDeleteDialog(String msg){
 		if(dlgDelete != null){
 			dlgDelete.setMessage(msg);
 			return;
@@ -136,15 +160,36 @@ public class ECFileListFragment extends BaseFragment {
 				.setPositiveButton(R.string.delete,new DialogInterface.OnClickListener(){
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
-						if(operationIndex<0||operationIndex>= fileList.size())
+						FileBean bean = getFileBean(operationIndex);
+						if(bean == null)
 							return;
-						FileBean bean = fileList.get(operationIndex);
 						deleteFile(bean);
 					}
 				})
 				.setNegativeButton(R.string.cancel,null)
 				.create();
 
+	}
+
+	private void createDownloadDialog(String msg){
+		if(dlgDownload != null){
+			dlgDownload.setMessage(msg);
+			return;
+		}
+		dlgDownload = new AlertDialog.Builder(getActivity(),AlertDialog.THEME_DEVICE_DEFAULT_LIGHT)
+				.setTitle(R.string.warn_title)
+				.setMessage(msg)
+				.setPositiveButton(R.string.download,new DialogInterface.OnClickListener(){
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						FileBean bean = getFileBean(operationIndex);
+						if(bean == null)
+							return;
+						download(bean);
+					}
+				})
+				.setNegativeButton(R.string.cancel,null)
+				.create();
 	}
 	@Override
 	public void saveSettings() {
@@ -207,7 +252,7 @@ public class ECFileListFragment extends BaseFragment {
 			HashMap<String, Object> map = bean.getMap();
 //			map.put("type", bean.getFileType().equals("wav") ? "录" : "文");
 //			map.put("color", bean.getFileType().equals("wav") ? "blue" : "red");
-			if(MobileUtil.isExist(bean.getPath())){
+			if(FileUtil.isExist(bean.getPath())){
 				map.put("img", R.drawable.ic_download_selected);
 			}
 			else{
@@ -275,12 +320,13 @@ public class ECFileListFragment extends BaseFragment {
 		}
 	}
 
-	private void deleteFile(FileBean bean){
+	private void deleteFile(final FileBean bean){
 		ECCallManager.getInstance().deleteFile(bean.getFileId(), new ResponseListener<String>() {
 			@Override
 			public void onSuccess(String json) {
 				ToastUtil.show(getActivity(),R.string.delete_success);
 				getFiles();
+				FileUtil.deleteFile(bean.getPath());
 //				parseFiles(json.getJSONArray("list"));
 			}
 

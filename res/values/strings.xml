@@ -27,6 +27,7 @@
     <string name="delete_success">删除成功</string>
     <string name="delete_failed">修改失败</string>
     <string name="delete">删除</string>
+    <string name="download">下载</string>
     <string name="edit">编辑</string>
     <string name="bind_success">绑定成功</string>
     <string name="data_load_failed">数据加载失败</string>

@@ -1,9 +1,9 @@
-package com.joey.expresscall.account;
+package com.joey.expresscall.main.handler;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.joey.expresscall.R;
+import com.joey.expresscall.account.ECCallManager;
 import com.joey.expresscall.main.bean.CallListBean;
 import com.joey.expresscall.protocol.RequestError;
 import com.joey.expresscall.protocol.ResponseListener;
@@ -113,12 +113,12 @@ public class ECCallListManager {
         for (int i = 0; i < array.size(); i++) {
             JSONObject obj = array.getJSONObject(i);
             CallListBean bean = (CallListBean) JSON.parseObject(obj.toString(), CallListBean.class);
-//			CallListBean bean = CallListBean.parseJson(obj.toJSONString());
             JVDbHelper.getInstance().insert(bean, accountId, JVDbHelper.GROUP_TABLE);
             callListMap.put(bean.getId(), bean);
             callMapList.add(bean.getMap());
         }
     }
+
 
 
 }

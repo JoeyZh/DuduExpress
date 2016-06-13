@@ -67,8 +67,7 @@ public class ECBillListActivity extends BaseActivity {
     }
 
     private void getCallList() {
-        String testStart = "2016-06-01 00:00:00 000";
-        ECCallManager.getInstance().getBills(DateUtil.getMinTime(DateUtil.DATE_FORMMAT_STR_1,testStart), System.currentTimeMillis(), new ResponseListener<JSONObject>() {
+        ECCallManager.getInstance().getBills(DateUtil.getMinTime(DateUtil.DATE_FORMMAT_STR_1,getCurrentDate()), System.currentTimeMillis(), new ResponseListener<JSONObject>() {
             @Override
             public void onSuccess(JSONObject json) {
                 JSONArray array = json.getJSONArray("list");
@@ -127,6 +126,12 @@ public class ECBillListActivity extends BaseActivity {
                 mAdapter.notifyDataSetChanged();
             }
         });
+    }
+
+    private String  getCurrentDate(){
+        String dateStr = DateUtil.getTime(DateUtil.DATE_FORMAT_STR_MONTH);
+        dateStr += "-01 00:00:00 000";
+        return  dateStr;
     }
 
 }

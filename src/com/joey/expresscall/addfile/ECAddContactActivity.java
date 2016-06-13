@@ -1,6 +1,8 @@
 package com.joey.expresscall.addfile;
 
 import android.content.Intent;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
@@ -18,6 +20,7 @@ import com.joey.expresscall.contacts.library.ContactsActivity;
 import com.joey.general.BaseActivity;
 import com.joey.general.utils.CheckPhoneNumber;
 import com.joey.general.utils.MyLog;
+import com.joey.general.utils.ToastUtil;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -25,7 +28,7 @@ import java.util.LinkedHashMap;
 import java.util.Objects;
 
 /**
- * Created by Administrator on 2016/5/24.
+ * Created by Joey on 2016/5/24.
  */
 public class ECAddContactActivity extends BaseActivity {
 
@@ -36,6 +39,24 @@ public class ECAddContactActivity extends BaseActivity {
     private ImageView imgvSelectContact;
     private EditText editText;
     private HashMap<String, String> matchMap = new HashMap<String, String>();
+    private TextWatcher mWatcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+            if (parseArray()) {
+                editText.setText("");
+            }
+        }
+    };
     private View.OnClickListener clickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -51,6 +72,7 @@ public class ECAddContactActivity extends BaseActivity {
 //                    MyLog.d("size = "+mAdapter.getSelectList().size());
 //                    MyLog.d(mAdapter.getSelectList().toString());
                     parseArray();
+                    editText.setText("");
                     break;
             }
         }
@@ -59,10 +81,9 @@ public class ECAddContactActivity extends BaseActivity {
     private Runnable refreshListRunnable = new Runnable() {
         @Override
         public void run() {
-            editText.setText("");
             mAdapter.notifyDataSetChanged();
             mAdapter.setAllChecked();
-            if(checkableLayout.isChecked())
+            if (checkableLayout.isChecked())
                 return;
             checkableLayout.setChecked(true);
         }
@@ -104,6 +125,7 @@ public class ECAddContactActivity extends BaseActivity {
         View footer = inflater.inflate(R.layout.common_divider, null);
         listView.addFooterView(footer);
         editText = (EditText) findViewById(R.id.add_contact_edit_text);
+        editText.addTextChangedListener(mWatcher);
 //        vSelectContact = findViewById(R.id.layout_add_new_contact);
 //        vSelectContact.setOnClickListener(clickListener);
         imgvSelectContact = (ImageView) findViewById(R.id.img_add_new_contact);
@@ -152,27 +174,31 @@ public class ECAddContactActivity extends BaseActivity {
         }
     }
 
-    private void parseArray() {
+    private boolean parseArray() {
         String text = editText.getText().toString().trim();
-        if(text.isEmpty())
-            return;
+        if (text.isEmpty())
+            return false;
         text = text.replace("，", ",");
         String value[] = text.split(",");
+        boolean hasAddContact = false;
         for (int i = 0; i < value.length; i++) {
             value[i] = value[i].trim();
             int matchResult = CheckPhoneNumber.matchNum(value[i]);
-            if(matchResult == CheckPhoneNumber.TYPE_ERROR
-                    ||matchResult == CheckPhoneNumber.TYPE_UNKNOW)
+            if (matchResult == CheckPhoneNumber.TYPE_ERROR
+                    || matchResult == CheckPhoneNumber.TYPE_UNKNOW) {
                 continue;
+            }
             HashMap<String, Object> map = new HashMap<String, Object>();
             map.put("number", value[i]);
-            map.put("name",value[i]);
+            map.put("name", value[i]);
             if (matchMap.containsKey(value[i]))
                 continue;
             mSelectList.add(map);
             matchMap.put(value[i], value[i]);
+            hasAddContact = true;
         }
         runOnUiThread(refreshListRunnable);
+        return hasAddContact;
     }
 
 }

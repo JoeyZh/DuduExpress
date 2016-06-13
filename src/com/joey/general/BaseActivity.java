@@ -25,14 +25,14 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.joey.expresscall.CoreService;
 import com.joey.expresscall.R;
-import com.joey.general.utils.MobileUtil;
+import com.joey.general.utils.FileUtil;
 import com.joey.general.utils.MyLog;
 import com.joey.general.utils.ToastUtil;
 import com.joey.general.views.TopBarLayout;
 
 import java.util.HashMap;
-import java.util.Set;
 
 
 /**
@@ -54,6 +54,7 @@ public abstract class BaseActivity extends Activity implements OnCreateInterface
     protected Dialog proDialog;
     private long exitTime = 0;
     private LayoutInflater mLayoutInflater;
+    private CoreService service;
    
     // 报警提示方式:震动,声音
     private Vibrator mVibrator;
@@ -91,7 +92,7 @@ public abstract class BaseActivity extends Activity implements OnCreateInterface
         statusHashMap = ((MainApplication) getApplicationContext())
                 .getStatusHashMap();     
         mVibrator = (Vibrator) getSystemService(Service.VIBRATOR_SERVICE);
-        
+//        startService(new Intent(BaseActivity.this,CoreService.class));
         initSuperView();
         initSettings();
         initUi();
@@ -159,7 +160,7 @@ public abstract class BaseActivity extends Activity implements OnCreateInterface
             }
             canSave = false;
         } else {
-            if (MobileUtil.getSDFreeSize() < minSize) {
+            if (FileUtil.getSDFreeSize() < minSize) {
                 if (alert) {
                     ToastUtil.show(this, R.string.sdcard_notenough);
                 }

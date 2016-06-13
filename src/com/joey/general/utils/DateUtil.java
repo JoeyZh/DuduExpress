@@ -11,6 +11,7 @@ public class DateUtil {
     public  static final String DATE_FORMMAT_STR_DAY = "yyyy-MM-dd";
     public  static final String DATE_FORMMAT_STR_3 = "yyyy年MM月dd HH:mm:ss";
     public  static final String DATE_FORMMAT_STR_4 = "yyyyMMddHHmmss";
+    public static final String DATE_FORMAT_STR_MONTH = "yyyy-MM";
 
     /**
      * 获取时间

@@ -2,8 +2,6 @@ package com.joey.expresscall.welcome;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.os.Handler;
 import android.text.TextUtils;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -16,7 +14,6 @@ import com.joey.expresscall.login.JVLoginActivity;
 import com.joey.expresscall.protocol.RequestError;
 import com.joey.expresscall.protocol.ResponseListener;
 import com.joey.general.BaseActivity;
-import com.joey.general.utils.MobileUtil;
 import com.joey.general.utils.MyLog;
 import com.joey.general.utils.MySharedPreference;
 import com.joey.general.utils.MySharedPreferencesConsts;
@@ -43,6 +40,7 @@ public class JVWelcomeActivity extends BaseActivity {
         boolean showNetTips = MySharedPreference.getInstance().getBoolean(
                 MySharedPreferencesConsts.CK_NET_REMIND_KEY,
                 true);
+        ResourcesUnusualUtil.register(JVWelcomeActivity.this);
         if (showNetTips) {
             handler.postDelayed(new Runnable() {
                 @Override
