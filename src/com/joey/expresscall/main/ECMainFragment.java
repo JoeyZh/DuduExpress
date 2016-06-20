@@ -27,6 +27,7 @@ import com.joey.expresscall.main.bean.CallListBean;
 import com.joey.expresscall.protocol.RequestError;
 import com.joey.expresscall.protocol.ResponseListener;
 import com.joey.expresscall.setting.ECSettingActivity;
+import com.joey.general.BaseActivity;
 import com.joey.general.BaseFragment;
 import com.joey.general.utils.MyLog;
 import com.joey.general.utils.MySharedPreference;
@@ -53,6 +54,7 @@ public class ECMainFragment extends BaseFragment {
 	private View footerLayout;
 	private TextView textMore;
 	private ProgressBar progressBar;
+	public static boolean refresh = true;
 	private OnClickListener mOnClickListener = new OnClickListener() {
 
 		@Override
@@ -125,7 +127,6 @@ public class ECMainFragment extends BaseFragment {
 	@Override
 	public void initSettings() {
 		getUseInfo();
-		getCallList(IDEL_PAGE_NUM);
 	}
 
 	@Override
@@ -194,6 +195,9 @@ public class ECMainFragment extends BaseFragment {
 	public void onResume() {
 		super.onResume();
 		loadData();
+		if(refresh){
+			getCallList(IDEL_PAGE_NUM);
+		}
 	}
 
 	private void loadData() {
@@ -277,6 +281,7 @@ public class ECMainFragment extends BaseFragment {
 					@Override
 					public void onSuccess(JSONObject json) {
 						MyLog.i("callList = " + json.toString());
+						refresh = false;
 						MySharedPreference.getInstance().putString("groupList",
 								json.toJSONString());
 						parseGroupList(json);
@@ -336,6 +341,7 @@ public class ECMainFragment extends BaseFragment {
 			}
 			mCallList.add(map);
 		}
+
 //		更新UI
 		mActivity.runOnUiThread(new Runnable() {
 			@Override

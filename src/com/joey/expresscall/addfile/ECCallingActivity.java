@@ -20,6 +20,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.TabHost.OnTabChangeListener;
 import android.widget.TextView;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.joey.expresscall.AppConsts;
 import com.joey.expresscall.R;
@@ -28,6 +29,8 @@ import com.joey.expresscall.common.ECSimpleAdapter1;
 import com.joey.expresscall.common.widget.LongPressButton;
 import com.joey.expresscall.file.ECFileActivity;
 import com.joey.expresscall.file.bean.FileBean;
+import com.joey.expresscall.main.ECMainFragment;
+import com.joey.expresscall.main.bean.CallListBean;
 import com.joey.expresscall.player.PlaybackFragment;
 import com.joey.expresscall.protocol.RequestError;
 import com.joey.expresscall.protocol.ResponseListener;
@@ -245,10 +248,13 @@ public class ECCallingActivity extends BaseActivity {
         }
         if(fileBean == null||fileBean.getFileId() == null)
             return;
-        ECCallManager.getInstance().call("bye.wav", fileBean.getFileType(), fileBean.getExtraName(), list, new ResponseListener<String>() {
+        ECCallManager.getInstance().call("bye.wav", fileBean.getFileType(), fileBean.getExtraName(), list, new ResponseListener<JSONObject>() {
             @Override
-            public void onSuccess(String json) {
+            public void onSuccess(JSONObject json) {
                 ToastUtil.show(ECCallingActivity.this,"呼叫成功");
+                ECMainFragment.refresh = true;
+                finish();
+
             }
 
             @Override

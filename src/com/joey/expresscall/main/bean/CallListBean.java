@@ -87,23 +87,15 @@ public class CallListBean extends BaseBean{
         String timeStr = DateUtil.convertToDateStr(DateUtil.DATE_FORMMAT_STR_3, getCallTime());
         map.put("callTime",timeStr);
         map.put("extra",getSuccessCount()+"/"+getTotalSize());
+        if(getFileId().toLowerCase().endsWith("wav")) {
+            map.put("type","录");
+            map.put("color", "blue");
+        }else {
+            map.put("type","文");
+            map.put("color", "red");
+        }
 //        MyLog.i("map = "+map.toString());
         return map;
     }
 
-    public static CallListBean parseJson(String json){
-        CallListBean bean = new CallListBean();
-        try {
-            JSONObject jsonObject = JSON.parseObject(json);
-            bean.setCallListId(jsonObject.getString("callListId"));
-            bean.setCallTime(jsonObject.getLong("callTime"));
-            bean.setDescription(jsonObject.getString("description"));
-            bean.setSuccessCount(jsonObject.getInteger("successCount"));
-            bean.setTotalSize(jsonObject.getInteger("totalSize"));
-            bean.setFileId(jsonObject.getString("fileId"));
-        }catch (JSONException e){
-            MyLog.e("parse error"+e.getMessage());
-        }
-        return bean;
-    }
 }

@@ -185,4 +185,8 @@ public class ECCallManager {
         }.start();
     }
 
+    public <T> void deleteCallsOfGroup(final String phone,final String callListId,final ResponseListener<T> listener){
+
+    }
+
 }
