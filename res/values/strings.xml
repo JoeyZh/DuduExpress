@@ -131,6 +131,8 @@
     <string name="loading">正在加载</string>
     <string name="loaded">加载完毕</string>
 
+    <string name="repeat_call">重新呼叫</string>
+
     <!-- 网络类型 -->
     <string name="net_2g">2G</string>
     <string name="net_3g">3G</string>

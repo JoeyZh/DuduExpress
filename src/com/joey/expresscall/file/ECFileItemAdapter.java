@@ -30,6 +30,10 @@ public class ECFileItemAdapter extends BaseSwipeAdapter {
     private ArrayList<HashMap<String,Object>> mData;
     private SwipeItemOnClickListener swipeItemOnClickListener;
     private SimpleSwipeListener swipeListener;
+    private final String RED = "red";
+    private final String BlUE = "blue";
+    private final String GREEN = "green";
+
     public ECFileItemAdapter(Context mContext,ArrayList<HashMap<String,Object>> data,String[] from,int []to) {
         this.mContext = mContext;
         this.from = from;
@@ -50,6 +54,7 @@ public class ECFileItemAdapter extends BaseSwipeAdapter {
         if(swipeListener != null){
             swipeLayout.addSwipeListener(swipeListener);
         }
+        setLogoColor(position,swipeLayout,parent);
 //        swipeLayout.addSwipeListener(new SimpleSwipeListener() {
 //            @Override
 //            public void onOpen(SwipeLayout layout) {
@@ -59,7 +64,7 @@ public class ECFileItemAdapter extends BaseSwipeAdapter {
         swipeLayout.setOnDoubleClickListener(new SwipeLayout.DoubleClickListener() {
             @Override
             public void onDoubleClick(SwipeLayout layout, boolean surface) {
-                Toast.makeText(mContext, "DoubleClick", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(mContext, "DoubleClick", Toast.LENGTH_SHORT).show();
             }
         });
         ViewHolder holder;
@@ -82,6 +87,32 @@ public class ECFileItemAdapter extends BaseSwipeAdapter {
             }
         });
         return v;
+    }
+
+
+    private void setLogoColor(int position, View view, ViewGroup parent){
+        HashMap<String, Object> item = (HashMap<String, Object>) getItem(position);
+        if (item.containsKey("color")) {
+            String color = (String) item.get("color");
+            if (color.equalsIgnoreCase(RED)) {
+                view.findViewById(R.id.text_logo).setBackgroundDrawable(
+                        mContext.getResources().getDrawable(
+                                R.drawable.bg_circle_red));
+                return;
+            }
+            if (color.equalsIgnoreCase(BlUE)) {
+                view.findViewById(R.id.text_logo).setBackgroundDrawable(
+                        mContext.getResources().getDrawable(
+                                R.drawable.bg_circle_blue));
+                return;
+            }
+            if (color.equalsIgnoreCase(GREEN)){
+                view.findViewById(R.id.text_logo).setBackgroundDrawable(
+                        mContext.getResources().getDrawable(
+                                R.drawable.bg_circle_green));
+                return;
+            }
+        }
     }
 
     @Override

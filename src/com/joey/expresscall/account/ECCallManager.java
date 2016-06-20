@@ -186,7 +186,27 @@ public class ECCallManager {
     }
 
     public <T> void deleteCallsOfGroup(final String phone,final String callListId,final ResponseListener<T> listener){
+        TaskBuilder task = new TaskBuilder("deleteCallsOfGroup", listener,
+                new OnTaskListener() {
+                    @Override
+                    public String execute() {
+                        return callInterface.deletePhoneInCall(callListId, phone);
 
+                    }
+                });
+        BackgroundHandler.execute(task);
+    }
+
+    public <T> void repeatCall( String callListId,final ResponseListener<T> listener){
+        TaskBuilder task = new TaskBuilder("repeatCall", listener,
+                new OnTaskListener() {
+                    @Override
+                    public String execute() {
+                        return callInterface.repeatCall(callListId);
+
+                    }
+                });
+        BackgroundHandler.execute(task);
     }
 
 }

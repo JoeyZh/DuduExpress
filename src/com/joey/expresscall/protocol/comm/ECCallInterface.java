@@ -159,6 +159,23 @@ public class ECCallInterface {
 		return jsonStr;
 	}
 
+	public String repeatCall(String callListID){
+		String URI = ECNetUrlConsts.getFullUrl(ECNetUrlConsts.DO_REPEAT_CALL);
+		HashMap param = new HashMap();
+		param.put("callListId",callListID);
+		String jsonStr = this.httpcomm.httpRequestPost(URI, param);
+		return jsonStr;
+	}
+
+	public String deletePhoneInCall(String callListID,String phone){
+		String URI = ECNetUrlConsts.getFullUrl(ECNetUrlConsts.DO_DELETE_PHONE_IN_CALL);
+		HashMap param = new HashMap();
+		param.put("callListId",callListID);
+		param.put("phone",phone);
+		String jsonStr = this.httpcomm.httpRequestPost(URI, param);
+		return jsonStr;
+	}
+
 	private String upload(String urlStr, String filepath, HashMap<String,Object> params) throws Exception {
 		MyLog.i("params = " +params.toString());
 		MyLog.i(urlStr);

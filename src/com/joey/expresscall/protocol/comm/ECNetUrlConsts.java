@@ -30,6 +30,12 @@ public class ECNetUrlConsts {
     public final static String DO_CALL_LIST_DETAIL = "record/billDetail.do";
     //	删除文件
     public final static String DO_DELETE_FILE = "record/deleteFile.do";
+    //	重新呼叫
+    public final static String DO_REPEAT_CALL = "record/billDetail.do";
+    //	删除群呼中的某条呼叫
+    public final static String DO_DELETE_PHONE_IN_CALL = "record/deleteFile.do";
+
+
 
 
     public static String getFullUrl(String url) {
