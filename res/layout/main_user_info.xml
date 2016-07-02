@@ -10,6 +10,13 @@
         android:layout_height="180dp"
         android:background="@color/main_color">
 
+        <cn.changwentao.ad.BannerAdView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/banner_view">
+
+        </cn.changwentao.ad.BannerAdView>
+
         <LinearLayout
             android:id="@+id/layout_menu_bar"
             android:layout_width="wrap_content"
@@ -88,6 +95,8 @@
         </RelativeLayout>
     </RelativeLayout>
 
+
     <include layout="@layout/main_add_file_layout"/>
+
 
 </LinearLayout>

@@ -2,6 +2,7 @@ package com.joey.expresscall.main;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -31,6 +32,12 @@ import com.joey.general.BaseActivity;
 import com.joey.general.BaseFragment;
 import com.joey.general.utils.MyLog;
 import com.joey.general.utils.MySharedPreference;
+
+import cn.changwentao.ad.AdEntity;
+import cn.changwentao.ad.BannerAdView;
+import cn.changwentao.ad.EmptyAd;
+import cn.changwentao.ad.ShowTostAd;
+import cn.changwentao.ad.ShowUrlAd;
 
 public class ECMainFragment extends BaseFragment {
 
@@ -88,7 +95,6 @@ public class ECMainFragment extends BaseFragment {
 				return;
 //          header 被点击
 			if(position  == 0){
-				gotoCallActivity();
 				return;
 			}
 			int index = position - 1;
@@ -177,6 +183,8 @@ public class ECMainFragment extends BaseFragment {
 				getCallList(callPageNum++);
 			}
 		});
+
+		initBanner();
 	}
 
 	@Override
@@ -185,6 +193,18 @@ public class ECMainFragment extends BaseFragment {
 
 	}
 
+	private void initBanner(){
+		BannerAdView banner = (BannerAdView) getView().findViewById(R.id.banner_view);
+        List<AdEntity> list = new ArrayList<AdEntity>();
+		int resIds[] = {R.drawable.advert00,R.drawable.advert01,R.drawable.advert02};
+		for(int i= 0;i<3;i++){
+			EmptyAd ad = new EmptyAd(getActivity());
+			ad.setAdResource(resIds[i]);
+			list.add(ad);
+		}
+//
+        banner.setAdList(list);
+	}
 	@Override
 	public void freeMe() {
 		mRefreshLayout.setRefreshing(false);

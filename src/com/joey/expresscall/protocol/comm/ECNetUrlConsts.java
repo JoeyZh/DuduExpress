@@ -1,7 +1,7 @@
 package com.joey.expresscall.protocol.comm;
 
 public class ECNetUrlConsts {
-    public final static String DNS = "http://jdsc2015.xicp.net/SYH/";
+    public final static String DNS = "http://112.74.43.232:8080/SYH/";//"http://jdsc2015.xicp.net/SYH/";
     public final static String DO_LOGIN = "user/login.do";
     public final static String DO_LOGOUT = "user/logout.do";
     public final static String DO_REGIST = "user/register.do";

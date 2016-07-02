@@ -52,9 +52,15 @@ public abstract class BaseFragment extends Fragment implements OnCreateInterface
                 LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT, 1));
         contentContainer.addView(contentView);
 
+
+        return view;
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         initSettings();
         initUi();
-        return view;
     }
 
     /**

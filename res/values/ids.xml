@@ -12,4 +12,11 @@
     <item name="timeline_child_item_img" type="id" />
     <item name="timeline_checkbox" type="id" />
 
+
+    <item name="banner_img" type="id"></item>
+    <item name="banner_view_pager" type="id"/>
+    <item name="banner_indicator_root" type="id"></item>
+    <item name="banner_indicator" type="id"></item>
+
+
 </resources>

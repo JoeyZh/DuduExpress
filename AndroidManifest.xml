@@ -47,6 +47,9 @@
         <activity android:name=".test.ListViewExample">
 
         </activity>
+        <activity android:name=".test.BannerViewTest">
+
+        </activity>
 
         <service android:name=".CoreService"
             android:enabled="true"
