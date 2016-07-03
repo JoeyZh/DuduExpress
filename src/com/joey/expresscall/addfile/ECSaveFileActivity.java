@@ -57,11 +57,7 @@ public class ECSaveFileActivity extends BaseActivity {
 					play(bean);
 					break;
 				case R.id.left_btn:
-					if(loadSuccess) {
-						onBackPressed();
-						return;
-					}
-					createQuitDialog().show();
+					onBackPressed();
 					break;
 			}
 		}
@@ -128,18 +124,26 @@ public class ECSaveFileActivity extends BaseActivity {
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
 						FileUtil.deleteFile(bean.getPath());
-						onBackPressed();
+						finish();
 					}
 				})
 				.setPositiveButton(R.string.upload, new DialogInterface.OnClickListener() {
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
-						upLoadFile();
+
 					}
 				})
-				.setCancelable(false)
 				.create();
 		return quitDialog;
+	}
+
+	@Override
+	public void onBackPressed() {
+		if(loadSuccess) {
+			super.onBackPressed();
+			return;
+		}
+		createQuitDialog().show();
 	}
 
 	//	播放录音

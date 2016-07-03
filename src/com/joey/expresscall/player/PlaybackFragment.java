@@ -67,11 +67,8 @@ public class PlaybackFragment extends DialogFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 //        item = getArguments().getParcelable(ARG_ITEM);
+        initTime(item.getDuration());
 
-        long itemDuration = item.getDuration();
-        minutes = TimeUnit.MILLISECONDS.toMinutes(itemDuration);
-        seconds = TimeUnit.MILLISECONDS.toSeconds(itemDuration)
-                - TimeUnit.MINUTES.toSeconds(minutes);
     }
 
     @Override
@@ -194,6 +191,13 @@ public class PlaybackFragment extends DialogFragment {
         }
     }
 
+
+    private void initTime(long duration){
+        minutes = TimeUnit.MILLISECONDS.toMinutes(duration);
+        seconds = TimeUnit.MILLISECONDS.toSeconds(duration)
+                - TimeUnit.MINUTES.toSeconds(minutes);
+    }
+
     // Play start/stop
     private void onPlay(boolean isPlaying){
         if (!isPlaying) {
@@ -219,6 +223,7 @@ public class PlaybackFragment extends DialogFragment {
             mMediaPlayer.setDataSource(item.getPath());
             mMediaPlayer.prepare();
             mSeekBar.setMax(mMediaPlayer.getDuration());
+            initTime(mMediaPlayer.getDuration());
 
             mMediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
                 @Override
@@ -278,6 +283,7 @@ public class PlaybackFragment extends DialogFragment {
     private void resumePlaying() {
         mPlayButton.setImageResource(R.drawable.ic_media_pause);
         mHandler.removeCallbacks(mRunnable);
+
         mMediaPlayer.start();
         updateSeekBar();
     }
