@@ -3,6 +3,7 @@ package com.joey.expresscall.main;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.logging.Handler;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -171,6 +172,8 @@ public class ECMainFragment extends BaseFragment {
 		mRefreshLayout.setOnRefreshListener(new RefreshLayout.OnRefreshListener() {
 			@Override
 			public void onRefresh() {
+
+				getUseInfo();
 				getCallList(IDEL_PAGE_NUM);
 			}
 		});
@@ -336,7 +339,7 @@ public class ECMainFragment extends BaseFragment {
 				});
 	}
 
-	private void parseGroupList(JSONObject json) {
+	private synchronized void parseGroupList(JSONObject json) {
 		if(!(json.get("list") instanceof  JSONArray)) {
 			return;
 		}
@@ -346,29 +349,30 @@ public class ECMainFragment extends BaseFragment {
 		}
 		if(!isOnTop)
 			return;
-		if(callPageNum == IDEL_PAGE_NUM)
-			mCallList.clear();
-		for (int i = 0; i < array.size(); i++) {
-			JSONObject obj = array.getJSONObject(i);
-			CallListBean bean = (CallListBean)JSON.parseObject(obj.toString(),CallListBean.class);
-			HashMap<String,Object> map = bean.getMap();
-			if(bean.getFileId().toLowerCase().endsWith("wav")) {
-				map.put("type","录");
-				map.put("color", "blue");
-			}else {
-				map.put("type","文");
-				map.put("color", "red");
-			}
-			mCallList.add(map);
-		}
 
-//		更新UI
-		mActivity.runOnUiThread(new Runnable() {
+		fragHandler.postDelayed(new Runnable(){
 			@Override
 			public void run() {
+				if(callPageNum == IDEL_PAGE_NUM)
+					mCallList.clear();
+				for (int i = 0; i < array.size(); i++) {
+					JSONObject obj = array.getJSONObject(i);
+					CallListBean bean = (CallListBean)JSON.parseObject(obj.toString(),CallListBean.class);
+					HashMap<String,Object> map = bean.getMap();
+					if(bean.getFileId().toLowerCase().endsWith("wav")) {
+						map.put("type","录");
+						map.put("color", "blue");
+					}else {
+						map.put("type","文");
+						map.put("color", "red");
+					}
+					mCallList.add(map);
+				}
 				mAdapter.notifyDataSetChanged();
 			}
-		});
+		},500);
+
+
 	}
 
 	private void test() {

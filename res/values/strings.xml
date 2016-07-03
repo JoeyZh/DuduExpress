@@ -257,6 +257,10 @@
     <string name="error_state_record">正在录音中，请先停止录音</string>
 
     <string name="call_add_contasts">接收人 : </string>
+    <string name="listening">试听</string>
+    <string name="saving_notice">您还未上传该文件，退出后将自动删除本次录音</string>
+    <string name="cancel_always">仍然退出</string>
+
 
     <string-array name="array_add_tag">
         <item>通知方式:</item>
@@ -264,10 +268,14 @@
     </string-array>
     <string-array name="array_setting_list">
         <item>修改密码</item>
-        <item>定时设置</item>
+        <item>重呼设置</item>
         <item>资费介绍</item>
     </string-array>
 
+    <string name="price_of_calling">￥:0.06元/条</string>
+    <string name="empty_str"> </string>
+    <string name="switch_off">关闭</string>
+    <string name="switch_on">打开</string>
     <string name="press_to_talk">按住说话</string>
     <string name="start_recording">开始录音</string>
     <string name="contact">联系人</string>

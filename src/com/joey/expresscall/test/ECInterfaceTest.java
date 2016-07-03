@@ -121,7 +121,7 @@ public class ECInterfaceTest extends ListActivity {
 				case 9:// 发起呼叫
 					String [] phones = new String[]{"18663753236","15610131752"};
 					Arrays.asList(phones);
-					response = fileInterface.callArray("bye.wav", "wav",Arrays.asList(phones));
+					response = fileInterface.callArray("bye.wav", "wav","测试文本命令",Arrays.asList(phones));
 					break;
 				case 10:// 下载
 					response = "result:"+fileInterface.downloadFile("bye.wav", "wav",AppConsts.RECORD_DIR+"bye.wav");

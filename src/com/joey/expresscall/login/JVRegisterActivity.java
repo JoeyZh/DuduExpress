@@ -425,12 +425,10 @@ public class JVRegisterActivity extends BaseActivity {
                         R.string.register_code_input);
                 return;
             }
-            createDialog("", true);
             ECAccountManager.getInstance().register(registerUserName, password,
                     validateCode, new ResponseListener<String>() {
 
                         public void onSuccess(String jsonData) {
-                            // 关闭Progress提示框
 
                             ToastUtil.show(JVRegisterActivity.this,
                                     R.string.register_success);
@@ -440,7 +438,6 @@ public class JVRegisterActivity extends BaseActivity {
 
                         @Override
                         public void onError(RequestError error) {
-                            // 关闭Progress提示框
 
                             ToastUtil.show(JVRegisterActivity.this, error.errmsg);
                             MyLog.e("error = " + error.errmsg);
@@ -448,15 +445,16 @@ public class JVRegisterActivity extends BaseActivity {
 
 						@Override
 						public void onStart() {
-							// TODO Auto-generated method stub
-							
-						}
+                            createDialog("", true);
+
+                        }
 
 						@Override
 						public void onFinish() {
 							// TODO Auto-generated method stub
-							
-						}
+                            // 关闭Progress提示框
+                            dismissDialog();
+                        }
                     });
         }
     }

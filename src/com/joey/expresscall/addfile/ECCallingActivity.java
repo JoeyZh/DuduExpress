@@ -7,6 +7,8 @@ import android.app.FragmentTransaction;
 import android.content.ClipData.Item;
 import android.content.Context;
 import android.content.Intent;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.InputMethodManager;
@@ -64,6 +66,11 @@ public class ECCallingActivity extends BaseActivity {
     private final int LIST_SIZE = 2;
     private final int ITEM_CHANGE_TYPE = 0;
     private final int ITEM_SELECT_FILE = 1;
+    private final int FILE_TYPE_TXT = 0;
+    private final int FILE_TYPE_WAV = 1;
+
+    private int fileType = FILE_TYPE_WAV;
+
     private FileBean fileBean;
     private EditText editFile;
     private LongPressButton recordBtn;
@@ -74,6 +81,9 @@ public class ECCallingActivity extends BaseActivity {
 		@Override
 		public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
 				long arg3) {
+//           如果类型是文本，则不能点击
+            if(fileType == FILE_TYPE_TXT)
+                return;
 			switch(arg2){
 			case ITEM_SELECT_FILE:
 				Intent intent = new Intent(ECCallingActivity.this, ECFileActivity.class);
@@ -199,6 +209,9 @@ public class ECCallingActivity extends BaseActivity {
         }
         if(statusHashMap.containsKey("fileBean")){
             fileBean = (FileBean)statusHashMap.get("fileBean");
+        }else {
+            fileBean = null;
+            tvRecordTime.setText("");
         }
         initListInfo();
     }
@@ -213,6 +226,22 @@ public class ECCallingActivity extends BaseActivity {
         tabHost.addTab(tabHost.newTabSpec("two").setIndicator("文本")
                 .setContent(R.id.add_file_edit_layout));
         editFile = (EditText) findViewById(R.id.edit_add_file_text);
+        editFile.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                saveTxtFile();
+            }
+        });
         recordBtn = (LongPressButton) findViewById(R.id.btn_add_file_record);
         recordBtn.setOnLongPressListener(longPressListener);
         playBtn = (ImageButton)findViewById(R.id.btn_add_file_play);
@@ -225,6 +254,7 @@ public class ECCallingActivity extends BaseActivity {
             public void onTabChanged(String tabId) {
                 MyLog.fmt("tabId %s", tabId);
                 if (tabId.equalsIgnoreCase("one")) {
+                    fileType = FILE_TYPE_WAV;
                     editFile.clearFocus();
                     tvRecordTime.setText("");
                     InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -232,6 +262,7 @@ public class ECCallingActivity extends BaseActivity {
                     return;
                 }
                 if (tabId.equalsIgnoreCase("two")) {
+                    fileType = FILE_TYPE_TXT;
                     InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                     return;
                 }
@@ -248,7 +279,7 @@ public class ECCallingActivity extends BaseActivity {
         }
         if(fileBean == null||fileBean.getFileId() == null)
             return;
-        ECCallManager.getInstance().call("bye.wav", fileBean.getFileType(), fileBean.getExtraName(), list, new ResponseListener<JSONObject>() {
+        ECCallManager.getInstance().call(fileBean.getFileId(), fileBean.getFileType(), fileBean.getExtraName(), list, new ResponseListener<JSONObject>() {
             @Override
             public void onSuccess(JSONObject json) {
                 ToastUtil.show(ECCallingActivity.this,"呼叫成功");
@@ -313,13 +344,28 @@ public class ECCallingActivity extends BaseActivity {
     private void savedFile() {
         fileBean = new FileBean();
         fileBean.setFileName(AudioRecordFunc.getInstance().getRecordFileName());
+        fileBean.setPath(AppConsts.RECORD_DIR+fileBean.getFileName());
         fileBean.setFileType("wav");
-        fileBean.setExtraName("测试上传demo");
         fileBean.setDuration(AudioRecordFunc.getInstance().getRecordDuration());
         fileBean.setFileLength(AudioRecordFunc.getInstance().getRecordFileSize());
         statusHashMap.put("fileBean",fileBean);
         Intent intent = new Intent(ECCallingActivity.this,ECSaveFileActivity.class);
         startActivity(intent);
+    }
+
+    private boolean saveTxtFile(){
+        String text = editFile.getText().toString().trim();
+        if(text.isEmpty()){
+            ToastUtil.show(this,"请输入发送内容");
+            return false;
+        }
+
+        MyLog.e("text = "+text);
+        fileBean = new FileBean();
+        fileBean.setFileType("txt");
+        fileBean.setExtraName(text);
+        fileBean.setFileId(System.currentTimeMillis()+".txt");
+        return true;
     }
 
     //	播放录音
@@ -340,6 +386,7 @@ public class ECCallingActivity extends BaseActivity {
             MyLog.e("exception", e);
         }
     }
+
     private void testUpload() {
         ECCallManager.getInstance().upLoadCallFile(AppConsts.RECORD_DIR + "bye.wav",
                "18663753236",

@@ -85,13 +85,13 @@ public class ECGroupListActivity extends BaseActivity{
                     case R.id.left_btn:
                         onBackPressed();
                         break;
-                    case R.id.right_btn:
-                        repeatCall();
-                        break;
+//                    case R.id.right_btn:
+//                        repeatCall();
+//                        break;
                 }
             }
         });
-        getTopBarView().setRightTextRes(R.string.repeat_call);
+//        getTopBarView().setRightTextRes(R.string.repeat_call);
 
         listBill.setAdapter(mAdapter);
         mAdapter.setSwipeItemOnClickListener(new ECFileItemAdapter.SwipeItemOnClickListener() {

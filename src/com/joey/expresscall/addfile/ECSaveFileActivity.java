@@ -1,5 +1,8 @@
 package com.joey.expresscall.addfile;
 
+import android.app.AlertDialog;
+import android.app.FragmentTransaction;
+import android.content.DialogInterface;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -10,9 +13,11 @@ import com.joey.expresscall.R;
 import com.joey.expresscall.account.ECCallManager;
 import com.joey.expresscall.common.ECSimpleAdapter1;
 import com.joey.expresscall.file.bean.FileBean;
+import com.joey.expresscall.player.PlaybackFragment;
 import com.joey.expresscall.protocol.RequestError;
 import com.joey.expresscall.protocol.ResponseListener;
 import com.joey.general.BaseActivity;
+import com.joey.general.utils.FileUtil;
 import com.joey.general.utils.MyLog;
 import com.joey.general.utils.ToastUtil;
 
@@ -39,6 +44,7 @@ public class ECSaveFileActivity extends BaseActivity {
 	private FileBean bean;
 	private Button btnUpload;
 	private EditText etExtraName;
+	private AlertDialog quitDialog;
 	private View.OnClickListener clickListener = new View.OnClickListener() {
 		@Override
 		public void onClick(View v) {
@@ -47,6 +53,15 @@ public class ECSaveFileActivity extends BaseActivity {
 					if(checkUploadInfo()){
 						upLoadFile();
 					}
+				case R.id.right_btn:
+					play(bean);
+					break;
+				case R.id.left_btn:
+					if(loadSuccess) {
+						onBackPressed();
+						return;
+					}
+					createQuitDialog().show();
 					break;
 			}
 		}
@@ -58,6 +73,9 @@ public class ECSaveFileActivity extends BaseActivity {
 	@Override
 	public void initUi() {
 		setContentView(R.layout.activity_save_file);
+		getTopBarView().setTopBar(R.drawable.icon_back,-1,R.string.upload,clickListener);
+		getTopBarView().setRightTextRes(R.string.listening);
+
 		bean  = (FileBean)statusHashMap.get("fileBean");
 		mListView = (ListView) findViewById(R.id.save_file_list);
 		mData = new ArrayList<HashMap<String, Object>>();
@@ -99,6 +117,50 @@ public class ECSaveFileActivity extends BaseActivity {
 
 	}
 
+	private AlertDialog createQuitDialog(){
+		if(quitDialog != null){
+			return quitDialog;
+		}
+		quitDialog = new AlertDialog.Builder(this,AlertDialog.THEME_DEVICE_DEFAULT_LIGHT)
+				.setTitle(R.string.warn_title)
+				.setMessage(R.string.saving_notice)
+				.setNegativeButton(R.string.cancel_always, new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						FileUtil.deleteFile(bean.getPath());
+						onBackPressed();
+					}
+				})
+				.setPositiveButton(R.string.upload, new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						upLoadFile();
+					}
+				})
+				.setCancelable(false)
+				.create();
+		return quitDialog;
+	}
+
+	//	播放录音
+	private void play(FileBean bean){
+		if(bean == null)
+			return;
+		try {
+			PlaybackFragment playbackFragment =
+					new PlaybackFragment().newInstance(bean);
+
+			FragmentTransaction transaction = (ECSaveFileActivity.this)
+					.getFragmentManager()
+					.beginTransaction();
+
+			playbackFragment.show(transaction, "dialog_playback");
+
+		} catch (Exception e) {
+			MyLog.e("exception", e);
+		}
+	}
+
 	private boolean checkUploadInfo(){
 		String text = etExtraName.getText().toString();
 		text = text.trim();
@@ -107,7 +169,9 @@ public class ECSaveFileActivity extends BaseActivity {
 		bean.setExtraName(text);
 		return true;
 	}
+
 	private void upLoadFile(){
+		loadSuccess = false;
 		MyLog.i("fileBean",bean.getMap().toString());
 		ECCallManager.getInstance().upLoadCallFile(bean.getPath(),
 				statusHashMap.get("username").toString(),

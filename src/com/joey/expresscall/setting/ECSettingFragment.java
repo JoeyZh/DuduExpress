@@ -139,12 +139,16 @@ public class ECSettingFragment extends BaseFragment {
         mTopBarView.setTopBar(R.drawable.icon_back, -1, R.string.setting,
                 clickListener);
         items = getResources().getStringArray(R.array.array_setting_list);
+        String extras[] = {
+                getResources().getString(R.string.empty_str),
+                getResources().getString(R.string.switch_off),
+                getResources().getString(R.string.price_of_calling)};
         mapList = new ArrayList<HashMap<String, Object>>();
         for (int i = 0; i < items.length; i++) {
             HashMap<String, Object> map = new HashMap<String, Object>();
             map.put(keys[0], imgs[i]);
             map.put(keys[1], items[i]);
-            map.put(keys[2], "");
+            map.put(keys[2], extras[i]);
             map.put(keys[3], R.drawable.icon_right_arrow);
             mapList.add(map);
         }

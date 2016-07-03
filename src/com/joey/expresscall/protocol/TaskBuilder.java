@@ -114,7 +114,7 @@ public class TaskBuilder extends CommonHandler implements Callable<JVTask> {
     private void jumpLogin(int resId) {
        
         // 注销
-//        ECAccountManager.getInstance().logout();
+//        ECAccountManager.getInstance().logOut();
         // 获取当前Activity
         BaseActivity mActivity = (BaseActivity) MyActivityManager
                 .getActivityManager().currentActivity();

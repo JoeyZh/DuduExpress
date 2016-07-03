@@ -95,7 +95,7 @@ public class ECCallManager {
                     @Override
                     public String execute() {
                         return callInterface
-                                .callArray(fileId, fileType, phones);
+                                .callArray(fileId, fileType,extra, phones);
                     }
                 });
         BackgroundHandler.execute(task);

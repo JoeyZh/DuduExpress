@@ -61,6 +61,7 @@ public class ECCallInterface {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			MyLog.e("upload error");
 			return "-1";
 		}
 		return result;
@@ -96,13 +97,14 @@ public class ECCallInterface {
 		return jsonStr;
 	}
 
-	public String callArray(String fileId, String fileType, List<String> phones) {
+	public String callArray(String fileId, String fileType, String content,List<String> phones) {
 		String URI = ECNetUrlConsts.getFullUrl(ECNetUrlConsts.DO_CALL);
 		HashMap param = new HashMap();
 		param.put("token", this.token);
 		param.put("fileId", fileId);
 		param.put("fileType", fileType);
 		param.put("phoneArray", phones);
+		param.put("content",content);
 		String jsonStr = this.httpcomm.httpRequestPost(URI, param);
 		return jsonStr;
 	}
@@ -179,6 +181,7 @@ public class ECCallInterface {
 	private String upload(String urlStr, String filepath, HashMap<String,Object> params) throws Exception {
 		MyLog.i("params = " +params.toString());
 		MyLog.i(urlStr);
+		MyLog.i("filePath = "+filepath);
 		String boundary = "------------------------";
 		// 分割线
 		File file = new File(filepath);

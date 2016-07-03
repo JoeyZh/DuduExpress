@@ -6,6 +6,8 @@ import android.app.Dialog;
 import android.app.DialogFragment;
 import android.graphics.ColorFilter;
 import android.graphics.LightingColorFilter;
+import android.media.AudioFormat;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
@@ -211,6 +213,7 @@ public class PlaybackFragment extends DialogFragment {
     private void startPlaying() {
         mPlayButton.setImageResource(R.drawable.ic_media_pause);
         mMediaPlayer = new MediaPlayer();
+        mMediaPlayer.setAudioStreamType(AudioManager.STREAM_ALARM);
 
         try {
             mMediaPlayer.setDataSource(item.getPath());

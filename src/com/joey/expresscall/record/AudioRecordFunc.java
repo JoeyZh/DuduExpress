@@ -107,15 +107,15 @@ public class AudioRecordFunc {
     private void creatAudioRecord() {  
         // 获取音频文件路径
         AudioName = AudioFileFunc.getRawFilePath();
-        NewAudioName = AudioFileFunc.getWavFilePath(); 
+        NewAudioName = AudioFileFunc.getWavFilePath();
          
         // 获得缓冲区字节大小  
-        bufferSizeInBytes = AudioRecord.getMinBufferSize(AudioFileFunc.AUDIO_SAMPLE_RATE,  
-                AudioFormat.CHANNEL_IN_STEREO, AudioFormat.ENCODING_PCM_16BIT);  
+        bufferSizeInBytes = AudioRecord.getMinBufferSize(AudioFileFunc.AUDIO_SAMPLE_RATE,
+                AudioFormat.CHANNEL_IN_STEREO, AudioFormat.ENCODING_PCM_16BIT);
          
         // 创建AudioRecord对象  
         audioRecord = new AudioRecord(AudioFileFunc.AUDIO_INPUT, AudioFileFunc.AUDIO_SAMPLE_RATE,  
-                AudioFormat.CHANNEL_IN_STEREO, AudioFormat.ENCODING_PCM_16BIT, bufferSizeInBytes);  
+                AudioFormat.CHANNEL_IN_STEREO, AudioFormat.ENCODING_PCM_16BIT, bufferSizeInBytes);
     }
      
      

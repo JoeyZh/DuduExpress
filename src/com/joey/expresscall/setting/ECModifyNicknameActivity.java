@@ -110,19 +110,17 @@ public class ECModifyNicknameActivity extends BaseActivity implements
 
 			@Override
 			public void onStart() {
-				// TODO Auto-generated method stub
 				runOnUiThread(new Runnable() {
 
 					@Override
 					public void run() {
-						createDialog(R.string.waiting, false);
+						createDialog(R.string.waiting, true);
 					}
 				});
 			}
 
 			@Override
 			public void onFinish() {
-				// TODO Auto-generated method stub
 				runOnUiThread(new Runnable() {
 
 					@Override
