@@ -3,12 +3,14 @@ package com.joey.expresscall.file;
 import android.app.AlertDialog;
 import android.app.FragmentTransaction;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.alibaba.fastjson.JSON;
@@ -18,6 +20,7 @@ import com.daimajia.swipe.SimpleSwipeListener;
 import com.daimajia.swipe.SwipeLayout;
 import com.joey.expresscall.R;
 import com.joey.expresscall.account.ECCallManager;
+import com.joey.expresscall.addfile.ECCallingActivity;
 import com.joey.expresscall.file.bean.FileBean;
 
 import com.joey.expresscall.main.bean.CallListBean;
@@ -47,6 +50,21 @@ public class ECFileListFragment extends BaseFragment {
 	private AlertDialog dlgDownload;
 	private int operationIndex;
 	private OnItemClickListener customListener;
+	private View noInfoView;
+	private Button btnNoInfo;
+	private View.OnClickListener clickListener = new View.OnClickListener() {
+		@Override
+		public void onClick(View v) {
+			switch (v.getId()){
+				case R.id.no_info_notice_btn:{
+					Intent intent = new Intent(getActivity(), ECCallingActivity.class);
+					startActivity(intent);
+					getActivity().finish();
+				}
+					break;
+			}
+		}
+	};
 	private AdapterView.OnItemClickListener itemClickListener = new AdapterView.OnItemClickListener() {
 		@Override
 		public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -140,6 +158,11 @@ public class ECFileListFragment extends BaseFragment {
 		mAdapter.setSimpleSwipeListener(swipeListener);
 		loadingInfo();
 //		test();
+//		暂无文件提示布局
+		noInfoView = getView().findViewById(R.id.no_info_notice_layout);
+		noInfoView.setVisibility(View.GONE);
+		btnNoInfo = (Button)getView().findViewById(R.id.no_info_notice_btn);
+		btnNoInfo.setOnClickListener(clickListener);
 	}
 
 	private FileBean getFileBean(int position){
@@ -263,6 +286,9 @@ public class ECFileListFragment extends BaseFragment {
 		fragHandler.post(new Runnable() {
 			@Override
 			public void run() {
+				if(mMapList.isEmpty()){
+					noInfoView.setVisibility(View.VISIBLE);
+				}
 				mAdapter.notifyDataSetChanged();
 			}
 		});

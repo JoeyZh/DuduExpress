@@ -102,7 +102,7 @@ public class ECBillListActivity extends BaseActivity {
     }
     private void parseBillList(JSONObject object) {
         final float balance = object.getFloat("balance");
-        final float total = object.getFloat("total")+balance;
+        final float total = object.getFloat("total");
         if(!(object.get("list") instanceof JSONArray)){
             return;
         }

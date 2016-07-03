@@ -285,7 +285,7 @@
     <string name="bill_detail">账单详情</string>
     <string name="callList">呼叫记录</string>
     <string name="callDetail">呼叫情况</string>
-    <string name="bill_total_tag">账户总额：</string>
+    <string name="bill_total_tag">账户话费：</string>
     <string name="bill_balance_tag">账户余额：</string>
 
     <!-- 联系人 -->
@@ -316,5 +316,9 @@
     <string name="call_color_0">green</string>
     <string name="call_color_1">blue</string>
     <string name="call_color_2">red</string>
+
+    <!--文件列表-->
+    <string name="no_files">您还没有自己的录音文件！</string>
+    <string name="add_files">马上添加</string>
 
 </resources>
