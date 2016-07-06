@@ -156,6 +156,11 @@ public class JVWelcomeActivity extends BaseActivity {
     }
 
     @Override
+    public void onBackPressed() {
+
+    }
+
+    @Override
     protected void onPause() {
         super.onPause();
     }

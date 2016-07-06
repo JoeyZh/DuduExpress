@@ -19,5 +19,8 @@
     <orderEntry type="jdk" jdkName="Android API 19 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="libs" level="project" />
+    <orderEntry type="library" name="android-support-v4" level="project" />
+    <orderEntry type="library" name="fastjson-1.2.7" level="project" />
+    <orderEntry type="library" name="android-support-v7-recyclerview" level="project" />
   </component>
 </module>

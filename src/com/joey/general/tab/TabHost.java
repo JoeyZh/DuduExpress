@@ -5,6 +5,7 @@ import android.app.Fragment;
 import android.app.FragmentTransaction;
 
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
@@ -61,7 +62,7 @@ public class TabHost {
         tabmap.put("tab",item);
         tabmap.put("content", content);
         mTabArray.add(tabmap);
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(0,100,1);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams( ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.MATCH_PARENT,1);
         mTabRoot.addView(item,params);
 
         item.setOnClickListener(tabOnClickListener);

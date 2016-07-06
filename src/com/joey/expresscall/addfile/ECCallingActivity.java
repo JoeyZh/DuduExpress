@@ -127,6 +127,11 @@ public class ECCallingActivity extends BaseActivity {
                     startActivity(intent);
                     break;
                 case R.id.right_btn:
+                    if(fileType == FILE_TYPE_TXT){
+                        if(!saveTxtFile()){
+                            return;
+                        }
+                    }
                     startCall();
                     break;
                 case R.id.left_btn:
@@ -271,14 +276,18 @@ public class ECCallingActivity extends BaseActivity {
     }
 
     private void startCall() {
-        if (mSelectedNums.isEmpty())
+        if (mSelectedNums.isEmpty()){
+            MyLog.e("mSelectedNums is empty");
             return;
+        }
         ArrayList<String> list = new ArrayList<String>();
         for (HashMap<String, Object> item : mSelectedNums) {
             list.add(item.get("number").toString());
         }
-        if(fileBean == null||fileBean.getFileId() == null)
+        if(fileBean == null||fileBean.getFileId() == null) {
+            MyLog.e("fileBean is empty");
             return;
+        }
         ECCallManager.getInstance().call(fileBean.getFileId(), fileBean.getFileType(), fileBean.getExtraName(), list, new ResponseListener<JSONObject>() {
             @Override
             public void onSuccess(JSONObject json) {

@@ -24,6 +24,7 @@
         android:layout_height="@dimen/tab_layout_height"
         android:layout_alignParentBottom="true"
         android:background="@color/main_tab_background"
+        android:gravity="top"
         android:orientation="horizontal" >
 
     </LinearLayout>
