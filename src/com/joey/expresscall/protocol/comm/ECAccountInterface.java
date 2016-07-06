@@ -1,5 +1,8 @@
 package com.joey.expresscall.protocol.comm;
 
+import com.joey.general.utils.MyLog;
+import com.joey.general.utils.MySharedPreference;
+
 import java.util.HashMap;
 
 public class ECAccountInterface {
@@ -18,6 +21,14 @@ public class ECAccountInterface {
 
 	public void setToken(String token) {
 		this.token = token;
+	}
+
+	public String getToken(){
+		if(token == null||token.isEmpty()){
+			token = MySharedPreference.getInstance().getString("token");
+		}
+		MyLog.e("token = "+token);
+		return token;
 	}
 
 	/**
@@ -43,7 +54,7 @@ public class ECAccountInterface {
 		String URI_ACCOUNT_MODIFYPWD = ECNetUrlConsts
 				.getFullUrl(ECNetUrlConsts.DO_LOGOUT);
 		HashMap param = new HashMap();
-		param.put("token", this.token);
+		param.put("token", getToken());
 		String jsonStr = this.httpcomm.httpRequestPost(URI_ACCOUNT_MODIFYPWD,
 				param);
 		return jsonStr;
@@ -93,7 +104,7 @@ public class ECAccountInterface {
 		String URI_ACCOUNT_MODIFYPWD = ECNetUrlConsts
 				.getFullUrl(ECNetUrlConsts.DO_MODIFY);
 		HashMap param = new HashMap();
-		param.put("token", this.token);
+		param.put("token", getToken());
 		param.put("oldPwd", oldPwd);
 		param.put("newPwd", newPwd);
 		// param.put("confirmPwd", confirmPwd);
@@ -149,7 +160,7 @@ public class ECAccountInterface {
 		String URI_ACCOUNT_INFO = ECNetUrlConsts
 				.getFullUrl(ECNetUrlConsts.DO_INFO);
 		HashMap param = new HashMap();
-		param.put("token", this.token);
+		param.put("token", getToken());
 		String jsonStr = this.httpcomm.httpRequestPost(URI_ACCOUNT_INFO, param);
 
 		return jsonStr;
@@ -164,7 +175,7 @@ public class ECAccountInterface {
 		String URI_ACCOUNT_MODIFY = ECNetUrlConsts
 				.getFullUrl(ECNetUrlConsts.DO_MODIFY_NICKNAME);
 		HashMap param = new HashMap();
-		param.put("token", this.token);
+		param.put("token", getToken());
 		param.put("nickName", nickName);
 		param.put("username",username);
 		String jsonStr = this.httpcomm.httpRequestPost(URI_ACCOUNT_MODIFY,

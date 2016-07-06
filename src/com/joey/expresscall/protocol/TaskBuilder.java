@@ -11,6 +11,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.joey.expresscall.R;
 import com.joey.expresscall.account.ECAccountManager;
 import com.joey.expresscall.login.JVLoginActivity;
+import com.joey.expresscall.protocol.comm.ECAccountInterface;
 import com.joey.general.BaseActivity;
 import com.joey.general.MyActivityManager;
 import com.joey.general.utils.DateUtil;
@@ -92,7 +93,6 @@ public class TaskBuilder extends CommonHandler implements Callable<JVTask> {
                 /** 6.session超时, 跳转到登录界面 */
                 jumpLogin(R.string.login_expire);
             }
-
         return mTask;
     }
 

@@ -36,6 +36,10 @@ public class ECCallInterface {
 		this.token = token;
 	}
 
+	public String getToken() {
+		return token;
+	}
+
 	/**
 	 * 
 	 * @param path
@@ -52,7 +56,7 @@ public class ECCallInterface {
 		param.put("extraName", extraName);
 		param.put("duration",duration);
 		param.put("fileLength",fileSize);
-		param.put("token", this.token);
+		param.put("token", getToken());
 		MyLog.i("httpComm",param.toString());
 
 		String result;
@@ -70,7 +74,7 @@ public class ECCallInterface {
 	public String getFiles() {
 		String URI = ECNetUrlConsts.getFullUrl(ECNetUrlConsts.DO_FILE_LIST);
 		HashMap param = new HashMap();
-		param.put("token", this.token);
+		param.put("token", getToken());
 		String jsonStr = this.httpcomm.httpRequestPost(URI, param);
 
 		return jsonStr;
@@ -79,7 +83,7 @@ public class ECCallInterface {
 	public String deleteFile(String fileIds){
 		String URI = ECNetUrlConsts.getFullUrl(ECNetUrlConsts.DO_DELETE_FILE);
 		HashMap param = new HashMap();
-		param.put("token", this.token);
+		param.put("token", getToken());
 		param.put("fileIds",fileIds);
 		String jsonStr = this.httpcomm.httpRequestPost(URI, param);
 
@@ -89,7 +93,7 @@ public class ECCallInterface {
 	public String updateFile(String fileId,String extraName){
 		String URI = ECNetUrlConsts.getFullUrl(ECNetUrlConsts.DO_FILE_LIST);
 		HashMap param = new HashMap();
-		param.put("token", this.token);
+		param.put("token", getToken());
 		param.put("fileId",fileId);
 		param.put("extraName",extraName);
 		String jsonStr = this.httpcomm.httpRequestPost(URI, param);
@@ -100,7 +104,7 @@ public class ECCallInterface {
 	public String callArray(String fileId, String fileType, String content,List<String> phones) {
 		String URI = ECNetUrlConsts.getFullUrl(ECNetUrlConsts.DO_CALL);
 		HashMap param = new HashMap();
-		param.put("token", this.token);
+		param.put("token", getToken());
 		param.put("fileId", fileId);
 		param.put("fileType", fileType);
 		param.put("phoneArray", phones);
@@ -112,7 +116,7 @@ public class ECCallInterface {
 	public boolean downloadFile(String fileId, String fileType,String savePath) {
 		String URI = ECNetUrlConsts.getFullUrl(ECNetUrlConsts.DO_DOWNLOAD_FILE);
 		HashMap param = new HashMap();
-		param.put("token", this.token);
+		param.put("token", getToken());
 		param.put("fileId", fileId);
 		param.put("fileType", fileType);
 
@@ -124,7 +128,7 @@ public class ECCallInterface {
 	public String getBillDetail(String callId) {
 		String URI = ECNetUrlConsts.getFullUrl(ECNetUrlConsts.DO_BILL_DETAIL);
 		HashMap param = new HashMap();
-		param.put("token", this.token);
+		param.put("token", getToken());
 		param.put("callId", callId);
 		String jsonStr = this.httpcomm.httpRequestPost(URI, param);
 
@@ -134,7 +138,7 @@ public class ECCallInterface {
 	public String getBillList(long startTime,long endTime) {
 		String URI = ECNetUrlConsts.getFullUrl(ECNetUrlConsts.DO_BILL_LIST);
 		HashMap param = new HashMap();
-		param.put("token", this.token);
+		param.put("token", getToken());
 		param.put("startTime",startTime);
 		param.put("endTime",endTime);
 		String jsonStr = this.httpcomm.httpRequestPost(URI, param);
@@ -145,7 +149,7 @@ public class ECCallInterface {
 	public String getCallList(int pageSize,int pageNum){
 		String URI = ECNetUrlConsts.getFullUrl(ECNetUrlConsts.DO_CALL_LIST);
 		HashMap param = new HashMap();
-		param.put("token", this.token);
+		param.put("token", getToken());
 		param.put("pageSize", pageSize);
 		param.put("pageNum", pageNum);
 		String jsonStr = this.httpcomm.httpRequestPost(URI, param);
@@ -155,7 +159,7 @@ public class ECCallInterface {
 	public String getCallListDetail(String callListID){
 		String URI = ECNetUrlConsts.getFullUrl(ECNetUrlConsts.DO_CALL_LIST_DETAIL);
 		HashMap param = new HashMap();
-		param.put("token", this.token);
+		param.put("token", getToken());
 		param.put("callListId",callListID);
 		String jsonStr = this.httpcomm.httpRequestPost(URI, param);
 		return jsonStr;

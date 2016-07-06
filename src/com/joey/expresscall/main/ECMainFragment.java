@@ -173,7 +173,6 @@ public class ECMainFragment extends BaseFragment {
 			@Override
 			public void onRefresh() {
 
-				getUseInfo();
 				getCallList(IDEL_PAGE_NUM);
 			}
 		});

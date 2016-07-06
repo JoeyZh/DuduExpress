@@ -8,12 +8,14 @@ import com.joey.expresscall.protocol.ResponseListener;
 import com.joey.expresscall.protocol.TaskBuilder;
 import com.joey.expresscall.protocol.TaskBuilder.OnTaskListener;
 import com.joey.expresscall.protocol.comm.ECAccountInterface;
+import com.joey.general.utils.MySharedPreference;
 
 public class ECAccountManager {
 
-    public static ECAccountManager accountManager;
-    public ECAccountInterface mAccount;
-    public boolean isLogin;
+    private static ECAccountManager accountManager;
+    private ECAccountInterface mAccount;
+    private boolean isLogin = false;
+    private String token = null;
 
     private ECAccountManager() {
         mAccount = new ECAccountInterface();
@@ -31,12 +33,18 @@ public class ECAccountManager {
     }
 
     public void setToken(String token) {
+        setLogin(true);
         mAccount.setToken(token);
         ECCallManager.getInstance().init(token);
+        MySharedPreference.getInstance().putString("token",token);
     }
 
     public boolean isLogin() {
         return isLogin;
+    }
+
+    public void  setLogin(boolean login){
+        isLogin = login;
     }
 
     /**
