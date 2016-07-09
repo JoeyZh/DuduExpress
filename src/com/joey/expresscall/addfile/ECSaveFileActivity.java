@@ -53,6 +53,7 @@ public class ECSaveFileActivity extends BaseActivity {
 					if(checkUploadInfo()){
 						upLoadFile();
 					}
+					break;
 				case R.id.right_btn:
 					play(bean);
 					break;

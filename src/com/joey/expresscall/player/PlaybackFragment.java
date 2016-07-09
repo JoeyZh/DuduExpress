@@ -217,7 +217,6 @@ public class PlaybackFragment extends DialogFragment {
     private void startPlaying() {
         mPlayButton.setImageResource(R.drawable.ic_media_pause);
         mMediaPlayer = new MediaPlayer();
-        mMediaPlayer.setAudioStreamType(AudioManager.STREAM_ALARM);
 
         try {
             mMediaPlayer.setDataSource(item.getPath());
