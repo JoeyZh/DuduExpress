@@ -59,6 +59,9 @@ public class JVLoginActivity extends BaseActivity {
         public void onSuccess(JSONObject jsonData) {
         	String token = jsonData.getString("token");
         	ECAccountManager.getInstance().setToken(token);
+
+            clearLocalInfo();
+
             // 保存账号信息
             MySharedPreference.getInstance().putString(MySharedPreferencesConsts.USERNAME,
                     userName);
@@ -398,6 +401,17 @@ public class JVLoginActivity extends BaseActivity {
             return false;
         }
         return true;
+    }
+
+    private boolean  clearLocalInfo(){
+        String lastUser = MySharedPreference.getInstance().getString(MySharedPreferencesConsts.USERNAME);
+        if(lastUser.equals(userName)){
+            return false;
+        }
+        MySharedPreference.getInstance().putString("groupList","");
+        MySharedPreference.getInstance().putString("userInfo","");
+        return true;
+
     }
 
 }
