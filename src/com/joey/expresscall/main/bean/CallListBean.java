@@ -87,12 +87,15 @@ public class CallListBean extends BaseBean{
         String timeStr = DateUtil.convertToDateStr(DateUtil.DATE_FORMMAT_STR_3, getCallTime());
         map.put("callTime",timeStr);
         map.put("extra",getSuccessCount()+"/"+getTotalSize());
-        if(getFileId().toLowerCase().endsWith("wav")) {
+        map.put("type","文");
+        map.put("color", "red");
+        if(getFileId() == null) {
+            return map;
+        }
+        if(getFileId().toLowerCase().endsWith("wav")){
             map.put("type","录");
             map.put("color", "blue");
-        }else {
-            map.put("type","文");
-            map.put("color", "red");
+            return map;
         }
 //        MyLog.i("map = "+map.toString());
         return map;

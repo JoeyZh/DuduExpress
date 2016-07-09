@@ -172,7 +172,7 @@ public class ECMainFragment extends BaseFragment {
 		mRefreshLayout.setOnRefreshListener(new RefreshLayout.OnRefreshListener() {
 			@Override
 			public void onRefresh() {
-
+				getUseInfo();
 				getCallList(IDEL_PAGE_NUM);
 			}
 		});
@@ -358,13 +358,6 @@ public class ECMainFragment extends BaseFragment {
 					JSONObject obj = array.getJSONObject(i);
 					CallListBean bean = (CallListBean)JSON.parseObject(obj.toString(),CallListBean.class);
 					HashMap<String,Object> map = bean.getMap();
-					if(bean.getFileId().toLowerCase().endsWith("wav")) {
-						map.put("type","录");
-						map.put("color", "blue");
-					}else {
-						map.put("type","文");
-						map.put("color", "red");
-					}
 					mCallList.add(map);
 				}
 				mAdapter.notifyDataSetChanged();
@@ -400,4 +393,6 @@ public class ECMainFragment extends BaseFragment {
 		mActivity.overridePendingTransition(R.anim.push_left_in,
 				R.anim.push_left_out);
 	}
+
+
 }
