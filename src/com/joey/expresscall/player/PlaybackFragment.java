@@ -238,6 +238,7 @@ public class PlaybackFragment extends DialogFragment {
             @Override
             public void onCompletion(MediaPlayer mp) {
                 stopPlaying();
+                dismiss();
             }
         });
 
