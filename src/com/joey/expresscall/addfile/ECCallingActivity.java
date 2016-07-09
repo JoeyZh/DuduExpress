@@ -213,7 +213,10 @@ public class ECCallingActivity extends BaseActivity {
 
         }
         if(statusHashMap.containsKey("fileBean")){
+
             fileBean = (FileBean)statusHashMap.get("fileBean");
+            MyLog.e("item = "+ JSON.toJSONString(fileBean));
+
         }else {
             fileBean = null;
             tvRecordTime.setText("");

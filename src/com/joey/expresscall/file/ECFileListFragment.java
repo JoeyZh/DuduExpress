@@ -181,9 +181,9 @@ public class ECFileListFragment extends BaseFragment {
 	}
 
 	private FileBean getFileBean(int position){
-		if(operationIndex<0||operationIndex>= fileList.size())
+		if(position<0||position>= fileList.size())
 			return null;
-		FileBean bean = fileList.get(operationIndex);
+		FileBean bean = fileList.get(position);
 		return  bean;
 	}
 
