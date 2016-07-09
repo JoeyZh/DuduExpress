@@ -248,6 +248,7 @@
     <string name="web_error_408">参数不合法</string>
     <string name="web_error_409">调用远程账号操作失败</string>
     <string name="web_error_410">验证码发送失败</string>
+    <string name="web_error_413">您的余额不足，请充值或减少呼叫号码！</string>
     <!-- // 5.其他出现的错误 -->
     <string name="web_error_501">版本没有更新</string>
     <string name="web_error_502">版本过高</string>

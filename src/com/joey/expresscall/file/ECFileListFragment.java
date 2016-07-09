@@ -18,6 +18,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.daimajia.swipe.SimpleSwipeListener;
 import com.daimajia.swipe.SwipeLayout;
+import com.joey.expresscall.MainActivity;
 import com.joey.expresscall.R;
 import com.joey.expresscall.account.ECCallManager;
 import com.joey.expresscall.addfile.ECCallingActivity;
@@ -27,6 +28,7 @@ import com.joey.expresscall.main.bean.CallListBean;
 import com.joey.expresscall.player.PlaybackFragment;
 import com.joey.expresscall.protocol.RequestError;
 import com.joey.expresscall.protocol.ResponseListener;
+import com.joey.general.BaseActivity;
 import com.joey.general.BaseFragment;
 import com.joey.general.utils.FileUtil;
 import com.joey.general.utils.MyLog;
@@ -59,9 +61,19 @@ public class ECFileListFragment extends BaseFragment {
 				case R.id.no_info_notice_btn:{
 					Intent intent = new Intent(getActivity(), ECCallingActivity.class);
 					startActivity(intent);
+					if(getActivity() instanceof MainActivity){
+						if(getActivity() instanceof  BaseActivity){
+							((BaseActivity)getActivity()).statusHashMap.put("menuIndex",0);
+						}
+						return;
+					}
 					getActivity().finish();
 				}
 					break;
+				case R.id.left_btn:
+					getActivity().onBackPressed();
+					break;
+
 			}
 		}
 	};
@@ -132,6 +144,9 @@ public class ECFileListFragment extends BaseFragment {
 				 new String[] { "extraName",
 				"createTime","fileLength", "img" }, new int[] {
 						R.id.text_content, R.id.text_desc, R.id.text_extra,R.id.item_indicator });
+		if(getActivity() instanceof  ECFileActivity){
+			getTopBarView().setTopBar(R.drawable.icon_back,-1,R.string.file_title,clickListener);
+		}
 		listView.setAdapter(mAdapter);
 		mAdapter.setSwipeItemOnClickListener(new ECFileItemAdapter.SwipeItemOnClickListener() {
 			@Override
@@ -237,6 +252,17 @@ public class ECFileListFragment extends BaseFragment {
 					@Override
 					public void onSuccess(JSONObject json) {
 						MyLog.i("onSuccess", json.toJSONString());
+						if(json.get("list").toString().isEmpty()){
+							fragHandler.post(new Runnable() {
+								@Override
+								public void run() {
+									if(mMapList.isEmpty()){
+										noInfoView.setVisibility(View.VISIBLE);
+									}
+								}
+							});
+							return;
+						}
 						JSONArray array = json.getJSONArray("list");
 						MySharedPreference.getInstance().putString("files",
 								array.toJSONString());

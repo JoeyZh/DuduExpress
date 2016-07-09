@@ -45,11 +45,12 @@ public class TabHost {
      * @param tabRoot
      * @param contentRoot
      */
-    public TabHost(Activity activity,LinearLayout tabRoot,FrameLayout contentRoot){
+    public TabHost(Activity activity,LinearLayout tabRoot,FrameLayout contentRoot,OnTabHostChangeListener listener){
         mTabRoot = tabRoot;
         mContentRoot = contentRoot;
         mActivity = activity;
         mTabArray = new ArrayList<HashMap<String, Object>>();
+        tabHostChangeListener = listener;
     }
 
     public void addTab(String text,int imgRes,int resFocus,Fragment content){

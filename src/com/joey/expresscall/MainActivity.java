@@ -1,6 +1,7 @@
 
 package com.joey.expresscall;
 
+import android.app.Fragment;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
@@ -9,9 +10,10 @@ import com.joey.expresscall.file.ECFileListFragment;
 import com.joey.expresscall.main.ECMainFragment;
 import com.joey.expresscall.setting.ECSettingFragment;
 import com.joey.general.BaseActivity;
+import com.joey.general.tab.TabBarItem;
 import com.joey.general.tab.TabHost;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity implements TabHost.OnTabHostChangeListener{
 
     private TabHost tabHost;
     private  FrameLayout contentRoot;
@@ -20,11 +22,12 @@ public class MainActivity extends BaseActivity {
     private ECSettingFragment settingFragment;
     private ECContactsFragment contactsFragment;
     private ECFileListFragment fileListFragment;
+    private int menuIndex = 0;
 
     @Override
     public void initSettings() {
         // TODO Auto-generated method stub
-        
+
     }
 
     @Override
@@ -34,7 +37,7 @@ public class MainActivity extends BaseActivity {
         setTopBarVisiable(-1);
         contentRoot = (FrameLayout)findViewById(R.id.tab_content);
         mTabLayout = (LinearLayout)findViewById(R.id.tab_layout);
-        tabHost = new TabHost(this,mTabLayout,contentRoot);
+        tabHost = new TabHost(this,mTabLayout,contentRoot,this);
         
         mainFragment = new ECMainFragment();
 //        settingFragment = new ECSettingFragment();
@@ -44,10 +47,11 @@ public class MainActivity extends BaseActivity {
         tabHost.addTab("主页",R.drawable.tabbar_main_selector,R.drawable.tabbar_home_selected, mainFragment);
 //        tabHost.addTab("联系人",R.drawable.tabbar_info_selector ,R.drawable.tabbar_profile_selected, contactsFragment);
         tabHost.addTab("文件",R.drawable.tabbar_files_selector ,R.drawable.tabbar_message_center_selected, fileListFragment);
-        
+
        tabHost.changeToIndex(0);
-        
+
     }
+
 
     @Override
     public void saveSettings() {
@@ -63,7 +67,20 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
         exitTip();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(statusHashMap.containsKey("menuIndex")){
+            menuIndex = (Integer) statusHashMap.get("menuIndex");
+        }
+        tabHost.changeToIndex(menuIndex);
+    }
+
+    @Override
+    public void onTagChange(TabBarItem item, int index, Fragment content) {
+        statusHashMap.put("menuIndex",index);
     }
 }
