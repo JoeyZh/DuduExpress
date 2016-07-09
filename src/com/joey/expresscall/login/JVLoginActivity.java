@@ -20,6 +20,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.joey.expresscall.MainActivity;
 import com.joey.expresscall.R;
 import com.joey.expresscall.account.ECAccountManager;
+import com.joey.expresscall.main.ECMainFragment;
 import com.joey.expresscall.protocol.RequestError;
 import com.joey.expresscall.protocol.ResponseListener;
 import com.joey.expresscall.storage.JVAccount;
@@ -59,7 +60,7 @@ public class JVLoginActivity extends BaseActivity {
         public void onSuccess(JSONObject jsonData) {
         	String token = jsonData.getString("token");
         	ECAccountManager.getInstance().setToken(token);
-
+            ECMainFragment.refresh = true;
             clearLocalInfo();
 
             // 保存账号信息
@@ -410,6 +411,8 @@ public class JVLoginActivity extends BaseActivity {
         }
         MySharedPreference.getInstance().putString("groupList","");
         MySharedPreference.getInstance().putString("userInfo","");
+        MySharedPreference.getInstance().putString("nickname","");
+
         return true;
 
     }
