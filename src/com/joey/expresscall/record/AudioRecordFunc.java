@@ -93,11 +93,11 @@ public class AudioRecordFunc {
             audioRecord.stop();  
             audioRecord.release();//释放资源  
             audioRecord = null;
-//            删除源文件
-            File file = new File(AudioName);
-            if (file.exists()) {
-                file.delete();
-            }
+////            删除源文件
+//            File file = new File(AudioName);
+//            if (file.exists()) {
+//                file.delete();
+//            }
 //          获取文件时长
             duration = System.currentTimeMillis() - startTime;
         }
@@ -111,11 +111,11 @@ public class AudioRecordFunc {
          
         // 获得缓冲区字节大小  
         bufferSizeInBytes = AudioRecord.getMinBufferSize(AudioFileFunc.AUDIO_SAMPLE_RATE,
-                AudioFormat.CHANNEL_IN_STEREO, AudioFormat.ENCODING_PCM_16BIT);
+                AudioFormat.CHANNEL_IN_MONO, AudioFormat.ENCODING_PCM_16BIT);
          
         // 创建AudioRecord对象  
         audioRecord = new AudioRecord(AudioFileFunc.AUDIO_INPUT, AudioFileFunc.AUDIO_SAMPLE_RATE,  
-                AudioFormat.CHANNEL_IN_STEREO, AudioFormat.ENCODING_PCM_16BIT, bufferSizeInBytes);
+                AudioFormat.CHANNEL_IN_MONO, AudioFormat.ENCODING_PCM_16BIT, bufferSizeInBytes);
     }
      
      
@@ -171,8 +171,8 @@ public class AudioRecordFunc {
         long totalAudioLen = 0;  
         long totalDataLen = totalAudioLen + 36;  
         long longSampleRate = AudioFileFunc.AUDIO_SAMPLE_RATE;  
-        int channels = 2;  
-        long byteRate = 16 * AudioFileFunc.AUDIO_SAMPLE_RATE * channels / 8;  
+        int channels = 1;
+        long byteRate = 16 * AudioFileFunc.AUDIO_SAMPLE_RATE * channels / 8;
         byte[] data = new byte[bufferSizeInBytes];  
         try {  
             in = new FileInputStream(inFilename);  
